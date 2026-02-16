@@ -2,26 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const testimonials = [
-    {
-        name: "Sarah Mitchell",
-        role: "Product Manager, TechStart Inc",
-        content: "Working with John was an excellent experience. The project was delivered on time with exceptional quality and attention to detail.",
-        image: "/placeholder-avatar.jpg"
-    },
-    {
-        name: "David Chen",
-        role: "CEO, Digital Solutions Ltd",
-        content: "Professional, skilled, and reliable. John transformed our ideas into a beautiful, functional application that exceeded our expectations.",
-        image: "/placeholder-avatar.jpg"
-    },
-    {
-        name: "Priya Sharma",
-        role: "Founder, StartupHub",
-        content: "Great communication throughout the project. The technical expertise and problem-solving skills were impressive.",
-        image: "/placeholder-avatar.jpg"
-    }
-];
+import { config } from "@/data/config";
 
 const Testimonials = () => {
     return (
@@ -41,16 +22,16 @@ const Testimonials = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-                        Client Testimonials
+                        {config.testimonials.title}
                     </h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-600 mx-auto rounded-full mb-6" />
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-                        What clients say about working with me
+                        {config.testimonials.description}
                     </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    {testimonials.map((testimonial, index) => (
+                    {config.testimonials.items.map((testimonial, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}

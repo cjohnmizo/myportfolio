@@ -1,4 +1,12 @@
-import { Code2, Phone, ExternalLink, Mail, ArrowDown, MapPin, Github, Linkedin, Facebook, Instagram } from "lucide-react";
+import * as Lucide from "lucide-react";
+
+const {
+    Code2, Phone, ExternalLink, Mail, ArrowDown, MapPin, Github, Linkedin, Facebook, Instagram,
+    LayoutDashboard, CheckCheck, UploadCloud, MessageSquareShare
+} = Lucide as any;
+
+const Globe = (Lucide as any).Globe || (Lucide as any).Globe2 || (Lucide as any).Earth;
+const Zap = (Lucide as any).Zap || (Lucide as any).ZapIcon;
 
 export const config = {
     meta: {
@@ -48,7 +56,7 @@ export const config = {
         stats: [
             { label: "Coordinates", value: "Mizoram, India", icon: MapPin },
             { label: "Experience_Level", value: "Level 6+ (Years)", icon: Code2 },
-            { label: "Language_Pack", value: "English, Mizo", icon: Mail } // Using Mail as placeholder safe icon for Globe until verified
+            { label: "Language_Pack", value: "English, Mizo", icon: Globe }
         ],
         status: "ONLINE & READY"
     },
@@ -110,7 +118,7 @@ export const config = {
                 title: "Technical_Consulting",
                 description: "Expert guidance on technology stack selection, code review, architecture planning, and optimization.",
                 features: ["Code_Audits", "System_Design", "Tech_Stack_Optimization"],
-                icon: Mail // Using Mail as safe fallback for Zap/Cpu
+                icon: Zap
             }
         ]
     },
@@ -159,5 +167,67 @@ export const config = {
         email: "johnchangsan39@gmail.com",
         address: "Khawlian, Saitual Mizoram, 796261",
         statusOptions: ["OPEN_TO_OPPORTUNITIES", "FREELANCE / FULL_TIME"]
+    },
+
+    process: {
+        title: "SYSTEM_PROTOCOL",
+        description: "Executing precise algorithms to transform requirements into deployed solutions.",
+        steps: [
+            {
+                title: "Discovery",
+                description: "System analysis and requirements gathering to establish core parameters.",
+                icon: Globe
+            },
+            {
+                title: "Planning",
+                description: "Architectural design and technology stack selection for optimal performance.",
+                icon: LayoutDashboard
+            },
+            {
+                title: "Development",
+                description: "Iterative coding sequences with continuous integration and real-time updates.",
+                icon: Code2
+            },
+            {
+                title: "Testing",
+                description: "Rigorous quality assurance protocols to ensure system integrity and security.",
+                icon: CheckCheck
+            },
+            {
+                title: "Deployment",
+                description: "Production environment configuration and seamless system launch.",
+                icon: UploadCloud
+            },
+            {
+                title: "Support",
+                description: "Ongoing system maintenance, patch management, and technical assistance.",
+                icon: MessageSquareShare
+            }
+        ]
+    },
+
+    testimonials: {
+        title: "USER_FEEDBACK",
+        description: "Authenticated logs from client interactions and successful deployments.",
+        items: [
+            {
+                name: "Sarah Mitchell",
+                role: "Product Manager, TechStart Inc",
+                content: "Working with John was an excellent experience. The project was delivered on time with exceptional quality and attention to detail.",
+                image: "/profile.jpg" // Using placeholder
+            },
+            {
+                name: "David Chen",
+                role: "CEO, Digital Solutions Ltd",
+                content: "Professional, skilled, and reliable. John transformed our ideas into a beautiful, functional application that exceeded our expectations.",
+                image: "/profile.jpg"
+            },
+            {
+                name: "Priya Sharma",
+                role: "Founder, StartupHub",
+                content: "Great communication throughout the project. The technical expertise and problem-solving skills were impressive.",
+                image: "/profile.jpg"
+            }
+        ]
     }
 };
