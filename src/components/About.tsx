@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, ArrowDown, MapPin, Mail } from "lucide-react";
+import { Code2, ArrowDown } from "lucide-react";
+import { config } from "@/data/config";
 
 const About = () => {
     return (
@@ -19,7 +20,7 @@ const About = () => {
                 >
                     <div className="text-[var(--secondary)] text-sm tracking-widest mb-2">&lt;IDENTITY_MATRIX /&gt;</div>
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        USER_<span className="text-[var(--primary)]">PROFILE</span>
+                        {config.about.title.split('_')[0]}_<span className="text-[var(--primary)]">{config.about.title.split('_')[1]}</span>
                     </h2>
                 </motion.div>
 
@@ -42,17 +43,11 @@ const About = () => {
                             </h3>
 
                             <div className="space-y-6 text-gray-400 leading-relaxed font-mono">
-                                <p className="text-lg">
-                                    &gt; Full-Stack Developer detected.<br />
-                                    &gt; Location: <span className="text-white">Mizoram, India</span>.<br />
-                                    &gt; Specialization: <span className="text-[var(--primary)]">Web & Mobile Architecture</span>.
-                                </p>
-                                <p>
-                                    Executing operations as a <span className="text-[var(--secondary)]">Vocational IT Teacher</span> for Govt. of Mizoram. Simultaneously engaged in freelance protocols with global clients.
-                                </p>
-                                <p>
-                                    Core directive: transform complex logic into scalable, maintainable code structures. Status: <span className="animate-pulse text-[var(--primary)]">ONLINE & READY</span>.
-                                </p>
+                                {config.about.bio.map((paragraph, index) => (
+                                    <p key={index}>
+                                        &gt; {paragraph}
+                                    </p>
+                                ))}
                             </div>
                         </div>
                     </motion.div>
@@ -72,29 +67,15 @@ const About = () => {
                             </h3>
 
                             <div className="space-y-4">
-                                <div className="flex items-start gap-4 pb-4 border-b border-[var(--primary)]/10">
-                                    <MapPin className="w-5 h-5 text-[var(--primary)] mt-1" />
-                                    <div>
-                                        <div className="text-[10px] text-[var(--secondary)] uppercase tracking-wider">Coordinates</div>
-                                        <div className="text-white">Mizoram, In</div>
+                                {config.about.stats.map((stat, index) => (
+                                    <div key={index} className="flex items-start gap-4 pb-4 border-b border-[var(--primary)]/10">
+                                        <stat.icon className="w-5 h-5 text-[var(--primary)] mt-1" />
+                                        <div>
+                                            <div className="text-[10px] text-[var(--secondary)] uppercase tracking-wider">{stat.label}</div>
+                                            <div className="text-white">{stat.value}</div>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div className="flex items-start gap-4 pb-4 border-b border-[var(--primary)]/10">
-                                    <Code2 className="w-5 h-5 text-[var(--primary)] mt-1" />
-                                    <div>
-                                        <div className="text-[10px] text-[var(--secondary)] uppercase tracking-wider">Experience_Level</div>
-                                        <div className="text-white">Level 6+ (Years)</div>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4 pb-4 border-b border-[var(--primary)]/10">
-                                    <Mail className="w-5 h-5 text-[var(--primary)] mt-1" />
-                                    <div>
-                                        <div className="text-[10px] text-[var(--secondary)] uppercase tracking-wider">Language_Pack</div>
-                                        <div className="text-white">English, Mizo</div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
 
@@ -103,7 +84,7 @@ const About = () => {
                                 <div className="w-2 h-2 bg-[var(--primary)] animate-pulse" />
                                 <span className="text-[var(--primary)] text-xs font-bold tracking-wider">SYSTEM_ACTIVE</span>
                             </div>
-                            <span className="text-[var(--primary)] text-xs">open_for_work: true</span>
+                            <span className="text-[var(--primary)] text-xs">status: {config.about.status}</span>
                         </div>
                     </motion.div>
                 </div>

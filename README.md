@@ -1,66 +1,79 @@
-<h1 align="center">👑 C. John</h1> <h3 align="center">Flutter Developer • Web Developer • UI Designer</h3> <p align="center"> <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=26&duration=2800&pause=900&color=00C2FF&center=true&vCenter=true&width=750&lines=Flutter+App+Developer;Modern+Web+Developer;UI%2FUX+Focused+Builder;Building+Smart+Digital+Systems" /> </p> <p align="center"> <a href="https://cjohnmizo.vercel.app"> <img src="https://img.shields.io/badge/🌐 Portfolio-Visit-blue?style=for-the-badge&logo=vercel"/> </a> <a href="mailto:johnchangsan39@gmail.com"> <img src="https://img.shields.io/badge/Email-johnchangsan39%40gmail.com-red?style=for-the-badge&logo=gmail"/> </a> <a href="https://github.com/cjohnmizo"> <img src="https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github"/> </a> </p>
-🧠 About Me
+# Hacker Portfolio Template
 
-I build modern mobile apps, websites, and digital systems with clean UI and real-world functionality.
+A high-performance, cyberpunk-themed portfolio template built with Next.js, Tailwind CSS, and Framer Motion. This template is designed to be easily customizable via a single configuration file.
 
-📱 Flutter Mobile App Developer
+## 🚀 Getting Started
 
-🌐 Modern Website & WordPress Developer
+### Prerequisites
 
-🎨 Clean, professional UI/UX focused
+- Node.js 18+
+- npm or yarn
 
-🚀 Building smart systems for villages & organizations
+### Installation
 
-💼 Open for freelance projects & collaboration
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/hacker-portfolio.git
+    cd hacker-portfolio
+    ```
 
-🚀 Featured Project
-🏡 Liankhawpui — Smart Village Directory System
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-A modern village directory & news management platform.
+3.  Run the development server:
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-Core Features
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Member directory system
+## ⚙️ Customization
 
-News & announcements
+All dynamic content is managed through a central configuration file located at `src/data/config.ts`.
 
-Admin dashboard
+### 1. Update Profile Information
+Open `src/data/config.ts` and modify the `profile` object:
+```typescript
+profile: {
+    name: "Your Name",
+    shortName: "YOUR_HANDLE", // Used in Navbar
+    title: "Your Title",
+    email: "your.email@example.com",
+    // ...
+}
+```
 
-Clean modern UI
+### 2. Update Sections
+-   **Hero**: Edit `config.hero` to change the typewriter strings and CTA buttons.
+-   **About**: Edit `config.about` to update your bio and stats.
+-   **Skills**: Edit `config.skills` to list your technical skills.
+-   **Services**: Edit `config.services` to list your offered services.
+-   **Projects**: Edit `config.projects` to showcase your work.
+-   **Contact**: Edit `config.contact` to update contact details.
 
-Flutter based architecture
+### 3. Icons
+The template uses `lucide-react` for icons. You can import new icons in `src/data/config.ts` and use them in your configuration objects.
 
-🔗 https://github.com/cjohnmizo/liankhawpui
+## 🛠️ Tech Stack
 
-🛠 Tech Stack
-<p align="center"> <img src="https://skillicons.dev/icons?i=flutter,dart,firebase,supabase,html,css,js,wordpress,git,github,vscode" /> </p>
-🆕 Latest Projects
-<!-- LATEST-PROJECTS:START --> <!-- LATEST-PROJECTS:END -->
-📊 GitHub Analytics
-<p align="center"> <img src="https://streak-stats.demolab.com?user=cjohnmizo&theme=tokyonight&border_radius=12"/> </p>
-🏆 Developer Trophy
-<p align="center"> <img src="https://github-profile-trophy.vercel.app/?username=cjohnmizo&theme=tokyonight&no-frame=true&row=1&column=6"/> </p>
-🐍 Contribution Snake
-<p align="center"> <img src="https://github.com/cjohnmizo/cjohnmizo/blob/output/github-contribution-grid-snake.svg"/> </p>
-👁 Profile Visitors
-<p align="center"> <img src="https://komarev.com/ghpvc/?username=cjohnmizo&label=Profile%20views&color=0e75b6&style=for-the-badge"/> </p>
-🌐 Portfolio
+-   **Framework**: [Next.js](https://nextjs.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Font**: [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
 
-Visit my full professional portfolio:
+## 📦 Deployment
 
-🔗 https://cjohnmizo.vercel.app
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-📩 Contact Me
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-Email: johnchangsan39@gmail.com
+## 📄 License
 
-Portfolio: https://cjohnmizo.vercel.app
-
-GitHub: https://github.com/cjohnmizo
-
-💎 2026 Mission
-
-Building powerful digital systems for villages, schools and organizations.
-
-⭐ Star my repositories if helpful
-🚀 Follow my journey as a developer
+This project is open source and available under the [MIT License](LICENSE).

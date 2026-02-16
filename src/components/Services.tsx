@@ -1,34 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Code2, Phone, ExternalLink, Mail } from "lucide-react";
+"use client";
 
-const services = [
-    {
-        icon: Code2,
-        title: "Web_App_Development",
-        description: "Custom web applications built with React, Next.js, and modern frameworks. Optimized for high performance.",
-        features: ["React & Next.js", "Responsive_UI", "Performance_Ops"]
-    },
-    {
-        icon: Phone,
-        title: "Mobile_Architecture",
-        description: "Cross-platform mobile applications using Flutter. Native performance with a single codebase.",
-        features: ["Flutter / Dart", "iOS & Android", "Native_Compilation"]
-    },
-    {
-        icon: ExternalLink,
-        title: "Full-Stack_Systems",
-        description: "End-to-end development from database design to deployment. API integration and cloud infrastructure.",
-        features: ["API_Endpoints", "Database_Schema", "Cloud_Deploy"]
-    },
-    {
-        icon: Mail,
-        title: "Technical_Consulting",
-        description: "Expert guidance on technology stack selection, code review, architecture planning, and optimization.",
-        features: ["Code_Audits", "System_Design", "Tech_Stack_Optimization"]
-    }
-];
+import { motion } from "framer-motion";
+import { config } from "@/data/config";
 
 const Services = () => {
     return (
@@ -43,7 +18,7 @@ const Services = () => {
                 >
                     <div className="text-[var(--primary)] text-sm tracking-widest mb-2 border-b border-[var(--primary)] inline-block pb-1">../../SYSTEM/SERVICES</div>
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        AVAILABLE_<span className="text-[var(--secondary)]">PROTOCOLS</span>
+                        {config.services.title.split('_')[0]}_<span className="text-[var(--secondary)]">{config.services.title.split('_')[1]}</span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
                         // DEPLOYING_HIGH_QUALITY_SOLUTIONS...<br />
@@ -52,7 +27,7 @@ const Services = () => {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {services.map((service, index) => (
+                    {config.services.items.map((service, index) => (
                         <motion.div
                             key={service.title}
                             initial={{ opacity: 0, y: 30 }}

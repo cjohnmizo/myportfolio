@@ -1,49 +1,10 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 
-const skills = [
-    {
-        category: "Mobile_Dev_Module",
-        items: [
-            { name: "Flutter", level: 90 },
-            { name: "Dart", level: 85 },
-            { name: "Android SDK", level: 80 },
-            { name: "iOS Dev", level: 75 }
-        ],
-        icon: "smartphone"
-    },
-    {
-        category: "Web_Core_Systems",
-        items: [
-            { name: "React / Next.js", level: 95 },
-            { name: "TypeScript", level: 90 },
-            { name: "Tailwind CSS", level: 95 },
-            { name: "Node.js", level: 85 }
-        ],
-        icon: "globe"
-    },
-    {
-        category: "Backend_ Infrastructure",
-        items: [
-            { name: "Supabase / Firebase", level: 88 },
-            { name: "PostgreSQL", level: 80 },
-            { name: "Cloudflare", level: 75 },
-            { name: "API Design", level: 85 }
-        ],
-        icon: "cloud"
-    },
-    {
-        category: "DevOps_&_Tools",
-        items: [
-            { name: "Git / GitHub", level: 92 },
-            { name: "Docker", level: 70 },
-            { name: "Figma", level: 80 },
-            { name: "Linux", level: 75 }
-        ],
-        icon: "tool"
-    },
-];
+import { config } from "@/data/config";
 
 const SkillBar = ({ name, level, delay }: { name: string, level: number, delay: number }) => {
     return (
@@ -118,7 +79,7 @@ const Skills = () => {
                     className="text-start mb-16 border-l-4 border-[var(--primary)] pl-6"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tighter">
-                        SYSTEM_<span className="text-[var(--primary)]">CAPABILITIES</span>
+                        {config.skills.title.split('_')[0]}_<span className="text-[var(--primary)]">{config.skills.title.split('_')[1]}</span>
                     </h2>
                     <p className="text-gray-400 font-mono text-sm md:text-base max-w-2xl">
                         // LOADING_DRIVER_MODULES...<br />
@@ -127,8 +88,8 @@ const Skills = () => {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {skills.map((skillGroup, index) => (
-                        <SkillCard key={skillGroup.category} skillGroup={skillGroup} index={index} />
+                    {config.skills.categories.map((skillGroup: any, index: number) => (
+                        <SkillCard key={skillGroup.name} skillGroup={{ ...skillGroup, category: skillGroup.name }} index={index} />
                     ))}
                 </div>
             </div>

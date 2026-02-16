@@ -17,21 +17,23 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+import { config } from "@/data/config";
+
 export const metadata: Metadata = {
   title: {
-    default: "C. John Remthang | Full-Stack Developer",
-    template: "%s | C. John Remthang",
+    default: config.meta.title,
+    template: `%s | ${config.profile.name}`,
   },
-  description: "Portfolio of C. John Remthang, a Full-Stack Developer and IT Educator based in Mizoram. Specializing in Flutter, React, and Modern Web Technologies.",
-  keywords: ["Mobile App Developer", "Flutter Developer", "Web Developer", "Mizoram", "IT Educator", "C. John Remthang"],
-  authors: [{ name: "C. John Remthang", url: "https://cjohnmizo.vercel.app" }],
-  creator: "C. John Remthang",
-  metadataBase: new URL("https://cjohnmizo.vercel.app"),
+  description: config.meta.description,
+  keywords: config.meta.keywords,
+  authors: [{ name: config.meta.author, url: config.meta.url }],
+  creator: config.meta.author,
+  metadataBase: new URL(config.meta.url),
   openGraph: {
-    title: "C. John Remthang | Full-Stack Developer",
-    description: "Portfolio of C. John Remthang, a Full-Stack Developer and IT Educator based in Mizoram.",
-    url: "https://cjohnmizo.vercel.app",
-    siteName: "C. John Remthang Portfolio",
+    title: config.meta.title,
+    description: config.meta.description,
+    url: config.meta.url,
+    siteName: `${config.profile.name} Portfolio`,
     locale: "en_US",
     type: "website",
     images: [
@@ -39,15 +41,15 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "C. John Remthang Portfolio",
+        alt: `${config.profile.name} Portfolio`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "C. John Remthang | Full-Stack Developer",
-    description: "Portfolio of C. John Remthang, a Full-Stack Developer and IT Educator based in Mizoram.",
-    creator: "@cjohnmizo",
+    title: config.meta.title,
+    description: config.meta.description,
+    creator: config.meta.twitterHandle,
     images: ["/api/og"],
   },
   robots: {

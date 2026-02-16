@@ -1,8 +1,11 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, Code2 } from "lucide-react";
 import { useState } from "react";
+import { config } from "@/data/config";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -45,7 +48,7 @@ const Contact = () => {
                         SYSTEM_STATUS: LISTENING
                     </div>
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        ESTABLISH_<span className="text-[var(--primary)]">UPLINK</span>
+                        {config.contact.title.split('_')[0]}_<span className="text-[var(--primary)]">{config.contact.title.split('_')[1]}</span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
                         // INITIATE_ENCRYPTED_TRANSMISSION<br />
@@ -73,19 +76,18 @@ const Contact = () => {
                                 <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Communication_Channel_01</h4>
                                 <div className="flex items-center gap-4 text-gray-300 group-hover:text-[var(--primary)] transition-colors">
                                     <Mail className="w-5 h-5" />
-                                    <a href="mailto:johnchangsan39@gmail.com" className="hover:underline decoration-[var(--primary)]">johnchangsan39@gmail.com</a>
+                                    <a href={`mailto:${config.contact.email}`} className="hover:underline decoration-[var(--primary)]">{config.contact.email}</a>
                                 </div>
                             </div>
 
                             <div className="group">
                                 <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Social_Feeds</h4>
                                 <div className="flex flex-col gap-3 ml-1 border-l border-[var(--primary)]/30 pl-4 py-1">
-                                    <a href="https://www.instagram.com/c.john_mizo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] flex items-center gap-2 text-sm transition-colors">
-                                        &gt; Instagram_Feed
-                                    </a>
-                                    <a href="https://www.facebook.com/john.changsan.9" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] flex items-center gap-2 text-sm transition-colors">
-                                        &gt; Facebook_Stream
-                                    </a>
+                                    {config.profile.socials.map((social) => (
+                                        <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] flex items-center gap-2 text-sm transition-colors">
+                                            &gt; {social.name}_Feed
+                                        </a>
+                                    ))}
                                 </div>
                             </div>
 
@@ -93,12 +95,12 @@ const Contact = () => {
                                 <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Physical_Location</h4>
                                 <div className="flex items-center gap-4 text-gray-300">
                                     <MapPin className="w-5 h-5 text-[var(--secondary)]" />
-                                    <span>Khawlian, Saitual Mizoram, 796261</span>
+                                    <span>{config.contact.address}</span>
                                 </div>
                             </div>
 
                             <div className="mt-8 p-4 bg-[var(--primary)]/5 border border-[var(--primary)]/20 text-xs text-[var(--primary)] leading-relaxed">
-                                <span className="animate-blink">_</span> STATUS: OPEN_TO_OPPORTUNITIES<br />
+                                <span className="animate-blink">_</span> STATUS: {config.contact.statusOptions[0]}<br />
                                 CAPABILITY: FREELANCE / FULL_TIME<br />
                                 LATENCY: LOW
                             </div>

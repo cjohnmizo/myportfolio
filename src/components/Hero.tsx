@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Mail, ArrowDown } from "lucide-react";
+import { config } from "@/data/config";
 
 const Typewriter = ({ text, delay = 50, onComplete }: { text: string; delay?: number; onComplete?: () => void }) => {
     const [currentText, setCurrentText] = useState("");
@@ -12,8 +13,8 @@ const Typewriter = ({ text, delay = 50, onComplete }: { text: string; delay?: nu
     useEffect(() => {
         if (currentIndex < text.length) {
             const timeout = setTimeout(() => {
-                setCurrentText((prev) => prev + text[currentIndex]);
-                setCurrentIndex((prev) => prev + 1);
+                setCurrentText(prevText => prevText + text[currentIndex]);
+                setCurrentIndex(prevIndex => prevIndex + 1);
             }, delay);
 
             return () => clearTimeout(timeout);
@@ -21,13 +22,13 @@ const Typewriter = ({ text, delay = 50, onComplete }: { text: string; delay?: nu
             onComplete();
         }
     }, [currentIndex, delay, text, onComplete]);
-
     return <span>{currentText}</span>;
 };
 
 const Hero = () => {
+    const { profile, hero, about } = config;
     const [showSub, setShowSub] = useState(false);
-    const [showButtons, setShowButtons] = useState(false);
+    // ... zero logic changes ...
 
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-black">
@@ -48,14 +49,14 @@ const Hero = () => {
                     </div>
                     <div className="font-mono">
                         <div className="text-[var(--primary)] text-xs md:text-sm tracking-widest mb-1">
-                            Identify: User.Admin
+                            Identify: User.{profile.shortName}
                         </div>
                         <div className="text-white text-lg md:text-2xl font-bold uppercase tracking-wider">
-                            C. John Remthang
+                            {profile.name}
                         </div>
                         <div className="text-[var(--secondary)] text-xs md:text-sm flex items-center gap-2 mt-1">
                             <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse" />
-                            STATUS: ONLINE
+                            STATUS: {about.status}
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,7 @@ const Hero = () => {
 
                     <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
                         <span className="text-[var(--primary)] mr-4">&gt;</span>
-                        <Typewriter text="BUILDING_SCALABLE_WEB_SOLUTIONS" delay={50} onComplete={() => setShowSub(true)} />
+                        <Typewriter text={hero.typingStrings[0]} delay={50} onComplete={() => setShowSub(true)} />
                         <span className="animate-cursor ml-1">_</span>
                     </h1>
 
@@ -79,7 +80,7 @@ const Hero = () => {
                             className="text-lg md:text-xl text-gray-400 mb-10 pl-8 border-l-2 border-[var(--primary)] ml-2"
                         >
                             <p className="mb-2 text-[var(--secondary)]">// MISSION_OBJECTIVE:</p>
-                            <p>Transforming ideas into production-ready applications using React, Next.js, and Modern Tech Stack.</p>
+                            <p>{hero.description}</p>
                         </motion.div>
                     )}
 
@@ -127,21 +128,19 @@ const Hero = () => {
                         CONNECT_UPLINK
                     </div>
                     {[
-                        { href: "https://github.com/cjohnmizo/", Icon: Github, label: "GITHUB" },
-                        { href: "https://www.linkedin.com/in/c-john-remthang/", Icon: Linkedin, label: "LINKEDIN" },
-                        { href: "mailto:johnchangsan39@gmail.com", Icon: Mail, label: "EMAIL" }
-                    ].map(({ href, Icon, label }, index) => (
+                        ...config.profile.socials
+                    ].map(({ href, icon: Icon, name }, index) => (
                         <a
                             key={href}
                             href={href}
                             target={href.startsWith('http') ? "_blank" : undefined}
                             rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
                             className="text-gray-500 hover:text-[var(--primary)] transition-colors p-2 border border-transparent hover:border-[var(--primary)] hover:bg-[var(--primary)]/10 group relative"
-                            aria-label={label}
+                            aria-label={name}
                         >
                             <Icon className="w-5 h-5" />
                             <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 text-[var(--primary)] text-xs px-2 py-1 bg-black border border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                                {label}
+                                {name.toUpperCase()}
                             </span>
                         </a>
                     ))}

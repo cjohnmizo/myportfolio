@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Menu, X, Code2, ArrowDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { config } from "@/data/config";
+import Link from "next/link";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -43,22 +45,21 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo Area */}
-                    <div className="flex-shrink-0 cursor-pointer group">
-                        <ScrollLink to="hero" smooth={true} duration={500} className="flex items-center gap-3">
-                            <div className="relative w-10 h-10 flex items-center justify-center border border-[var(--primary)] bg-black/50 overflow-hidden">
-                                <Code2 className="w-6 h-6 text-[var(--primary)] animate-pulse" />
-                                <div className="absolute inset-0 bg-[var(--primary)]/10 animate-scanline pointer-events-none"></div>
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="font-bold text-lg tracking-wider text-[var(--primary)] group-hover:text-shadow-neon transition-all">
-                                    [ CJOHNMIZO ]
-                                </span>
-                                <span className="text-[10px] text-[var(--secondary)] tracking-[0.2em] uppercase">
-                                    System.Online
-                                </span>
-                            </div>
-                        </ScrollLink>
-                    </div>
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="relative w-10 h-10 flex items-center justify-center border border-[var(--primary)] bg-black/50 overflow-hidden">
+                            <Code2 className="w-6 h-6 text-[var(--primary)] animate-pulse" />
+                            <div className="absolute inset-0 bg-[var(--primary)]/10 animate-scanline pointer-events-none"></div>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="font-bold text-lg tracking-wider text-[var(--primary)] group-hover:text-shadow-neon transition-all">
+                                [ {config.profile.shortName} ]
+                            </span>
+                            <span className="text-[10px] text-[var(--secondary)] tracking-[0.2em] uppercase">
+                                System.Online
+                            </span>
+                        </div>
+                    </Link>
+
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
@@ -79,7 +80,7 @@ const Navbar = () => {
                             ))}
 
                             <motion.a
-                                href="/resume"
+                                href={config.profile.resumeLink}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="ml-4 px-6 py-2 border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black font-bold text-sm tracking-wider transition-all duration-300 uppercase relative overflow-hidden group"
@@ -128,7 +129,7 @@ const Navbar = () => {
                                 </ScrollLink>
                             ))}
                             <a
-                                href="/resume"
+                                href={config.profile.resumeLink}
                                 className="block mt-4 text-center py-3 border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black font-bold uppercase tracking-widest transition-all"
                             >
                                 [ DOWNLOAD_CV ]

@@ -1,37 +1,11 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Code2 } from "lucide-react";
 
-const projects = [
-    {
-        title: "Liankhawpui_Directory",
-        description: "News & Community Directory for Khawlian Village. Real-time updates, emergency contacts, and business listings.",
-        tags: ["Flutter", "Firebase", "Android"],
-        image: "https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-        github: "#",
-        demo: "#",
-        status: "DEPLOYED"
-    },
-    {
-        title: "E-Commerce_Admin",
-        description: "Comprehensive dashboard for product/order management. Features real-time analytics and dark mode.",
-        tags: ["React", "Next.js", "Tailwind"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-        github: "#",
-        demo: "#",
-        status: "STABLE"
-    },
-    {
-        title: "Social_Network_V1",
-        description: "Real-time social platform with messaging, posts, and user profiles. Scalable architecture.",
-        tags: ["TypeScript", "Node.js", "Socket.io"],
-        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-        github: "#",
-        demo: "#",
-        status: "BETA"
-    },
-];
+import { config } from "@/data/config";
 
 function ProjectCard({ project, index }: { project: any, index: number }) {
     return (
@@ -81,10 +55,10 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
                     </div>
 
                     <div className="flex items-center gap-4 mt-4 pt-4 border-t border-white/5">
-                        <a href={project.github} className="text-xs font-bold text-gray-500 hover:text-[var(--primary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
+                        <a href={project.links.code} className="text-xs font-bold text-gray-500 hover:text-[var(--primary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
                             <Github className="w-4 h-4" /> Source_Code
                         </a>
-                        <a href={project.demo} className="text-xs font-bold text-gray-500 hover:text-[var(--secondary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
+                        <a href={project.links.demo} className="text-xs font-bold text-gray-500 hover:text-[var(--secondary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
                             <ExternalLink className="w-4 h-4" /> Live_Uplink
                         </a>
                     </div>
@@ -113,18 +87,18 @@ const Projects = () => {
                 >
                     <div>
                         <div className="text-[var(--primary)] font-mono text-sm mb-2">&gt; SELECT * FROM PORTFOLIO_DB</div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Mission_Logs</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">{config.projects.title.split('_')[0]}_<span className="text-[var(--primary)]">{config.projects.title.split('_')[1]}</span></h2>
                     </div>
                     <div className="mt-4 md:mt-0 text-right">
                         <p className="text-gray-500 text-sm font-mono">
-                            // TOTAL_ENTRIES: {projects.length}<br />
+                            // TOTAL_ENTRIES: {config.projects.items.length}<br />
                             // STATUS: DECLASSIFIED
                         </p>
                     </div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {config.projects.items.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}
                 </div>
