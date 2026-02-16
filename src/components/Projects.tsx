@@ -1,169 +1,129 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
-import { MouseEvent, useRef } from "react";
+import { motion } from "framer-motion";
+import { Github, ExternalLink, Code2 } from "lucide-react";
 
 const projects = [
     {
-        title: "Liankhawpui",
-        description: "A community-focused directory and news application designed for Khawlian Village. This project bridges the information gap by providing local news, emergency contacts, and a business directory for the community.",
-        tags: ["Flutter", "Firebase", "Android", "Community Tech"],
+        title: "Liankhawpui_Directory",
+        description: "News & Community Directory for Khawlian Village. Real-time updates, emergency contacts, and business listings.",
+        tags: ["Flutter", "Firebase", "Android"],
         image: "https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
         github: "#",
         demo: "#",
+        status: "DEPLOYED"
     },
     {
-        title: "E-Commerce Dashboard",
-        description: "A comprehensive dashboard for managing products, orders, and customers. Features include real-time analytics, dark mode, and responsive design.",
-        tags: ["React", "Next.js", "Tailwind CSS", "Recharts"],
+        title: "E-Commerce_Admin",
+        description: "Comprehensive dashboard for product/order management. Features real-time analytics and dark mode.",
+        tags: ["React", "Next.js", "Tailwind"],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
         github: "#",
         demo: "#",
+        status: "STABLE"
     },
     {
-        title: "Social Media App",
-        description: "A full-featured social media application with real-time messaging, post sharing, and user profiles. Built with a focus on performance and scalability.",
-        tags: ["TypeScript", "Node.js", "Socket.io", "MongoDB"],
+        title: "Social_Network_V1",
+        description: "Real-time social platform with messaging, posts, and user profiles. Scalable architecture.",
+        tags: ["TypeScript", "Node.js", "Socket.io"],
         image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
         github: "#",
         demo: "#",
+        status: "BETA"
     },
 ];
 
 function ProjectCard({ project, index }: { project: any, index: number }) {
-    const ref = useRef<HTMLDivElement>(null);
-
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x);
-    const mouseYSpring = useSpring(y);
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
-
-    const handleMouseMove = (e: MouseEvent) => {
-        if (!ref.current) return;
-
-        const rect = ref.current.getBoundingClientRect();
-
-        const width = rect.width;
-        const height = rect.height;
-
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateY,
-                rotateX,
-                transformStyle: "preserve-3d",
-            }}
-            className="group relative glass overflow-hidden transition-all duration-300 rounded-xl card-hover"
+            className="group relative bg-black border border-white/10 hover:border-[var(--secondary)] transition-all duration-300 overflow-hidden flex flex-col"
         >
-            {/* Modern Corners */}
-            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-emerald-500/50 z-20 group-hover:border-emerald-500 transition-colors" />
-            <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-emerald-500/50 z-20 group-hover:border-emerald-500 transition-colors" />
-            <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-emerald-500/50 z-20 group-hover:border-emerald-500 transition-colors" />
-            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-emerald-500/50 z-20 group-hover:border-emerald-500 transition-colors" />
+            {/* Holographic Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--secondary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,243,255,0.05)_1px,transparent_1px)] bg-[size:4px_4px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-            <div
-                style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}
-                className="absolute inset-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-            >
-                <div className="absolute inset-0 bg-emerald-500/5 blur-2xl rounded-full" />
-            </div>
-
-            <div className="relative h-48 overflow-hidden" style={{ transform: "translateZ(50px)" }}>
+            {/* Image Section */}
+            <div className="relative h-48 overflow-hidden border-b border-white/10 group-hover:border-[var(--secondary)]/50 transition-colors">
                 <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale contrast-125 group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 border-y border-emerald-500/20">
-                    <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-3 glass rounded-lg hover:bg-emerald-500 text-emerald-400 hover:text-zinc-900 transition-all border border-emerald-500/50 hover:border-emerald-500"
-                    >
-                        <Github className="w-6 h-6" />
-                    </motion.a>
-                    <motion.a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-3 glass rounded-lg hover:bg-emerald-500 text-emerald-400 hover:text-zinc-900 transition-all border border-emerald-500/50 hover:border-emerald-500"
-                    >
-                        <ExternalLink className="w-6 h-6" />
-                    </motion.a>
+
+                {/* Status Tag */}
+                <div className="absolute top-2 right-2 bg-black/80 border border-[var(--secondary)] text-[var(--secondary)] text-[10px] px-2 py-0.5 font-mono">
+                    [{project.status}]
                 </div>
             </div>
 
-            <div className="p-4 sm:p-6" style={{ transform: "translateZ(20px)" }}>
-                <h3 className="text-xl font-bold font-mono text-white mb-3 group-hover:text-emerald-400 transition-colors">
-                    {project.title}_
+            {/* Content Section */}
+            <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold font-mono text-white mb-2 group-hover:text-[var(--secondary)] transition-colors flex items-center gap-2">
+                    <Code2 className="w-4 h-4 text-[var(--primary)]" />
+                    {project.title}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm mb-6 line-clamp-3 leading-relaxed font-mono border-l-2 border-white/10 pl-3">
+
+                <p className="text-gray-400 text-sm mb-4 font-mono leading-relaxed border-l border-[var(--primary)]/30 pl-3">
                     {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.tags.map((tag: string) => (
-                        <span
-                            key={tag}
-                            className="text-xs font-mono font-medium px-2 py-1 bg-emerald-900/20 text-emerald-400 border border-emerald-500/20"
-                        >
-                            #{tag}
-                        </span>
-                    ))}
+
+                <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag: string) => (
+                            <span key={tag} className="text-[10px] items-center flex gap-1 font-mono text-[var(--secondary)] px-1 border border-[var(--secondary)]/30 bg-[var(--secondary)]/5">
+                                <Code2 className="w-3 h-3" /> {tag.toUpperCase()}
+                            </span>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-4 mt-4 pt-4 border-t border-white/5">
+                        <a href={project.github} className="text-xs font-bold text-gray-500 hover:text-[var(--primary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            <Github className="w-4 h-4" /> Source_Code
+                        </a>
+                        <a href={project.demo} className="text-xs font-bold text-gray-500 hover:text-[var(--secondary)] uppercase tracking-wider flex items-center gap-1 transition-colors">
+                            <ExternalLink className="w-4 h-4" /> Live_Uplink
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            {/* Corner Decor */}
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[var(--secondary)] opacity-50" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[var(--secondary)] opacity-50" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[var(--secondary)] opacity-50" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[var(--secondary)] opacity-50" />
         </motion.div>
     );
 }
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-24 bg-zinc-900 perspective-1000">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="projects" className="py-24 bg-zinc-950 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-[var(--primary)]/20 pb-4"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Featured Projects</h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 via-cyan-500 to-indigo-500 mx-auto rounded-full" />
-                    <p className="mt-4 text-gray-400">Highlighting my work in mobile and web development.</p>
+                    <div>
+                        <div className="text-[var(--primary)] font-mono text-sm mb-2">&gt; SELECT * FROM PORTFOLIO_DB</div>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Mission_Logs</h2>
+                    </div>
+                    <div className="mt-4 md:mt-0 text-right">
+                        <p className="text-gray-500 text-sm font-mono">
+                            // TOTAL_ENTRIES: {projects.length}<br />
+                            // STATUS: DECLASSIFIED
+                        </p>
+                    </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}

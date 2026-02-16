@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, Facebook, Instagram } from "lucide-react";
+import { Mail, MapPin, Send, Code2 } from "lucide-react";
 import { useState } from "react";
 
 const Contact = () => {
@@ -10,13 +10,18 @@ const Contact = () => {
         email: "",
         message: "",
     });
+    const [status, setStatus] = useState<"IDLE" | "SENDING" | "SENT">("IDLE");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        setStatus("SENDING");
         // Simulate form submission
-        console.log("Form submitted:", formData);
-        alert("Thanks for getting in touch! This is a demo form.");
-        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => {
+            console.log("Form submitted:", formData);
+            setStatus("SENT");
+            setTimeout(() => setStatus("IDLE"), 3000);
+            setFormData({ name: "", email: "", message: "" });
+        }, 1500);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,8 +29,11 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="py-24 bg-black relative overflow-hidden font-mono">
+            {/* Background Matrix Rain Effect Placeholder (Static Grid for now) */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:30px_30px] opacity-20 pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -33,92 +41,81 @@ const Contact = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Get In Touch</h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-600 mx-auto rounded-full" />
-                    <p className="mt-4 text-gray-400">Have a project in mind or just want to say hi? I'd love to hear from you.</p>
+                    <div className="inline-block border border-[var(--primary)] px-4 py-1 mb-4 text-[var(--primary)] text-sm tracking-widest bg-[var(--primary)]/10">
+                        SYSTEM_STATUS: LISTENING
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                        ESTABLISH_<span className="text-[var(--primary)]">UPLINK</span>
+                    </h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                        // INITIATE_ENCRYPTED_TRANSMISSION<br />
+                        // AWAITING_PACKET_DATA...
+                    </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    {/* Contact Info Terminal */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
+                        className="bg-black border border-[var(--primary)]/50 p-6 md:p-8 relative overflow-hidden"
                     >
-                        <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-                        <div className="space-y-6">
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                className="flex items-start gap-4"
-                            >
-                                <div className="p-3 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg text-indigo-400 border border-indigo-500/30">
-                                    <Mail className="w-6 h-6" />
+                        <div className="absolute top-0 left-0 w-full h-1 bg-[var(--primary)]/50" />
+                        <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                            <Code2 className="w-5 h-5 text-[var(--primary)]" />
+                            Target_Coordinates
+                        </h3>
+
+                        <div className="space-y-8">
+                            <div className="group">
+                                <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Communication_Channel_01</h4>
+                                <div className="flex items-center gap-4 text-gray-300 group-hover:text-[var(--primary)] transition-colors">
+                                    <Mail className="w-5 h-5" />
+                                    <a href="mailto:johnchangsan39@gmail.com" className="hover:underline decoration-[var(--primary)]">johnchangsan39@gmail.com</a>
                                 </div>
-                                <div>
-                                    <h4 className="text-lg font-medium text-white">Email</h4>
-                                    <a href="mailto:johnchangsan39@gmail.com" className="text-gray-400 hover:text-indigo-400 transition-colors">
-                                        johnchangsan39@gmail.com
+                            </div>
+
+                            <div className="group">
+                                <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Social_Feeds</h4>
+                                <div className="flex flex-col gap-3 ml-1 border-l border-[var(--primary)]/30 pl-4 py-1">
+                                    <a href="https://www.instagram.com/c.john_mizo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] flex items-center gap-2 text-sm transition-colors">
+                                        &gt; Instagram_Feed
+                                    </a>
+                                    <a href="https://www.facebook.com/john.changsan.9" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[var(--primary)] flex items-center gap-2 text-sm transition-colors">
+                                        &gt; Facebook_Stream
                                     </a>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                className="flex items-start gap-4"
-                            >
-                                <div className="p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg text-purple-400 border border-purple-500/30">
-                                    <Phone className="w-6 h-6" />
+                            <div className="group">
+                                <h4 className="text-[var(--secondary)] text-xs mb-1 uppercase tracking-wider">Physical_Location</h4>
+                                <div className="flex items-center gap-4 text-gray-300">
+                                    <MapPin className="w-5 h-5 text-[var(--secondary)]" />
+                                    <span>Khawlian, Saitual Mizoram, 796261</span>
                                 </div>
-                                <div>
-                                    <h4 className="text-lg font-medium text-white">Social Media</h4>
-                                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2">
+                            </div>
 
-                                        <a href="https://www.instagram.com/c.john_mizo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-400 transition-colors flex items-center gap-2">
-                                            <Instagram className="w-5 h-5" />
-                                            <span>Instagram</span>
-                                        </a>
-                                        <a href="https://www.facebook.com/john.changsan.9" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-2">
-                                            <Facebook className="w-5 h-5" />
-                                            <span>Facebook</span>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                className="flex items-start gap-4"
-                            >
-                                <div className="p-3 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-lg text-emerald-400 border border-emerald-500/30">
-                                    <MapPin className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-medium text-white">Address</h4>
-                                    <p className="text-gray-400">Khawlian, Saitual Mizoram, 796261</p>
-                                </div>
-                            </motion.div>
-                        </div>
-
-                        <div className="mt-12 p-6 glass rounded-xl border-indigo-500/30">
-                            <h4 className="text-white font-medium mb-2">Looking for a freelancer?</h4>
-                            <p className="text-gray-400 text-sm">
-                                I am currently available for freelance projects and open to full-time opportunities.
-                            </p>
+                            <div className="mt-8 p-4 bg-[var(--primary)]/5 border border-[var(--primary)]/20 text-xs text-[var(--primary)] leading-relaxed">
+                                <span className="animate-blink">_</span> STATUS: OPEN_TO_OPPORTUNITIES<br />
+                                CAPABILITY: FREELANCE / FULL_TIME<br />
+                                LATENCY: LOW
+                            </div>
                         </div>
                     </motion.div>
 
+                    {/* Contact Form Terminal */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                         viewport={{ once: true }}
-                        className="glass p-4 sm:p-6 md:p-8 rounded-2xl border-white/10"
                     >
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6 relative">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Name
+                                <label htmlFor="name" className="block text-xs font-bold text-[var(--primary)] mb-2 uppercase tracking-wider">
+                                    &gt; Enter_Identity_String
                                 </label>
                                 <input
                                     type="text"
@@ -127,14 +124,14 @@ const Contact = () => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 glass rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-500 transition-all outline-none"
-                                    placeholder="Your name"
+                                    className="w-full bg-black border-b-2 border-[var(--primary)]/50 focus:border-[var(--primary)] px-4 py-3 text-white placeholder-gray-700 outline-none transition-colors"
+                                    placeholder="USER_NAME"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Email
+                                <label htmlFor="email" className="block text-xs font-bold text-[var(--primary)] mb-2 uppercase tracking-wider">
+                                    &gt; Return_Address
                                 </label>
                                 <input
                                     type="email"
@@ -143,14 +140,14 @@ const Contact = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 glass rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-500 transition-all outline-none"
-                                    placeholder="your.email@example.com"
+                                    className="w-full bg-black border-b-2 border-[var(--primary)]/50 focus:border-[var(--primary)] px-4 py-3 text-white placeholder-gray-700 outline-none transition-colors"
+                                    placeholder="EMAIL@DOMAIN.COM"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Message
+                                <label htmlFor="message" className="block text-xs font-bold text-[var(--primary)] mb-2 uppercase tracking-wider">
+                                    &gt; Payload_Message
                                 </label>
                                 <textarea
                                     id="message"
@@ -159,20 +156,25 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     rows={4}
-                                    className="w-full px-4 py-3 glass rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-500 transition-all outline-none resize-none"
-                                    placeholder="Your message..."
+                                    className="w-full bg-black border border-[var(--primary)]/30 focus:border-[var(--primary)] px-4 py-3 text-white placeholder-gray-700 outline-none transition-colors resize-none"
+                                    placeholder="ENTER_DATA..."
                                 />
                             </div>
 
-                            <motion.button
+                            <button
                                 type="submit"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full py-3 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-700 text-white font-medium rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50"
+                                disabled={status !== "IDLE"}
+                                className="w-full py-4 border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2 group relative overflow-hidden"
                             >
-                                Send Message
-                                <Send className="w-4 h-4" />
-                            </motion.button>
+                                <span className="relative z-10 flex items-center gap-2">
+                                    {status === "IDLE" && <>TRANSMIT_DATA <Send className="w-4 h-4" /></>}
+                                    {status === "SENDING" && <>TRANSMITTING...</>}
+                                    {status === "SENT" && <>TRANSMISSION_COMPLETE</>}
+                                </span>
+                                {status === "SENDING" && (
+                                    <div className="absolute inset-0 bg-[var(--primary)]/20 animate-pulse" />
+                                )}
+                            </button>
                         </form>
                     </motion.div>
                 </div>

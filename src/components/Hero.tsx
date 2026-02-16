@@ -1,189 +1,164 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
 
+const Typewriter = ({ text, delay = 50, onComplete }: { text: string; delay?: number; onComplete?: () => void }) => {
+    const [currentText, setCurrentText] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (currentIndex < text.length) {
+            const timeout = setTimeout(() => {
+                setCurrentText((prev) => prev + text[currentIndex]);
+                setCurrentIndex((prev) => prev + 1);
+            }, delay);
+
+            return () => clearTimeout(timeout);
+        } else if (onComplete) {
+            onComplete();
+        }
+    }, [currentIndex, delay, text, onComplete]);
+
+    return <span>{currentText}</span>;
+};
+
 const Hero = () => {
+    const [showSub, setShowSub] = useState(false);
+    const [showButtons, setShowButtons] = useState(false);
+
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
-            {/* Animated Background gradients */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <motion.div
-                    animate={{
-                        scale: [1, 1.3, 1],
-                        rotate: [0, 180, 360],
-                        opacity: [0.2, 0.4, 0.2]
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="absolute top-[-15%] left-[-15%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-[100px] md:blur-[140px]"
-                />
-                <motion.div
-                    animate={{
-                        scale: [1.3, 1, 1.3],
-                        rotate: [360, 180, 0],
-                        opacity: [0.2, 0.4, 0.2]
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="absolute bottom-[-15%] right-[-15%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-l from-emerald-500/20 to-cyan-500/20 rounded-full blur-[100px] md:blur-[140px]"
-                />
-                <motion.div
-                    animate={{
-                        x: [0, 150, 0],
-                        y: [0, -75, 0],
-                        opacity: [0.15, 0.3, 0.15]
-                    }}
-                    transition={{
-                        duration: 30,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                    className="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-[100px] md:blur-[140px]"
-                />
-            </div>
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-black">
+            {/* Grid Background */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
-                {/* Availability Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-8"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full border border-emerald-500/30">
-                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                        <span className="text-sm text-emerald-400 font-medium">Available for Projects</span>
-                    </div>
-                </motion.div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start z-10 w-full">
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-                    className="mb-8 relative group"
-                >
-                    <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl relative z-10 ring-4 ring-indigo-500/30 group-hover:ring-indigo-500/50 transition-all duration-500">
+                {/* Profile / Terminal Header */}
+                <div className="w-full flex items-center gap-4 mb-8 border-b border-[var(--primary)]/30 pb-4">
+                    <div className="w-16 h-16 md:w-24 md:h-24 rounded-none border border-[var(--primary)] p-1 relative overflow-hidden bg-black/50">
                         <img
                             src="/profile.jpg"
-                            alt="C. John Remthang - Full-Stack Developer"
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                            alt="Profile"
+                            className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
                         />
+                        <div className="absolute inset-0 bg-[var(--primary)]/10 animate-scanline pointer-events-none" />
                     </div>
-                    <motion.div
-                        className="absolute -inset-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"
-                        animate={{
-                            rotate: [0, 360],
-                        }}
-                        transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "linear"
-                        }}
-                    />
-                </motion.div>
+                    <div className="font-mono">
+                        <div className="text-[var(--primary)] text-xs md:text-sm tracking-widest mb-1">
+                            Identify: User.Admin
+                        </div>
+                        <div className="text-white text-lg md:text-2xl font-bold uppercase tracking-wider">
+                            C. John Remthang
+                        </div>
+                        <div className="text-[var(--secondary)] text-xs md:text-sm flex items-center gap-2 mt-1">
+                            <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse" />
+                            STATUS: ONLINE
+                        </div>
+                    </div>
+                </div>
 
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                    className="text-xl md:text-2xl font-medium text-emerald-400 mb-4 tracking-wide"
-                >
-                    Hi, I'm C. John Remthang
-                </motion.h2>
+                {/* Main Content Area */}
+                <div className="font-mono w-full max-w-4xl">
+                    <div className="text-[var(--primary)] mb-2 text-sm md:text-base opacity-70">
+                        &gt; INITIALIZING STARTUP SEQUENCE...
+                    </div>
 
-                <motion.h1
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight max-w-5xl"
-                >
-                    Full-Stack Developer Building{" "}
-                    <span className="gradient-text">Scalable Web Solutions</span>
-                </motion.h1>
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+                        <span className="text-[var(--primary)] mr-4">&gt;</span>
+                        <Typewriter text="BUILDING_SCALABLE_WEB_SOLUTIONS" delay={50} onComplete={() => setShowSub(true)} />
+                        <span className="animate-cursor ml-1">_</span>
+                    </h1>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mb-12 leading-relaxed px-4"
-                >
-                    I help businesses and startups transform ideas into production-ready applications using modern technologies like React, Next.js, and Flutter.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.0, duration: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-4 mb-16"
-                >
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <ScrollLink
-                            to="projects"
-                            smooth={true}
-                            duration={500}
-                            className="cursor-pointer px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full font-medium transition-all shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 inline-block text-lg"
+                    {showSub && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-lg md:text-xl text-gray-400 mb-10 pl-8 border-l-2 border-[var(--primary)] ml-2"
                         >
-                            See My Work
-                        </ScrollLink>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <ScrollLink
-                            to="contact"
-                            smooth={true}
-                            duration={500}
-                            className="cursor-pointer px-8 py-4 glass hover:bg-white/10 text-white rounded-full font-medium transition-all border border-white/20 hover:border-emerald-500/50 inline-block text-lg"
-                        >
-                            Let's Talk
-                        </ScrollLink>
-                    </motion.div>
-                </motion.div>
+                            <p className="mb-2 text-[var(--secondary)]">// MISSION_OBJECTIVE:</p>
+                            <p>Transforming ideas into production-ready applications using React, Next.js, and Modern Tech Stack.</p>
+                        </motion.div>
+                    )}
 
+                    {showSub && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className="flex flex-col sm:flex-row gap-6 ml-2"
+                        >
+                            <ScrollLink
+                                to="projects"
+                                smooth={true}
+                                duration={500}
+                                className="group relative px-8 py-3 bg-[var(--primary)]/10 border border-[var(--primary)] text-[var(--primary)] font-bold tracking-wider hover:bg-[var(--primary)] hover:text-black transition-all cursor-pointer flex items-center gap-2 overflow-hidden w-fit"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    EXECUTE_PROJECTS &gt;
+                                </span>
+                                <div className="absolute inset-0 bg-[var(--primary)] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+                            </ScrollLink>
+
+                            <ScrollLink
+                                to="contact"
+                                smooth={true}
+                                duration={500}
+                                className="group relative px-8 py-3 bg-transparent border border-[var(--secondary)] text-[var(--secondary)] font-bold tracking-wider hover:bg-[var(--secondary)] hover:text-black transition-all cursor-pointer flex items-center gap-2 overflow-hidden w-fit"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    INITIATE_CONTACT <Mail className="w-4 h-4" />
+                                </span>
+                            </ScrollLink>
+                        </motion.div>
+                    )}
+                </div>
+
+                {/* Footer / Socials */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex items-center gap-6"
+                    transition={{ delay: 2, duration: 1 }}
+                    className="absolute bottom-10 right-10 flex flex-col gap-4 items-end"
                 >
+                    <div className="text-[var(--primary)] text-xs tracking-widest writing-vertical-rl mb-4 hidden md:block opacity-50">
+                        CONNECT_UPLINK
+                    </div>
                     {[
-                        { href: "https://github.com/cjohnmizo/", Icon: Github, label: "GitHub" },
-                        { href: "https://www.linkedin.com/in/c-john-remthang/", Icon: Linkedin, label: "LinkedIn" },
-                        { href: "mailto:johnchangsan39@gmail.com", Icon: Mail, label: "Email" }
+                        { href: "https://github.com/cjohnmizo/", Icon: Github, label: "GITHUB" },
+                        { href: "https://www.linkedin.com/in/c-john-remthang/", Icon: Linkedin, label: "LINKEDIN" },
+                        { href: "mailto:johnchangsan39@gmail.com", Icon: Mail, label: "EMAIL" }
                     ].map(({ href, Icon, label }, index) => (
-                        <motion.a
+                        <a
                             key={href}
                             href={href}
                             target={href.startsWith('http') ? "_blank" : undefined}
                             rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
+                            className="text-gray-500 hover:text-[var(--primary)] transition-colors p-2 border border-transparent hover:border-[var(--primary)] hover:bg-[var(--primary)]/10 group relative"
                             aria-label={label}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.2 + index * 0.1 }}
-                            whileHover={{ scale: 1.2, y: -5 }}
-                            className="text-gray-400 hover:text-white transition-all duration-300 p-3 rounded-full hover:bg-white/5"
                         >
-                            <Icon className="w-6 h-6" />
-                        </motion.a>
+                            <Icon className="w-5 h-5" />
+                            <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 text-[var(--primary)] text-xs px-2 py-1 bg-black border border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                {label}
+                            </span>
+                        </a>
                     ))}
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, y: [0, 10, 0] }}
-                    transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
-                    className="absolute bottom-10"
+                    transition={{ delay: 2.5, duration: 2, repeat: Infinity }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[var(--primary)]"
                 >
-                    <ScrollLink to="services" smooth={true} duration={500} className="cursor-pointer text-gray-500 hover:text-emerald-400 transition-colors p-3 rounded-full hover:bg-white/5">
-                        <ArrowDown className="w-6 h-6" />
+                    <ScrollLink to="services" smooth={true} duration={500} className="cursor-pointer flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+                        <span className="text-[10px] tracking-widest">SCROLL_DOWN</span>
+                        <ArrowDown className="w-4 h-4" />
                     </ScrollLink>
                 </motion.div>
+
             </div>
         </section>
     );

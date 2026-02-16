@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, Code2, ArrowDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -23,148 +23,116 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: "Services", to: "services" },
-        { name: "Projects", to: "projects" },
-        { name: "Skills", to: "skills" },
-        { name: "About", to: "about" },
-        { name: "Contact", to: "contact" },
+        { name: "SERVICES", to: "services" },
+        { name: "PROJECTS", to: "projects" },
+        { name: "SKILLS", to: "skills" },
+        { name: "ABOUT", to: "about" },
+        { name: "CONTACT", to: "contact" },
     ];
 
     return (
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`fixed w-full z-50 transition-all duration-500 ${scrolled
-                ? "glass shadow-lg shadow-black/20"
-                : "bg-transparent"
+            transition={{ duration: 0.5, ease: "circOut" }}
+            className={`fixed w-full z-50 transition-all duration-300 font-mono ${scrolled
+                ? "bg-black/95 border-b border-[var(--primary)] shadow-[0_0_15px_rgba(0,255,65,0.3)]"
+                : "bg-transparent border-b border-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <motion.div
-                        className="flex-shrink-0 cursor-pointer"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400 }}
-                    >
-                        <ScrollLink to="hero" smooth={true} duration={500} className="flex items-center gap-2 group">
-                            <motion.div
-                                whileHover={{ rotate: 180 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <Code2 className="h-8 w-8 text-indigo-400 group-hover:text-emerald-400 transition-colors duration-300" />
-                            </motion.div>
-                            <span className="font-bold text-xl tracking-tight font-mono gradient-text">CJOHNMIZO</span>
+                <div className="flex items-center justify-between h-20">
+                    {/* Logo Area */}
+                    <div className="flex-shrink-0 cursor-pointer group">
+                        <ScrollLink to="hero" smooth={true} duration={500} className="flex items-center gap-3">
+                            <div className="relative w-10 h-10 flex items-center justify-center border border-[var(--primary)] bg-black/50 overflow-hidden">
+                                <Code2 className="w-6 h-6 text-[var(--primary)] animate-pulse" />
+                                <div className="absolute inset-0 bg-[var(--primary)]/10 animate-scanline pointer-events-none"></div>
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="font-bold text-lg tracking-wider text-[var(--primary)] group-hover:text-shadow-neon transition-all">
+                                    [ CJOHNMIZO ]
+                                </span>
+                                <span className="text-[10px] text-[var(--secondary)] tracking-[0.2em] uppercase">
+                                    System.Online
+                                </span>
+                            </div>
                         </ScrollLink>
-                    </motion.div>
+                    </div>
 
+                    {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-2">
+                        <div className="ml-10 flex items-center space-x-6">
                             {navLinks.map((link, index) => (
-                                <motion.div
+                                <ScrollLink
                                     key={link.name}
-                                    initial={{ opacity: 0, y: -20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
+                                    to={link.to}
+                                    smooth={true}
+                                    duration={500}
+                                    className="cursor-pointer relative px-2 py-1 text-sm font-bold text-gray-400 hover:text-[var(--primary)] transition-colors duration-200 group"
                                 >
-                                    <ScrollLink
-                                        to={link.to}
-                                        smooth={true}
-                                        duration={500}
-                                        className="cursor-pointer relative text-gray-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group overflow-hidden"
-                                    >
-                                        <span className="relative z-10">{link.name}</span>
-                                        <span className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300" />
-                                    </ScrollLink>
-                                </motion.div>
+                                    <span className="group-hover:hidden">{link.name}</span>
+                                    <span className="hidden group-hover:inline-block pl-2 bg-[var(--primary)] text-black">
+                                        {`> ${link.name}_`}
+                                    </span>
+                                </ScrollLink>
                             ))}
+
                             <motion.a
                                 href="/resume"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.7, duration: 0.4 }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="relative bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 font-mono shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 overflow-hidden group"
+                                className="ml-4 px-6 py-2 border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black font-bold text-sm tracking-wider transition-all duration-300 uppercase relative overflow-hidden group"
                             >
-                                <span className="relative z-10">Resume_</span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <span className="relative z-10 flex items-center gap-2">
+                                    <ArrowDown className="w-4 h-4" />
+                                    Download_CV
+                                </span>
+                                <div className="absolute inset-0 bg-[var(--primary)]/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out"></div>
                             </motion.a>
                         </div>
                     </div>
 
-                    <div className="-mr-2 flex md:hidden">
-                        <motion.button
-                            whileTap={{ scale: 0.9 }}
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden">
+                        <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300"
+                            className="p-2 text-[var(--primary)] border border-[var(--primary)] hover:bg-[var(--primary)] hover:text-black transition-all"
                         >
-                            <AnimatePresence mode="wait">
-                                {isOpen ? (
-                                    <motion.div
-                                        key="close"
-                                        initial={{ rotate: -90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: 90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <X className="block h-6 w-6" />
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        key="menu"
-                                        initial={{ rotate: 90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: -90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <Menu className="block h-6 w-6" />
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.button>
+                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                        </button>
                     </div>
                 </div>
             </div>
 
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="md:hidden glass border-t border-white/10"
+                        className="md:hidden bg-black border-b border-[var(--primary)]"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            {navLinks.map((link, index) => (
-                                <motion.div
+                        <div className="px-4 pt-2 pb-6 space-y-2">
+                            {navLinks.map((link) => (
+                                <ScrollLink
                                     key={link.name}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
+                                    to={link.to}
+                                    smooth={true}
+                                    duration={500}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block px-3 py-3 text-[var(--primary)] hover:bg-[var(--primary)]/10 border-l-2 border-transparent hover:border-[var(--primary)] transition-all font-mono text-sm uppercase tracking-widest cursor-pointer"
                                 >
-                                    <ScrollLink
-                                        to={link.to}
-                                        smooth={true}
-                                        duration={500}
-                                        onClick={() => setIsOpen(false)}
-                                        className="cursor-pointer text-gray-300 hover:text-white hover:bg-white/10 block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300"
-                                    >
-                                        {link.name}
-                                    </ScrollLink>
-                                </motion.div>
+                                    {`> ${link.name}`}
+                                </ScrollLink>
                             ))}
-                            <motion.a
+                            <a
                                 href="/resume"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: navLinks.length * 0.1 }}
-                                className="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-base font-medium mt-4 font-mono transition-all duration-300"
+                                className="block mt-4 text-center py-3 border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black font-bold uppercase tracking-widest transition-all"
                             >
-                                Resume_
-                            </motion.a>
+                                [ DOWNLOAD_CV ]
+                            </a>
                         </div>
                     </motion.div>
                 )}
