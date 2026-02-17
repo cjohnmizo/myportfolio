@@ -1,12 +1,9 @@
-import * as Lucide from "lucide-react";
-
-const {
-    Code2, Phone, ExternalLink, Mail, ArrowDown, MapPin, Github, Linkedin, Facebook, Instagram,
-    LayoutDashboard, CheckCheck, UploadCloud, MessageSquareShare
-} = Lucide as any;
-
-const Globe = (Lucide as any).Globe || (Lucide as any).Globe2 || (Lucide as any).Earth;
-const Zap = (Lucide as any).Zap || (Lucide as any).ZapIcon;
+import {
+    Code2, Phone, ExternalLink, Mail, MapPin,
+    Github, Linkedin, Facebook, Instagram,
+    LayoutDashboard, CheckCheck, UploadCloud,
+    MessageSquareShare, Zap, Globe
+} from "lucide-react";
 
 export const config = {
     meta: {
@@ -34,38 +31,35 @@ export const config = {
     },
 
     hero: {
-        typingStrings: [
-            "BUILDING_SCALABLE_WEB_SOLUTIONS",
-            "MOBILE_FIRST_ARCHITECTURE",
-            "SYSTEM_OPTIMIZATION"
-        ],
-        description: "Transforming ideas into production-ready applications using React, Next.js, and Modern Tech Stack.",
+        headline: "Digital Artisan",
+        subheadline: "Full-Stack Developer & IT Educator",
+        description: "I build pixel-perfect, engaging, and accessible digital experiences — minimalist by design, functional by code.",
         cta: {
-            primary: "EXECUTE_PROJECTS >",
-            secondary: "CONTACT_ME"
+            primary: "View My Work",
+            secondary: "Get in Touch"
         }
     },
 
     about: {
-        title: "USER_PROFILE",
+        title: "About Me",
         bio: [
             "I'm a Full-Stack Developer based in Mizoram, India, with expertise in building modern web and mobile applications. With a Master's in Computer Application and over 6 years of development experience, I specialize in React, Next.js, and Flutter.",
             "Currently serving as a Vocational IT Teacher with the Government of Mizoram while working with clients worldwide on freelance projects. I'm passionate about clean code, user experience, and delivering solutions that make a real impact.",
             "My approach combines technical expertise with a deep understanding of business needs. Whether it's a complex web application, a cross-platform mobile app, or a full-stack solution, I focus on creating scalable, maintainable code that solves real problems."
         ],
         stats: [
-            { label: "Coordinates", value: "Mizoram, India", icon: MapPin },
-            { label: "Experience_Level", value: "Level 6+ (Years)", icon: Code2 },
-            { label: "Language_Pack", value: "English, Mizo", icon: Globe }
+            { label: "Location", value: "Mizoram, India", icon: MapPin },
+            { label: "Experience", value: "6+ Years", icon: Code2 },
+            { label: "Languages", value: "English, Mizo", icon: Globe }
         ],
-        status: "ONLINE & READY"
+        status: "Available for Hire"
     },
 
     skills: {
-        title: "SYSTEM_CAPABILITIES",
+        title: "Technical Skills",
         categories: [
             {
-                name: "Frontend_Architecture",
+                name: "Frontend",
                 items: [
                     { name: "React / Next.js", level: 95 },
                     { name: "TypeScript", level: 90 },
@@ -74,7 +68,7 @@ export const config = {
                 ]
             },
             {
-                name: "Mobile_Development",
+                name: "Mobile",
                 items: [
                     { name: "Flutter / Dart", level: 92 },
                     { name: "React Native", level: 85 },
@@ -82,7 +76,7 @@ export const config = {
                 ]
             },
             {
-                name: "Backend_Protocol",
+                name: "Backend & Cloud",
                 items: [
                     { name: "Node.js", level: 88 },
                     { name: "PostgreSQL", level: 85 },
@@ -94,66 +88,69 @@ export const config = {
     },
 
     services: {
-        title: "AVAILABLE_PROTOCOLS",
+        title: "What I Do",
         items: [
             {
-                title: "Web_App_Development",
-                description: "Custom web applications built with React, Next.js, and modern frameworks. Optimized for high performance.",
-                features: ["React & Next.js", "Responsive_UI", "Performance_Ops"],
+                title: "Web Development",
+                description: "Custom web applications built with React, Next.js, and modern frameworks. Optimized for performance and accessibility.",
+                features: ["React & Next.js", "Responsive Design", "Performance Optimization"],
                 icon: Code2
             },
             {
-                title: "Mobile_Architecture",
+                title: "Mobile Apps",
                 description: "Cross-platform mobile applications using Flutter. Native performance with a single codebase.",
-                features: ["Flutter / Dart", "iOS & Android", "Native_Compilation"],
+                features: ["Flutter & Dart", "iOS & Android", "Native Compilation"],
                 icon: Phone
             },
             {
-                title: "Full-Stack_Systems",
+                title: "Full-Stack Solutions",
                 description: "End-to-end development from database design to deployment. API integration and cloud infrastructure.",
-                features: ["API_Endpoints", "Database_Schema", "Cloud_Deploy"],
+                features: ["REST APIs", "Database Design", "Cloud Deployment"],
                 icon: ExternalLink
             },
             {
-                title: "Technical_Consulting",
+                title: "Technical Consulting",
                 description: "Expert guidance on technology stack selection, code review, architecture planning, and optimization.",
-                features: ["Code_Audits", "System_Design", "Tech_Stack_Optimization"],
+                features: ["Code Audits", "System Architecture", "Stack Optimization"],
                 icon: Zap
             }
         ]
     },
 
     projects: {
-        title: "MISSION_LOGS",
+        title: "Selected Works",
         items: [
             {
-                title: "Liankhawpui_Directory",
+                title: "Liankhawpui Directory",
                 description: "News & Community Directory for Khawlian Village. Real-time updates, emergency contacts, and business listings.",
                 tags: ["Flutter", "Firebase", "Android"],
                 image: "https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                status: "DEPLOYED",
+                status: "Deployed",
+                year: "2024",
                 links: {
                     code: "#",
                     demo: "#"
                 }
             },
             {
-                title: "Govt_Higher_Sec_Saitual",
+                title: "GHSS Saitual Portal",
                 description: "Official academic portal for GHSS Saitual. Features student management, attendance tracking, and digital notice board.",
                 tags: ["React", "Node.js", "MongoDB"],
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                status: "ONLINE",
+                status: "Live",
+                year: "2023",
                 links: {
                     code: "#",
                     demo: "https://ghsssaitual.in/"
                 }
             },
             {
-                title: "Zokhawthar_Welfare",
+                title: "Zokhawthar Welfare",
                 description: "Community welfare management system handling member database, donations, and event scheduling.",
                 tags: ["Next.js", "TypeScript", "Supabase"],
                 image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                status: "ACTIVE",
+                status: "Active",
+                year: "2024",
                 links: {
                     code: "#",
                     demo: "#"
@@ -163,58 +160,58 @@ export const config = {
     },
 
     contact: {
-        title: "ESTABLISH_UPLINK",
+        title: "Get in Touch",
         email: "johnchangsan39@gmail.com",
         address: "Khawlian, Saitual Mizoram, 796261",
-        statusOptions: ["OPEN_TO_OPPORTUNITIES", "FREELANCE / FULL_TIME"]
+        statusOptions: ["Open to Opportunities", "Freelance & Full-Time"]
     },
 
     process: {
-        title: "SYSTEM_PROTOCOL",
-        description: "Executing precise algorithms to transform requirements into deployed solutions.",
+        title: "How I Work",
+        description: "A refined process to turn your ideas into polished, production-ready software.",
         steps: [
             {
                 title: "Discovery",
-                description: "System analysis and requirements gathering to establish core parameters.",
+                description: "Understanding your goals, target audience, and project scope through deep-dive consultations.",
                 icon: Globe
             },
             {
                 title: "Planning",
-                description: "Architectural design and technology stack selection for optimal performance.",
+                description: "Architectural blueprint, technology selection, and milestone-driven roadmap creation.",
                 icon: LayoutDashboard
             },
             {
                 title: "Development",
-                description: "Iterative coding sequences with continuous integration and real-time updates.",
+                description: "Iterative, test-driven coding with continuous integration and regular progress updates.",
                 icon: Code2
             },
             {
                 title: "Testing",
-                description: "Rigorous quality assurance protocols to ensure system integrity and security.",
+                description: "Rigorous quality assurance covering functionality, performance, security, and cross-device compatibility.",
                 icon: CheckCheck
             },
             {
                 title: "Deployment",
-                description: "Production environment configuration and seamless system launch.",
+                description: "Production environment setup, CI/CD pipeline configuration, and seamless launch coordination.",
                 icon: UploadCloud
             },
             {
                 title: "Support",
-                description: "Ongoing system maintenance, patch management, and technical assistance.",
+                description: "Ongoing maintenance, monitoring, feature iteration, and dedicated technical support.",
                 icon: MessageSquareShare
             }
         ]
     },
 
     testimonials: {
-        title: "USER_FEEDBACK",
-        description: "Authenticated logs from client interactions and successful deployments.",
+        title: "Client Feedback",
+        description: "What clients say about working with me.",
         items: [
             {
                 name: "Sarah Mitchell",
                 role: "Product Manager, TechStart Inc",
                 content: "Working with John was an excellent experience. The project was delivered on time with exceptional quality and attention to detail.",
-                image: "/profile.jpg" // Using placeholder
+                image: "/profile.jpg"
             },
             {
                 name: "David Chen",

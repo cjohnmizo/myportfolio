@@ -1,167 +1,161 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-import { Mail, ArrowDown } from "lucide-react";
-import { config } from "@/data/config";
-
-const Typewriter = ({ text, delay = 50, onComplete }: { text: string; delay?: number; onComplete?: () => void }) => {
-    const [currentText, setCurrentText] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        if (currentIndex < text.length) {
-            const timeout = setTimeout(() => {
-                setCurrentText(prevText => prevText + text[currentIndex]);
-                setCurrentIndex(prevIndex => prevIndex + 1);
-            }, delay);
-
-            return () => clearTimeout(timeout);
-        } else if (onComplete) {
-            onComplete();
-        }
-    }, [currentIndex, delay, text, onComplete]);
-    return <span>{currentText}</span>;
-};
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const Hero = () => {
-    const { profile, hero, about } = config;
-    const [showSub, setShowSub] = useState(false);
-    // ... zero logic changes ...
-
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-black">
-            {/* Grid Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+            {/* Background Elements */}
+            <div className="absolute inset-0">
+                {/* Gradient Mesh */}
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[var(--accent)] rounded-full blur-[180px] opacity-[0.07]" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--accent-secondary)] rounded-full blur-[160px] opacity-[0.05]" />
+                {/* Grid Pattern */}
+                <div
+                    className="absolute inset-0 opacity-[0.03]"
+                    style={{
+                        backgroundImage: `linear-gradient(var(--fg) 1px, transparent 1px), linear-gradient(90deg, var(--fg) 1px, transparent 1px)`,
+                        backgroundSize: "60px 60px",
+                    }}
+                />
+            </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start z-10 w-full">
-
-                {/* Profile / Terminal Header */}
-                <div className="w-full flex items-center gap-4 mb-8 border-b border-[var(--primary)]/30 pb-4">
-                    <div className="w-16 h-16 md:w-24 md:h-24 rounded-none border border-[var(--primary)] p-1 relative overflow-hidden bg-black/50">
-                        <img
-                            src="/profile.jpg"
-                            alt="Profile"
-                            className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
-                        />
-                        <div className="absolute inset-0 bg-[var(--primary)]/10 animate-scanline pointer-events-none" />
-                    </div>
-                    <div className="font-mono">
-                        <div className="text-[var(--primary)] text-xs md:text-sm tracking-widest mb-1">
-                            Identify: User.{profile.shortName}
-                        </div>
-                        <div className="text-white text-lg md:text-2xl font-bold uppercase tracking-wider">
-                            {profile.name}
-                        </div>
-                        <div className="text-[var(--secondary)] text-xs md:text-sm flex items-center gap-2 mt-1">
-                            <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse" />
-                            STATUS: {about.status}
-                        </div>
-                    </div>
+            {/* Floating 3D Decorative Shapes */}
+            <div className="absolute inset-0 pointer-events-none" style={{ perspective: "800px" }}>
+                {/* Cube-like shape */}
+                <div className="absolute top-[15%] left-[10%] float-3d" style={{ animationDelay: "0s" }}>
+                    <div className="w-16 h-16 rounded-2xl border border-[var(--accent)]/20 bg-[var(--accent)]/5 backdrop-blur-sm"
+                        style={{ transform: "rotateX(20deg) rotateY(20deg)" }} />
                 </div>
 
-                {/* Main Content Area */}
-                <div className="font-mono w-full max-w-4xl">
-                    <div className="text-[var(--primary)] mb-2 text-sm md:text-base opacity-70">
-                        &gt; INITIALIZING STARTUP SEQUENCE...
-                    </div>
+                {/* Ring shape */}
+                <div className="absolute top-[20%] right-[12%] float-slow" style={{ animationDelay: "1s" }}>
+                    <div className="w-20 h-20 rounded-full border-2 border-[var(--accent-secondary)]/15"
+                        style={{ transform: "rotateX(40deg)" }} />
+                </div>
 
-                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-                        <span className="text-[var(--primary)] mr-4">&gt;</span>
-                        <Typewriter text={hero.typingStrings[0]} delay={50} onComplete={() => setShowSub(true)} />
-                        <span className="animate-cursor ml-1">_</span>
+                {/* Small diamond */}
+                <div className="absolute bottom-[25%] left-[8%] float-reverse" style={{ animationDelay: "2s" }}>
+                    <div className="w-10 h-10 rounded-lg border border-[var(--fg-muted)]/10 bg-[var(--fg-muted)]/5"
+                        style={{ transform: "rotate(45deg) rotateX(20deg)" }} />
+                </div>
+
+                {/* Sphere-like gradient */}
+                <div className="absolute bottom-[30%] right-[8%] float-3d" style={{ animationDelay: "3s" }}>
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent)]/10 to-[var(--accent-secondary)]/10 border border-[var(--accent)]/10 shadow-lg shadow-[var(--accent)]/5" />
+                </div>
+
+                {/* Pill shape */}
+                <div className="absolute top-[55%] left-[18%] float-slow hidden md:block" style={{ animationDelay: "4s" }}>
+                    <div className="w-24 h-8 rounded-full border border-[var(--card-border)] bg-[var(--card-bg)]/30 backdrop-blur-sm"
+                        style={{ transform: "rotateX(25deg) rotateZ(-10deg)" }} />
+                </div>
+
+                {/* Dotted cross */}
+                <div className="absolute top-[40%] right-[18%] float-reverse hidden md:block" style={{ animationDelay: "1.5s" }}>
+                    <svg width="32" height="32" viewBox="0 0 32 32" className="text-[var(--accent)]/20">
+                        <line x1="16" y1="0" x2="16" y2="32" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
+                        <line x1="0" y1="16" x2="32" y2="16" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 4" />
+                    </svg>
+                </div>
+            </div>
+
+            <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    {/* Availability Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--card-border)] bg-[var(--card-bg)] text-xs font-semibold text-[var(--fg-secondary)] mb-10 gap-2 shadow-sm"
+                    >
+                        <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                        Available for new projects
+                    </motion.div>
+
+                    {/* Profile Picture — 3D elevated */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="mb-8 flex justify-center"
+                        style={{ perspective: "600px" }}
+                    >
+                        <div
+                            className="relative w-28 h-28 rounded-full overflow-hidden ring-4 ring-[var(--card-border)] ring-offset-4 ring-offset-[var(--bg)]"
+                            style={{
+                                boxShadow: "0 20px 60px -12px var(--shadow), 0 0 30px -8px rgba(99,102,241,0.15)",
+                                transform: "rotateX(5deg)",
+                            }}
+                        >
+                            <Image
+                                src="/profile.jpg"
+                                alt="C. John Remthang"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* Headline */}
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-[var(--fg)] mb-6 leading-[0.95]">
+                        DIGITAL{" "}
+                        <span className="text-accent-gradient">ARTISAN</span>
                     </h1>
 
-                    {showSub && (
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="text-lg md:text-xl text-gray-400 mb-10 pl-8 border-l-2 border-[var(--primary)] ml-2"
+                    {/* Description */}
+                    <p className="text-lg md:text-xl text-[var(--fg-secondary)] max-w-2xl mx-auto font-normal leading-relaxed mb-12">
+                        I build pixel-perfect, engaging, and accessible digital experiences.
+                        <span className="block mt-2 text-[var(--fg-muted)] text-base">
+                            Minimalist by design. Functional by code.
+                        </span>
+                    </p>
+
+                    {/* CTAs — 3D elevated buttons */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
+                        <ScrollLink
+                            to="projects"
+                            smooth={true}
+                            duration={500}
+                            className="btn-primary cursor-pointer"
+                            style={{ boxShadow: "0 10px 30px -6px rgba(99,102,241,0.4)" }}
                         >
-                            <p className="mb-2 text-[var(--secondary)]">// MISSION_OBJECTIVE:</p>
-                            <p>{hero.description}</p>
-                        </motion.div>
-                    )}
+                            View My Work
+                        </ScrollLink>
 
-                    {showSub && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
-                            className="flex flex-col sm:flex-row gap-6 ml-2"
+                        <ScrollLink
+                            to="contact"
+                            smooth={true}
+                            duration={500}
+                            className="btn-outline cursor-pointer group"
                         >
-                            <ScrollLink
-                                to="projects"
-                                smooth={true}
-                                duration={500}
-                                className="group relative px-8 py-3 bg-[var(--primary)]/10 border border-[var(--primary)] text-[var(--primary)] font-bold tracking-wider hover:bg-[var(--primary)] hover:text-black transition-all cursor-pointer flex items-center gap-2 overflow-hidden w-fit"
-                            >
-                                <span className="relative z-10 flex items-center gap-2">
-                                    EXECUTE_PROJECTS &gt;
-                                </span>
-                                <div className="absolute inset-0 bg-[var(--primary)] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
-                            </ScrollLink>
-
-                            <ScrollLink
-                                to="contact"
-                                smooth={true}
-                                duration={500}
-                                className="group relative px-8 py-3 bg-transparent border border-[var(--secondary)] text-[var(--secondary)] font-bold tracking-wider hover:bg-[var(--secondary)] hover:text-black transition-all cursor-pointer flex items-center gap-2 overflow-hidden w-fit"
-                            >
-                                <span className="relative z-10 flex items-center gap-2">
-                                    INITIATE_CONTACT <Mail className="w-4 h-4" />
-                                </span>
-                            </ScrollLink>
-                        </motion.div>
-                    )}
-                </div>
-
-                {/* Footer / Socials */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2, duration: 1 }}
-                    className="absolute bottom-10 right-10 flex flex-col gap-4 items-end"
-                >
-                    <div className="text-[var(--primary)] text-xs tracking-widest writing-vertical-rl mb-4 hidden md:block opacity-50">
-                        CONNECT_UPLINK
+                            Get in Touch
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </ScrollLink>
                     </div>
-                    {[
-                        ...config.profile.socials
-                    ].map(({ href, icon: Icon, name }, index) => (
-                        <a
-                            key={href}
-                            href={href}
-                            target={href.startsWith('http') ? "_blank" : undefined}
-                            rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
-                            className="text-gray-500 hover:text-[var(--primary)] transition-colors p-2 border border-transparent hover:border-[var(--primary)] hover:bg-[var(--primary)]/10 group relative"
-                            aria-label={name}
-                        >
-                            <Icon className="w-5 h-5" />
-                            <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 text-[var(--primary)] text-xs px-2 py-1 bg-black border border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                                {name.toUpperCase()}
-                            </span>
-                        </a>
-                    ))}
                 </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, y: [0, 10, 0] }}
-                    transition={{ delay: 2.5, duration: 2, repeat: Infinity }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[var(--primary)]"
-                >
-                    <ScrollLink to="services" smooth={true} duration={500} className="cursor-pointer flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
-                        <span className="text-[10px] tracking-widest">SCROLL_DOWN</span>
-                        <ArrowDown className="w-4 h-4" />
-                    </ScrollLink>
-                </motion.div>
-
             </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-[var(--fg-muted)] to-transparent opacity-30" />
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)]">Scroll</span>
+            </motion.div>
         </section>
     );
 };
 
 export default Hero;
-

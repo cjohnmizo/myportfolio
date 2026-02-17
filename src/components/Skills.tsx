@@ -1,95 +1,65 @@
 "use client";
 
-"use client";
-
 import { motion } from "framer-motion";
-
 import { config } from "@/data/config";
-
-const SkillBar = ({ name, level, delay }: { name: string, level: number, delay: number }) => {
-    return (
-        <div className="mb-4">
-            <div className="flex justify-between text-xs font-mono mb-1 text-[var(--primary)] opacity-80">
-                <span>&gt; {name}</span>
-                <span>{level}%</span>
-            </div>
-            <div className="h-2 w-full bg-slate-900 border border-slate-800 relative overflow-hidden">
-                <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${level}%` }}
-                    transition={{ duration: 1, delay: delay, ease: "circOut" }}
-                    viewport={{ once: true }}
-                    className="h-full bg-[var(--primary)] relative"
-                >
-                    <div className="absolute inset-0 bg-white/20 animate-pulse" />
-                </motion.div>
-                {/* Grid lines on bar */}
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_2px,#000_2px)] bg-[size:10px_100%] opacity-30" />
-            </div>
-        </div>
-    );
-};
-
-function SkillCard({ skillGroup, index }: { skillGroup: any, index: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group relative bg-black/80 border border-[var(--primary)]/30 p-6 hover:border-[var(--primary)] transition-all duration-300 overflow-hidden"
-        >
-            <div className="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
-                <div className="flex gap-1">
-                    <div className="w-1 h-1 bg-[var(--primary)]" />
-                    <div className="w-1 h-1 bg-[var(--primary)]" />
-                    <div className="w-1 h-1 bg-[var(--primary)]" />
-                </div>
-            </div>
-
-            <h3 className="text-lg font-bold font-mono text-white mb-6 border-b border-[var(--primary)]/30 pb-2 flex items-center gap-2">
-                <span className="text-[var(--secondary)]">./</span>
-                {skillGroup.category}
-            </h3>
-
-            <div className="space-y-4">
-                {skillGroup.items.map((item: any, i: number) => (
-                    <SkillBar key={item.name} name={item.name} level={item.level} delay={index * 0.1 + i * 0.1} />
-                ))}
-            </div>
-
-            {/* Corner Accents */}
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-t border-l border-[var(--primary)] bg-black rotate-180" />
-        </motion.div>
-    );
-}
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-24 bg-black relative overflow-hidden">
-            {/* Background Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,10,0,1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,10,0,1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20 pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section id="skills" className="py-24 md:py-32 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-start mb-16 border-l-4 border-[var(--primary)] pl-6"
+                    className="mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tighter">
-                        {config.skills.title.split('_')[0]}_<span className="text-[var(--primary)]">{config.skills.title.split('_')[1]}</span>
+                    <span className="section-subtitle mb-4 block">Expertise</span>
+                    <h2 className="section-heading">
+                        Technical <span className="accent">Skills</span>
                     </h2>
-                    <p className="text-gray-400 font-mono text-sm md:text-base max-w-2xl">
-                        // LOADING_DRIVER_MODULES...<br />
-                        // ANALYZING_TECHNICAL_PROFICIENCY...
-                    </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {config.skills.categories.map((skillGroup: any, index: number) => (
-                        <SkillCard key={skillGroup.name} skillGroup={{ ...skillGroup, category: skillGroup.name }} index={index} />
+                {/* Skill Categories */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    {config.skills.categories.map((category, catIndex) => (
+                        <motion.div
+                            key={category.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: catIndex * 0.15 }}
+                            viewport={{ once: true }}
+                        >
+                            <h3 className="text-sm font-bold text-[var(--accent)] mb-6 uppercase tracking-widest flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+                                {category.name}
+                            </h3>
+
+                            <div className="space-y-4">
+                                {category.items.map((skill) => (
+                                    <div key={skill.name} className="group">
+                                        <div className="flex justify-between text-sm mb-2">
+                                            <span className="text-[var(--fg)] font-medium group-hover:text-[var(--accent)] transition-colors">
+                                                {skill.name}
+                                            </span>
+                                            <span className="text-[var(--fg-muted)] text-xs font-mono">
+                                                {skill.level}%
+                                            </span>
+                                        </div>
+                                        <div className="h-1.5 w-full bg-[var(--card-border)] rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: `${skill.level}%` }}
+                                                transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                                                viewport={{ once: true }}
+                                                className="h-full rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)]"
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

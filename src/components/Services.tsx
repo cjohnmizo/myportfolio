@@ -1,94 +1,70 @@
 "use client";
 
-"use client";
-
 import { motion } from "framer-motion";
 import { config } from "@/data/config";
+import SpotlightCard from "./ui/SpotlightCard";
 
 const Services = () => {
     return (
-        <section id="services" className="py-24 md:py-32 bg-zinc-950 relative overflow-hidden font-mono">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section id="services" className="py-24 md:py-32 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="mb-16"
                 >
-                    <div className="text-[var(--primary)] text-sm tracking-widest mb-2 border-b border-[var(--primary)] inline-block pb-1">../../SYSTEM/SERVICES</div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        {config.services.title.split('_')[0]}_<span className="text-[var(--secondary)]">{config.services.title.split('_')[1]}</span>
+                    <span className="section-subtitle mb-4 block">Services</span>
+                    <h2 className="section-heading">
+                        What I <span className="accent">Do</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                        // DEPLOYING_HIGH_QUALITY_SOLUTIONS...<br />
-                        // OPTIMIZED_FOR_SCALABILITY
-                    </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                {/* Service Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {config.services.items.map((service, index) => (
-                        <motion.div
+                        <SpotlightCard
                             key={service.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            className="bg-black border border-white/10 p-6 md:p-8 hover:border-[var(--primary)] transition-all duration-300 group relative overflow-hidden"
+                            className="p-8 group"
                         >
-                            <div className="absolute inset-0 bg-[var(--primary)]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 pointer-events-none" />
-
-                            <div className="flex items-start gap-4 mb-4 relative z-10">
-                                <div className="p-3 bg-black border border-[var(--primary)]/30 text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-black transition-colors">
-                                    <service.icon className="w-6 h-6" />
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                {/* Icon */}
+                                <div className="w-12 h-12 rounded-xl bg-[var(--spotlight)] flex items-center justify-center mb-6 text-[var(--accent)] group-hover:scale-110 transition-transform duration-300">
+                                    <service.icon size={24} />
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--primary)] transition-colors tracking-tight">
-                                        {service.title}
-                                    </h3>
+
+                                {/* Title */}
+                                <h3 className="text-xl font-bold text-[var(--fg)] mb-3">
+                                    {service.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-[var(--fg-secondary)] mb-6 leading-relaxed text-sm">
+                                    {service.description}
+                                </p>
+
+                                {/* Features */}
+                                <div className="flex flex-wrap gap-2 pt-5 border-t border-[var(--divider)]">
+                                    {service.features.map((feature) => (
+                                        <span
+                                            key={feature}
+                                            className="px-3 py-1.5 rounded-lg bg-[var(--bg-secondary)] text-xs font-semibold text-[var(--fg-muted)] tracking-wide"
+                                        >
+                                            {feature}
+                                        </span>
+                                    ))}
                                 </div>
-                            </div>
-
-                            <p className="text-gray-400 mb-6 leading-relaxed text-sm relative z-10">
-                                {service.description}
-                            </p>
-
-                            <div className="flex flex-wrap gap-2 relative z-10">
-                                {service.features.map((feature) => (
-                                    <span
-                                        key={feature}
-                                        className="text-[10px] uppercase tracking-wider px-2 py-1 bg-white/5 text-gray-300 border border-white/10 group-hover:border-[var(--primary)]/30 group-hover:text-[var(--primary)] transition-colors"
-                                    >
-                                        &gt; {feature}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Corner Accents */}
-                            <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </motion.div>
+                            </motion.div>
+                        </SpotlightCard>
                     ))}
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className="mt-16 text-center"
-                >
-                    <p className="text-gray-500 mb-6 font-mono text-sm">
-                        &lt;!-- READY_TO_INITIATE_PROJECT --&gt;
-                    </p>
-                    <a
-                        href="#contact"
-                        className="inline-flex items-center px-8 py-3 border border-[var(--secondary)] text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-black font-bold tracking-widest uppercase transition-all duration-300 relative overflow-hidden group"
-                    >
-                        <span className="relative z-10">EXECUTE_STARTUP</span>
-                        <div className="absolute inset-0 bg-[var(--secondary)]/20 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                    </a>
-                </motion.div>
             </div>
         </section>
     );

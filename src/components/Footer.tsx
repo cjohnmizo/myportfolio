@@ -1,33 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import { config } from "@/data/config";
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer = () => {
+    const footerLinks = [
+        { name: "Services", to: "services" },
+        { name: "Projects", to: "projects" },
+        { name: "About", to: "about" },
+        { name: "Contact", to: "contact" },
+    ];
+
     return (
-        <footer className="py-8 glass border-t border-white/10">
+        <footer className="py-10 bg-[var(--bg)] border-t border-[var(--divider)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold font-mono gradient-text tracking-tight">{config.profile.shortName}</span>
-                        <span className="text-gray-500 text-sm font-mono">© {new Date().getFullYear()}</span>
+                    {/* Brand */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center text-white font-bold text-sm">
+                            C
+                        </div>
+                        <span className="font-bold text-[var(--fg)] tracking-tight">
+                            {config.profile.shortName}
+                        </span>
                     </div>
 
+                    {/* Nav Links */}
                     <div className="flex items-center gap-6">
-                        {config.profile.socials.map(({ href, icon: Icon }) => (
-                            <motion.a
-                                key={href}
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{ scale: 1.2, y: -3 }}
-                                className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                        {footerLinks.map((link) => (
+                            <ScrollLink
+                                key={link.name}
+                                to={link.to}
+                                smooth={true}
+                                duration={500}
+                                className="text-sm text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors cursor-pointer"
                             >
-                                <Icon className="w-5 h-5" />
-                            </motion.a>
+                                {link.name}
+                            </ScrollLink>
                         ))}
                     </div>
+
+                    {/* Socials */}
+                    <div className="flex items-center gap-2">
+                        {config.profile.socials.map((social) => (
+                            <a
+                                key={social.name}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-lg flex items-center justify-center text-[var(--fg-muted)] hover:text-[var(--accent)] hover:bg-[var(--spotlight)] transition-all"
+                                aria-label={social.name}
+                            >
+                                <social.icon size={16} />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Copyright */}
+                <div className="mt-8 pt-6 border-t border-[var(--divider)] text-center">
+                    <p className="text-[var(--fg-muted)] text-xs tracking-wide">
+                        © {new Date().getFullYear()} {config.profile.name}. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>
