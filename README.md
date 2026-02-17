@@ -83,26 +83,26 @@ status: Open to Opportunities | Freelance & Full-Time
 </td>
 <td width="50%">
 
-### 🎓 GHSS Saitual Portal
-**Academic portal** for GHSS Saitual
-- Student management & attendance tracking
-- Digital notice board system
-- Built with **React** + **Node.js**
+### 🛡️ [Smart Modern Admin Dashboard](https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard)
+**Premium admin dashboard** with SaaS-grade UI
+- Glassmorphism design, dark theme, animations
+- User management, analytics, news system
+- Built with **Next.js** + **MongoDB**
 
-`React` `Node.js` `MongoDB`
+`Next.js` `TypeScript` `MongoDB` · [Live Demo](https://smad-cjohnmizo.vercel.app/)
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 🤝 Zokhawthar Welfare
-**Community welfare** management system
-- Member database & donation tracking
-- Event scheduling & reporting
-- Built with **Next.js** + **Supabase**
+### 🌐 Personal Portfolio
+**Premium developer portfolio** with 3D effects
+- Parallax scroll, microanimations, spotlight cards
+- Light/dark mode, SEO optimized, responsive
+- Built with **Next.js** + **Framer Motion**
 
-`Next.js` `TypeScript` `Supabase`
+`Next.js` `Tailwind` `Framer Motion` · [Live](https://cjohnmizo.vercel.app)
 
 </td>
 <td width="50%">

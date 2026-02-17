@@ -133,27 +133,27 @@ export const config = {
                 }
             },
             {
-                title: "GHSS Saitual Portal",
-                description: "Official academic portal for GHSS Saitual. Features student management, attendance tracking, and digital notice board.",
-                tags: ["React", "Node.js", "MongoDB"],
+                title: "Smart Modern Admin Dashboard",
+                description: "Premium SaaS-grade admin dashboard with glassmorphism UI, dark theme, user management, analytics, and news system.",
+                tags: ["Next.js", "TypeScript", "MongoDB"],
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 status: "Live",
-                year: "2023",
+                year: "2024",
                 links: {
-                    code: "#",
-                    demo: "https://ghsssaitual.in/"
+                    code: "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard",
+                    demo: "https://smad-cjohnmizo.vercel.app/"
                 }
             },
             {
-                title: "Zokhawthar Welfare",
-                description: "Community welfare management system handling member database, donations, and event scheduling.",
-                tags: ["Next.js", "TypeScript", "Supabase"],
+                title: "Personal Portfolio",
+                description: "Premium developer portfolio with 3D effects, parallax scroll, spotlight cards, glassmorphism, and light/dark mode.",
+                tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
                 image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                status: "Active",
-                year: "2024",
+                status: "Live",
+                year: "2025",
                 links: {
-                    code: "#",
-                    demo: "#"
+                    code: "https://github.com/cjohnmizo/cjohnmizo",
+                    demo: "https://cjohnmizo.vercel.app"
                 }
             }
         ]
