@@ -13,6 +13,7 @@ const Contact = () => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState("");
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,11 +24,36 @@ const Contact = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setIsSubmitted(false), 4000);
+        setError("");
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    from_name: "Portfolio Contact Form",
+                    subject: `New message from ${formData.name}`,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setIsSubmitted(true);
+                setFormData({ name: "", email: "", message: "" });
+                setTimeout(() => setIsSubmitted(false), 5000);
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
+        } catch {
+            setError("Failed to send. Please email me directly.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -190,6 +216,12 @@ const Contact = () => {
                                             </>
                                         )}
                                     </button>
+
+                                    {error && (
+                                        <p className="text-sm text-red-500 text-center mt-3">
+                                            {error}
+                                        </p>
+                                    )}
                                 </form>
                             )}
                         </div>
