@@ -82,6 +82,21 @@ const About = () => {
                         </div>
                     </motion.div>
                 </div>
+
+                {config.about.githubStats && (
+                    <div className="mt-16 sm:mt-20 flex flex-col md:flex-row gap-6 justify-center items-center">
+                        <img
+                            src={config.about.githubStats.statsUrl}
+                            alt="GitHub Stats"
+                            className="w-full max-w-lg h-auto object-contain hover:scale-105 transition-transform duration-300"
+                        />
+                        <img
+                            src={config.about.githubStats.topLangsUrl}
+                            alt="Top Languages"
+                            className="w-full max-w-sm h-auto object-contain hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                )}
             </div>
         </section>
     );

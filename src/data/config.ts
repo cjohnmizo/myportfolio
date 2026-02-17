@@ -52,7 +52,11 @@ export const config = {
             { label: "Experience", value: "6+ Years", icon: Code2 },
             { label: "Languages", value: "English, Mizo", icon: Globe }
         ],
-        status: "Available for Hire"
+        status: "Available for Hire",
+        githubStats: {
+            statsUrl: "https://github-readme-stats.vercel.app/api?username=cjohnmizo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&icon_color=818cf8&text_color=c9d1d9&ring_color=818cf8&disable_animations=true&cache_seconds=1800",
+            topLangsUrl: "https://github-readme-stats.vercel.app/api/top-langs/?username=cjohnmizo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&text_color=c9d1d9&langs_count=8&disable_animations=true&cache_seconds=1800"
+        }
     },
 
     skills: {
