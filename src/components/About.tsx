@@ -66,7 +66,7 @@ const About = () => {
                             <span className="accent">digital perfection.</span>
                         </h2>
 
-                        <div className="space-y-5 text-[var(--fg-secondary)] leading-relaxed">
+                        <div className="space-y-5 text-[var(--fg-secondary)] leading-relaxed text-justify">
                             {config.about.bio.map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
                             ))}
