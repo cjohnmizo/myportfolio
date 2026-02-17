@@ -33,7 +33,7 @@ const Process = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="glass-card p-7 group"
+                            className="glass-card p-5 sm:p-7 group"
                         >
                             {/* Step Number */}
                             <div className="flex items-center gap-4 mb-5">

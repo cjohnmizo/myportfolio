@@ -27,7 +27,7 @@ const Services = () => {
                     {config.services.items.map((service, index) => (
                         <SpotlightCard
                             key={service.title}
-                            className="p-8 group"
+                            className="p-5 sm:p-8 group"
                         >
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}

@@ -50,7 +50,7 @@ const Projects = () => {
                                 </div>
 
                                 {/* Content */}
-                                <div className="relative z-10 h-full flex flex-col justify-end p-7">
+                                <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-7">
                                     <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                                         {/* Badges */}
                                         <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
@@ -66,7 +66,7 @@ const Projects = () => {
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-2xl font-bold text-[var(--fg)] mb-2">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-[var(--fg)] mb-2">
                                             {project.title}
                                         </h3>
 

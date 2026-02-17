@@ -108,7 +108,7 @@ const Contact = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <div className="glass-card p-8 md:p-10">
+                        <div className="glass-card p-5 sm:p-8 md:p-10">
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}

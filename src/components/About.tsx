@@ -18,7 +18,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="glass-card p-6 md:p-8"
+                                className="glass-card p-4 sm:p-6 md:p-8"
                             >
                                 <div className="w-10 h-10 rounded-xl bg-[var(--spotlight)] flex items-center justify-center text-[var(--accent)] mb-4">
                                     <stat.icon size={20} />
@@ -38,7 +38,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
                             viewport={{ once: true }}
-                            className="glass-card p-6 md:p-8 col-span-2"
+                            className="glass-card p-4 sm:p-6 md:p-8 col-span-2"
                         >
                             <div className="flex items-center gap-3">
                                 <span className="flex h-3 w-3 rounded-full bg-emerald-500 animate-pulse" />
