@@ -8,7 +8,7 @@ import SpotlightCard from "./ui/SpotlightCard";
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-24 md:py-32 relative bg-[var(--bg-secondary)]">
+        <section id="projects" className="py-16 sm:py-24 md:py-32 relative bg-[var(--bg-secondary)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
@@ -25,11 +25,11 @@ const Projects = () => {
                 </motion.div>
 
                 {/* Project Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[380px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:auto-rows-[380px]">
                     {config.projects.items.map((project, index) => (
                         <SpotlightCard
                             key={project.title}
-                            className={`group ${index === 0 ? "md:col-span-2" : ""}`}
+                            className={`group min-h-[280px] md:min-h-0 ${index === 0 ? "md:col-span-2" : ""}`}
                         >
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -58,8 +58,8 @@ const Projects = () => {
                                                 {project.year}
                                             </span>
                                             <span className={`px-3 py-1 text-xs font-bold rounded-lg backdrop-blur-md border border-[var(--card-border)] ${project.status === "Live"
-                                                    ? "bg-emerald-500/10 text-emerald-500"
-                                                    : "bg-[var(--bg-secondary)]/80 text-[var(--fg-secondary)]"
+                                                ? "bg-emerald-500/10 text-emerald-500"
+                                                : "bg-[var(--bg-secondary)]/80 text-[var(--fg-secondary)]"
                                                 }`}>
                                                 {project.status}
                                             </span>

@@ -34,30 +34,31 @@ const Navbar = () => {
             className="fixed w-full z-50 transition-all duration-300"
             style={{ paddingTop: scrolled ? "0.5rem" : "1.5rem" }}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
                 <div
                     className={`
-                        mx-auto px-6 h-16 rounded-2xl flex items-center justify-between transition-all duration-500
+                        mx-auto px-3 sm:px-6 h-14 sm:h-16 rounded-2xl flex items-center justify-between transition-all duration-500
                         ${scrolled ? "glass-panel shadow-lg" : "bg-transparent"}
                     `}
                 >
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center shadow-lg shadow-[var(--accent)]/20 group-hover:shadow-[var(--accent)]/40 transition-shadow">
-                            <div className="absolute inset-[2px] rounded-full bg-[var(--bg)] flex items-center justify-center">
-                                <span
-                                    className="text-lg font-bold italic text-accent-gradient"
-                                    style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
-                                >
-                                    C
-                                </span>
-                            </div>
+                    <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center shadow-lg shadow-[var(--accent)]/20 group-hover:shadow-[var(--accent)]/40 transition-shadow flex-shrink-0">
+                            <span
+                                className="text-white text-xs sm:text-sm font-bold"
+                                style={{ fontFamily: "var(--font-fira-code), 'Fira Code', monospace" }}
+                            >
+                                &lt;/&gt;
+                            </span>
                         </div>
                         <span
-                            className="text-xl tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors font-semibold italic"
-                            style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                            className="text-sm sm:text-lg tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors font-medium truncate"
+                            style={{ fontFamily: "var(--font-fira-code), 'Fira Code', monospace" }}
                         >
-                            {config.profile.shortName}
+                            <span className="text-[var(--accent)] hidden sm:inline">{'{'}</span>
+                            <span className="sm:ml-1">{config.profile.shortName}</span>
+                            <span className="text-[var(--accent)] animate-pulse hidden sm:inline">_</span>
+                            <span className="text-[var(--accent)] hidden sm:inline sm:ml-1">{'}'}</span>
                         </span>
                     </Link>
 
@@ -87,13 +88,13 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Controls */}
-                    <div className="md:hidden flex items-center gap-2">
+                    <div className="md:hidden flex items-center gap-1">
                         <ThemeToggle />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="p-2 text-[var(--fg)] hover:bg-[var(--spotlight)] rounded-xl transition-all"
                         >
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                         </button>
                     </div>
                 </div>

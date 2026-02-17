@@ -5,7 +5,7 @@ import { config } from "@/data/config";
 
 const Process = () => {
     return (
-        <section id="process" className="py-24 md:py-32 relative bg-[var(--bg-secondary)]">
+        <section id="process" className="py-16 sm:py-24 md:py-32 relative bg-[var(--bg-secondary)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div

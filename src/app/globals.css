@@ -88,9 +88,9 @@
 :root {
   --bg: #f5f5f4;
   --bg-secondary: #eceae8;
-  --fg: #1c1917;
-  --fg-secondary: #57534e;
-  --fg-muted: #a8a29e;
+  --fg: #171412;
+  --fg-secondary: #44403c;
+  --fg-muted: #78716c;
   --accent: #6366f1;
   --accent-secondary: #8b5cf6;
   --card-bg: #fafaf9;
@@ -100,7 +100,7 @@
   --input-bg: #fafaf9;
   --input-border: #c7c4c0;
   --spotlight: rgba(99, 102, 241, 0.06);
-  --shadow: rgba(28, 25, 23, 0.06);
+  --shadow: rgba(28, 25, 23, 0.12);
 }
 
 /* ==============================================
@@ -112,8 +112,8 @@
   --bg: #030712;
   --bg-secondary: #0f172a;
   --fg: #f8fafc;
-  --fg-secondary: #94a3b8;
-  --fg-muted: #475569;
+  --fg-secondary: #cbd5e1;
+  --fg-muted: #64748b;
   --accent: #818cf8;
   --accent-secondary: #a78bfa;
   --card-bg: #0f172a;
@@ -123,7 +123,7 @@
   --input-bg: #1e293b;
   --input-border: #334155;
   --spotlight: rgba(129, 140, 248, 0.06);
-  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow: rgba(0, 0, 0, 0.5);
 }
 
 /* ==============================================
@@ -149,8 +149,11 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 

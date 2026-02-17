@@ -31,9 +31,9 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 md:py-32 relative bg-[var(--bg-secondary)]">
+        <section id="contact" className="py-16 sm:py-24 md:py-32 relative bg-[var(--bg-secondary)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
                     {/* Info Side */}
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}

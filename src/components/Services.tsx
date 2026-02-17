@@ -6,7 +6,7 @@ import SpotlightCard from "./ui/SpotlightCard";
 
 const Services = () => {
     return (
-        <section id="services" className="py-24 md:py-32 relative">
+        <section id="services" className="py-16 sm:py-24 md:py-32 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div

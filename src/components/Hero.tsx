@@ -67,15 +67,15 @@ const Hero = () => {
                     </motion.div>
 
                     {/* Headline */}
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-[var(--fg)] mb-6 leading-[0.95]">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter text-[var(--fg)] mb-4 sm:mb-6 leading-[0.95]">
                         DIGITAL{" "}
                         <span className="text-accent-gradient">ARTISAN</span>
                     </h1>
 
                     {/* Description */}
-                    <p className="text-lg md:text-xl text-[var(--fg-secondary)] max-w-2xl mx-auto font-normal leading-relaxed mb-12">
+                    <p className="text-base sm:text-lg md:text-xl text-[var(--fg-secondary)] max-w-2xl mx-auto font-normal leading-relaxed mb-8 sm:mb-12 px-2">
                         I build pixel-perfect, engaging, and accessible digital experiences.
-                        <span className="block mt-2 text-[var(--fg-muted)] text-base">
+                        <span className="block mt-2 text-[var(--fg-muted)] text-sm sm:text-base">
                             Minimalist by design. Functional by code.
                         </span>
                     </p>

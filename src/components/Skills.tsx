@@ -5,7 +5,7 @@ import { config } from "@/data/config";
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-24 md:py-32 relative">
+        <section id="skills" className="py-16 sm:py-24 md:py-32 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
