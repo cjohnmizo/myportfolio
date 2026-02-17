@@ -6,7 +6,9 @@ import { config } from "@/data/config";
 
 const Testimonials = () => {
     return (
-        <section id="testimonials" className="py-16 sm:py-24 md:py-32 relative">
+        <section id="testimonials" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+            {/* Ambient orbs */}
+            <div className="absolute top-0 left-1/4 w-[350px] h-[350px] bg-[var(--accent)] rounded-full blur-[160px] opacity-[0.03]" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div

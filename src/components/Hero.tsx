@@ -22,10 +22,8 @@ const Hero = () => {
                 />
             </div>
 
-            {/* 3D Illustrations — mouse reactive (hidden on mobile to prevent overflow) */}
-            <div className="hidden md:block">
-                <Hero3DElements />
-            </div>
+            {/* 3D Illustrations — mouse reactive */}
+            <Hero3DElements />
 
             <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <motion.div
