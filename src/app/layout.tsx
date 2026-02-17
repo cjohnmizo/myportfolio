@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Fira_Code } from "next/font/google";
+import { Outfit, Fira_Code, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
@@ -15,6 +15,14 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -91,7 +99,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} ${firaCode.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${outfit.variable} ${firaCode.variable} ${playfair.variable} antialiased min-h-screen relative overflow-x-hidden`}
       >
         <div className="noise-bg" />
         {children}

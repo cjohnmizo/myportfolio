@@ -224,6 +224,16 @@ body {
   animation: float-reverse 7s ease-in-out infinite;
 }
 
+@keyframes orbit {
+  from {
+    transform: rotateX(70deg) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateX(70deg) rotateZ(360deg);
+  }
+}
+
 /* ==============================================
    GLASS UTILITIES
    ============================================== */

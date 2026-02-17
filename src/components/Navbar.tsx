@@ -43,10 +43,20 @@ const Navbar = () => {
                 >
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center text-white font-bold text-base shadow-md group-hover:shadow-lg transition-shadow">
-                            C
+                        <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center shadow-lg shadow-[var(--accent)]/20 group-hover:shadow-[var(--accent)]/40 transition-shadow">
+                            <div className="absolute inset-[2px] rounded-full bg-[var(--bg)] flex items-center justify-center">
+                                <span
+                                    className="text-lg font-bold italic text-accent-gradient"
+                                    style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                                >
+                                    C
+                                </span>
+                            </div>
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
+                        <span
+                            className="text-xl tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors font-semibold italic"
+                            style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                        >
                             {config.profile.shortName}
                         </span>
                     </Link>

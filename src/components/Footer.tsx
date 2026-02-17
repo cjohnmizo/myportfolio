@@ -17,10 +17,20 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     {/* Brand */}
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center text-white font-bold text-sm">
-                            C
+                        <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center shadow-md">
+                            <div className="absolute inset-[2px] rounded-full bg-[var(--bg)] flex items-center justify-center">
+                                <span
+                                    className="text-base font-bold italic text-accent-gradient"
+                                    style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                                >
+                                    C
+                                </span>
+                            </div>
                         </div>
-                        <span className="font-bold text-[var(--fg)] tracking-tight">
+                        <span
+                            className="text-lg tracking-tight text-[var(--fg)] font-semibold italic"
+                            style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}
+                        >
                             {config.profile.shortName}
                         </span>
                     </div>
