@@ -49,7 +49,7 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
         : "rgba(99, 102, 241, 0.06)";
 
     return (
-        <div style={{ perspective: "1000px" }}>
+        <div className="w-full h-full" style={{ perspective: "1000px" }}>
             <motion.div
                 ref={divRef}
                 onMouseMove={handleMouseMove}
@@ -60,7 +60,7 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
                     rotateY: rotation.y,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`card-3d glass-card relative overflow-hidden ${className}`}
+                className={`card-3d glass-card relative overflow-hidden h-full ${className}`}
                 style={{ transformStyle: "preserve-3d" }}
             >
                 {/* Spotlight glow */}
