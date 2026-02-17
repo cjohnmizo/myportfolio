@@ -72,7 +72,7 @@ export const config = {
                 name: "Mobile",
                 items: [
                     { name: "Flutter / Dart", level: 92 },
-                    { name: "React Native", level: 85 },
+                    { name: "Android Studio", level: 90 },
                     { name: "iOS / Android", level: 88 }
                 ]
             },
