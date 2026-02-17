@@ -7,7 +7,8 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=24&duration=3000&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=60&lines=Building+pixel-perfect+digital+experiences;Minimalist+by+design.+Functional+by+code.)](https://git.io/typing-svg)
 
 <br />
-
+<br />
+<br />
 <!-- Quick Links -->
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-cjohnmizo.vercel.app-6366f1?style=for-the-badge&labelColor=1e1b4b)](https://cjohnmizo.vercel.app)
 [![Email](https://img.shields.io/badge/📧_Email-johnchangsan39-ef4444?style=for-the-badge&labelColor=450a0a)](mailto:johnchangsan39@gmail.com)
