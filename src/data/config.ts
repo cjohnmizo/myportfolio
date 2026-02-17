@@ -64,6 +64,7 @@ export const config = {
                     { name: "React / Next.js", level: 95 },
                     { name: "TypeScript", level: 90 },
                     { name: "Tailwind CSS", level: 95 },
+                    { name: "Bootstrap", level: 90 },
                     { name: "Framer Motion", level: 85 }
                 ]
             },
@@ -79,6 +80,7 @@ export const config = {
                 name: "Backend & Cloud",
                 items: [
                     { name: "Node.js", level: 88 },
+                    { name: "Laravel", level: 85 },
                     { name: "PostgreSQL", level: 85 },
                     { name: "Firebase", level: 90 },
                     { name: "Supabase", level: 85 }
