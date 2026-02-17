@@ -128,8 +128,8 @@ status: Open to Opportunities | Freelance & Full-Time
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=cjohnmizo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&icon_color=818cf8&text_color=c9d1d9&ring_color=818cf8" height="170" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=cjohnmizo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&text_color=c9d1d9&langs_count=8" height="170" />
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=cjohnmizo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&icon_color=818cf8&text_color=c9d1d9&ring_color=818cf8&disable_animations=true&cache_seconds=1800)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cjohnmizo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&text_color=c9d1d9&langs_count=8&disable_animations=true&cache_seconds=1800)
 
 </div>
 
