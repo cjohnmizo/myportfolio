@@ -4,11 +4,10 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=6366f1&height=200&section=header&text=C.%20John%20Remthang&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Full-Stack%20Developer%20%7C%20IT%20Educator%20%7C%20Digital%20Artisan&descSize=16&descAlignY=55&descColor=e0e7ff" width="100%" />
 
 <!-- Typing Animation -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=24&duration=3000&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=60&lines=Building+pixel-perfect+digital+experiences;Minimalist+by+design.+Functional+by+code.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=24&duration=3000&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=80&lines=Building+pixel-perfect+digital+experiences;Minimalist+by+design.+Functional+by+code.)](https://git.io/typing-svg)
 
 <br />
-<br />
-<br />
+
 <!-- Quick Links -->
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-cjohnmizo.vercel.app-6366f1?style=for-the-badge&labelColor=1e1b4b)](https://cjohnmizo.vercel.app)
 [![Email](https://img.shields.io/badge/📧_Email-johnchangsan39-ef4444?style=for-the-badge&labelColor=450a0a)](mailto:johnchangsan39@gmail.com)
