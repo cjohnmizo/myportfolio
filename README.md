@@ -129,7 +129,7 @@ status: Open to Opportunities | Freelance & Full-Time
 <div align="center">
 
 <img src="https://github-readme-stats.vercel.app/api?username=cjohnmizo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&icon_color=818cf8&text_color=c9d1d9&ring_color=818cf8" height="170" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=cjohnmizo&theme=tokyonight&hide_border=true&background=0d1117&ring=818cf8&fire=ef4444&currStreakLabel=818cf8&sideLabels=818cf8" height="170" />
+<img src="https://github-readme-streak-stats.demolab.com/?user=cjohnmizo&theme=tokyonight&hide_border=true&background=0d1117&ring=818cf8&fire=ef4444&currStreakLabel=818cf8&sideLabels=818cf8" height="170" />
 
 <br />
 
