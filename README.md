@@ -151,29 +151,35 @@ npm start
 
 ---
 
-## ⚙️ Customization
+## 🛠️ How to Update Content
 
-Most content can be edited directly in `src/data/config.ts`.
+The entire portfolio is data-driven. You can update **90% of the content** without touching any React code.
 
-```typescript
-// Example: src/data/config.ts
-export const config = {
-  profile: {
-    name: "Your Name",
-    role: "Full Stack Developer",
-    // ...
-  },
-  socials: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
-  },
-  // ...
-};
+### 1. Edit Content (`src/data/config.ts`)
+Open `src/data/config.ts` to change:
+- **Profile:** Name, role, email, social links.
+- **Hero:** Headline, description.
+- **About:** Bio text, stats.
+- **Skills:** Add/remove skills and change proficiency levels.
+- **Projects:** Add new projects (title, description, tags, links).
+- **Contact:** Address, availability status.
+
+### 2. Update Images
+- Place new images in the `public/` folder.
+- Reference them in `config.ts` (e.g., `image: "/new-project.jpg"`).
+
+### 3. Change Colors (Theme)
+Edit `src/app/globals.css`:
+- **Dark Mode:** Edit variables under `.dark`.
+- **Light Mode:** Edit variables under `:root`.
+
+### 4. Deploy Updates
+Simply push your changes to GitHub, and Vercel will automatically redeploy:
+```bash
+git add .
+git commit -m "Update portfolio content"
+git push
 ```
-
-### Changing Colors
-
-To modify the theme colors, edit `src/app/globals.css`. Look for the `:root` and `.dark` blocks to adjust CSS variables like `--bg`, `--accent`, etc.
 
 ---
 

@@ -28,7 +28,7 @@ export default function NotFound() {
                 <div className="pt-4">
                     <Link
                         href="/"
-                        className="btn-primary inline-flex"
+                        className="clay-btn inline-flex"
                     >
                         ← Back to Home
                     </Link>

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Nunito, Fredoka } from "next/font/google"; // Playful, rounded fonts
+import { JetBrains_Mono, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
+const firaCode = Fira_Code({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
@@ -91,7 +91,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${nunito.variable} ${fredoka.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${jetbrainsMono.variable} ${firaCode.variable} antialiased min-h-screen relative overflow-x-hidden`}
       >
         <div className="noise-bg" />
         {children}

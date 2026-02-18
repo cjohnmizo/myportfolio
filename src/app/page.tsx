@@ -8,14 +8,12 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import FloatingAccents from "@/components/ui/FloatingAccents";
 import SectionDivider from "@/components/ui/SectionDivider";
 
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
-      {/* Scroll-parallax ambient background */}
-      <FloatingAccents />
+      {/* Scroll-parallax ambient background - removed for cleaner Tokyo Night theme */}
 
       <Navbar />
       <Hero />
@@ -45,4 +43,3 @@ export default function Home() {
     </main>
   );
 }
-

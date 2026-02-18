@@ -91,26 +91,7 @@ const About = () => {
                     </motion.div>
                 </div>
 
-                {config.about.githubStats && (
-                    <div className="mt-20 sm:mt-28 flex flex-col items-center gap-8">
-                        <div className="relative group">
-                            <div className="absolute -inset-4 bg-[var(--accent)]/20 rounded-[2rem] blur-xl group-hover:bg-[var(--accent)]/30 transition-all duration-500 opacity-0 group-hover:opacity-100" />
-                            <img
-                                src={config.about.githubStats.statsUrl}
-                                alt="GitHub Stats"
-                                className="relative rounded-[1.5rem] shadow-xl border-4 border-white/50 w-full max-w-2xl h-auto"
-                            />
-                        </div>
-                        <div className="relative group">
-                            <div className="absolute -inset-4 bg-[var(--accent-secondary)]/20 rounded-[2rem] blur-xl group-hover:bg-[var(--accent-secondary)]/30 transition-all duration-500 opacity-0 group-hover:opacity-100" />
-                            <img
-                                src={config.about.githubStats.topLangsUrl}
-                                alt="Top Languages"
-                                className="relative rounded-[1.5rem] shadow-xl border-4 border-white/50 w-full max-w-lg h-auto"
-                            />
-                        </div>
-                    </div>
-                )}
+
             </div>
         </section>
     );

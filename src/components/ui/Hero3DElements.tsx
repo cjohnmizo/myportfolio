@@ -50,7 +50,6 @@ const ClaySymbol = ({ symbol, size = 60, color = "var(--accent)", className = ""
             fontSize: size * 0.5,
             fontFamily: "var(--font-heading)",
             boxShadow: "inset 6px 6px 12px rgba(255,255,255,0.4), inset -6px -6px 12px rgba(0,0,0,0.1), 10px 10px 20px rgba(0,0,0,0.15)",
-            transform: `rotate(${rotate}deg)`
         }}
         initial={{ rotate: rotate }}
         animate={{
@@ -100,7 +99,7 @@ const Hero3DElements = () => {
                 className="absolute bottom-[20%] left-[8%] hidden lg:block"
                 animate={{ x: mouse.x * 0.4, y: mouse.y * 0.6 }}
             >
-                <ClaySymbol symbol="#" size={70} color="#FCD34D" rotate={-5} delay={0.5} />
+                <ClaySymbol symbol="#" size={70} color="var(--accent-secondary)" rotate={-5} delay={0.5} />
             </motion.div>
 
             {/* Bottom Right: Terminal Prompt */}
@@ -108,21 +107,24 @@ const Hero3DElements = () => {
                 className="absolute bottom-[18%] right-[15%] hidden md:block"
                 animate={{ x: mouse.x * -0.6, y: mouse.y * -0.4 }}
             >
-                <ClaySymbol symbol=">_" size={85} color="#4FD1C5" rotate={10} delay={1.5} />
+                <ClaySymbol symbol=">_" size={85} color="var(--accent)" rotate={10} delay={1.5} />
             </motion.div>
 
             {/* Scattered micro particles (now syntax chars) */}
             {[
-                { top: "30%", left: "25%", char: ";", color: "#FF6B6B" },
-                { top: "60%", right: "30%", char: "&&", color: "#FCD34D" },
-                { top: "40%", right: "20%", char: "||", color: "#4FD1C5" },
-                { bottom: "35%", left: "35%", char: "()", color: "#FF6B6B" },
+                { top: "30%", left: "25%", char: ";", color: "var(--fg-secondary)" },
+                { top: "60%", right: "30%", char: "&&", color: "var(--accent)" },
+                { top: "40%", right: "20%", char: "||", color: "var(--accent-secondary)" },
+                { bottom: "35%", left: "35%", char: "()", color: "var(--fg-muted)" },
             ].map((item, i) => (
                 <motion.div
                     key={i}
                     className="absolute font-bold opacity-60"
                     style={{
-                        ...item,
+                        top: item.top,
+                        left: item.left,
+                        right: item.right,
+                        bottom: item.bottom,
                         color: item.color,
                         fontSize: "24px",
                         fontFamily: "monospace",
