@@ -1,39 +1,6 @@
-<div align="center">
+# My Portfolio
 
-# ⚡ Tokyo Night Portfolio
-
-### A Modern, Developer-Centric Portfolio Template
-*Built with Next.js 14, Framer Motion & Tailwind CSS*
-
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-cjohnmizo.vercel.app-7aa2f7?style=for-the-badge&labelColor=1a1b26)](https://cjohnmizo.vercel.app)
-[![License](https://img.shields.io/badge/License-MIT-bb9af7?style=for-the-badge&labelColor=1a1b26)](LICENSE)
-[![Build Status](https://img.shields.io/badge/Build-Passing-238636?style=for-the-badge&labelColor=1a1b26)](https://github.com/cjohnmizo/myportfolio/actions)
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=7aa2f7&height=200&section=header&text=C.%20John%20Remthang&fontSize=42&fontColor=1a1b26&animation=fadeIn&fontAlignY=35&desc=Full-Stack%20Architect%20%7C%20Code%20Artisan&descSize=16&descAlignY=55&descColor=1a1b26" width="100%" />
-
-</div>
-
----
-
-## 📖 Introduction
-
-This is a premium, high-performance portfolio template designed for software engineers who value aesthetics as much as code quality. 
-
-It features a custom **"Tokyo Night" UI Theme**—a deep midnight blue palette with neon accents—paired with a unique **"Command Bar"** navigation system that mimics a terminal interface. The design is fully responsive, SEO-optimized, and built for speed.
-
-### ✨ Key Features
-
-- **🎨 "Tokyo Night" Aesthetic**: Deep Storm backgrounds (`#1a1b26`) with Neon Blue/Purple accents.
-- **⌨️ Command Bar Navigation**: Terminal-style sticky navbar (`./Home`, `>_ Contact`).
-- **🌑 Dark/Light Mode**: Seamless theme switching with "Glass" effect adaptation.
-- **⚡ High Performance**: Powered by Next.js 14 App Router & Server Components.
-- **📱 Mobile Terminal**: A fully responsive mobile menu that feels like a CLI.
-- **🎭 Micro-Animations**: Smooth, professional motion using Framer Motion.
-- **🔍 SEO Ready**: Meta tags, Open Graph, and semantic HTML structure.
-
----
-
-## 🛠️ Tech Stack
+## ️ Tech Stack
 
 This project is built on a modern, strictly typed stack:
 
@@ -198,11 +165,3 @@ Contributions are welcome! If you'd like to improve this template:
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-<div align="center">
-
-*Designed & Developed by [C. John Remthang](https://github.com/cjohnmizo)*
-
-</div>
