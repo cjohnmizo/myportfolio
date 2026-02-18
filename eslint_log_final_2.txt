@@ -1,0 +1,6 @@
+﻿
+C:\Users\johnc\OneDrive\Desktop\Project\myportfolio\src\components\ui\SpotlightCard.tsx
+  3:40  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 1 problem (0 errors, 1 warning)
+

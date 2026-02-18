@@ -1,5 +1,5 @@
 import {
-    Code2, Smartphone, ExternalLink, Mail, MapPin,
+    Code2, Smartphone, ExternalLink, MapPin,
     Github, Linkedin, Facebook, Instagram,
     LayoutDashboard, CheckCheck, UploadCloud,
     Headphones, Terminal, Search, Globe

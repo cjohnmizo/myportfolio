@@ -13,16 +13,8 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
-    const [opacity, setOpacity] = useState(0);
-    const [isDark, setIsDark] = useState(false);
 
-    useEffect(() => {
-        const check = () => setIsDark(document.documentElement.classList.contains("dark"));
-        check();
-        const observer = new MutationObserver(check);
-        observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-        return () => observer.disconnect();
-    }, []);
+
 
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         if (!divRef.current) return;
@@ -40,20 +32,16 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
     };
 
     const handleMouseLeave = () => {
-        setOpacity(0);
         setRotation({ x: 0, y: 0 });
     };
 
-    const spotlightColor = isDark
-        ? "rgba(129, 140, 248, 0.08)"
-        : "rgba(99, 102, 241, 0.06)";
+
 
     return (
         <div className="w-full h-full" style={{ perspective: "1000px" }}>
             <motion.div
                 ref={divRef}
                 onMouseMove={handleMouseMove}
-                onMouseEnter={() => setOpacity(1)}
                 onMouseLeave={handleMouseLeave}
                 animate={{
                     rotateX: rotation.x,

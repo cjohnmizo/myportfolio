@@ -1,0 +1,7 @@
+﻿
+C:\Users\johnc\OneDrive\Desktop\Project\myportfolio\src\components\ui\SpotlightCard.tsx
+  17:12  warning  'isDark' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  53:17  error    No duplicate props allowed                   react/jsx-no-duplicate-props
+
+Ô£û 2 problems (1 error, 1 warning)
+
