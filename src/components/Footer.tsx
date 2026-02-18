@@ -68,9 +68,6 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="mt-10 pt-8 border-t border-[var(--divider)] text-center">
-                    <p className="text-[var(--fg-muted)] text-sm font-medium opacity-80 mb-2">
-                        Designed & Built with <span className="text-[var(--accent)]">Next.js</span> and <span className="text-[var(--accent-secondary)]">Tokyo Night</span>
-                    </p>
                     <p className="text-[var(--fg-muted)] text-xs opacity-60">
                         © {new Date().getFullYear()} {config.profile.name}. All Rights Reserved. · <a href="https://github.com/cjohnmizo/myportfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted">Source Code</a>
                     </p>
