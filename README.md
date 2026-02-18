@@ -1,163 +1,202 @@
 <div align="center">
 
-<!-- Header Banner -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=6366f1&height=200&section=header&text=C.%20John%20Remthang&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Full-Stack%20Developer%20%7C%20IT%20Educator%20%7C%20Digital%20Artisan&descSize=16&descAlignY=55&descColor=e0e7ff" width="100%" />
+# ⚡ Tokyo Night Portfolio
 
-<!-- Typing Animation -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Outfit&weight=600&size=24&duration=3000&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=600&height=80&lines=Building+pixel-perfect+digital+experiences;Minimalist+by+design.+Functional+by+code.)](https://git.io/typing-svg)
+### A Modern, Developer-Centric Portfolio Template
+*Built with Next.js 14, Framer Motion & Tailwind CSS*
 
-<br />
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-cjohnmizo.vercel.app-7aa2f7?style=for-the-badge&labelColor=1a1b26)](https://cjohnmizo.vercel.app)
+[![License](https://img.shields.io/badge/License-MIT-bb9af7?style=for-the-badge&labelColor=1a1b26)](LICENSE)
+[![Build Status](https://img.shields.io/badge/Build-Passing-238636?style=for-the-badge&labelColor=1a1b26)](https://github.com/cjohnmizo/myportfolio/actions)
 
-<!-- Quick Links -->
-[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-cjohnmizo.vercel.app-6366f1?style=for-the-badge&labelColor=1e1b4b)](https://cjohnmizo.vercel.app)
-[![Email](https://img.shields.io/badge/📧_Email-johnchangsan39-ef4444?style=for-the-badge&labelColor=450a0a)](mailto:johnchangsan39@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=003d73)](https://www.linkedin.com/in/c-john-remthang/)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=7aa2f7&height=200&section=header&text=C.%20John%20Remthang&fontSize=42&fontColor=1a1b26&animation=fadeIn&fontAlignY=35&desc=Full-Stack%20Architect%20%7C%20Code%20Artisan&descSize=16&descAlignY=55&descColor=1a1b26" width="100%" />
 
 </div>
 
 ---
 
-## 🧑‍💻 About Me
+## 📖 Introduction
 
-```yaml
-name: C. John Remthang
-location: Mizoram, India
-role: Full-Stack Developer & IT Educator
-experience: 6+ years
-education: Master of Computer Application (MCA)
-currently: Vocational IT Teacher, Govt. of Mizoram
-status: Open to Opportunities | Freelance & Full-Time
+This is a premium, high-performance portfolio template designed for software engineers who value aesthetics as much as code quality. 
+
+It features a custom **"Tokyo Night" UI Theme**—a deep midnight blue palette with neon accents—paired with a unique **"Command Bar"** navigation system that mimics a terminal interface. The design is fully responsive, SEO-optimized, and built for speed.
+
+### ✨ Key Features
+
+- **🎨 "Tokyo Night" Aesthetic**: Deep Storm backgrounds (`#1a1b26`) with Neon Blue/Purple accents.
+- **⌨️ Command Bar Navigation**: Terminal-style sticky navbar (`./Home`, `>_ Contact`).
+- **🌑 Dark/Light Mode**: Seamless theme switching with "Glass" effect adaptation.
+- **⚡ High Performance**: Powered by Next.js 14 App Router & Server Components.
+- **📱 Mobile Terminal**: A fully responsive mobile menu that feels like a CLI.
+- **🎭 Micro-Animations**: Smooth, professional motion using Framer Motion.
+- **🔍 SEO Ready**: Meta tags, Open Graph, and semantic HTML structure.
+
+---
+
+## 🛠️ Tech Stack
+
+This project is built on a modern, strictly typed stack:
+
+| Category | Technology | Description |
+|----------|------------|-------------|
+| **Core** | ![Next.js](https://img.shields.io/badge/-Next.js_14-000000?logo=next.js) | React Framework for Production |
+| **Language** | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) | Static Typing & Type Safety |
+| **Styling** | ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) | Utility-First CSS Framework |
+| **Animation** | ![Framer Motion](https://img.shields.io/badge/-Framer_Motion-0055FF?logo=framer&logoColor=white) | Production-Ready Animation Library |
+| **Hosting** | ![Vercel](https://img.shields.io/badge/-Vercel-000000?logo=vercel&logoColor=white) | Edge Network Deployment |
+
+---
+
+## 🗺️ Project Architecture (Mindmap)
+
+A visual overview of the project's structure and feature set.
+
+```mermaid
+mindmap
+  root((Full Stack Portfolio))
+    Frontend Layer
+      Next.js 14 App Router
+      React Server Components
+      Framer Motion (Animations)
+      Tailwind CSS (Styling)
+    Design System
+      Theme: Tokyo Night
+      Typography: JetBrains Mono / Fira Code
+      Effects: Glassmorphism / Glow
+    Core Features
+      Hero Section (3D/Typing Effect)
+      Projects Showcase (Grid Layout)
+      Skills Section (Categorized)
+      Command Bar Navigation
+    Optimization
+      SEO (Metadata API)
+      Performance (Image Optimization)
+      Accessibility (ARIA)
+    Deployment
+      Vercel Edge Network
+      CI/CD Pipeline
 ```
 
-> *I craft scalable, high-performance web and mobile applications with clean architecture and obsessive attention to detail. Whether it's a complex dashboard, a cross-platform mobile app, or a complete SaaS product — I focus on delivering solutions that truly matter.*
+---
+
+## 🚀 Installation & Setup
+
+Follow these steps to run the portfolio locally.
+
+### Prerequisites
+
+- **Node.js** (v18.17.0 or higher)
+- **npm** / **yarn** / **pnpm**
+- **Git**
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/cjohnmizo/myportfolio.git
+cd myportfolio
+```
+
+### 2. Install Dependencies
+
+Using npm:
+
+```bash
+npm install
+```
+
+### 3. Configure Environment
+
+Create a `.env.local` file in the root directory if you need specific environment variables (though none are strictly required for the base template).
+
+### 4. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 5. Production Build
+
+To test the production build locally:
+
+```bash
+npm run build
+npm start
+```
 
 ---
 
-## ⚡ Tech Stack
+## 📂 Project Structure
+
+```bash
+.
+├── public/                 # Static assets (images, fonts, favicon)
+├── src/
+│   ├── app/                # Next.js App Router (Pages & Layouts)
+│   │   ├── globals.css     # Global Styles (Theme Variables)
+│   │   ├── layout.tsx      # Root Layout
+│   │   └── page.tsx        # Homepage
+│   ├── components/         # Reusable React Components
+│   │   ├── Navbar.tsx      # Command Bar Navigation
+│   │   ├── Footer.tsx      # Site Footer
+│   │   └── ui/             # Atomic UI Elements (Buttons, Cards)
+│   ├── data/               # Configuration & Static Data
+│   │   └── config.ts       # Site content (Edit this!)
+│   └── lib/                # Utility functions & helpers
+├── next.config.mjs         # Next.js Configuration
+├── tailwind.config.ts      # Tailwind CSS Theme Extension
+└── tsconfig.json           # TypeScript Configuration
+```
+
+---
+
+## ⚙️ Customization
+
+Most content can be edited directly in `src/data/config.ts`.
+
+```typescript
+// Example: src/data/config.ts
+export const config = {
+  profile: {
+    name: "Your Name",
+    role: "Full Stack Developer",
+    // ...
+  },
+  socials: {
+    github: "https://github.com/yourusername",
+    linkedin: "https://linkedin.com/in/yourusername",
+  },
+  // ...
+};
+```
+
+### Changing Colors
+
+To modify the theme colors, edit `src/app/globals.css`. Look for the `:root` and `.dark` blocks to adjust CSS variables like `--bg`, `--accent`, etc.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve this template:
+
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
 
 <div align="center">
 
-### 🎨 Frontend
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
-
-### 📱 Mobile
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
-
-
-### 🔧 Backend & Cloud
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-
-### 🛠 Tools
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
-![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat-square&logo=android-studio&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-
-</div>
-
----
-
-## 🏗️ Featured Projects
-
-<table>
-<tr>
-<td width="50%">
-
-### 📋 Liankhawpui Directory
-**News & Community Directory** for Khawlian Village
-- Real-time updates & notifications
-- Emergency contacts & business listings
-- Built with **Flutter** + **Firebase**
-
-`Flutter` `Firebase` `Android`
-
-</td>
-<td width="50%">
-
-### 🛡️ [Smart Modern Admin Dashboard](https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard)
-**Premium admin dashboard** with SaaS-grade UI
-- Glassmorphism design, dark theme, animations
-- User management, analytics, news system
-- Built with **Next.js** + **MongoDB**
-
-`Next.js` `TypeScript` `MongoDB` · [Live Demo](https://smad-cjohnmizo.vercel.app/)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 🌐 Personal Portfolio
-**Modern Coder Portfolio** with Tokyo Night Theme
-- IDE-inspired interface, Command Bar navigation
-- Light/dark mode, SEO optimized, responsive
-- Built with **Next.js** + **Framer Motion**
-
-`Next.js` `Tailwind` `Framer Motion` · [Live](https://cjohnmizo.vercel.app)
-
-</td>
-<td width="50%">
-
-<!-- Placeholder for future project -->
-
-</td>
-</tr>
-</table>
-
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=cjohnmizo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&icon_color=818cf8&text_color=c9d1d9&ring_color=818cf8&disable_animations=true&cache_seconds=1800)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cjohnmizo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=818cf8&text_color=c9d1d9&langs_count=8&disable_animations=true&cache_seconds=1800)
-
-</div>
-
----
-
-## 💼 What I Offer
-
-| Service | Description |
-|---------|-------------|
-| 🖥️ **Web Development** | Custom web apps with React, Next.js — optimized for performance |
-| 📱 **Mobile Apps** | Cross-platform apps with Flutter — native performance, single codebase |
-| 🔌 **Full-Stack Solutions** | End-to-end development, API design, cloud deployment |
-| 💡 **Technical Consulting** | Code audits, architecture planning, stack optimization |
-
----
-
-<div align="center">
-
-### 🤝 Let's Build Something Amazing
-
-<br />
-
-[![Portfolio](https://img.shields.io/badge/Visit_My_Portfolio-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://cjohnmizo.vercel.app)
-[![Email Me](https://img.shields.io/badge/Email_Me-ef4444?style=for-the-badge&logo=gmail&logoColor=white)](mailto:johnchangsan39@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/c-john-remthang/)
-[![GitHub](https://img.shields.io/badge/Follow_on_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/cjohnmizo)
-
-<br />
-
-*"Code is poetry, and I write in every language."*
-
-<br />
-
-<!-- Footer -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=6366f1&height=100&section=footer" width="100%" />
+*Designed & Developed by [C. John Remthang](https://github.com/cjohnmizo)*
 
 </div>
