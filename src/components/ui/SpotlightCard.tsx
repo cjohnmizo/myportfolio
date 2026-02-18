@@ -60,25 +60,14 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
                     rotateY: rotation.y,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`card-3d glass-card relative overflow-hidden h-full ${className}`}
+                className={`card-3d clay-card relative overflow-hidden h-full ${className}`}
                 style={{ transformStyle: "preserve-3d" }}
             >
-                {/* Spotlight glow */}
+                {/* Soft Highlight */}
                 <div
-                    className="pointer-events-none absolute -inset-px transition duration-300"
+                    className="pointer-events-none absolute -inset-px transition duration-300 opacity-0 group-hover:opacity-100"
                     style={{
-                        opacity,
-                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
-                    }}
-                />
-
-                {/* Shine reflection */}
-                <div
-                    className="pointer-events-none absolute -inset-px transition-opacity duration-500"
-                    style={{
-                        opacity: opacity * 0.3,
-                        background: `linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 55%, transparent 60%)`,
-                        transform: `translateX(${(position.x / (divRef.current?.offsetWidth || 1)) * 100 - 50}%)`,
+                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.2), transparent 40%)`,
                     }}
                 />
 

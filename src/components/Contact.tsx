@@ -57,8 +57,13 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-16 sm:py-24 md:py-32 relative bg-[var(--bg-secondary)]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="py-16 sm:py-24 md:py-32 relative">
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[var(--accent)] rounded-full blur-[180px] opacity-[0.05]" />
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--accent-secondary)] rounded-full blur-[150px] opacity-[0.06]" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
                     {/* Info Side */}
                     <motion.div
@@ -72,38 +77,38 @@ const Contact = () => {
                             Let&apos;s <span className="accent">Talk</span>
                         </h2>
 
-                        <p className="text-[var(--fg-secondary)] mb-10 max-w-lg leading-relaxed">
-                            Have a project in mind? I&apos;d love to hear about it. Let&apos;s discuss how we can bring your ideas to life.
+                        <p className="text-[var(--fg-secondary)] mb-10 max-w-lg leading-relaxed text-lg font-medium">
+                            Have a project in mind, or just want to say hi? I&apos;d love to hear about it. Let&apos;s build something amazing together!
                         </p>
 
                         {/* Contact Info */}
                         <div className="space-y-6">
                             <a
                                 href={`mailto:${config.contact.email}`}
-                                className="flex items-center gap-4 group"
+                                className="clay-card p-4 flex items-center gap-5 group hover:scale-[1.02] transition-transform"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] flex items-center justify-center text-[var(--fg-muted)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-all">
-                                    <Mail size={20} />
+                                <div className="w-14 h-14 rounded-full bg-[var(--bg)] shadow-inner flex items-center justify-center text-[var(--accent)]">
+                                    <Mail size={24} />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-semibold text-[var(--fg-muted)] uppercase tracking-widest mb-0.5">
+                                    <div className="text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-1">
                                         Email
                                     </div>
-                                    <div className="text-[var(--fg)] font-medium">
+                                    <div className="text-[var(--fg)] font-bold text-lg">
                                         {config.contact.email}
                                     </div>
                                 </div>
                             </a>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] flex items-center justify-center text-[var(--fg-muted)]">
-                                    <MapPin size={20} />
+                            <div className="clay-card p-4 flex items-center gap-5">
+                                <div className="w-14 h-14 rounded-full bg-[var(--bg)] shadow-inner flex items-center justify-center text-[var(--accent)]">
+                                    <MapPin size={24} />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-semibold text-[var(--fg-muted)] uppercase tracking-widest mb-0.5">
+                                    <div className="text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-1">
                                         Location
                                     </div>
-                                    <div className="text-[var(--fg)] font-medium">
+                                    <div className="text-[var(--fg)] font-bold text-lg">
                                         {config.contact.address}
                                     </div>
                                 </div>
@@ -111,17 +116,17 @@ const Contact = () => {
                         </div>
 
                         {/* Socials */}
-                        <div className="mt-12 pt-6 border-t border-[var(--divider)] flex gap-3">
+                        <div className="mt-12 pt-8 border-t border-[var(--divider)] flex gap-4">
                             {config.profile.socials.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-11 h-11 rounded-xl bg-[var(--card-bg)] border border-[var(--card-border)] flex items-center justify-center text-[var(--fg-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
+                                    className="w-14 h-14 rounded-full bg-[var(--card-bg)] shadow-[5px_5px_10px_var(--shadow),-5px_-5px_10px_var(--inner-highlight)] flex items-center justify-center text-[var(--fg-secondary)] hover:text-white hover:bg-[var(--accent)] hover:scale-110 transition-all border border-white/20 active:scale-95"
                                     aria-label={social.name}
                                 >
-                                    <social.icon size={18} />
+                                    <social.icon size={22} />
                                 </a>
                             ))}
                         </div>
@@ -134,25 +139,25 @@ const Contact = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <div className="glass-card p-5 sm:p-8 md:p-10">
+                        <div className="clay-card p-6 sm:p-10">
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     className="text-center py-16"
                                 >
-                                    <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 mx-auto mb-4">
-                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 mx-auto mb-6 shadow-inner">
+                                        <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-bold text-[var(--fg)] mb-2">Message Sent!</h3>
-                                    <p className="text-[var(--fg-secondary)]">I&apos;ll get back to you soon.</p>
+                                    <h3 className="text-2xl font-black text-[var(--fg)] mb-2">Message Sent!</h3>
+                                    <p className="text-[var(--fg-secondary)] font-medium">I&apos;ll get back to you soon.</p>
                                 </motion.div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-2">
+                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
                                             Name
                                         </label>
                                         <input
@@ -167,7 +172,7 @@ const Contact = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-2">
+                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
                                             Email
                                         </label>
                                         <input
@@ -182,7 +187,7 @@ const Contact = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-2">
+                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
                                             Message
                                         </label>
                                         <textarea
@@ -199,11 +204,11 @@ const Contact = () => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="btn-primary w-full justify-center mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                        className="clay-btn w-full justify-center mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                                     >
                                         {isSubmitting ? (
                                             <span className="flex items-center gap-2">
-                                                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                                                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                                                 </svg>
@@ -212,13 +217,13 @@ const Contact = () => {
                                         ) : (
                                             <>
                                                 Send Message
-                                                <ArrowRight size={16} />
+                                                <ArrowRight size={20} />
                                             </>
                                         )}
                                     </button>
 
                                     {error && (
-                                        <p className="text-sm text-red-500 text-center mt-3">
+                                        <p className="text-sm text-red-500 text-center mt-3 font-bold bg-red-100 p-2 rounded-lg">
                                             {error}
                                         </p>
                                     )}

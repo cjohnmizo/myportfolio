@@ -30,32 +30,32 @@ const Services = () => {
                             className="p-5 sm:p-8 group"
                         >
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
                             >
                                 {/* Icon */}
-                                <div className="w-12 h-12 rounded-xl bg-[var(--spotlight)] flex items-center justify-center mb-6 text-[var(--accent)] group-hover:scale-110 transition-transform duration-300">
-                                    <service.icon size={24} />
+                                <div className="w-16 h-16 rounded-full bg-[var(--bg)] shadow-inner flex items-center justify-center mb-6 text-[var(--accent)] group-hover:scale-110 transition-transform duration-300">
+                                    <service.icon size={28} />
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-xl font-bold text-[var(--fg)] mb-3">
+                                <h3 className="text-xl font-black text-[var(--fg)] mb-3 tracking-tight">
                                     {service.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-[var(--fg-secondary)] mb-6 leading-relaxed text-sm">
+                                <p className="text-[var(--fg-secondary)] mb-6 leading-relaxed text-sm font-medium">
                                     {service.description}
                                 </p>
 
                                 {/* Features */}
-                                <div className="flex flex-wrap gap-2 pt-5 border-t border-[var(--divider)]">
+                                <div className="flex flex-wrap gap-2 pt-6 border-t border-[var(--divider)]">
                                     {service.features.map((feature) => (
                                         <span
                                             key={feature}
-                                            className="px-3 py-1.5 rounded-lg bg-[var(--bg-secondary)] text-xs font-semibold text-[var(--fg-muted)] tracking-wide"
+                                            className="px-3 py-1.5 rounded-full bg-white shadow-sm text-xs font-bold text-[var(--fg-muted)] tracking-wide border border-[var(--card-border)]"
                                         >
                                             {feature}
                                         </span>

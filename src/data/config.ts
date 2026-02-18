@@ -1,8 +1,8 @@
 import {
-    Code2, Phone, ExternalLink, Mail, MapPin,
+    Code2, Smartphone, ExternalLink, Mail, MapPin,
     Github, Linkedin, Facebook, Instagram,
     LayoutDashboard, CheckCheck, UploadCloud,
-    MessageSquareShare, Zap, Globe
+    Headphones, Terminal, Search, Globe
 } from "lucide-react";
 
 export const config = {
@@ -106,7 +106,7 @@ export const config = {
                 title: "Mobile Apps",
                 description: "Cross-platform mobile applications using Flutter. Native performance with a single codebase.",
                 features: ["Flutter & Dart", "iOS & Android", "Native Compilation"],
-                icon: Phone
+                icon: Smartphone
             },
             {
                 title: "Full-Stack Solutions",
@@ -118,7 +118,7 @@ export const config = {
                 title: "Technical Consulting",
                 description: "Expert guidance on technology stack selection, code review, architecture planning, and optimization.",
                 features: ["Code Audits", "System Architecture", "Stack Optimization"],
-                icon: Zap
+                icon: Terminal
             }
         ]
     },
@@ -179,7 +179,7 @@ export const config = {
             {
                 title: "Discovery",
                 description: "Understanding your goals, target audience, and project scope through deep-dive consultations.",
-                icon: Globe
+                icon: Search
             },
             {
                 title: "Planning",
@@ -204,7 +204,7 @@ export const config = {
             {
                 title: "Support",
                 description: "Ongoing maintenance, monitoring, feature iteration, and dedicated technical support.",
-                icon: MessageSquareShare
+                icon: Headphones
             }
         ]
     },

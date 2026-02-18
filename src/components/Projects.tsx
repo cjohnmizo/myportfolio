@@ -53,34 +53,34 @@ const Projects = () => {
                                 <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-7">
                                     <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                                         {/* Badges */}
-                                        <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                                            <span className="px-3 py-1 text-xs font-bold rounded-lg bg-[var(--bg-secondary)]/80 backdrop-blur-md text-[var(--fg-secondary)] border border-[var(--card-border)]">
+                                        <div className="flex items-center gap-2 mb-3 opacity-100 transition-opacity duration-500">
+                                            <span className="px-3 py-1 text-xs font-black rounded-full bg-white text-[var(--fg-secondary)] shadow-sm">
                                                 {project.year}
                                             </span>
-                                            <span className={`px-3 py-1 text-xs font-bold rounded-lg backdrop-blur-md border border-[var(--card-border)] ${project.status === "Live"
-                                                ? "bg-emerald-500/10 text-emerald-500"
-                                                : "bg-[var(--bg-secondary)]/80 text-[var(--fg-secondary)]"
+                                            <span className={`px-3 py-1 text-xs font-black rounded-full shadow-sm ${project.status === "Live"
+                                                ? "bg-emerald-400 text-white"
+                                                : "bg-[var(--bg-secondary)] text-[var(--fg-secondary)]"
                                                 }`}>
                                                 {project.status}
                                             </span>
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl sm:text-2xl font-bold text-[var(--fg)] mb-2">
+                                        <h3 className="text-xl sm:text-2xl font-black text-[var(--fg)] mb-2 tracking-tight group-hover:text-[var(--accent)] transition-colors">
                                             {project.title}
                                         </h3>
 
                                         {/* Description */}
-                                        <p className="text-[var(--fg-secondary)] mb-5 line-clamp-2 max-w-md text-sm">
+                                        <p className="text-[var(--fg-secondary)] mb-5 line-clamp-2 max-w-md text-sm font-medium">
                                             {project.description}
                                         </p>
 
                                         {/* Tags & Links */}
-                                        <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                                            <div className="flex gap-2">
+                                        <div className="flex items-center gap-4">
+                                            <div className="flex gap-1 flex-wrap">
                                                 {project.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="text-xs text-[var(--fg-muted)] font-mono">
-                                                        #{tag}
+                                                    <span key={tag} className="px-2 py-1 text-[10px] font-bold uppercase rounded-md bg-[var(--bg)] text-[var(--fg-muted)] border border-[var(--card-border)]">
+                                                        {tag}
                                                     </span>
                                                 ))}
                                             </div>
@@ -90,17 +90,17 @@ const Projects = () => {
                                                     href={project.links.code}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--fg-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
+                                                    className="p-2 rounded-full bg-[var(--bg)] text-[var(--fg)] hover:text-white hover:bg-[var(--accent)] transition-all shadow-sm hover:scale-110 active:scale-95"
                                                 >
-                                                    <Github size={16} />
+                                                    <Github size={18} />
                                                 </a>
                                                 <a
                                                     href={project.links.demo}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--fg-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
+                                                    className="p-2 rounded-full bg-[var(--bg)] text-[var(--fg)] hover:text-white hover:bg-[var(--accent)] transition-all shadow-sm hover:scale-110 active:scale-95"
                                                 >
-                                                    <ArrowUpRight size={16} />
+                                                    <ArrowUpRight size={18} />
                                                 </a>
                                             </div>
                                         </div>

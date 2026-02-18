@@ -100,8 +100,8 @@ status: Open to Opportunities | Freelance & Full-Time
 <td width="50%">
 
 ### 🌐 Personal Portfolio
-**Premium developer portfolio** with 3D effects
-- Parallax scroll, microanimations, spotlight cards
+**Modern Coder Portfolio** with Tokyo Night Theme
+- IDE-inspired interface, Command Bar navigation
 - Light/dark mode, SEO optimized, responsive
 - Built with **Next.js** + **Framer Motion**
 
@@ -110,13 +110,7 @@ status: Open to Opportunities | Freelance & Full-Time
 </td>
 <td width="50%">
 
-### 🌐 Personal Portfolio
-**Premium developer portfolio** with 3D effects
-- Glassmorphism, parallax, and microanimations
-- Light/dark mode, SEO optimized
-- Built with **Next.js** + **Framer Motion**
-
-`Next.js` `Tailwind` `Framer Motion`
+<!-- Placeholder for future project -->
 
 </td>
 </tr>

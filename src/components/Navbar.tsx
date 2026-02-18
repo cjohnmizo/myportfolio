@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { Menu, X } from "lucide-react";
+import { Menu, X, UploadCloud } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { config } from "@/data/config";
 import Link from "next/link";
@@ -30,104 +30,95 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-            className="fixed w-full z-50 transition-all duration-300"
-            style={{ paddingTop: scrolled ? "0.5rem" : "1.5rem" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${scrolled
+                ? "bg-[var(--bg)]/80 backdrop-blur-md border-[var(--divider)] h-16"
+                : "bg-transparent border-transparent h-20"
+                }`}
         >
-            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-                <div
-                    className={`
-                        mx-auto px-3 sm:px-6 h-14 sm:h-16 rounded-2xl flex items-center justify-between transition-all duration-500
-                        ${scrolled ? "glass-panel shadow-lg" : "bg-transparent"}
-                    `}
-                >
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center shadow-lg shadow-[var(--accent)]/20 group-hover:shadow-[var(--accent)]/40 transition-shadow flex-shrink-0">
-                            <span
-                                className="text-white text-xs sm:text-sm font-bold"
-                                style={{ fontFamily: "var(--font-fira-code), 'Fira Code', monospace" }}
-                            >
-                                &lt;/&gt;
-                            </span>
-                        </div>
-                        <span
-                            className="text-sm sm:text-lg tracking-tight text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors font-medium truncate"
-                            style={{ fontFamily: "var(--font-fira-code), 'Fira Code', monospace" }}
-                        >
-                            <span className="text-[var(--accent)] hidden sm:inline">{'{'}</span>
-                            <span className="sm:ml-1">{config.profile.shortName}</span>
-                            <span className="text-[var(--accent)] animate-pulse hidden sm:inline">_</span>
-                            <span className="text-[var(--accent)] hidden sm:inline sm:ml-1">{'}'}</span>
+            <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+                {/* Logo (Terminal Style) */}
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="w-10 h-10 rounded bg-[var(--card-bg)] border border-[var(--card-border)] flex items-center justify-center group-hover:border-[var(--accent)] transition-colors">
+                        <span className="text-[var(--accent)] text-lg font-bold font-mono">
+                            &gt;_
                         </span>
-                    </Link>
-
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-2">
-                        <div className="flex items-center gap-1 mr-2">
-                            {navLinks.map((link) => (
-                                <ScrollLink
-                                    key={link.name}
-                                    to={link.to}
-                                    smooth={true}
-                                    duration={500}
-                                    className="cursor-pointer px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg-secondary)] hover:text-[var(--fg)] hover:bg-[var(--spotlight)] transition-all duration-200"
-                                >
-                                    {link.name}
-                                </ScrollLink>
-                            ))}
-                        </div>
-
-                        <div className="h-6 w-px bg-[var(--divider)]" />
-
-                        <ThemeToggle />
-
-                        <a href={config.profile.resumeLink} className="glass-btn text-sm ml-2">
-                            Download CV
-                        </a>
                     </div>
+                    <span className="font-mono font-bold text-lg text-[var(--fg)] tracking-tight group-hover:text-[var(--accent)] transition-colors">
+                        cjohnmizo<span className="text-[var(--accent-secondary)] blink">_</span>
+                    </span>
+                </Link>
 
-                    {/* Mobile Controls */}
-                    <div className="md:hidden flex items-center gap-1">
-                        <ThemeToggle />
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 text-[var(--fg)] hover:bg-[var(--spotlight)] rounded-xl transition-all"
+                {/* Desktop Nav (Command Links) */}
+                <div className="hidden lg:flex items-center gap-1 bg-[var(--card-bg)]/50 p-1 rounded-lg border border-[var(--card-border)] backdrop-blur-sm">
+                    {navLinks.map((link) => (
+                        <ScrollLink
+                            key={link.name}
+                            to={link.name.toLowerCase()}
+                            smooth={true}
+                            duration={500}
+                            className="cursor-pointer px-4 py-2 rounded-md text-sm font-mono font-medium text-[var(--fg-secondary)] hover:text-[var(--accent)] hover:bg-[var(--bg)] transition-all"
                         >
-                            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                        </button>
-                    </div>
+                            <span className="text-[var(--accent-secondary)] opacity-50 mr-1">./</span>
+                            {link.name}
+                        </ScrollLink>
+                    ))}
+                </div>
+
+                <div className="hidden lg:flex items-center gap-4">
+                    <ThemeToggle />
+                    <a
+                        href={config.profile.resumeLink}
+                        className="px-5 py-2 text-sm font-mono font-bold text-[var(--bg)] bg-[var(--accent)] rounded hover:bg-[var(--accent-secondary)] transition-colors flex items-center gap-2"
+                    >
+                        <span>CV.pdf</span>
+                        <UploadCloud size={16} />
+                    </a>
+                </div>
+
+                {/* Mobile Controls */}
+                <div className="lg:hidden flex items-center gap-3">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="p-2 text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
+                    >
+                        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    </button>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu (Full Screen Terminal) */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-20 left-4 right-4 glass-panel rounded-2xl p-5 md:hidden z-50 shadow-xl"
+                        className="absolute top-16 left-0 right-0 bg-[var(--bg)] border-b border-[var(--divider)] p-6 lg:hidden shadow-2xl"
                     >
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-2">
                             {navLinks.map((link) => (
                                 <ScrollLink
                                     key={link.name}
-                                    to={link.to}
+                                    to={link.name.toLowerCase()}
                                     smooth={true}
                                     duration={500}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-4 py-3 rounded-xl text-[var(--fg)] hover:bg-[var(--spotlight)] hover:text-[var(--accent)] transition-all font-medium text-[0.9375rem]"
+                                    className="block w-full py-3 px-4 rounded hover:bg-[var(--card-bg)] text-left font-mono text-[var(--fg)] hover:text-[var(--accent)] transition-colors"
                                 >
+                                    <span className="text-[var(--fg-muted)] mr-2">$ cd</span>
                                     {link.name}
                                 </ScrollLink>
                             ))}
+                            <div className="h-px bg-[var(--divider)] my-2" />
                             <a
                                 href={config.profile.resumeLink}
-                                className="block mt-3 text-center py-3 glass-btn justify-center"
+                                className="block w-full py-3 px-4 rounded hover:bg-[var(--card-bg)] text-left font-mono text-[var(--accent)] font-bold"
                             >
-                                Download CV
+                                <span className="text-[var(--fg-muted)] mr-2">$ cat</span>
+                                resume.pdf
                             </a>
                         </div>
                     </motion.div>

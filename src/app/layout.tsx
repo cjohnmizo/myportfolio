@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
-import { Outfit, Fira_Code, Playfair_Display } from "next/font/google";
+import { Nunito, Fredoka } from "next/font/google"; // Playful, rounded fonts
 import "./globals.css";
 import { config } from "@/data/config";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -99,7 +91,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} ${firaCode.variable} ${playfair.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${nunito.variable} ${fredoka.variable} antialiased min-h-screen relative overflow-x-hidden`}
       >
         <div className="noise-bg" />
         {children}

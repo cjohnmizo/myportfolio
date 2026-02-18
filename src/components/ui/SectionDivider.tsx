@@ -23,26 +23,26 @@ const SectionDivider = ({ variant = "dots" }: { variant?: Variant }) => {
 
 /* ─── Dots ──────────────────────────────────── */
 const DotsDivider = () => (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex items-center justify-center gap-4">
         {[0, 1, 2, 3, 4].map((i) => (
             <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
+                transition={{ delay: i * 0.1, duration: 0.4, type: "spring" }}
                 viewport={{ once: true }}
                 className="rounded-full"
                 style={{
-                    width: i === 2 ? 8 : i === 1 || i === 3 ? 5 : 3,
-                    height: i === 2 ? 8 : i === 1 || i === 3 ? 5 : 3,
+                    width: i === 2 ? 12 : i === 1 || i === 3 ? 8 : 6,
+                    height: i === 2 ? 12 : i === 1 || i === 3 ? 8 : 6,
                     background:
                         i === 2
                             ? "var(--accent)"
                             : "var(--card-border)",
                     boxShadow:
                         i === 2
-                            ? "0 0 12px rgba(99,102,241,0.4)"
-                            : "none",
+                            ? "inset -2px -2px 4px rgba(0,0,0,0.2), inset 2px 2px 4px rgba(255,255,255,0.4), 0 4px 8px rgba(99,102,241,0.3)"
+                            : "inset 1px 1px 2px rgba(0,0,0,0.1)",
                 }}
             />
         ))}
