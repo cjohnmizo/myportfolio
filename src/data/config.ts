@@ -131,7 +131,8 @@ export const config = {
                 year: "2024",
                 links: {
                     code: "#",
-                    demo: "#"
+                    demo: "#",
+                    docs: "/docs/liankhawpui-directory"
                 }
             },
             {
@@ -143,7 +144,8 @@ export const config = {
                 year: "2024",
                 links: {
                     code: "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard",
-                    demo: "https://smad-cjohnmizo.vercel.app/"
+                    demo: "https://smad-cjohnmizo.vercel.app/",
+                    docs: "/docs/smart-modern-admin-dashboard"
                 }
             },
             {
@@ -155,7 +157,8 @@ export const config = {
                 year: "2025",
                 links: {
                     code: "https://github.com/cjohnmizo/cjohnmizo",
-                    demo: "https://cjohnmizo.vercel.app"
+                    demo: "https://cjohnmizo.vercel.app",
+                    docs: "/docs/personal-portfolio"
                 }
             }
         ]

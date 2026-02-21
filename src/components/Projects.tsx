@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { config } from "@/data/config";
 import SpotlightCard from "./ui/SpotlightCard";
@@ -85,6 +85,15 @@ const Projects = () => {
                                                 ))}
                                             </div>
                                             <div className="flex-1" />
+                                            {project.links.docs && (
+                                                <a
+                                                    href={project.links.docs}
+                                                    className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors group/link mr-2"
+                                                >
+                                                    Read More
+                                                    <ArrowRight size={14} className="transform transition-transform group-hover/link:translate-x-1" />
+                                                </a>
+                                            )}
                                             <div className="flex gap-2">
                                                 <a
                                                     href={project.links.code}
