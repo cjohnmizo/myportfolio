@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { config } from "@/data/config";
@@ -101,18 +101,6 @@ const Projects = () => {
                                 <ExternalLink size={14} />
                               </a>
                             ))}
-
-                          {hasLink(project.links.code) && (
-                            <a
-                              href={project.links.code}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="button-secondary !px-3.5 !py-2 text-xs"
-                            >
-                              Code
-                              <Github size={14} />
-                            </a>
-                          )}
 
                           {hasLink(project.links.demo) && (
                             <a
