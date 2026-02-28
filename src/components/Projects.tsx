@@ -1,127 +1,97 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Github, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { config } from "@/data/config";
 import SpotlightCard from "./ui/SpotlightCard";
 
 const Projects = () => {
-    return (
-        <section id="projects" className="py-16 sm:py-24 md:py-32 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <span className="section-subtitle mb-4 block">Portfolio</span>
-                    <h2 className="section-heading">
-                        Selected <span className="accent">Works</span>
-                    </h2>
-                </motion.div>
+  return (
+    <section id="projects" className="relative">
+      <div className="section-shell">
+        <div className="mb-12">
+          <span className="section-eyebrow">Projects</span>
+          <h2 className="section-title">Selected work with measurable impact.</h2>
+          <p className="section-copy">A focused set of products built for real users, with strong execution on architecture, usability, and performance.</p>
+        </div>
 
-                {/* Project Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:auto-rows-[360px]">
-                    {config.projects.items.map((project, index) => (
-                        <SpotlightCard
-                            key={project.title}
-                            className={`group min-h-[280px] md:min-h-0 ${index === 0 ? "md:col-span-2" : ""}`}
-                        >
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                className="h-full"
-                            >
-                                {/* Background Image */}
-                                <div className="absolute inset-0 z-0">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-30 group-hover:opacity-20"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-[var(--card-bg)]/50 to-transparent" />
-                                </div>
-
-                                {/* Content */}
-                                <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-8">
-                                    <div className="transform group-hover:translate-y-0 transition-transform duration-300">
-                                        {/* Badges - Minimal */}
-                                        <div className="flex items-center gap-2 mb-4">
-                                            <span className="px-2.5 py-1 text-xs font-medium border border-[var(--card-border)] text-[var(--fg-secondary)]">
-                                                {project.year}
-                                            </span>
-                                            <span className={`px-2.5 py-1 text-xs font-medium border ${project.status === "Live"
-                                                ? "border-emerald-500 text-emerald-400"
-                                                : "border-[var(--card-border)] text-[var(--fg-secondary)]"
-                                                }`}>
-                                                {project.status}
-                                            </span>
-                                        </div>
-
-                                        {/* Title */}
-                                        <h3 className="text-lg sm:text-xl font-bold text-[var(--fg)] mb-2 group-hover:text-[var(--accent)] transition-colors">
-                                            {project.title}
-                                        </h3>
-
-                                        {/* Description */}
-                                        <p className="text-[var(--fg-secondary)] mb-5 line-clamp-2 max-w-md text-sm">
-                                            {project.description}
-                                        </p>
-
-                                        {/* Tags & Links */}
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex gap-1.5 flex-wrap">
-                                                {project.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="px-2 py-1 text-[11px] font-medium text-[var(--fg-muted)] border border-[var(--card-border)]">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                            <div className="flex-1" />
-                                            {project.links.docs && (
-                                                <a
-                                                    href={project.links.docs}
-                                                    className="flex items-center gap-1 text-xs font-medium text-[var(--fg)] hover:text-[var(--accent)] transition-colors group/link"
-                                                >
-                                                    More
-                                                    <ArrowRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
-                                                </a>
-                                            )}
-                                            <div className="flex gap-2">
-                                                <a
-                                                    href={project.links.code}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="p-1.5 border border-[var(--card-border)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
-                                                >
-                                                    <Github size={16} />
-                                                </a>
-                                                <a
-                                                    href={project.links.demo}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="p-1.5 border border-[var(--card-border)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
-                                                >
-                                                    <ArrowUpRight size={16} />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </SpotlightCard>
-                    ))}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {config.projects.items.map((project, index) => (
+            <SpotlightCard
+              key={project.title}
+              className={`h-full overflow-hidden ${index === 0 ? "md:col-span-2" : ""}`}
+            >
+              <div className="relative aspect-[16/10] border-b border-[var(--line)]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+                <div className="absolute left-4 top-4 flex items-center gap-2">
+                  <span className="chip border-white/45 bg-white/10 text-white">{project.year}</span>
+                  <span className="chip border-white/45 bg-white/10 text-white">{project.status}</span>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+
+              <div className="p-5 sm:p-6">
+                <h3 className="text-xl font-semibold text-[var(--fg)]">{project.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--fg-soft)]">{project.description}</p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2">
+                  {project.links.docs &&
+                    (project.links.docs.startsWith("/") ? (
+                      <Link href={project.links.docs} className="button-secondary !px-3.5 !py-2 text-xs">
+                        Case Study
+                        <ExternalLink size={14} />
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.links.docs}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-secondary !px-3.5 !py-2 text-xs"
+                      >
+                        Case Study
+                        <ExternalLink size={14} />
+                      </a>
+                    ))}
+                  <a
+                    href={project.links.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-secondary !px-3.5 !py-2 text-xs"
+                  >
+                    Code
+                    <Github size={14} />
+                  </a>
+                  <a
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-primary !px-3.5 !py-2 text-xs"
+                  >
+                    Live
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
+            </SpotlightCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Projects;

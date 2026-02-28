@@ -12,9 +12,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full overflow-x-hidden">
-      {/* Scroll-parallax ambient background - removed for cleaner Tokyo Night theme */}
-
+    <main className="relative z-10 min-h-screen w-full overflow-x-hidden">
       <Navbar />
       <Hero />
 

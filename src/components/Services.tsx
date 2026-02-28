@@ -1,73 +1,54 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { config } from "@/data/config";
 import SpotlightCard from "./ui/SpotlightCard";
 
 const Services = () => {
-    return (
-        <section id="services" className="py-16 sm:py-24 md:py-32 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <span className="section-subtitle mb-4 block">Services</span>
-                    <h2 className="section-heading">
-                        What I <span className="accent">Do</span>
-                    </h2>
-                </motion.div>
+  return (
+    <section id="services" className="relative">
+      <div className="section-shell">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mb-12"
+        >
+          <span className="section-eyebrow">Services</span>
+          <h2 className="section-title">What I design and ship.</h2>
+          <p className="section-copy">From rapid MVPs to production platforms, each build is optimized for clarity, speed, and long-term maintainability.</p>
+        </motion.div>
 
-                {/* Service Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {config.services.items.map((service, index) => (
-                        <SpotlightCard
-                            key={service.title}
-                            className="p-5 sm:p-8 group"
-                        >
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                            >
-                                {/* Icon */}
-                                <div className="w-14 h-14 border border-[var(--accent)] bg-transparent flex items-center justify-center mb-6 text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:bg-opacity-10 transition-all duration-300">
-                                    <service.icon size={24} />
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="text-lg font-bold text-[var(--fg)] mb-3">
-                                    {service.title}
-                                </h3>
-
-                                {/* Description */}
-                                <p className="text-[var(--fg-secondary)] mb-6 leading-relaxed text-sm">
-                                    {service.description}
-                                </p>
-
-                                {/* Features */}
-                                <div className="flex flex-wrap gap-2 pt-6 border-t border-[var(--card-border)]">
-                                    {service.features.map((feature) => (
-                                        <span
-                                            key={feature}
-                                            className="px-2.5 py-1 text-xs font-medium text-[var(--fg-secondary)] border border-[var(--card-border)]"
-                                        >
-                                            {feature}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </SpotlightCard>
-                    ))}
+        <div className="grid gap-4 md:grid-cols-2">
+          {config.services.items.map((service, index) => (
+            <SpotlightCard key={service.title} className="h-full p-6 sm:p-7">
+              <div className="flex h-full flex-col">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--bg-soft)] text-[var(--accent)]">
+                  <service.icon size={18} />
                 </div>
-            </div>
-        </section>
-    );
+
+                <h3 className="text-xl font-semibold text-[var(--fg)]">{service.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--fg-soft)]">{service.description}</p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {service.features.map((feature) => (
+                    <span key={feature} className="chip">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 border-t border-[var(--line)] pt-4 text-xs uppercase tracking-[0.08em] text-[var(--muted)]">
+                  Service {(index + 1).toString().padStart(2, "0")}
+                </div>
+              </div>
+            </SpotlightCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Services;

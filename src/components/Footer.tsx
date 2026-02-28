@@ -1,77 +1,62 @@
-"use client";
+﻿"use client";
 
-import { config } from "@/data/config";
 import { Link as ScrollLink } from "react-scroll";
+import { config } from "@/data/config";
 
 const Footer = () => {
-    const footerLinks = [
-        { name: "Services", to: "services" },
-        { name: "Projects", to: "projects" },
-        { name: "About", to: "about" },
-        { name: "Contact", to: "contact" },
-    ];
+  const footerLinks = [
+    { name: "Services", to: "services" },
+    { name: "Projects", to: "projects" },
+    { name: "Skills", to: "skills" },
+    { name: "Contact", to: "contact" },
+  ];
 
-    return (
-        <footer className="py-12 bg-[var(--bg)] border-t border-[var(--card-border)] relative z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-                    {/* Brand */}
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 border border-[var(--accent)]">
-                            <span
-                                className="text-[var(--accent)] text-xs font-bold flex items-center justify-center h-full"
-                            >
-                                CJ
-                            </span>
-                        </div>
-                        <span
-                            className="text-sm tracking-tight text-[var(--fg)] font-bold"
-                        >
-                            cjohnmizo
-                        </span>
-                    </div>
+  return (
+    <footer className="relative z-10 border-t border-[var(--line)] py-10">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-7 px-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-[var(--fg)]">{config.profile.name}</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.08em] text-[var(--muted)]">{config.profile.title}</p>
+        </div>
 
-                    {/* Nav Links - Minimal */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
-                        {footerLinks.map((link) => (
-                            <ScrollLink
-                                key={link.name}
-                                to={link.to}
-                                smooth={true}
-                                duration={500}
-                                className="text-xs font-medium text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors cursor-pointer"
-                            >
-                                {link.name}
-                            </ScrollLink>
-                        ))}
-                    </div>
+        <div className="flex flex-wrap items-center gap-5">
+          {footerLinks.map((link) => (
+            <ScrollLink
+              key={link.name}
+              to={link.to}
+              smooth
+              duration={500}
+              offset={-90}
+              className="cursor-pointer text-sm text-[var(--fg-soft)] transition-colors hover:text-[var(--fg)]"
+            >
+              {link.name}
+            </ScrollLink>
+          ))}
+        </div>
 
-                    {/* Socials - Minimal */}
-                    <div className="flex items-center gap-3">
-                        {config.profile.socials.map((social) => (
-                            <a
-                                key={social.name}
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-9 h-9 border border-[var(--card-border)] flex items-center justify-center text-[var(--fg-muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:-translate-y-0.5 transition-all"
-                                aria-label={social.name}
-                            >
-                                <social.icon size={16} />
-                            </a>
-                        ))}
-                    </div>
-                </div>
+        <div className="flex items-center gap-2">
+          {config.profile.socials.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-[var(--fg-soft)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--fg)]"
+              aria-label={social.name}
+            >
+              <social.icon size={15} />
+            </a>
+          ))}
+        </div>
+      </div>
 
-                {/* Copyright */}
-                <div className="mt-8 pt-6 border-t border-[var(--card-border)] text-center">
-                    <p className="text-[var(--fg-muted)] text-xs">
-                        © {new Date().getFullYear()} {config.profile.name}. All Rights Reserved. · <a href="https://github.com/cjohnmizo/myportfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors">Source Code</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-    );
+      <div className="mx-auto mt-7 w-full max-w-6xl border-t border-[var(--line)] px-5 pt-5 text-xs text-[var(--muted)] sm:px-6">
+        <p>
+          Copyright {new Date().getFullYear()} {config.profile.name}. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

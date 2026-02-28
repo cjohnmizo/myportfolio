@@ -1,4 +1,4 @@
-import {
+﻿import {
     Code2, Smartphone, ExternalLink, MapPin,
     Github, Linkedin, Facebook, Instagram,
     LayoutDashboard, CheckCheck, UploadCloud,
@@ -33,7 +33,7 @@ export const config = {
     hero: {
         headline: "Digital Artisan",
         subheadline: "Full-Stack Developer & IT Educator",
-        description: "I build pixel-perfect, engaging, and accessible digital experiences — minimalist by design, functional by code.",
+        description: "I build pixel-perfect, engaging, and accessible digital experiences - minimalist by design, functional by code.",
         cta: {
             primary: "View My Work",
             secondary: "Get in Touch"
@@ -233,3 +233,4 @@ export const config = {
         ]
     }
 };
+

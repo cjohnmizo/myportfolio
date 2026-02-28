@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Fira_Code } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
-const jetbrainsMono = JetBrains_Mono({
+const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const firaCode = Fira_Code({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -91,9 +91,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${jetbrainsMono.variable} ${firaCode.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${manrope.variable} ${spaceGrotesk.variable} antialiased min-h-screen relative overflow-x-hidden`}
       >
-        <div className="noise-bg" />
+        <div className="site-frame" />
         {children}
       </body>
     </html>
