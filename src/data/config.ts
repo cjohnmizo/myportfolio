@@ -123,6 +123,19 @@ export const config = {
         title: "Selected Works",
         items: [
             {
+                title: "Tualchher CMS",
+                description: "Modular production CMS with role-based access, publishing workflows, media library, SEO controls, and activity logging.",
+                tags: ["Laravel 12", "TailwindCSS", "MySQL", "Spatie"],
+                image: "/projects/tualchher-cms-dashboard.png",
+                status: "Private",
+                year: "2026",
+                links: {
+                    code: "https://github.com/cjohnmizo/Tualchher_CMS",
+                    demo: "#",
+                    docs: "https://github.com/cjohnmizo/Tualchher_CMS#readme"
+                }
+            },
+            {
                 title: "Liankhawpui",
                 description: "Khawlian news and directory app with offline-first sync, role-based access, announcements, and in-app reading modules.",
                 tags: ["Flutter", "Supabase", "PowerSync"],
