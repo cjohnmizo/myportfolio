@@ -8,7 +8,7 @@ import SpotlightCard from "./ui/SpotlightCard";
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-16 sm:py-24 md:py-32 relative bg-[var(--bg-secondary)]">
+        <section id="projects" className="py-16 sm:py-24 md:py-32 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
@@ -25,7 +25,7 @@ const Projects = () => {
                 </motion.div>
 
                 {/* Project Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:auto-rows-[380px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:auto-rows-[360px]">
                     {config.projects.items.map((project, index) => (
                         <SpotlightCard
                             key={project.title}
@@ -44,42 +44,42 @@ const Projects = () => {
                                         src={project.image}
                                         alt={project.title}
                                         fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-40 group-hover:opacity-30"
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-30 group-hover:opacity-20"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-[var(--card-bg)]/70 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-[var(--card-bg)]/50 to-transparent" />
                                 </div>
 
                                 {/* Content */}
-                                <div className="relative z-10 h-full flex flex-col justify-end p-4 sm:p-7">
-                                    <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
-                                        {/* Badges */}
-                                        <div className="flex items-center gap-2 mb-3 opacity-100 transition-opacity duration-500">
-                                            <span className="px-3 py-1 text-xs font-black rounded-full bg-white text-[var(--fg-secondary)] shadow-sm">
+                                <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-8">
+                                    <div className="transform group-hover:translate-y-0 transition-transform duration-300">
+                                        {/* Badges - Minimal */}
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <span className="px-2.5 py-1 text-xs font-medium border border-[var(--card-border)] text-[var(--fg-secondary)]">
                                                 {project.year}
                                             </span>
-                                            <span className={`px-3 py-1 text-xs font-black rounded-full shadow-sm ${project.status === "Live"
-                                                ? "bg-emerald-400 text-white"
-                                                : "bg-[var(--bg-secondary)] text-[var(--fg-secondary)]"
+                                            <span className={`px-2.5 py-1 text-xs font-medium border ${project.status === "Live"
+                                                ? "border-emerald-500 text-emerald-400"
+                                                : "border-[var(--card-border)] text-[var(--fg-secondary)]"
                                                 }`}>
                                                 {project.status}
                                             </span>
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl sm:text-2xl font-black text-[var(--fg)] mb-2 tracking-tight group-hover:text-[var(--accent)] transition-colors">
+                                        <h3 className="text-lg sm:text-xl font-bold text-[var(--fg)] mb-2 group-hover:text-[var(--accent)] transition-colors">
                                             {project.title}
                                         </h3>
 
                                         {/* Description */}
-                                        <p className="text-[var(--fg-secondary)] mb-5 line-clamp-2 max-w-md text-sm font-medium">
+                                        <p className="text-[var(--fg-secondary)] mb-5 line-clamp-2 max-w-md text-sm">
                                             {project.description}
                                         </p>
 
                                         {/* Tags & Links */}
-                                        <div className="flex items-center gap-4">
-                                            <div className="flex gap-1 flex-wrap">
+                                        <div className="flex items-center gap-3">
+                                            <div className="flex gap-1.5 flex-wrap">
                                                 {project.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="px-2 py-1 text-[10px] font-bold uppercase rounded-md bg-[var(--bg)] text-[var(--fg-muted)] border border-[var(--card-border)]">
+                                                    <span key={tag} className="px-2 py-1 text-[11px] font-medium text-[var(--fg-muted)] border border-[var(--card-border)]">
                                                         {tag}
                                                     </span>
                                                 ))}
@@ -88,10 +88,10 @@ const Projects = () => {
                                             {project.links.docs && (
                                                 <a
                                                     href={project.links.docs}
-                                                    className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[var(--fg)] hover:text-[var(--accent)] transition-colors group/link mr-2"
+                                                    className="flex items-center gap-1 text-xs font-medium text-[var(--fg)] hover:text-[var(--accent)] transition-colors group/link"
                                                 >
-                                                    Read More
-                                                    <ArrowRight size={14} className="transform transition-transform group-hover/link:translate-x-1" />
+                                                    More
+                                                    <ArrowRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
                                                 </a>
                                             )}
                                             <div className="flex gap-2">
@@ -99,17 +99,17 @@ const Projects = () => {
                                                     href={project.links.code}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-2 rounded-full bg-[var(--bg)] text-[var(--fg)] hover:text-white hover:bg-[var(--accent)] transition-all shadow-sm hover:scale-110 active:scale-95"
+                                                    className="p-1.5 border border-[var(--card-border)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
                                                 >
-                                                    <Github size={18} />
+                                                    <Github size={16} />
                                                 </a>
                                                 <a
                                                     href={project.links.demo}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-2 rounded-full bg-[var(--bg)] text-[var(--fg)] hover:text-white hover:bg-[var(--accent)] transition-all shadow-sm hover:scale-110 active:scale-95"
+                                                    className="p-1.5 border border-[var(--card-border)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
                                                 >
-                                                    <ArrowUpRight size={18} />
+                                                    <ArrowUpRight size={16} />
                                                 </a>
                                             </div>
                                         </div>

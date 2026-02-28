@@ -2,54 +2,57 @@
 
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Hero3DElements from "./ui/Hero3DElements";
 
 const Hero = () => {
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-            {/* Background Elements */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[var(--accent)] rounded-full blur-[120px] opacity-[0.1]" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[var(--accent-secondary)] rounded-full blur-[120px] opacity-[0.1]" />
+            {/* Minimal Background Lines */}
+            <div className="absolute inset-0 pointer-events-none opacity-30">
+                <div className="absolute top-0 left-1/4 w-px h-full bg-[var(--card-border)]" />
+                <div className="absolute top-0 right-1/3 w-px h-full bg-[var(--card-border)]" />
+                <div className="absolute top-1/4 left-0 w-full h-px bg-[var(--card-border)]" />
             </div>
 
-            {/* 3D Illustrations — mouse reactive */}
+            {/* Subtle Ambient Glow */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[var(--accent)] rounded-full blur-[150px] opacity-[0.08]" />
+                <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-[var(--accent-secondary)] rounded-full blur-[150px] opacity-[0.06]" />
+            </div>
+
+            {/* 3D Elements */}
             <Hero3DElements />
 
             <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                 >
-                    {/* Availability Badge */}
+                    {/* Status Badge - Minimal */}
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        className="inline-flex items-center px-4 py-2 rounded-full bg-[var(--card-bg)] text-xs sm:text-sm font-bold text-[var(--fg-secondary)] mb-8 gap-2 shadow-[4px_4px_10px_rgba(0,0,0,0.1),inset_-2px_-2px_4px_rgba(0,0,0,0.05),inset_2px_2px_4px_rgba(255,255,255,0.5)] border border-white/50"
+                        transition={{ delay: 0.2, duration: 0.4 }}
+                        className="inline-flex items-center px-4 py-2 text-xs sm:text-sm font-medium text-[var(--fg-secondary)] mb-8 gap-2 border border-[var(--card-border)]"
                     >
-                        <span className="flex h-3 w-3 relative">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        <span className="flex h-2 w-2">
+                            <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-emerald-400"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        Open for new adventures!
+                        Available for new opportunities
                     </motion.div>
 
-                    {/* Profile Picture (Bouncy) */}
+                    {/* Profile Picture - Geometric */}
                     <motion.div
-                        className="mb-8 flex justify-center"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        className="mb-12 flex justify-center"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                        <div
-                            className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white"
-                            style={{
-                                boxShadow: "0 20px 40px -10px var(--shadow), inset 0 -4px 6px rgba(0,0,0,0.1)",
-                            }}
-                        >
+                        <div className="relative w-32 h-32 sm:w-40 sm:h-40 border border-[var(--card-border)]">
                             <Image
                                 src="/profile.jpg"
                                 alt="C. John Remthang"
@@ -57,69 +60,80 @@ const Hero = () => {
                                 className="object-cover"
                                 priority
                             />
+                            <motion.div
+                                className="absolute -top-3 -right-3 text-3xl"
+                                animate={{ rotate: [0, 5, 0] }}
+                                transition={{ repeat: Infinity, duration: 3 }}
+                            >
+                                ✨
+                            </motion.div>
                         </div>
-                        <motion.div
-                            className="absolute ml-28 mt-24 bg-white p-2 rounded-full shadow-lg text-2xl"
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                        >
-                            👋
-                        </motion.div>
                     </motion.div>
 
-                    {/* Headline */}
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[var(--fg)] mb-6 leading-[0.9] drop-shadow-sm">
-                        DIGITAL{" "}
-                        <span className="text-accent-gradient inline-block transform hover:scale-105 transition-transform duration-300 cursor-default" style={{ textShadow: "4px 4px 0px rgba(0,0,0,0.1)" }}>
-                            WIZARD
-                        </span>
-                    </h1>
+                    {/* Headline - Bold & Clean */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[var(--fg)] mb-6 leading-[1.05]"
+                    >
+                        Digital{" "}
+                        <span className="text-[var(--accent)]">Creator</span>
+                    </motion.h1>
 
-                    {/* Description */}
-                    <p className="text-lg sm:text-xl md:text-2xl text-[var(--fg-secondary)] max-w-2xl mx-auto font-medium leading-relaxed mb-10 px-4">
-                        Building <span className="text-[var(--accent)] font-bold">pixel-perfect</span>, bouncy, and accessible digital experiences that pop!
-                    </p>
+                    {/* Description - Clean */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="text-base sm:text-lg md:text-xl text-[var(--fg-secondary)] max-w-2xl mx-auto font-normal leading-relaxed mb-12 px-4"
+                    >
+                        Crafting elegant, performant, and accessible digital experiences with modern technologies.
+                    </motion.p>
 
-                    {/* CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center gap-5 justify-center">
+                    {/* CTAs - Minimal */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6, duration: 0.5 }}
+                        className="flex flex-col sm:flex-row items-center gap-4 justify-center"
+                    >
                         <ScrollLink
                             to="projects"
                             smooth={true}
                             duration={500}
                             className="clay-btn cursor-pointer"
                         >
-                            See My Magic
-                            <Sparkles size={20} className="animate-pulse" />
+                            View Projects
+                            <ArrowRight size={18} />
                         </ScrollLink>
 
                         <ScrollLink
                             to="contact"
                             smooth={true}
                             duration={500}
-                            className="group flex items-center gap-2 px-8 py-3 rounded-full font-bold text-[var(--fg)] border-2 border-[var(--card-border)] hover:bg-[var(--card-bg)] hover:border-[var(--accent)] transition-all active:scale-95"
+                            className="group flex items-center gap-2 px-6 py-2.5 font-medium text-[var(--fg)] border border-[var(--card-border)] hover:border-[var(--accent)] hover:bg-[var(--accent)]/5 transition-all"
                         >
-                            Say Hello
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            Get in Touch
+                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </ScrollLink>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Scroll Indicator - Minimal */}
             <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 0.6 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >
-                <span className="text-xs font-bold uppercase tracking-widest text-[var(--fg-muted)]">Scroll</span>
-                <div className="w-6 h-10 border-2 border-[var(--fg-muted)] rounded-full flex justify-center p-1">
-                    <motion.div
-                        className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full"
-                        animate={{ y: [0, 20, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5 }}
-                    />
-                </div>
+                <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                >
+                    <ChevronDown size={24} className="text-[var(--fg-muted)]" />
+                </motion.div>
             </motion.div>
         </section>
     );

@@ -6,9 +6,15 @@ import { config } from "@/data/config";
 
 const Testimonials = () => {
     return (
-        <section id="testimonials" className="py-16 sm:py-24 md:py-32 relative overflow-hidden bg-[var(--bg-secondary)]">
-            {/* Ambient orbs */}
-            <div className="absolute top-0 left-1/4 w-[350px] h-[350px] bg-[var(--accent)] rounded-full blur-[160px] opacity-[0.05]" />
+        <section id="testimonials" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+            {/* Minimal ambient background */}
+            <div className="absolute inset-0 pointer-events-none opacity-30">
+                <div className="absolute top-0 left-1/4 w-px h-1/3 bg-[var(--card-border)]" />
+            </div>
+
+            {/* Subtle glows */}
+            <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-[var(--accent)] rounded-full blur-[120px] opacity-[0.05]" />
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <motion.div
@@ -25,42 +31,37 @@ const Testimonials = () => {
                 </motion.div>
 
                 {/* Testimonial Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {config.testimonials.items.map((testimonial, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
                             className="clay-card p-6 sm:p-8 group flex flex-col relative"
                         >
-                            {/* Quote Icon */}
-                            <div className="absolute top-6 right-8 text-[var(--accent)]/10 transform rotate-12 scale-150">
-                                <Quote size={60} fill="currentColor" />
-                            </div>
-
+                            {/* Quote Icon - Subtle */}
                             <Quote
-                                size={28}
-                                className="text-[var(--accent)] mb-6 relative z-10"
-                                fill="currentColor"
+                                size={20}
+                                className="text-[var(--accent)] mb-5 opacity-60"
                             />
 
                             {/* Content */}
-                            <p className="text-[var(--fg-secondary)] mb-8 leading-relaxed font-medium flex-1 text-lg z-10 relative">
+                            <p className="text-[var(--fg-secondary)] mb-8 leading-relaxed flex-1 text-sm">
                                 &quot;{testimonial.content}&quot;
                             </p>
 
                             {/* Author */}
-                            <div className="flex items-center gap-4 pt-6 border-t border-[var(--divider)] z-10 relative">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center text-white font-black text-lg shadow-md border-2 border-white/30">
+                            <div className="flex items-center gap-3 pt-6 border-t border-[var(--card-border)]">
+                                <div className="w-10 h-10 border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] font-bold text-sm flex-shrink-0">
                                     {testimonial.name.charAt(0)}
                                 </div>
-                                <div>
-                                    <div className="font-bold text-[var(--fg)] text-base">
+                                <div className="min-w-0">
+                                    <div className="font-medium text-[var(--fg)] text-sm">
                                         {testimonial.name}
                                     </div>
-                                    <div className="text-xs font-bold text-[var(--fg-muted)] uppercase tracking-wide">
+                                    <div className="text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide">
                                         {testimonial.role}
                                     </div>
                                 </div>

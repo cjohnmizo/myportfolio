@@ -82,33 +82,33 @@ const Contact = () => {
                         </p>
 
                         {/* Contact Info */}
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             <a
                                 href={`mailto:${config.contact.email}`}
-                                className="clay-card p-4 flex items-center gap-5 group hover:scale-[1.02] transition-transform"
+                                className="clay-card p-4 flex items-center gap-4 group hover:border-[var(--accent)] transition-colors"
                             >
-                                <div className="w-14 h-14 rounded-full bg-[var(--bg)] shadow-inner flex items-center justify-center text-[var(--accent)]">
-                                    <Mail size={24} />
+                                <div className="w-12 h-12 border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+                                    <Mail size={20} />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-1">
+                                    <div className="text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide mb-0.5">
                                         Email
                                     </div>
-                                    <div className="text-[var(--fg)] font-bold text-lg">
+                                    <div className="text-[var(--fg)] font-medium text-sm">
                                         {config.contact.email}
                                     </div>
                                 </div>
                             </a>
 
-                            <div className="clay-card p-4 flex items-center gap-5">
-                                <div className="w-14 h-14 rounded-full bg-[var(--bg)] shadow-inner flex items-center justify-center text-[var(--accent)]">
-                                    <MapPin size={24} />
+                            <div className="clay-card p-4 flex items-center gap-4">
+                                <div className="w-12 h-12 border border-[var(--accent)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+                                    <MapPin size={20} />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest mb-1">
+                                    <div className="text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide mb-0.5">
                                         Location
                                     </div>
-                                    <div className="text-[var(--fg)] font-bold text-lg">
+                                    <div className="text-[var(--fg)] font-medium text-sm">
                                         {config.contact.address}
                                     </div>
                                 </div>
@@ -116,17 +116,17 @@ const Contact = () => {
                         </div>
 
                         {/* Socials */}
-                        <div className="mt-12 pt-8 border-t border-[var(--divider)] flex gap-4">
+                        <div className="mt-8 pt-6 border-t border-[var(--card-border)] flex gap-3">
                             {config.profile.socials.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-14 h-14 rounded-full bg-[var(--card-bg)] shadow-[5px_5px_10px_var(--shadow),-5px_-5px_10px_var(--inner-highlight)] flex items-center justify-center text-[var(--fg-secondary)] hover:text-white hover:bg-[var(--accent)] hover:scale-110 transition-all border border-white/20 active:scale-95"
+                                    className="w-12 h-12 border border-[var(--card-border)] flex items-center justify-center text-[var(--fg-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
                                     aria-label={social.name}
                                 >
-                                    <social.icon size={22} />
+                                    <social.icon size={18} />
                                 </a>
                             ))}
                         </div>
@@ -144,20 +144,20 @@ const Contact = () => {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="text-center py-16"
+                                    className="text-center py-12"
                                 >
-                                    <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 mx-auto mb-6 shadow-inner">
-                                        <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                    <div className="w-16 h-16 border border-emerald-500 flex items-center justify-center text-emerald-500 mx-auto mb-4">
+                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <h3 className="text-2xl font-black text-[var(--fg)] mb-2">Message Sent!</h3>
-                                    <p className="text-[var(--fg-secondary)] font-medium">I&apos;ll get back to you soon.</p>
+                                    <h3 className="text-xl font-bold text-[var(--fg)] mb-2">Message Sent!</h3>
+                                    <p className="text-[var(--fg-secondary)] text-sm">I&apos;ll get back to you soon.</p>
                                 </motion.div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-5">
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
+                                        <label className="block text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide mb-2">
                                             Name
                                         </label>
                                         <input
@@ -172,7 +172,7 @@ const Contact = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
+                                        <label className="block text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide mb-2">
                                             Email
                                         </label>
                                         <input
@@ -187,7 +187,7 @@ const Contact = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-xs font-bold text-[var(--fg-muted)] uppercase tracking-widest pl-2 mb-2">
+                                        <label className="block text-xs font-medium text-[var(--fg-muted)] uppercase tracking-wide mb-2">
                                             Message
                                         </label>
                                         <textarea
@@ -204,11 +204,11 @@ const Contact = () => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="clay-btn w-full justify-center mt-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                        className="clay-btn w-full justify-center mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting ? (
                                             <span className="flex items-center gap-2">
-                                                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                                                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                                                 </svg>
@@ -217,13 +217,13 @@ const Contact = () => {
                                         ) : (
                                             <>
                                                 Send Message
-                                                <ArrowRight size={20} />
+                                                <ArrowRight size={18} />
                                             </>
                                         )}
                                     </button>
 
                                     {error && (
-                                        <p className="text-sm text-red-500 text-center mt-3 font-bold bg-red-100 p-2 rounded-lg">
+                                        <p className="text-xs text-red-500 text-center mt-3 font-medium border border-red-500/50 bg-red-500/5 p-2">
                                             {error}
                                         </p>
                                     )}

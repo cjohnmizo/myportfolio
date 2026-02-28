@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, MouseEvent, useEffect } from "react";
+import { useRef, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 interface SpotlightCardProps {
@@ -9,12 +9,10 @@ interface SpotlightCardProps {
     tiltDegree?: number;
 }
 
-const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCardProps) => {
+const SpotlightCard = ({ children, className = "", tiltDegree = 2 }: SpotlightCardProps) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
-
-
 
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         if (!divRef.current) return;
@@ -23,7 +21,7 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
         const y = e.clientY - rect.top;
         setPosition({ x, y });
 
-        // 3D tilt calculation
+        // Minimal 3D tilt
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -tiltDegree;
@@ -35,10 +33,8 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
         setRotation({ x: 0, y: 0 });
     };
 
-
-
     return (
-        <div className="w-full h-full" style={{ perspective: "1000px" }}>
+        <div className="w-full h-full" style={{ perspective: "1200px" }}>
             <motion.div
                 ref={divRef}
                 onMouseMove={handleMouseMove}
@@ -47,19 +43,19 @@ const SpotlightCard = ({ children, className = "", tiltDegree = 6 }: SpotlightCa
                     rotateX: rotation.x,
                     rotateY: rotation.y,
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 className={`card-3d clay-card relative overflow-hidden h-full ${className}`}
                 style={{ transformStyle: "preserve-3d" }}
             >
-                {/* Soft Highlight */}
+                {/* Subtle Glow on Hover */}
                 <div
-                    className="pointer-events-none absolute -inset-px transition duration-300 opacity-0 group-hover:opacity-100"
+                    className="pointer-events-none absolute -inset-px transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                     style={{
-                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.2), transparent 40%)`,
+                        background: `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(0, 217, 255, 0.1), transparent 50%)`,
                     }}
                 />
 
-                <div className="relative h-full" style={{ transform: "translateZ(20px)" }}>
+                <div className="relative h-full" style={{ transform: "translateZ(10px)" }}>
                     {children}
                 </div>
             </motion.div>
