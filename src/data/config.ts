@@ -123,42 +123,42 @@ export const config = {
         title: "Selected Works",
         items: [
             {
-                title: "Liankhawpui Directory",
-                description: "News & Community Directory for Khawlian Village. Real-time updates, emergency contacts, and business listings.",
-                tags: ["Flutter", "Firebase", "Android"],
+                title: "Liankhawpui",
+                description: "Khawlian news and directory app with offline-first sync, role-based access, announcements, and in-app reading modules.",
+                tags: ["Flutter", "Supabase", "PowerSync"],
                 image: "https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                status: "Deployed",
-                year: "2024",
+                status: "Proprietary",
+                year: "2026",
                 links: {
-                    code: "#",
-                    demo: "#",
-                    docs: "/docs/liankhawpui-directory"
+                    code: "https://github.com/cjohnmizo/liankhawpui",
+                    demo: "https://github.com/cjohnmizo/liankhawpui",
+                    docs: "https://github.com/cjohnmizo/liankhawpui#readme"
                 }
             },
             {
                 title: "Smart Modern Admin Dashboard",
-                description: "Premium SaaS-grade admin dashboard with glassmorphism UI, dark theme, user management, analytics, and news system.",
+                description: "Full-stack admin dashboard with secure auth, analytics, todo workflows, and role-based user management in a responsive premium UI.",
                 tags: ["Next.js", "TypeScript", "MongoDB"],
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 status: "Live",
-                year: "2024",
+                year: "2026",
                 links: {
                     code: "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard",
                     demo: "https://smad-cjohnmizo.vercel.app/",
-                    docs: "/docs/smart-modern-admin-dashboard"
+                    docs: "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard#readme"
                 }
             },
             {
-                title: "Personal Portfolio",
-                description: "Premium developer portfolio with 3D effects, parallax scroll, spotlight cards, glassmorphism, and light/dark mode.",
-                tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
+                title: "Portfolio Collection",
+                description: "Collection of 10 production-ready Bootstrap portfolio templates for developers, creators, and founders.",
+                tags: ["Bootstrap 5", "HTML", "CSS"],
                 image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 status: "Live",
-                year: "2025",
+                year: "2026",
                 links: {
-                    code: "https://github.com/cjohnmizo/cjohnmizo",
-                    demo: "https://cjohnmizo.vercel.app",
-                    docs: "/docs/personal-portfolio"
+                    code: "https://github.com/cjohnmizo/Portfolio-Collection",
+                    demo: "https://portfolio-collection.vercel.app",
+                    docs: "https://github.com/cjohnmizo/Portfolio-Collection#readme"
                 }
             }
         ]
