@@ -139,7 +139,7 @@ export const config = {
                 title: "Liankhawpui",
                 description: "Khawlian news and directory app with offline-first sync, role-based access, announcements, and in-app reading modules.",
                 tags: ["Flutter", "Supabase", "PowerSync"],
-                image: "https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
                 status: "Proprietary",
                 year: "2026",
                 links: {
