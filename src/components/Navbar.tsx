@@ -40,7 +40,7 @@ const Navbar = () => {
         >
           <div className="flex h-16 items-center justify-between px-4 sm:px-5">
             <Link href="/" className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--bg-soft)] text-sm font-bold tracking-tight text-[var(--accent)]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-(--line-strong) bg-(--bg-soft) text-sm font-bold tracking-tight text-(--accent)">
                 <img src="/favicon.ico" alt={config.profile.name} className="h-4 w-4 rounded-sm" />
               </span>
               <span className="text-sm font-semibold tracking-wide text-[var(--fg)] sm:text-base">
