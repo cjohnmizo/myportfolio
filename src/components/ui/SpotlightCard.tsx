@@ -9,16 +9,16 @@ interface SpotlightCardProps {
 
 const SpotlightCard = ({ children, className = "" }: SpotlightCardProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className={`surface surface-hover relative overflow-hidden ${className}`}
+      className={`surface surface-hover overflow-hidden ${className}`}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--accent-soft),transparent_48%)] opacity-70" />
-      <div className="relative z-10">{children}</div>
-    </motion.div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,var(--accent-soft),transparent_50%)] opacity-70" />
+      <div className="relative">{children}</div>
+    </motion.article>
   );
 };
 

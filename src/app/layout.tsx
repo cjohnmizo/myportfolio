@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
-const manrope = Manrope({
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const syne = Syne({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -91,7 +91,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${manrope.variable} ${spaceGrotesk.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${plusJakartaSans.variable} ${syne.variable} antialiased min-h-screen relative overflow-x-hidden`}
       >
         <div className="site-frame" />
         {children}

@@ -16,17 +16,17 @@ export default function Home() {
       <Navbar />
       <Hero />
 
-      <SectionDivider variant="dots" />
-      <Services />
-
       <SectionDivider variant="geometric" />
       <Projects />
 
       <SectionDivider variant="wave" />
-      <Skills />
+      <Services />
 
       <SectionDivider variant="dots" />
       <Process />
+
+      <SectionDivider variant="wave" />
+      <Skills />
 
       <SectionDivider variant="geometric" />
       <About />

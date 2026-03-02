@@ -8,29 +8,28 @@ const Skills = () => {
     <section id="skills" className="relative">
       <div className="section-shell">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
           className="mb-12"
         >
-          <span className="section-eyebrow">Capabilities</span>
-          <h2 className="section-title">Technical depth across product layers.</h2>
-          <p className="section-copy">Balanced expertise in front-end craft, scalable backend architecture, and cross-platform delivery.</p>
+          <span className="section-eyebrow">Skills</span>
+          <h2 className="section-title">Cross-functional stack with production depth.</h2>
+          <p className="section-copy">Hands-on across frontend, backend, mobile, and deployment workflows, with a focus on maintainable systems and accessible interfaces.</p>
         </motion.div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {config.skills.categories.map((category, catIndex) => (
+        <div className="grid gap-4 lg:grid-cols-3">
+          {config.skills.categories.map((category, index) => (
             <motion.article
               key={category.name}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: catIndex * 0.08 }}
+              transition={{ duration: 0.42, delay: index * 0.08 }}
               className="surface p-6"
             >
               <h3 className="text-base font-semibold text-[var(--fg)]">{category.name}</h3>
-
               <div className="mt-6 space-y-4">
                 {category.items.map((skill) => (
                   <div key={skill.name}>
@@ -43,7 +42,7 @@ const Skills = () => {
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        transition={{ duration: 0.75, ease: "easeOut" }}
                         className="h-full rounded-full bg-[var(--accent)]"
                       />
                     </div>

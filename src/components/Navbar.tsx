@@ -23,32 +23,36 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 18);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto mt-4 w-[calc(100%-1rem)] max-w-6xl sm:mt-5 sm:w-[calc(100%-2rem)]">
+      <div className="mx-auto mt-4 w-[calc(100%-1rem)] max-w-7xl sm:w-[calc(100%-2rem)]">
         <motion.nav
-          initial={{ y: -28, opacity: 0 }}
+          initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-          className={`glass-nav relative overflow-hidden transition-all duration-300 ${scrolled ? "glass-nav-scrolled" : ""
-            }`}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className={`glass-nav relative overflow-hidden transition-all duration-300 ${scrolled ? "glass-nav-scrolled" : ""}`}
         >
-          <div className="relative z-10 flex h-16 items-center justify-between px-4 sm:h-[4.25rem] sm:px-5">
+          <div className="relative z-10 flex h-16 items-center justify-between px-4 sm:h-[4.35rem] sm:px-6">
             <Link href="/" className="group flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--surface-strong)] shadow-[0_12px_24px_-20px_var(--shadow)]">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--surface-strong)] shadow-[0_12px_28px_-22px_var(--shadow)]">
                 <Image src="/favicon.ico" alt={config.profile.name} width={16} height={16} className="rounded-sm" />
               </span>
-              <span className="text-sm font-semibold tracking-[0.08em] text-[var(--fg)] transition-colors group-hover:text-[var(--accent)] sm:text-base">
-                cjohnmizo
+              <span>
+                <span className="block text-sm font-semibold tracking-[0.08em] text-[var(--fg)] transition-colors group-hover:text-[var(--accent)]">
+                  CJOHNMIZO
+                </span>
+                <span className="hidden text-[11px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
+                  Product Engineer
+                </span>
               </span>
             </Link>
 
-            <div className="hidden items-center gap-6 lg:flex">
+            <div className="hidden items-center gap-6 xl:flex">
               {navLinks.map((link) => (
                 <ScrollLink
                   key={link.name}
@@ -59,39 +63,36 @@ const Navbar = () => {
                   className="group relative cursor-pointer text-sm font-medium text-[var(--fg-soft)] transition-colors hover:text-[var(--fg)]"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
                 </ScrollLink>
               ))}
             </div>
 
-            <div className="hidden items-center gap-3 lg:flex">
+            <div className="hidden items-center gap-2 sm:flex">
               <ThemeToggle />
               <Link href={config.profile.resumeLink} className="button-secondary">
                 Resume
-                <Download size={15} />
+                <Download size={14} />
               </Link>
             </div>
 
-            <div className="flex items-center gap-2 lg:hidden">
-              <ThemeToggle />
-              <button
-                onClick={() => setIsOpen((value) => !value)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--surface-strong)] text-[var(--fg)]"
-                aria-label={isOpen ? "Close menu" : "Open menu"}
-              >
-                {isOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
-            </div>
+            <button
+              onClick={() => setIsOpen((value) => !value)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] bg-[var(--surface-strong)] text-[var(--fg)] sm:hidden"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X size={17} /> : <Menu size={17} />}
+            </button>
           </div>
 
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -12 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
+                exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="relative z-10 border-t border-[var(--line)] bg-[var(--surface)] px-4 py-4 backdrop-blur-xl lg:hidden"
+                className="relative z-10 border-t border-[var(--line)] bg-[var(--surface)] px-4 py-4 backdrop-blur-2xl"
               >
                 <div className="flex flex-col gap-1">
                   {navLinks.map((link) => (
@@ -107,14 +108,18 @@ const Navbar = () => {
                       {link.name}
                     </ScrollLink>
                   ))}
-                  <Link
-                    href={config.profile.resumeLink}
-                    onClick={() => setIsOpen(false)}
-                    className="button-primary mt-2"
-                  >
-                    Download Resume
-                    <Download size={15} />
-                  </Link>
+
+                  <div className="mt-2 flex items-center gap-2">
+                    <ThemeToggle />
+                    <Link
+                      href={config.profile.resumeLink}
+                      onClick={() => setIsOpen(false)}
+                      className="button-primary flex-1"
+                    >
+                      Download Resume
+                      <Download size={14} />
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             )}

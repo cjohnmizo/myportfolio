@@ -11,38 +11,26 @@ import SpotlightCard from "./ui/SpotlightCard";
 const hasLink = (value?: string) => Boolean(value && value.trim() && value.trim() !== "#");
 
 const Projects = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleOpen = (index: number) => {
-    setOpenIndex((current) => (current === index ? null : index));
-  };
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section id="projects" className="relative">
       <div className="section-shell">
         <div className="mb-12">
           <span className="section-eyebrow">Projects</span>
-          <h2 className="section-title">Selected work with measurable impact.</h2>
-          <p className="section-copy">A focused set of products built for real users, with strong execution on architecture, usability, and performance.</p>
+          <h2 className="section-title">Selected builds with clear product outcomes.</h2>
+          <p className="section-copy">Click any card to open a short brief. I focus on shipping stable products with practical UX, clean data flows, and maintainable codebases.</p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           {config.projects.items.map((project, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <SpotlightCard
-                key={project.title}
-                className={`h-full overflow-hidden ${index === 0 ? "md:col-span-2" : ""}`}
-              >
-                <div className="relative aspect-[16/10] border-b border-[var(--line)]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+              <SpotlightCard key={project.title} className={`h-full ${index === 0 ? "lg:col-span-2" : ""}`}>
+                <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--line)]">
+                  <Image src={project.image} alt={project.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent" />
                   <div className="absolute left-4 top-4 flex items-center gap-2">
                     <span className="chip border-white/45 bg-white/10 text-white">{project.year}</span>
                     <span className="chip border-white/45 bg-white/10 text-white">{project.status}</span>
@@ -62,12 +50,12 @@ const Projects = () => {
 
                   <button
                     type="button"
-                    onClick={() => toggleOpen(index)}
+                    onClick={() => setOpenIndex((current) => (current === index ? null : index))}
                     className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[var(--fg-soft)] transition-colors hover:text-[var(--fg)]"
                     aria-expanded={isOpen}
                     aria-controls={`project-brief-${index}`}
                   >
-                    {isOpen ? "Hide brief" : "View brief"}
+                    {isOpen ? "Hide brief" : "Read brief"}
                     <ChevronDown size={15} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
                   </button>
 
@@ -87,8 +75,8 @@ const Projects = () => {
                           {hasLink(project.links.docs) &&
                             (project.links.docs.startsWith("/") ? (
                               <Link href={project.links.docs} className="button-secondary !px-3.5 !py-2 text-xs">
-                                Case Study
-                                <ExternalLink size={14} />
+                                Brief
+                                <ExternalLink size={13} />
                               </Link>
                             ) : (
                               <a
@@ -97,8 +85,8 @@ const Projects = () => {
                                 rel="noopener noreferrer"
                                 className="button-secondary !px-3.5 !py-2 text-xs"
                               >
-                                Case Study
-                                <ExternalLink size={14} />
+                                Brief
+                                <ExternalLink size={13} />
                               </a>
                             ))}
 
@@ -109,8 +97,8 @@ const Projects = () => {
                               rel="noopener noreferrer"
                               className="button-primary !px-3.5 !py-2 text-xs"
                             >
-                              Live
-                              <ArrowUpRight size={14} />
+                              Open
+                              <ArrowUpRight size={13} />
                             </a>
                           )}
                         </div>

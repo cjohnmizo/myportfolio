@@ -31,28 +31,28 @@ export const config = {
     },
 
     hero: {
-        headline: "Digital Artisan",
-        subheadline: "Full-Stack Developer & IT Educator",
-        description: "I build pixel-perfect, engaging, and accessible digital experiences - minimalist by design, functional by code.",
+        headline: "Calm, Scalable Digital Products",
+        subheadline: "Full-Stack Product Engineer",
+        description: "I design and build reliable software systems with clean interfaces, measurable performance, and strong long-term maintainability.",
         cta: {
-            primary: "View My Work",
-            secondary: "Get in Touch"
+            primary: "Explore Projects",
+            secondary: "Start a Conversation"
         }
     },
 
     about: {
         title: "About Me",
         bio: [
-            "I'm a Full-Stack Developer based in Mizoram, India, with expertise in building modern web and mobile applications. With a Master's in Computer Application and over 6 years of development experience, I specialize in React, Next.js, and Flutter.",
-            "Currently serving as a Vocational IT Teacher with the Government of Mizoram while working with clients worldwide on freelance projects. I'm passionate about clean code, user experience, and delivering solutions that make a real impact.",
-            "My approach combines technical expertise with a deep understanding of business needs. Whether it's a complex web application, a cross-platform mobile app, or a full-stack solution, I focus on creating scalable, maintainable code that solves real problems."
+            "I am a full-stack developer based in Mizoram, India, focused on building production-ready web and mobile products. With an MCA and 6+ years of hands-on experience, I specialize in React, Next.js, Laravel, and Flutter.",
+            "Alongside my role as a Vocational IT Teacher with the Government of Mizoram, I collaborate on freelance product builds and internal tools for clients and communities.",
+            "My process is simple: understand business constraints, define a clean technical approach, and ship stable software that is easy to operate and evolve."
         ],
         stats: [
             { label: "Location", value: "Mizoram, India", icon: MapPin },
             { label: "Experience", value: "6+ Years", icon: Code2 },
             { label: "Languages", value: "English, Mizo", icon: Globe }
         ],
-        status: "Available for Hire"
+        status: "Open for Select Projects"
     },
 
     skills: {
@@ -181,12 +181,12 @@ export const config = {
         title: "Get in Touch",
         email: "johnchangsan39@gmail.com",
         address: "Khawlian, Saitual Mizoram, 796261",
-        statusOptions: ["Open to Opportunities", "Freelance & Full-Time"]
+        statusOptions: ["Freelance Projects", "Product Consulting"]
     },
 
     process: {
         title: "How I Work",
-        description: "A refined process to turn your ideas into polished, production-ready software.",
+        description: "A disciplined, collaborative process that turns ideas into dependable production software.",
         steps: [
             {
                 title: "Discovery",
