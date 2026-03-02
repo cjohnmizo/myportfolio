@@ -8,9 +8,9 @@
 export const config = {
     meta: {
         title: "C. John Remthang | Full-Stack Developer",
-        description: "Portfolio of C. John Remthang, a Full-Stack Developer and IT Educator based in Mizoram. Specializing in Flutter, React, and Modern Web Technologies.",
+        description: "Portfolio of C. John Remthang, a full-stack developer creating practical web, mobile, and CMS products.",
         url: "https://cjohnmizo.vercel.app",
-        keywords: ["Mobile App Developer", "Flutter Developer", "Web Developer", "Mizoram", "IT Educator", "C. John Remthang"],
+        keywords: ["Full-Stack Developer", "Product Engineer", "Laravel Developer", "Next.js Developer", "Flutter Developer", "Mizoram", "C. John Remthang"],
         author: "C. John Remthang",
         twitterHandle: "@cjohnmizo"
     },
@@ -31,26 +31,26 @@ export const config = {
     },
 
     hero: {
-        headline: "Calm, Scalable Digital Products",
-        subheadline: "Full-Stack Product Engineer",
-        description: "I design and build reliable software systems with clean interfaces, measurable performance, and strong long-term maintainability.",
+        headline: "Building Useful Software for Real People",
+        subheadline: "Full-Stack Developer from Mizoram",
+        description: "I turn ideas into stable web, mobile, and CMS products that are simple to use and maintain.",
         cta: {
-            primary: "Explore Projects",
-            secondary: "Start a Conversation"
+            primary: "See My Work",
+            secondary: "Let's Talk"
         }
     },
 
     about: {
         title: "About Me",
         bio: [
-            "I am a full-stack developer based in Mizoram, India, focused on building production-ready web and mobile products. With an MCA and 6+ years of hands-on experience, I specialize in React, Next.js, Laravel, and Flutter.",
-            "Alongside my role as a Vocational IT Teacher with the Government of Mizoram, I collaborate on freelance product builds and internal tools for clients and communities.",
-            "My process is simple: understand business constraints, define a clean technical approach, and ship stable software that is easy to operate and evolve."
+            "I'm John, a full-stack developer from Mizoram, India. I build web and mobile products that solve real user and business needs.",
+            "With 6+ years of experience and an MCA background, I work across planning, architecture, development, and deployment.",
+            "I serve as a Vocational IT Teacher with the Government of Mizoram and also partner with clients on freelance product and CMS work."
         ],
         stats: [
-            { label: "Location", value: "Mizoram, India", icon: MapPin },
             { label: "Experience", value: "6+ Years", icon: Code2 },
-            { label: "Languages", value: "English, Mizo", icon: Globe }
+            { label: "Focus", value: "Web + Mobile + CMS", icon: Globe },
+            { label: "Location", value: "Mizoram, India", icon: MapPin }
         ],
         status: "Open for Select Projects"
     },
@@ -59,7 +59,7 @@ export const config = {
         title: "Technical Skills",
         categories: [
             {
-                name: "Frontend",
+                name: "Frontend Engineering",
                 items: [
                     { name: "React / Next.js", level: 95 },
                     { name: "TypeScript", level: 90 },
@@ -69,7 +69,7 @@ export const config = {
                 ]
             },
             {
-                name: "Mobile",
+                name: "Mobile Development",
                 items: [
                     { name: "Flutter / Dart", level: 92 },
                     { name: "Android Studio", level: 90 },
@@ -77,7 +77,7 @@ export const config = {
                 ]
             },
             {
-                name: "Backend & Cloud",
+                name: "Backend & Data",
                 items: [
                     { name: "Node.js", level: 88 },
                     { name: "Laravel", level: 85 },
@@ -94,26 +94,26 @@ export const config = {
         items: [
             {
                 title: "Web Development",
-                description: "Custom web applications built with React, Next.js, and modern frameworks. Optimized for performance and accessibility.",
-                features: ["React & Next.js", "Responsive Design", "Performance Optimization"],
+                description: "I build modern responsive web apps with clean UI and scalable architecture.",
+                features: ["Next.js / React Build", "Responsive UX", "Performance-first Delivery"],
                 icon: Code2
             },
             {
                 title: "Mobile Apps",
-                description: "Cross-platform mobile applications using Flutter. Native performance with a single codebase.",
-                features: ["Flutter & Dart", "iOS & Android", "Native Compilation"],
+                description: "I build cross-platform mobile apps with polished UX and production-ready workflows.",
+                features: ["Flutter Architecture", "Android + iOS Delivery", "Release-ready Build"],
                 icon: Smartphone
             },
             {
                 title: "Full-Stack Solutions",
-                description: "End-to-end development from database design to deployment. API integration and cloud infrastructure.",
-                features: ["REST APIs", "Database Design", "Cloud Deployment"],
+                description: "I deliver complete systems from API and database design to deployment.",
+                features: ["Data Modeling", "API + Admin Systems", "Deployment + Monitoring"],
                 icon: ExternalLink
             },
             {
                 title: "Technical Consulting",
-                description: "Expert guidance on technology stack selection, code review, architecture planning, and optimization.",
-                features: ["Code Audits", "System Architecture", "Stack Optimization"],
+                description: "I support architecture decisions, implementation planning, and code quality improvements.",
+                features: ["Architecture Review", "Implementation Roadmap", "Quality Optimization"],
                 icon: Terminal
             }
         ]
@@ -124,7 +124,7 @@ export const config = {
         items: [
             {
                 title: "Tualchher CMS",
-                description: "Modular production CMS with role-based access, publishing workflows, media library, SEO controls, and activity logging.",
+                description: "Modular CMS with role permissions, media management, SEO tools, redirect rules, and activity logs.",
                 tags: ["Laravel 12", "TailwindCSS", "MySQL", "Spatie"],
                 image: "/projects/tualchher-cms-dashboard.png",
                 status: "Private",
@@ -137,7 +137,7 @@ export const config = {
             },
             {
                 title: "Liankhawpui",
-                description: "Khawlian news and directory app with offline-first sync, role-based access, announcements, and in-app reading modules.",
+                description: "Community app for news, announcements, and directory workflows with offline-first sync and role-based access.",
                 tags: ["Flutter", "Supabase", "PowerSync"],
                 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
                 status: "Proprietary",
@@ -150,7 +150,7 @@ export const config = {
             },
             {
                 title: "Smart Modern Admin Dashboard",
-                description: "Full-stack admin dashboard with secure auth, analytics, todo workflows, and role-based user management in a responsive premium UI.",
+                description: "Full-stack admin system with secure auth, analytics, task management, and role-based access.",
                 tags: ["Next.js", "TypeScript", "MongoDB"],
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 status: "Live",
@@ -163,7 +163,7 @@ export const config = {
             },
             {
                 title: "Portfolio Collection",
-                description: "Collection of 10 production-ready Bootstrap portfolio templates for developers, creators, and founders.",
+                description: "Collection of 10 production-ready portfolio templates for developers, creators, and startup builders.",
                 tags: ["Bootstrap 5", "HTML", "CSS"],
                 image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 status: "Live",
@@ -181,41 +181,41 @@ export const config = {
         title: "Get in Touch",
         email: "johnchangsan39@gmail.com",
         address: "Khawlian, Saitual Mizoram, 796261",
-        statusOptions: ["Freelance Projects", "Product Consulting"]
+        statusOptions: ["Freelance Collaboration", "Technical Consulting"]
     },
 
     process: {
         title: "How I Work",
-        description: "A disciplined, collaborative process that turns ideas into dependable production software.",
+        description: "A clear process from idea to production-ready software.",
         steps: [
             {
                 title: "Discovery",
-                description: "Understanding your goals, target audience, and project scope through deep-dive consultations.",
+                description: "Understand goals, constraints, users, and priorities.",
                 icon: Search
             },
             {
                 title: "Planning",
-                description: "Architectural blueprint, technology selection, and milestone-driven roadmap creation.",
+                description: "Define architecture, choose stack, and map realistic milestones.",
                 icon: LayoutDashboard
             },
             {
                 title: "Development",
-                description: "Iterative, test-driven coding with continuous integration and regular progress updates.",
+                description: "Build in iterations with clean standards and regular updates.",
                 icon: Code2
             },
             {
                 title: "Testing",
-                description: "Rigorous quality assurance covering functionality, performance, security, and cross-device compatibility.",
+                description: "Validate reliability, usability, and performance before release.",
                 icon: CheckCheck
             },
             {
                 title: "Deployment",
-                description: "Production environment setup, CI/CD pipeline configuration, and seamless launch coordination.",
+                description: "Deploy with proper setup, rollout checks, and release notes.",
                 icon: UploadCloud
             },
             {
                 title: "Support",
-                description: "Ongoing maintenance, monitoring, feature iteration, and dedicated technical support.",
+                description: "Provide post-launch support, maintenance, and focused improvements.",
                 icon: Headphones
             }
         ]
@@ -226,21 +226,21 @@ export const config = {
         description: "What clients say about working with me.",
         items: [
             {
-                name: "Sarah Mitchell",
-                role: "Product Manager, TechStart Inc",
-                content: "Working with John was an excellent experience. The project was delivered on time with exceptional quality and attention to detail.",
+                name: "Product Client",
+                role: "Operations Lead",
+                content: "John turned complex requirements into a clean system and delivered milestones on schedule.",
                 image: "/profile.jpg"
             },
             {
-                name: "David Chen",
-                role: "CEO, Digital Solutions Ltd",
-                content: "Professional, skilled, and reliable. John transformed our ideas into a beautiful, functional application that exceeded our expectations.",
+                name: "Startup Founder",
+                role: "Founder",
+                content: "Strong technical ownership, clear communication, and excellent execution from planning to deployment.",
                 image: "/profile.jpg"
             },
             {
-                name: "Priya Sharma",
-                role: "Founder, StartupHub",
-                content: "Great communication throughout the project. The technical expertise and problem-solving skills were impressive.",
+                name: "Community Partner",
+                role: "Project Coordinator",
+                content: "The final product was stable, easy to use, and matched our real workflow needs from day one.",
                 image: "/profile.jpg"
             }
         ]
