@@ -1,10 +1,25 @@
-import { AdminRoutePlaceholder } from "@/components/admin/admin-route-placeholder";
+import { AdminPageHeader } from "@/components/admin/admin-page-header";
+import { ProfileForm } from "@/components/admin/profile-form";
+import { getAdminSnapshot } from "@/lib/portfolio/admin-repository";
+import { getAdminSessionState } from "@/lib/supabase/auth";
 
-export default function AdminProfilePage() {
+export default async function AdminProfilePage() {
+  const [snapshot, session] = await Promise.all([
+    getAdminSnapshot(),
+    getAdminSessionState(),
+  ]);
+
   return (
-    <AdminRoutePlaceholder
-      title="Profile editor"
-      description="This page will manage hero copy, biography details, availability, resume links, and the primary personal profile record."
-    />
+    <div className="space-y-6">
+      <AdminPageHeader
+        eyebrow="Profile"
+        title="Edit public profile details"
+        description="Manage the core personal record used across the hero, about section, contact surface, and recruiter-facing metadata."
+      />
+      <ProfileForm
+        profile={snapshot.profile}
+        demoMode={session?.mode === "demo"}
+      />
+    </div>
   );
 }

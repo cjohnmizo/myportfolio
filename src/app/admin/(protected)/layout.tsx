@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { LayoutDashboard, LogOut, Settings, UserCircle2 } from "lucide-react";
+
+import { signOutAction } from "@/app/admin/actions";
+import { DemoModeBanner } from "@/components/admin/demo-mode-banner";
+import { Button } from "@/components/ui/button";
+import { requireAdminSession } from "@/lib/supabase/auth";
 
 const adminNav = [
   { label: "Dashboard", href: "/admin/dashboard" },
@@ -12,18 +18,42 @@ const adminNav = [
   { label: "Media", href: "/admin/media" },
 ];
 
-export default function AdminProtectedLayout({
+export default async function AdminProtectedLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await requireAdminSession();
+
   return (
     <div className="min-h-screen">
-      <div className="mx-auto grid min-h-screen max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[260px_1fr] lg:px-8">
+      <div className="mx-auto grid min-h-screen max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8">
         <aside className="glass-panel rounded-3xl p-5">
-          <Link href="/" className="font-heading text-lg font-semibold text-foreground">
-            cjohnmizo
-          </Link>
+          <div className="flex items-center justify-between gap-3">
+            <Link href="/" className="font-heading text-lg font-semibold text-foreground">
+              cjohnmizo
+            </Link>
+            <div className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted-foreground">
+              {session.mode === "demo" ? "Demo" : "Secure"}
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                {session.mode === "demo" ? (
+                  <Settings className="h-5 w-5" />
+                ) : (
+                  <UserCircle2 className="h-5 w-5" />
+                )}
+              </div>
+              <div>
+                <p className="font-medium text-foreground">{session.userName}</p>
+                <p className="text-xs text-muted-foreground">{session.userEmail}</p>
+              </div>
+            </div>
+          </div>
+
           <nav className="mt-8 flex flex-col gap-2">
             {adminNav.map((item) => (
               <Link
@@ -35,8 +65,26 @@ export default function AdminProtectedLayout({
               </Link>
             ))}
           </nav>
+
+          <div className="mt-8 flex flex-col gap-3">
+            <Button asChild variant="outline">
+              <Link href="/">
+                <LayoutDashboard className="mr-2 h-4 w-4" /> View portfolio
+              </Link>
+            </Button>
+            {session.mode === "authenticated" ? (
+              <form action={signOutAction}>
+                <Button type="submit" variant="ghost" className="w-full justify-start">
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out
+                </Button>
+              </form>
+            ) : null}
+          </div>
         </aside>
-        <div>{children}</div>
+        <div className="space-y-6">
+          {session.mode === "demo" ? <DemoModeBanner /> : null}
+          {children}
+        </div>
       </div>
     </div>
   );

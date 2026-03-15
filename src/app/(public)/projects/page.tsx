@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { PageShell } from "@/components/portfolio/page-shell";
+import { ProjectsExplorer } from "@/components/portfolio/projects-explorer";
 import { SectionHeading } from "@/components/portfolio/section-heading";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Case studies and engineering work from C. John Remthang.",
+  description: "Explore portfolio projects, case studies, and technical builds by C. John Remthang.",
 };
 
 export default async function ProjectsPage() {
@@ -17,36 +14,14 @@ export default async function ProjectsPage() {
 
   return (
     <main className="py-20 sm:py-24">
-      <PageShell>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Project archive"
-          title="Dynamic project routes are now active"
-          description="The archive route is live and drawing from the repository layer. Search, filters, and sorting will land in the public UI stage."
+          title="Searchable case studies with category filters and flexible sorting"
+          description="The full archive is optimized for recruiters and collaborators who want to scan outcomes quickly and dive deeper when a project is especially relevant."
         />
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {snapshot.projects.map((project) => (
-            <Link key={project.id} href={`/projects/${project.slug}`} className="group">
-              <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:border-primary/40">
-                <CardContent className="space-y-4 p-6">
-                  <div className="flex items-center justify-between">
-                    <Badge variant="muted">{project.category}</Badge>
-                    <span className="text-sm text-muted-foreground">{project.year}</span>
-                  </div>
-                  <h2 className="text-2xl font-semibold text-foreground">{project.title}</h2>
-                  <p className="text-sm leading-7 text-muted-foreground">{project.excerpt}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 4).map((item) => (
-                      <Badge key={item} variant="secondary">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </PageShell>
+        <ProjectsExplorer projects={snapshot.projects} />
+      </div>
     </main>
   );
 }

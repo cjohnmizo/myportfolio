@@ -1,10 +1,22 @@
-import { AdminRoutePlaceholder } from "@/components/admin/admin-route-placeholder";
+import { AdminPageHeader } from "@/components/admin/admin-page-header";
+import { SiteSettingsForm } from "@/components/admin/site-settings-form";
+import { getAdminSnapshot } from "@/lib/portfolio/admin-repository";
+import { getAdminSessionState } from "@/lib/supabase/auth";
 
-export default function AdminSettingsPage() {
+export default async function AdminSettingsPage() {
+  const [snapshot, session] = await Promise.all([
+    getAdminSnapshot(),
+    getAdminSessionState(),
+  ]);
+
   return (
-    <AdminRoutePlaceholder
-      title="Site settings"
-      description="Homepage hero content, contact prompts, footer messaging, and SEO metadata will be managed here."
-    />
+    <div className="space-y-6">
+      <AdminPageHeader
+        eyebrow="Settings"
+        title="Manage site messaging and SEO"
+        description="Control the homepage narrative, contact framing, accent colors, and metadata surfaces that shape the public portfolio."
+      />
+      <SiteSettingsForm settings={snapshot.settings} demoMode={session?.mode === "demo"} />
+    </div>
   );
 }

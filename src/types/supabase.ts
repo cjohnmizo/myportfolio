@@ -47,6 +47,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["profiles"]["Insert"]>;
+        Relationships: [];
       };
       projects: {
         Row: {
@@ -98,6 +99,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["projects"]["Insert"]>;
+        Relationships: [];
       };
       project_tech_stack: {
         Row: {
@@ -115,6 +117,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["project_tech_stack"]["Insert"]>;
+        Relationships: [];
       };
       skills: {
         Row: {
@@ -140,6 +143,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["skills"]["Insert"]>;
+        Relationships: [];
       };
       experiences: {
         Row: {
@@ -175,6 +179,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["experiences"]["Insert"]>;
+        Relationships: [];
       };
       education: {
         Row: {
@@ -208,6 +213,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["education"]["Insert"]>;
+        Relationships: [];
       };
       social_links: {
         Row: {
@@ -231,6 +237,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["social_links"]["Insert"]>;
+        Relationships: [];
       };
       site_settings: {
         Row: {
@@ -270,6 +277,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["site_settings"]["Insert"]>;
+        Relationships: [];
       };
       media_assets: {
         Row: {
@@ -291,6 +299,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Database["public"]["Tables"]["media_assets"]["Insert"]>;
+        Relationships: [];
       };
     };
     Views: Record<string, never>;
