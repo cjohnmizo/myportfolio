@@ -1,167 +1,83 @@
-# My Portfolio
+# cjohnmizo.in Portfolio Platform
 
-## ️ Tech Stack
+Premium Next.js portfolio and admin CMS for `cjohnmizo.in`.
 
-This project is built on a modern, strictly typed stack:
+## Stack
 
-| Category | Technology | Description |
-|----------|------------|-------------|
-| **Core** | ![Next.js](https://img.shields.io/badge/-Next.js_14-000000?logo=next.js) | React Framework for Production |
-| **Language** | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) | Static Typing & Type Safety |
-| **Styling** | ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) | Utility-First CSS Framework |
-| **Animation** | ![Framer Motion](https://img.shields.io/badge/-Framer_Motion-0055FF?logo=framer&logoColor=white) | Production-Ready Animation Library |
-| **Hosting** | ![Vercel](https://img.shields.io/badge/-Vercel-000000?logo=vercel&logoColor=white) | Edge Network Deployment |
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- shadcn-style UI primitives
+- Supabase PostgreSQL, Auth, and Storage
+- React Hook Form + Zod
+- Vercel deployment target
 
----
+## What’s included
 
-## 🗺️ Project Architecture (Mindmap)
+- Recruiter-focused public portfolio homepage
+- Searchable project archive and dynamic case study pages
+- GitHub activity section powered by the GitHub API
+- Protected admin route structure with Supabase Auth hooks
+- CMS forms for profile, projects, skills, experience, education, social links, settings, and media
+- Supabase SQL schema with RLS and storage bucket setup
+- Sitemap, robots, manifest, and Open Graph image routes
+- Demo-mode fallback when Supabase credentials are not configured
 
-A visual overview of the project's structure and feature set.
-
-```mermaid
-mindmap
-  root((Full Stack Portfolio))
-    Frontend Layer
-      Next.js 14 App Router
-      React Server Components
-      Framer Motion (Animations)
-      Tailwind CSS (Styling)
-    Design System
-      Theme: Tokyo Night
-      Typography: JetBrains Mono / Fira Code
-      Effects: Glassmorphism / Glow
-    Core Features
-      Hero Section (3D/Typing Effect)
-      Projects Showcase (Grid Layout)
-      Skills Section (Categorized)
-      Command Bar Navigation
-    Optimization
-      SEO (Metadata API)
-      Performance (Image Optimization)
-      Accessibility (ARIA)
-    Deployment
-      Vercel Edge Network
-      CI/CD Pipeline
-```
-
----
-
-## 🚀 Installation & Setup
-
-Follow these steps to run the portfolio locally.
-
-### Prerequisites
-
-- **Node.js** (v18.17.0 or higher)
-- **npm** / **yarn** / **pnpm**
-- **Git**
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/cjohnmizo/myportfolio.git
-cd myportfolio
-```
-
-### 2. Install Dependencies
-
-Using npm:
+## Local development
 
 ```bash
 npm install
-```
-
-### 3. Configure Environment
-
-Create a `.env.local` file in the root directory if you need specific environment variables (though none are strictly required for the base template).
-
-### 4. Run Development Server
-
-```bash
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open `http://localhost:3000`.
 
-### 5. Production Build
-
-To test the production build locally:
+## Verification
 
 ```bash
+npm run lint
+npm run typecheck
 npm run build
-npm start
 ```
 
----
+## Environment variables
 
-## 📂 Project Structure
+Copy the values from `.env.example` and set:
 
-```bash
-.
-├── public/                 # Static assets (images, fonts, favicon)
-├── src/
-│   ├── app/                # Next.js App Router (Pages & Layouts)
-│   │   ├── globals.css     # Global Styles (Theme Variables)
-│   │   ├── layout.tsx      # Root Layout
-│   │   └── page.tsx        # Homepage
-│   ├── components/         # Reusable React Components
-│   │   ├── Navbar.tsx      # Command Bar Navigation
-│   │   ├── Footer.tsx      # Site Footer
-│   │   └── ui/             # Atomic UI Elements (Buttons, Cards)
-│   ├── data/               # Configuration & Static Data
-│   │   └── config.ts       # Site content (Edit this!)
-│   └── lib/                # Utility functions & helpers
-├── next.config.mjs         # Next.js Configuration
-├── tailwind.config.ts      # Tailwind CSS Theme Extension
-└── tsconfig.json           # TypeScript Configuration
-```
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ADMIN_EMAIL`
+- `GITHUB_USERNAME`
 
----
+If Supabase variables are omitted, the public site still renders from typed seed data and the admin renders in demo mode.
 
-## 🛠️ How to Update Content
+## Supabase setup
 
-The entire portfolio is data-driven. You can update **90% of the content** without touching any React code.
+1. Create a Supabase project.
+2. Run [`supabase/migrations/0001_portfolio_platform.sql`](./supabase/migrations/0001_portfolio_platform.sql).
+3. Create an admin user in Supabase Auth.
+4. Insert a matching row into `profiles` with the same `id` as the auth user and `is_admin = true`.
+5. Add your environment variables locally and in Vercel.
 
-### 1. Edit Content (`src/data/config.ts`)
-Open `src/data/config.ts` to change:
-- **Profile:** Name, role, email, social links.
-- **Hero:** Headline, description.
-- **About:** Bio text, stats.
-- **Skills:** Add/remove skills and change proficiency levels.
-- **Projects:** Add new projects (title, description, tags, links).
-- **Contact:** Address, availability status.
+## Deployment
 
-### 2. Update Images
-- Place new images in the `public/` folder.
-- Reference them in `config.ts` (e.g., `image: "/new-project.jpg"`).
+The app is configured for Vercel.
 
-### 3. Change Colors (Theme)
-Edit `src/app/globals.css`:
-- **Dark Mode:** Edit variables under `.dark`.
-- **Light Mode:** Edit variables under `:root`.
+Preview or production deploys require:
 
-### 4. Deploy Updates
-Simply push your changes to GitHub, and Vercel will automatically redeploy:
-```bash
-git add .
-git commit -m "Update portfolio content"
-git push
-```
+- a Vercel account linked to the repo
+- the environment variables above
+- DNS/domain configuration for `cjohnmizo.in`
 
----
+## Key paths
 
-## 🤝 Contributing
-
-Contributions are welcome! If you'd like to improve this template:
-
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+- [`docs/architecture.md`](./docs/architecture.md)
+- [`src/app`](./src/app)
+- [`src/components`](./src/components)
+- [`src/lib`](./src/lib)
+- [`src/validators`](./src/validators)
+- [`supabase/migrations`](./supabase/migrations)

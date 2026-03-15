@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { StorageUploadField } from "@/components/admin/storage-upload-field";
 import type { MediaAsset } from "@/types/portfolio";
 import {
   mediaAssetFormSchema,
@@ -119,6 +120,17 @@ export function MediaAssetManager({
       <Card>
         <CardContent className="p-6">
           <form className="grid gap-5" onSubmit={onSubmit}>
+            <StorageUploadField
+              bucket="media"
+              label="Upload to media bucket"
+              helper="Upload a file, then save or refine its metadata below."
+              disabled={demoMode}
+              onUploaded={(result) => {
+                form.setValue("bucket", result.bucket, { shouldDirty: true });
+                form.setValue("path", result.path, { shouldDirty: true });
+                form.setValue("publicUrl", result.publicUrl, { shouldDirty: true });
+              }}
+            />
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="bucket">Bucket</Label>

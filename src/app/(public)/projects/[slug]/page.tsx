@@ -6,10 +6,12 @@ import { notFound } from "next/navigation";
 
 import { ProjectCard } from "@/components/portfolio/project-card";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
+import { StructuredData } from "@/components/portfolio/structured-data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPortfolioSnapshot, getProjectBySlug } from "@/lib/portfolio/repository";
+import { siteConfig } from "@/lib/site";
 
 export async function generateStaticParams() {
   const snapshot = await getPortfolioSnapshot();
@@ -34,6 +36,9 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.excerpt,
+    alternates: {
+      canonical: `${siteConfig.url}/projects/${project.slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.excerpt,
@@ -68,8 +73,24 @@ export default async function ProjectDetailPage({
     .slice(0, 2);
 
   return (
-    <main className="py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <>
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.title,
+          description: project.excerpt,
+          url: `${siteConfig.url}/projects/${project.slug}`,
+          image: project.coverImage,
+          creator: {
+            "@type": "Person",
+            name: snapshot.profile.fullName,
+          },
+          keywords: project.techStack,
+        }}
+      />
+      <main className="py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <Link
             href="/projects"
@@ -193,7 +214,8 @@ export default async function ProjectDetailPage({
             </div>
           </section>
         ) : null}
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

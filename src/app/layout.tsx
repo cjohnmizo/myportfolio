@@ -37,17 +37,18 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: siteConfig.locale,
     type: "website",
-    images: [siteConfig.defaultOgImage],
+    images: [`${siteConfig.url}/opengraph-image`],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.defaultOgImage],
+    images: [`${siteConfig.url}/twitter-image`],
   },
   alternates: {
     canonical: siteConfig.url,
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

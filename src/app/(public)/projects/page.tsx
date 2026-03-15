@@ -3,10 +3,14 @@ import type { Metadata } from "next";
 import { ProjectsExplorer } from "@/components/portfolio/projects-explorer";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects",
   description: "Explore portfolio projects, case studies, and technical builds by C. John Remthang.",
+  alternates: {
+    canonical: `${siteConfig.url}/projects`,
+  },
 };
 
 export default async function ProjectsPage() {

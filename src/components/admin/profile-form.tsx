@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
+import { StorageUploadField } from "@/components/admin/storage-upload-field";
 import type { Profile } from "@/types/portfolio";
 import {
   profileFormSchema,
@@ -98,6 +99,16 @@ export function ProfileForm({ profile, demoMode }: { profile: Profile; demoMode:
             <div className="space-y-2">
               <Label htmlFor="avatarUrl">Avatar URL</Label>
               <Input id="avatarUrl" {...form.register("avatarUrl")} />
+              <StorageUploadField
+                bucket="avatars"
+                label="Upload avatar"
+                helper="Upload directly to the avatars bucket and populate the field automatically."
+                accept="image/*"
+                disabled={demoMode}
+                onUploaded={(result) =>
+                  form.setValue("avatarUrl", result.publicUrl, { shouldDirty: true })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="resumeUrl">Resume URL</Label>

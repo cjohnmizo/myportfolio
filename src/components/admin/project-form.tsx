@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
+import { StorageUploadField } from "@/components/admin/storage-upload-field";
 import type { Project, ProjectCategory } from "@/types/portfolio";
 import {
   projectFormSchema,
@@ -155,6 +156,16 @@ export function ProjectForm({
             <div className="space-y-2">
               <Label htmlFor="coverImage">Cover image URL</Label>
               <Input id="coverImage" {...form.register("coverImage")} />
+              <StorageUploadField
+                bucket="projects"
+                label="Upload project cover"
+                helper="Upload directly to the projects bucket and populate the cover image field."
+                accept="image/*"
+                disabled={demoMode}
+                onUploaded={(result) =>
+                  form.setValue("coverImage", result.publicUrl, { shouldDirty: true })
+                }
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="galleryImagesText">Gallery images</Label>
