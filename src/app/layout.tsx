@@ -1,68 +1,51 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne } from "next/font/google";
-import "./globals.css";
-import { config } from "@/data/config";
+import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-sans",
+import { siteConfig } from "@/lib/site";
+import "@/app/globals.css";
+
+const sans = Manrope({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
 });
 
-const syne = Syne({
-  variable: "--font-heading",
+const heading = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  variable: "--font-heading",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: config.meta.title,
-    template: `%s | ${config.profile.name}`,
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: config.meta.description,
-  keywords: config.meta.keywords,
-  authors: [{ name: config.meta.author, url: config.meta.url }],
-  creator: config.meta.author,
-  metadataBase: new URL(config.meta.url),
+  description: siteConfig.description,
   openGraph: {
-    title: config.meta.title,
-    description: config.meta.description,
-    url: config.meta.url,
-    siteName: `${config.profile.name} Portfolio`,
-    locale: "en_US",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
     type: "website",
-    images: [
-      {
-        url: "/api/og",
-        width: 1200,
-        height: 630,
-        alt: `${config.profile.name} Portfolio`,
-      },
-    ],
+    images: [siteConfig.defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: config.meta.title,
-    description: config.meta.description,
-    creator: config.meta.twitterHandle,
-    images: ["/api/og"],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.defaultOgImage],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  icons: {
-    icon: "/favicon.ico",
+  alternates: {
+    canonical: siteConfig.url,
   },
 };
 
@@ -72,28 +55,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Prevent flash of wrong theme */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${plusJakartaSans.variable} ${syne.variable} antialiased min-h-screen relative overflow-x-hidden`}
+        className={`${sans.variable} ${heading.variable} ${mono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
-        <div className="site-frame" />
+        <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.16),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(34,197,94,0.14),_transparent_28%),linear-gradient(180deg,#020617_0%,#0f172a_50%,#020617_100%)]" />
         {children}
       </body>
     </html>

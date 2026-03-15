@@ -1,21 +1,24 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="relative z-10 flex min-h-screen items-center justify-center px-4">
-      <section className="surface w-full max-w-lg p-8 text-center sm:p-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">404</p>
-        <h1 className="mt-3 text-3xl font-semibold text-[var(--fg)] sm:text-4xl">Page not found</h1>
-        <p className="mt-4 text-sm leading-7 text-[var(--fg-soft)]">
-          The page you requested is unavailable or has moved.
+    <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 text-center">
+      <div className="glass-panel rounded-3xl px-8 py-12">
+        <p className="section-kicker text-sm text-primary">404</p>
+        <h1 className="mt-4 text-4xl font-semibold text-gradient">
+          This route drifted out of orbit.
+        </h1>
+        <p className="mt-4 max-w-xl text-base text-muted-foreground">
+          The page you requested is not available. Head back to the portfolio hub and keep
+          exploring.
         </p>
-
-        <div className="mt-8">
-          <Link href="/" className="button-primary">
-            Back to Home
-          </Link>
-        </div>
-      </section>
+        <Link
+          href="/"
+          className="mt-8 inline-flex rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5"
+        >
+          Return home
+        </Link>
+      </div>
     </main>
   );
 }
