@@ -5,11 +5,13 @@ import { LoaderCircle, UploadCloud } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import type { UploadBucket } from "@/lib/uploads";
 
 interface UploadResult {
   bucket: string;
   path: string;
   publicUrl: string;
+  storedValue?: string;
 }
 
 export function StorageUploadField({
@@ -20,7 +22,7 @@ export function StorageUploadField({
   accept,
   disabled = false,
 }: {
-  bucket: "avatars" | "projects" | "media" | "resumes";
+  bucket: UploadBucket;
   label: string;
   helper: string;
   onUploaded: (result: UploadResult) => void;
@@ -45,30 +47,35 @@ export function StorageUploadField({
             className="hidden"
             onChange={(event) => {
               const selectedFile = event.target.files?.[0];
+              event.target.value = "";
 
               if (!selectedFile) {
                 return;
               }
 
               startTransition(async () => {
-                const formData = new FormData();
-                formData.set("bucket", bucket);
-                formData.set("file", selectedFile);
+                try {
+                  const formData = new FormData();
+                  formData.set("bucket", bucket);
+                  formData.set("file", selectedFile);
 
-                const response = await fetch("/api/admin/upload", {
-                  method: "POST",
-                  body: formData,
-                });
+                  const response = await fetch("/api/admin/upload", {
+                    method: "POST",
+                    body: formData,
+                  });
 
-                const payload = (await response.json()) as UploadResult & { message?: string };
+                  const payload = (await response.json()) as UploadResult & { message?: string };
 
-                if (!response.ok) {
-                  toast.error(payload.message ?? "Upload failed.");
-                  return;
+                  if (!response.ok) {
+                    toast.error(payload.message ?? "Upload failed.");
+                    return;
+                  }
+
+                  onUploaded(payload);
+                  toast.success("Upload complete.");
+                } catch {
+                  toast.error("Upload failed. Check your connection and try again.");
                 }
-
-                onUploaded(payload);
-                toast.success("Upload complete.");
               });
             }}
           />
