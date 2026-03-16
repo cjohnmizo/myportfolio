@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 
 import { env } from "@/lib/env";
 import { getAdminSessionState } from "@/lib/supabase/auth";
+import { normalizeResumeValue } from "@/lib/resume";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase/service";
 import type { Metric } from "@/types/portfolio";
@@ -194,7 +195,7 @@ export async function saveProfileAction(values: ProfileFormValues): Promise<Acti
     short_bio: parsed.data.shortBio,
     long_bio: parsed.data.longBio,
     avatar_url: parsed.data.avatarUrl,
-    resume_url: normalizeOptional(parsed.data.resumeUrl),
+    resume_url: normalizeResumeValue(parsed.data.resumeUrl),
     github_username: parsed.data.githubUsername,
     years_experience: parsed.data.yearsExperience,
     is_available_for_hire: parsed.data.isAvailableForHire,

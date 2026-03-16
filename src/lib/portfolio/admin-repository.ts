@@ -1,6 +1,7 @@
 import { cache } from "react";
 
 import { portfolioSeed } from "@/lib/portfolio/seeds";
+import { normalizeResumeValue } from "@/lib/resume";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase/service";
 import { sortByOrder } from "@/lib/utils";
 import type { MediaAsset, PortfolioSnapshot } from "@/types/portfolio";
@@ -117,7 +118,7 @@ export const getAdminSnapshot = cache(async (): Promise<AdminSnapshot> => {
       shortBio: profileResult.data.short_bio,
       longBio: profileResult.data.long_bio,
       avatarUrl: profileResult.data.avatar_url,
-      resumeUrl: profileResult.data.resume_url,
+      resumeUrl: normalizeResumeValue(profileResult.data.resume_url),
       githubUsername: profileResult.data.github_username,
       yearsExperience: profileResult.data.years_experience,
       isAvailableForHire: profileResult.data.is_available_for_hire,

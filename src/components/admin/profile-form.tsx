@@ -113,6 +113,18 @@ export function ProfileForm({ profile, demoMode }: { profile: Profile; demoMode:
             <div className="space-y-2">
               <Label htmlFor="resumeUrl">Resume URL</Label>
               <Input id="resumeUrl" {...form.register("resumeUrl")} />
+              <StorageUploadField
+                bucket="resumes"
+                label="Upload resume"
+                helper="Upload a PDF resume and store a durable private reference instead of an expiring signed URL."
+                accept="application/pdf"
+                disabled={demoMode}
+                onUploaded={(result) =>
+                  form.setValue("resumeUrl", result.storedValue ?? result.publicUrl, {
+                    shouldDirty: true,
+                  })
+                }
+              />
             </div>
           </div>
           <div className="grid gap-5 lg:grid-cols-[220px_1fr]">

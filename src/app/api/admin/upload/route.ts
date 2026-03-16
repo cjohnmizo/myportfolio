@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 
+import { createResumeStorageValue } from "@/lib/resume";
 import { isUploadBucket, validateUpload } from "@/lib/uploads";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase/service";
@@ -78,6 +79,7 @@ export async function POST(request: Request) {
       bucket,
       path: filePath,
       publicUrl: signedUrlResult.data.signedUrl,
+      storedValue: createResumeStorageValue(filePath),
     });
   }
 

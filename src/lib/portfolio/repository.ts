@@ -1,6 +1,7 @@
 import { cache } from "react";
 
 import { env } from "@/lib/env";
+import { resolveResumeUrl } from "@/lib/resume";
 import { portfolioSeed } from "@/lib/portfolio/seeds";
 import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { sortByOrder } from "@/lib/utils";
@@ -108,6 +109,7 @@ export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> =
     stack.push(item.label);
     techStackByProject.set(item.project_id, stack);
   }
+  const resolvedResumeUrl = await resolveResumeUrl(profileResult.data.resume_url);
 
   const projects = (projectsResult.data ?? [])
     .filter((project) => project.is_published)
@@ -146,7 +148,7 @@ export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> =
       shortBio: profileResult.data.short_bio,
       longBio: profileResult.data.long_bio,
       avatarUrl: profileResult.data.avatar_url,
-      resumeUrl: profileResult.data.resume_url,
+      resumeUrl: resolvedResumeUrl,
       githubUsername: profileResult.data.github_username,
       yearsExperience: profileResult.data.years_experience,
       isAvailableForHire: profileResult.data.is_available_for_hire,
