@@ -39,7 +39,14 @@ Open `http://localhost:3000`.
 npm run lint
 npm run typecheck
 npm run build
+npm run test:e2e
 ```
+
+For the local browser suite:
+
+- Run `npm run test:e2e:install` once to install Chromium for Playwright.
+- The public smoke coverage runs in demo mode or connected mode.
+- Set `PLAYWRIGHT_ADMIN_EMAIL` and `PLAYWRIGHT_ADMIN_PASSWORD` if you want the authenticated admin smoke flow to run.
 
 ## Environment variables
 

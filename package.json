@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:localhost": "next dev --hostname 127.0.0.1 --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit -p tsconfig.typecheck.json",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:install": "playwright install chromium",
     "format": "prettier --check .",
     "format:write": "prettier --write ."
   },
@@ -44,6 +48,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
