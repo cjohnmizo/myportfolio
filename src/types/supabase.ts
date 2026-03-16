@@ -301,6 +301,30 @@ export interface Database {
         Update: Partial<Database["public"]["Tables"]["media_assets"]["Insert"]>;
         Relationships: [];
       };
+      admin_auth_audit_log: {
+        Row: {
+          id: string;
+          admin_user_id: string | null;
+          email: string;
+          ip_address: string | null;
+          user_agent: string | null;
+          event_type: string;
+          reason: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          admin_user_id?: string | null;
+          email: string;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          event_type: string;
+          reason?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["admin_auth_audit_log"]["Insert"]>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

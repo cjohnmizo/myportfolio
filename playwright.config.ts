@@ -25,7 +25,7 @@ export default defineConfig({
     video: "retain-on-failure",
   },
   webServer: {
-    command: "npm run dev:localhost",
+    command: "npm run start:localhost",
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     stdout: "pipe",

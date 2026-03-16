@@ -64,10 +64,14 @@ If only the public Supabase keys are set, the public site can read from Supabase
 ## Supabase setup
 
 1. Create a Supabase project.
-2. Run [`supabase/migrations/0001_portfolio_platform.sql`](./supabase/migrations/0001_portfolio_platform.sql).
+2. Run the SQL migrations in [`supabase/migrations`](./supabase/migrations), including:
+   [`0001_portfolio_platform.sql`](./supabase/migrations/0001_portfolio_platform.sql) and
+   [`0002_admin_auth_hardening.sql`](./supabase/migrations/0002_admin_auth_hardening.sql).
 3. Create an admin user in Supabase Auth.
 4. Insert a matching row into `profiles` with the same `id` as the auth user and `is_admin = true`.
 5. Add your environment variables locally and in Vercel.
+
+Until `0002_admin_auth_hardening.sql` is applied, login still works, but audit logging and sign-in throttling stay inactive.
 
 ## Admin access guide
 

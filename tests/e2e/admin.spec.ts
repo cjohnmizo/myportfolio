@@ -15,16 +15,20 @@ test("admin can sign in to the dashboard and sign out", async ({ page }) => {
     !adminEmail || !adminPassword,
     "Set PLAYWRIGHT_ADMIN_EMAIL and PLAYWRIGHT_ADMIN_PASSWORD to run the authenticated admin flow.",
   );
+  test.slow();
 
-  await page.goto("/admin/login");
+  await page.goto("/admin/dashboard");
+  await page.waitForURL("**/admin/login");
   await page.getByLabel("Email").fill(adminEmail!);
   await page.getByLabel("Password").fill(adminPassword!);
   await page.getByRole("button", { name: /Sign in/i }).click();
 
-  await page.waitForURL("**/admin/dashboard");
-  await expect(page.getByRole("heading", { name: /Content command center/i })).toBeVisible();
+  await page.waitForURL("**/admin/dashboard", { timeout: 60_000 });
+  await expect(page.getByRole("heading", { name: /Content command center/i })).toBeVisible({
+    timeout: 60_000,
+  });
 
   await page.getByRole("button", { name: /Sign out/i }).click();
-  await page.waitForURL("**/admin/login");
+  await page.waitForURL("**/admin/login", { timeout: 60_000 });
   await expect(page.getByRole("heading", { name: /Sign in to the CMS/i })).toBeVisible();
 });

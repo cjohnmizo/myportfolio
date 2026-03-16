@@ -7,10 +7,11 @@
     "dev:localhost": "next dev --hostname 127.0.0.1 --port 3000",
     "build": "next build",
     "start": "next start",
+    "start:localhost": "next start --hostname 127.0.0.1 --port 3000",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit -p tsconfig.typecheck.json",
-    "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:headed": "npm run build && playwright test --headed",
     "test:e2e:install": "playwright install chromium",
     "format": "prettier --check .",
     "format:write": "prettier --write ."

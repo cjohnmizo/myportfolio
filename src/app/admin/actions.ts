@@ -3,6 +3,12 @@
 import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 
+import {
+  adminSignInThrottleMessage,
+  getAdminAuthRequestContext,
+  isAdminSignInThrottled,
+  recordAdminAuthEvent,
+} from "@/lib/admin-auth";
 import { env } from "@/lib/env";
 import { getAdminSessionState } from "@/lib/supabase/auth";
 import { normalizeResumeValue } from "@/lib/resume";
@@ -123,32 +129,61 @@ export async function signInAction(values: LoginFormValues): Promise<ActionResul
     return error("Supabase is not configured yet. The CMS is currently in demo mode.");
   }
 
-  const supabase = await createServerSupabaseClient();
-  const { error: authError, data } = await supabase.auth.signInWithPassword({
-    email: parsed.data.email,
-    password: parsed.data.password,
-  });
-
-  if (authError) {
-    return error(invalidAdminCredentialsMessage);
-  }
-
+  const requestContext = await getAdminAuthRequestContext(parsed.data.email);
   const serviceClient = createServiceRoleSupabaseClient();
 
   if (!serviceClient) {
     return error("Service role configuration is missing.");
   }
 
-  const { data: profile } = await serviceClient
+  const isThrottled = await isAdminSignInThrottled(serviceClient, requestContext);
+
+  if (isThrottled) {
+    await recordAdminAuthEvent(serviceClient, {
+      context: requestContext,
+      eventType: "sign_in_blocked",
+      reason: "rate_limit",
+    });
+    return error(adminSignInThrottleMessage);
+  }
+
+  const supabase = await createServerSupabaseClient();
+  const { error: authError, data } = await supabase.auth.signInWithPassword({
+    email: requestContext.email ?? parsed.data.email,
+    password: parsed.data.password,
+  });
+
+  if (authError) {
+    await recordAdminAuthEvent(serviceClient, {
+      context: requestContext,
+      eventType: "sign_in_failed",
+      reason: "invalid_credentials",
+    });
+    return error(invalidAdminCredentialsMessage);
+  }
+
+  const { data: profile, error: profileError } = await serviceClient
     .from("profiles")
     .select("is_admin")
     .eq("id", data.user.id)
     .single();
 
-  if (!profile?.is_admin) {
+  if (profileError || !profile?.is_admin) {
     await supabase.auth.signOut();
+    await recordAdminAuthEvent(serviceClient, {
+      context: requestContext,
+      eventType: "sign_in_failed",
+      reason: profileError ? "profile_lookup_failed" : "not_admin",
+      adminUserId: data.user.id,
+    });
     return error(invalidAdminCredentialsMessage);
   }
+
+  await recordAdminAuthEvent(serviceClient, {
+    context: requestContext,
+    eventType: "sign_in_succeeded",
+    adminUserId: data.user.id,
+  });
 
   revalidatePath("/admin");
   return success("Signed in successfully.");
@@ -160,7 +195,23 @@ export async function signOutAction() {
   }
 
   const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   await supabase.auth.signOut();
+
+  const serviceClient = createServiceRoleSupabaseClient();
+
+  if (serviceClient && user?.email) {
+    const requestContext = await getAdminAuthRequestContext(user.email);
+
+    await recordAdminAuthEvent(serviceClient, {
+      context: requestContext,
+      eventType: "sign_out",
+      adminUserId: user.id,
+    });
+  }
+
   revalidatePath("/admin");
 }
 

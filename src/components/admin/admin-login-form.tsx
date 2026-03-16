@@ -57,6 +57,9 @@ export function AdminLoginForm({
           <p className="mt-3 text-sm leading-7 text-muted-foreground">
             Use your admin credentials to manage projects, profile content, SEO messaging, and media.
           </p>
+          <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-400">
+            Repeated failed attempts trigger a temporary lockout.
+          </p>
         </div>
 
         {demoMode ? (
