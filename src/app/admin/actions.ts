@@ -36,6 +36,8 @@ export interface ActionResult {
   message: string;
 }
 
+const invalidAdminCredentialsMessage = "Invalid admin credentials.";
+
 function success(message: string): ActionResult {
   return { status: "success", message };
 }
@@ -128,7 +130,7 @@ export async function signInAction(values: LoginFormValues): Promise<ActionResul
   });
 
   if (authError) {
-    return error(authError.message);
+    return error(invalidAdminCredentialsMessage);
   }
 
   const serviceClient = createServiceRoleSupabaseClient();
@@ -145,7 +147,7 @@ export async function signInAction(values: LoginFormValues): Promise<ActionResul
 
   if (!profile?.is_admin) {
     await supabase.auth.signOut();
-    return error("This account does not have admin access.");
+    return error(invalidAdminCredentialsMessage);
   }
 
   revalidatePath("/admin");

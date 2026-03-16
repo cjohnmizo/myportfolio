@@ -69,13 +69,19 @@ export function AdminLoginForm({
         <form className="grid gap-5" onSubmit={onSubmit}>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="admin@example.com" {...form.register("email")} />
+            <Input
+              id="email"
+              autoComplete="username"
+              placeholder="admin@example.com"
+              {...form.register("email")}
+            />
             <p className="text-xs text-rose-300">{form.formState.errors.email?.message}</p>
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
+              autoComplete="current-password"
               type="password"
               placeholder="Enter your password"
               {...form.register("password")}

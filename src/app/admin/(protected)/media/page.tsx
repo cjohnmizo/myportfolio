@@ -14,7 +14,7 @@ export default async function AdminMediaPage() {
       <AdminPageHeader
         eyebrow="Media"
         title="Manage media asset records"
-        description="Track bucket assignments, alt text, and reusable media references. Direct storage upload wiring is the next integration layer."
+        description="Track bucket assignments, alt text, and reusable media references. Storage uploads can prefill records here before you refine metadata."
       />
       <MediaAssetManager assets={snapshot.mediaAssets} demoMode={session?.mode === "demo"} />
     </div>
