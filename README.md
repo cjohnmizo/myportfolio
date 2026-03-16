@@ -98,6 +98,12 @@ Preview or production deploys require:
 - the environment variables above
 - DNS/domain configuration for `cjohnmizo.in`
 
+## Monitoring
+
+- Vercel Web Analytics and Speed Insights are mounted in the root layout for production traffic.
+- Health check endpoint: `/api/health`
+- Security disclosure file: `/.well-known/security.txt`
+
 ## Key paths
 
 - [`docs/architecture.md`](./docs/architecture.md)

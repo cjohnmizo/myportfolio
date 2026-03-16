@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
 import { Toaster } from "sonner";
 
@@ -64,6 +66,8 @@ export default function RootLayout({
         <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.16),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(34,197,94,0.14),_transparent_28%),linear-gradient(180deg,#020617_0%,#0f172a_50%,#020617_100%)]" />
         {children}
         <Toaster richColors theme="dark" position="top-right" />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
