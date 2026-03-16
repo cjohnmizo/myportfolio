@@ -23,9 +23,6 @@ export function SiteFooter() {
             <Link href="/projects" className="transition hover:text-foreground">
               Projects
             </Link>
-            <Link href="/admin/login" className="transition hover:text-foreground">
-              Admin
-            </Link>
             <Link href="/#contact" className="transition hover:text-foreground">
               Contact
             </Link>

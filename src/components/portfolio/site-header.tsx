@@ -26,12 +26,6 @@ export function SiteHeader() {
           <Link href="/projects" className="transition hover:text-foreground">
             Archive
           </Link>
-          <Link
-            href="/admin/login"
-            className="rounded-full border border-white/10 px-4 py-2 text-foreground transition hover:bg-white/5"
-          >
-            Admin
-          </Link>
         </nav>
         <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
           <Dialog.Trigger asChild>
@@ -67,13 +61,6 @@ export function SiteHeader() {
                   className="rounded-2xl border border-white/5 px-4 py-3 text-base text-foreground transition hover:bg-white/5"
                 >
                   Archive
-                </Link>
-                <Link
-                  href="/admin/login"
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-2xl border border-white/5 px-4 py-3 text-base text-foreground transition hover:bg-white/5"
-                >
-                  Admin
                 </Link>
               </div>
             </Dialog.Content>

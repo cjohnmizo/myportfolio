@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { AdminLoginForm } from "@/components/admin/admin-login-form";
 import { getAdminSessionState } from "@/lib/supabase/auth";
+
+export const metadata: Metadata = {
+  robots: {
+    follow: false,
+    index: false,
+  },
+};
 
 export default async function AdminLoginPage() {
   const session = await getAdminSessionState();

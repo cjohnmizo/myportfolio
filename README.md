@@ -64,11 +64,20 @@ If only the public Supabase keys are set, the public site can read from Supabase
 4. Insert a matching row into `profiles` with the same `id` as the auth user and `is_admin = true`.
 5. Add your environment variables locally and in Vercel.
 
-## Admin login
+## Admin access guide
 
-- Admin URL: `/admin/login`
+The admin login is intentionally hidden from the public navigation and footer.
+
+Use this direct route when you need CMS access:
+
+- URL: `/admin/login`
 - Admin email: `johnchangsan39@gmail.com`
-- Password: intentionally not stored in the repository; set or reset it from Supabase Auth and rotate any temporary password after first sign-in.
+
+Password handling:
+
+- Keep the password out of the repository.
+- Change or reset it from Supabase Auth when needed.
+- Rotate temporary passwords after first sign-in.
 
 ## Deployment
 
