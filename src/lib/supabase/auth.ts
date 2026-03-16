@@ -11,7 +11,7 @@ export interface AdminSessionState {
 }
 
 export async function getAdminSessionState(): Promise<AdminSessionState | null> {
-  if (!env.isSupabaseConfigured) {
+  if (!env.isSupabaseConfigured || !env.isServiceRoleConfigured) {
     return {
       mode: "demo",
       userEmail: "demo@cjohnmizo.in",

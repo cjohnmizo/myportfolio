@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { env } from "@/lib/env";
 import { portfolioSeed } from "@/lib/portfolio/seeds";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import { sortByOrder } from "@/lib/utils";
 import type {
   Metric,
@@ -48,7 +48,12 @@ export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> =
     return getSeedSnapshot();
   }
 
-  const supabase = await createServerSupabaseClient();
+  const supabase = createPublicSupabaseClient();
+
+  if (!supabase) {
+    return getSeedSnapshot();
+  }
+
   const responses = await Promise.all([
     supabase.from("profiles").select("*").limit(1).single(),
     supabase.from("site_settings").select("*").limit(1).single(),

@@ -54,6 +54,7 @@ Copy the values from `.env.example` and set:
 - `GITHUB_USERNAME`
 
 If Supabase variables are omitted, the public site still renders from typed seed data and the admin renders in demo mode.
+If only the public Supabase keys are set, the public site can read from Supabase while admin writes and uploads remain in demo mode until `SUPABASE_SERVICE_ROLE_KEY` is added.
 
 ## Supabase setup
 

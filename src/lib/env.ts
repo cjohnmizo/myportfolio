@@ -1,11 +1,26 @@
 import { z } from "zod";
 
+const optionalEnvString = z.preprocess((value) => {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}, z.string().min(1).optional());
+
 const envSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.string().url().default("https://cjohnmizo.in"),
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
-  ADMIN_EMAIL: z.string().email().optional(),
+  NEXT_PUBLIC_SUPABASE_URL: z.preprocess(
+    (value) => (typeof value === "string" && value.trim().length === 0 ? undefined : value),
+    z.string().url().optional(),
+  ),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: optionalEnvString,
+  SUPABASE_SERVICE_ROLE_KEY: optionalEnvString,
+  ADMIN_EMAIL: z.preprocess(
+    (value) => (typeof value === "string" && value.trim().length === 0 ? undefined : value),
+    z.string().email().optional(),
+  ),
   GITHUB_USERNAME: z.string().default("cjohnmizo"),
 });
 
@@ -18,21 +33,30 @@ const parsed = envSchema.parse({
   GITHUB_USERNAME: process.env.GITHUB_USERNAME,
 });
 
-const supabaseValues = [
+const publicSupabaseValues = [
   parsed.NEXT_PUBLIC_SUPABASE_URL,
   parsed.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  parsed.SUPABASE_SERVICE_ROLE_KEY,
 ];
 
-const supabaseValuesPresent = supabaseValues.filter(Boolean).length;
+const publicSupabaseValuesPresent = publicSupabaseValues.filter(Boolean).length;
 
-if (supabaseValuesPresent > 0 && supabaseValuesPresent < supabaseValues.length) {
+if (
+  publicSupabaseValuesPresent > 0 &&
+  publicSupabaseValuesPresent < publicSupabaseValues.length
+) {
   throw new Error(
-    "Supabase configuration is partial. Set NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, and SUPABASE_SERVICE_ROLE_KEY together.",
+    "Supabase public configuration is partial. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY together.",
+  );
+}
+
+if (parsed.SUPABASE_SERVICE_ROLE_KEY && publicSupabaseValuesPresent !== 2) {
+  throw new Error(
+    "SUPABASE_SERVICE_ROLE_KEY requires NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to be set as well.",
   );
 }
 
 export const env = {
   ...parsed,
-  isSupabaseConfigured: supabaseValuesPresent === supabaseValues.length,
+  isSupabaseConfigured: publicSupabaseValuesPresent === publicSupabaseValues.length,
+  isServiceRoleConfigured: Boolean(parsed.SUPABASE_SERVICE_ROLE_KEY),
 };

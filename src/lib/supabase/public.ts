@@ -3,16 +3,16 @@ import { createClient } from "@supabase/supabase-js";
 import { env } from "@/lib/env";
 import type { Database } from "@/types/supabase";
 
-let serviceClient: ReturnType<typeof createClient<Database>> | null = null;
+let publicClient: ReturnType<typeof createClient<Database>> | null = null;
 
-export function createServiceRoleSupabaseClient() {
-  if (!env.isSupabaseConfigured || !env.isServiceRoleConfigured) {
+export function createPublicSupabaseClient() {
+  if (!env.isSupabaseConfigured) {
     return null;
   }
 
-  serviceClient ??= createClient<Database>(
+  publicClient ??= createClient<Database>(
     env.NEXT_PUBLIC_SUPABASE_URL!,
-    env.SUPABASE_SERVICE_ROLE_KEY!,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       auth: {
         persistSession: false,
@@ -21,5 +21,5 @@ export function createServiceRoleSupabaseClient() {
     },
   );
 
-  return serviceClient;
+  return publicClient;
 }
