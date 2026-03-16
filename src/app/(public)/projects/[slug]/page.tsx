@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { ProjectCard } from "@/components/portfolio/project-card";
@@ -118,13 +118,6 @@ export default async function ProjectDetailPage({
                 <Button asChild>
                   <Link href={project.demoUrl} target="_blank">
                     Live demo <ArrowUpRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              ) : null}
-              {project.githubUrl ? (
-                <Button asChild variant="outline">
-                  <Link href={project.githubUrl} target="_blank">
-                    <Github className="mr-2 h-4 w-4" /> Source
                   </Link>
                 </Button>
               ) : null}

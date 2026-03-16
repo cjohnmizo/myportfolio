@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { TiltCard } from "@/components/portfolio/tilt-card";
 import { Badge } from "@/components/ui/badge";
@@ -62,15 +62,6 @@ export function ProjectCard({
             >
               View case study <ArrowUpRight className="ml-2 h-4 w-4" />
             </Link>
-            {project.githubUrl ? (
-              <Link
-                href={project.githubUrl}
-                target="_blank"
-                className="inline-flex items-center text-sm text-muted-foreground transition hover:text-foreground"
-              >
-                <Github className="mr-2 h-4 w-4" /> Source
-              </Link>
-            ) : null}
           </div>
         </CardContent>
       </Card>
