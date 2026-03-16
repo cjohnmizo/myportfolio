@@ -64,6 +64,12 @@ If only the public Supabase keys are set, the public site can read from Supabase
 4. Insert a matching row into `profiles` with the same `id` as the auth user and `is_admin = true`.
 5. Add your environment variables locally and in Vercel.
 
+## Admin login
+
+- Admin URL: `/admin/login`
+- Admin email: `johnchangsan39@gmail.com`
+- Password: intentionally not stored in the repository; set or reset it from Supabase Auth and rotate any temporary password after first sign-in.
+
 ## Deployment
 
 The app is configured for Vercel.
