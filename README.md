@@ -17,7 +17,6 @@ Premium Next.js portfolio and admin CMS for `cjohnmizo.in`.
 
 - Recruiter-focused public portfolio homepage
 - Searchable project archive and dynamic case study pages
-- GitHub activity section powered by the GitHub API
 - Protected admin route structure with Supabase Auth hooks
 - CMS forms for profile, projects, skills, experience, education, social links, settings, and media
 - Supabase SQL schema with RLS and storage bucket setup
@@ -51,7 +50,6 @@ Copy the values from `.env.example` and set:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `ADMIN_EMAIL`
-- `GITHUB_USERNAME`
 
 If Supabase variables are omitted, the public site still renders from typed seed data and the admin renders in demo mode.
 If only the public Supabase keys are set, the public site can read from Supabase while admin writes and uploads remain in demo mode until `SUPABASE_SERVICE_ROLE_KEY` is added.

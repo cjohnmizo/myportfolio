@@ -10,7 +10,6 @@ export const siteConfig = {
     "Premium developer portfolio and admin CMS for C. John Remthang, built with Next.js, Supabase, and a recruiter-first product experience.",
   locale: "en_US",
   adminEmail: env.ADMIN_EMAIL,
-  githubUsername: env.GITHUB_USERNAME,
   defaultOgImage: "/profile.jpg",
   navItems: [
     { label: "About", href: "/#about" },

@@ -21,7 +21,6 @@ const envSchema = z.object({
     (value) => (typeof value === "string" && value.trim().length === 0 ? undefined : value),
     z.string().email().optional(),
   ),
-  GITHUB_USERNAME: z.string().default("cjohnmizo"),
 });
 
 const parsed = envSchema.parse({
@@ -30,7 +29,6 @@ const parsed = envSchema.parse({
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
-  GITHUB_USERNAME: process.env.GITHUB_USERNAME,
 });
 
 const publicSupabaseValues = [

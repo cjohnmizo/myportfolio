@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { PublicHome } from "@/components/portfolio/public-home";
 import { StructuredData } from "@/components/portfolio/structured-data";
-import { getGitHubActivity } from "@/lib/portfolio/github";
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
 import { siteConfig } from "@/lib/site";
 
@@ -28,10 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [snapshot, githubActivity] = await Promise.all([
-    getPortfolioSnapshot(),
-    getGitHubActivity(),
-  ]);
+  const snapshot = await getPortfolioSnapshot();
 
   return (
     <>
@@ -57,7 +53,7 @@ export default async function HomePage() {
           description: snapshot.settings.seoDescription,
         }}
       />
-      <PublicHome snapshot={snapshot} githubActivity={githubActivity} />
+      <PublicHome snapshot={snapshot} />
     </>
   );
 }
