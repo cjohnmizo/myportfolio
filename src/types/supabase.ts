@@ -14,7 +14,7 @@ export interface Database {
           id: string;
           full_name: string;
           headline: string;
-          current_role: string;
+          current_position: string;
           location: string;
           email: string;
           short_bio: string;
@@ -32,7 +32,7 @@ export interface Database {
           id?: string;
           full_name: string;
           headline: string;
-          current_role: string;
+          current_position: string;
           location: string;
           email: string;
           short_bio: string;

@@ -140,7 +140,7 @@ export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> =
       id: profileResult.data.id,
       fullName: profileResult.data.full_name,
       headline: profileResult.data.headline,
-      currentRole: profileResult.data.current_role,
+      currentRole: profileResult.data.current_position,
       location: profileResult.data.location,
       email: profileResult.data.email,
       shortBio: profileResult.data.short_bio,

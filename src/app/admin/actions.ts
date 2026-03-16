@@ -188,7 +188,7 @@ export async function saveProfileAction(values: ProfileFormValues): Promise<Acti
     id: profileId,
     full_name: parsed.data.fullName,
     headline: parsed.data.headline,
-    current_role: parsed.data.currentRole,
+    current_position: parsed.data.currentRole,
     location: parsed.data.location,
     email: parsed.data.email,
     short_bio: parsed.data.shortBio,
