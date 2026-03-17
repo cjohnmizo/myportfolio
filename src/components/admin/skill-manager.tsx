@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Save, Plus } from "lucide-react";
@@ -38,6 +39,7 @@ export function SkillManager({
   skills: Skill[];
   demoMode: boolean;
 }) {
+  const router = useRouter();
   const [selectedId, setSelectedId] = useState<string | null>(skills[0]?.id ?? null);
   const [isPending, startTransition] = useTransition();
   const form = useForm<SkillFormInput, unknown, SkillFormValues>({
@@ -74,6 +76,7 @@ export function SkillManager({
       }
 
       toast.success(result.message);
+      router.refresh();
     });
   });
 
@@ -124,6 +127,7 @@ export function SkillManager({
       <Card>
         <CardContent className="p-6">
           <form className="grid gap-5" onSubmit={onSubmit}>
+            <input type="hidden" {...form.register("id")} />
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="name">Skill name</Label>

@@ -96,6 +96,7 @@ export function ProjectForm({
     <Card>
       <CardContent className="p-6">
         <form className="grid gap-5" onSubmit={onSubmit}>
+          <input type="hidden" {...form.register("id")} />
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="title">Project title</Label>

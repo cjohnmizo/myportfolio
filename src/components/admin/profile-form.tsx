@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Save } from "lucide-react";
@@ -22,6 +23,7 @@ import {
 } from "@/validators/admin";
 
 export function ProfileForm({ profile, demoMode }: { profile: Profile; demoMode: boolean }) {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm<ProfileFormInput, unknown, ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -56,6 +58,7 @@ export function ProfileForm({ profile, demoMode }: { profile: Profile; demoMode:
       }
 
       toast.success(result.message);
+      router.refresh();
     });
   });
 
@@ -63,6 +66,7 @@ export function ProfileForm({ profile, demoMode }: { profile: Profile; demoMode:
     <Card>
       <CardContent className="p-6">
         <form className="grid gap-5" onSubmit={onSubmit}>
+          <input type="hidden" {...form.register("id")} />
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="fullName">Full name</Label>

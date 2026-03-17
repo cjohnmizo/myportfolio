@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Save } from "lucide-react";
@@ -26,6 +27,7 @@ export function SiteSettingsForm({
   settings: SiteSettings;
   demoMode: boolean;
 }) {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm<SiteSettingsFormInput, unknown, SiteSettingsFormValues>({
     resolver: zodResolver(siteSettingsFormSchema),
@@ -42,6 +44,7 @@ export function SiteSettingsForm({
       }
 
       toast.success(result.message);
+      router.refresh();
     });
   });
 
@@ -49,6 +52,7 @@ export function SiteSettingsForm({
     <Card>
       <CardContent className="p-6">
         <form className="grid gap-5" onSubmit={onSubmit}>
+          <input type="hidden" {...form.register("id")} />
           <div className="space-y-2">
             <Label htmlFor="heroEyebrow">Hero eyebrow</Label>
             <Input id="heroEyebrow" {...form.register("heroEyebrow")} />

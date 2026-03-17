@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, Save } from "lucide-react";
@@ -38,6 +39,7 @@ export function MediaAssetManager({
   assets: MediaAsset[];
   demoMode: boolean;
 }) {
+  const router = useRouter();
   const [selectedId, setSelectedId] = useState<string | null>(assets[0]?.id ?? null);
   const [isPending, startTransition] = useTransition();
   const form = useForm<MediaAssetFormInput, unknown, MediaAssetFormValues>({
@@ -71,6 +73,7 @@ export function MediaAssetManager({
       }
 
       toast.success(result.message);
+      router.refresh();
     });
   });
 
@@ -120,6 +123,7 @@ export function MediaAssetManager({
       <Card>
         <CardContent className="p-6">
           <form className="grid gap-5" onSubmit={onSubmit}>
+            <input type="hidden" {...form.register("id")} />
             <StorageUploadField
               bucket="media"
               label="Upload to media bucket"
