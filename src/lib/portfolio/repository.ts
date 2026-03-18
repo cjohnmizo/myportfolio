@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 import { env } from "@/lib/env";
 import { resolveResumeUrl } from "@/lib/resume";
@@ -44,7 +44,8 @@ function mapProjectMetrics(value: unknown): Metric[] {
   return value as Metric[];
 }
 
-export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> => {
+export async function getPortfolioSnapshot(): Promise<PortfolioSnapshot> {
+  noStore();
   if (!env.isSupabaseConfigured) {
     return getSeedSnapshot();
   }
@@ -217,7 +218,7 @@ export const getPortfolioSnapshot = cache(async (): Promise<PortfolioSnapshot> =
       isPublished: socialLink.is_published,
     })),
   };
-});
+}
 
 export async function getProjectBySlug(slug: string) {
   const snapshot = await getPortfolioSnapshot();

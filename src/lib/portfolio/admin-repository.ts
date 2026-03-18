@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { unstable_noStore as noStore } from "next/cache";
 
 import { portfolioSeed } from "@/lib/portfolio/seeds";
 import { normalizeResumeValue } from "@/lib/resume";
@@ -42,7 +42,8 @@ function getDemoSnapshot(): AdminSnapshot {
   };
 }
 
-export const getAdminSnapshot = cache(async (): Promise<AdminSnapshot> => {
+export async function getAdminSnapshot(): Promise<AdminSnapshot> {
+  noStore();
   const supabase = createServiceRoleSupabaseClient();
 
   if (!supabase) {
@@ -241,4 +242,4 @@ export const getAdminSnapshot = cache(async (): Promise<AdminSnapshot> => {
       createdAt: asset.created_at,
     })),
   };
-});
+}
