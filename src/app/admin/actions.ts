@@ -61,6 +61,10 @@ function normalizeOptional(value?: string) {
   return trimmed.length > 0 ? trimmed : null;
 }
 
+function resolveRecordId(value?: string) {
+  return normalizeOptional(value) ?? randomUUID();
+}
+
 function parseLines(value: string) {
   return value
     .split(/\r?\n/)
@@ -277,7 +281,7 @@ export async function saveSiteSettingsAction(
     return error("Admin actions are unavailable until Supabase is configured.");
   }
 
-  const settingsId = parsed.data.id || randomUUID();
+  const settingsId = resolveRecordId(parsed.data.id);
   const { error: upsertError } = await client.from("site_settings").upsert({
     id: settingsId,
     hero_eyebrow: parsed.data.heroEyebrow,
@@ -316,7 +320,7 @@ export async function saveProjectAction(values: ProjectFormValues): Promise<Acti
     return error("Admin actions are unavailable until Supabase is configured.");
   }
 
-  const projectId = parsed.data.id || randomUUID();
+  const projectId = resolveRecordId(parsed.data.id);
   const payload = {
     id: projectId,
     slug: parsed.data.slug,
@@ -407,7 +411,7 @@ export async function saveSkillAction(values: SkillFormValues): Promise<ActionRe
   }
 
   const { error: upsertError } = await client.from("skills").upsert({
-    id: parsed.data.id || randomUUID(),
+    id: resolveRecordId(parsed.data.id),
     name: parsed.data.name,
     category: parsed.data.category,
     proficiency: parsed.data.proficiency,
@@ -457,7 +461,7 @@ export async function saveExperienceAction(
   }
 
   const { error: upsertError } = await client.from("experiences").upsert({
-    id: parsed.data.id || randomUUID(),
+    id: resolveRecordId(parsed.data.id),
     company: parsed.data.company,
     role: parsed.data.role,
     location: parsed.data.location,
@@ -515,7 +519,7 @@ export async function saveEducationAction(
   }
 
   const { error: upsertError } = await client.from("education").upsert({
-    id: parsed.data.id || randomUUID(),
+    id: resolveRecordId(parsed.data.id),
     institution: parsed.data.institution,
     degree: parsed.data.degree,
     field: parsed.data.field,
@@ -569,7 +573,7 @@ export async function saveSocialLinkAction(
   }
 
   const { error: upsertError } = await client.from("social_links").upsert({
-    id: parsed.data.id || randomUUID(),
+    id: resolveRecordId(parsed.data.id),
     label: parsed.data.label,
     platform: parsed.data.platform,
     url: parsed.data.url,
@@ -621,7 +625,7 @@ export async function saveMediaAssetAction(
   }
 
   const { error: upsertError } = await client.from("media_assets").upsert({
-    id: parsed.data.id || randomUUID(),
+    id: resolveRecordId(parsed.data.id),
     bucket: parsed.data.bucket,
     path: parsed.data.path,
     public_url: parsed.data.publicUrl,

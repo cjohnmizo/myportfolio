@@ -1,6 +1,20 @@
 import { z } from "zod";
 
 const optionalString = z.string().trim().optional().default("");
+const optionalUuid = z
+  .string()
+  .trim()
+  .refine((value) => value.length === 0 || z.string().uuid().safeParse(value).success, {
+    message: "Invalid record identifier.",
+  })
+  .optional()
+  .transform((value) => {
+    if (!value) {
+      return undefined;
+    }
+
+    return value.length > 0 ? value : undefined;
+  });
 const projectCategories = [
   "platform",
   "web-app",
@@ -24,7 +38,7 @@ export const loginFormSchema = z.object({
 });
 
 export const profileFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   fullName: z.string().min(2),
   headline: z.string().min(8),
   currentRole: z.string().min(2),
@@ -40,7 +54,7 @@ export const profileFormSchema = z.object({
 });
 
 export const siteSettingsFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   heroEyebrow: z.string().min(6),
   heroTitle: z.string().min(12),
   heroSubtitle: z.string().min(12),
@@ -57,7 +71,7 @@ export const siteSettingsFormSchema = z.object({
 });
 
 export const projectFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   slug: z.string().min(3),
   title: z.string().min(3),
   excerpt: z.string().min(20),
@@ -81,7 +95,7 @@ export const projectFormSchema = z.object({
 });
 
 export const skillFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   name: z.string().min(2),
   category: z.string().min(2),
   proficiency: z.coerce.number().min(0).max(100),
@@ -91,7 +105,7 @@ export const skillFormSchema = z.object({
 });
 
 export const experienceFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   company: z.string().min(2),
   role: z.string().min(2),
   location: z.string().min(2),
@@ -106,7 +120,7 @@ export const experienceFormSchema = z.object({
 });
 
 export const educationFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   institution: z.string().min(2),
   degree: z.string().min(2),
   field: z.string().min(2),
@@ -120,7 +134,7 @@ export const educationFormSchema = z.object({
 });
 
 export const socialLinkFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   label: z.string().min(2),
   platform: z.enum(socialPlatforms),
   url: z.string().url(),
@@ -129,7 +143,7 @@ export const socialLinkFormSchema = z.object({
 });
 
 export const mediaAssetFormSchema = z.object({
-  id: optionalString,
+  id: optionalUuid,
   bucket: z.string().min(2),
   path: z.string().min(2),
   publicUrl: z.string().url(),
