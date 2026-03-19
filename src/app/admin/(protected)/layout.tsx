@@ -3,6 +3,7 @@ import { LayoutDashboard, LogOut, Settings, UserCircle2 } from "lucide-react";
 
 import { signOutAction } from "@/app/admin/actions";
 import { DemoModeBanner } from "@/components/admin/demo-mode-banner";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { requireAdminSession } from "@/lib/supabase/auth";
 
@@ -30,8 +31,8 @@ export default async function AdminProtectedLayout({
       <div className="mx-auto grid min-h-screen max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8">
         <aside className="glass-panel rounded-3xl p-5">
           <div className="flex items-center justify-between gap-3">
-            <Link href="/" className="font-heading text-lg font-semibold text-foreground">
-              cjohnmizo
+            <Link href="/" aria-label="Return to portfolio" className="transition hover:opacity-95">
+              <BrandLogo showTagline={false} />
             </Link>
             <div className="rounded-full border border-white/10 px-3 py-1 text-xs text-muted-foreground">
               {session.mode === "demo" ? "Demo" : "Secure"}

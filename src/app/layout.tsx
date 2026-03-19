@@ -29,6 +29,13 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.shortName,
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
+    shortcut: ["/favicon.svg"],
+  },
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
