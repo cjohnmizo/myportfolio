@@ -8,6 +8,16 @@ export const siteConfig = {
   title: "Principal-level Full-Stack Developer Portfolio",
   description:
     "Premium developer portfolio and admin CMS for C. John Remthang, built with Next.js, Supabase, and a recruiter-first product experience.",
+  keywords: [
+    "C. John Remthang",
+    "cjohnmizo",
+    "full-stack developer",
+    "software engineer",
+    "Next.js portfolio",
+    "TypeScript developer",
+    "Supabase",
+    "developer portfolio",
+  ],
   locale: "en_US",
   adminEmail: env.ADMIN_EMAIL,
   defaultOgImage: "/profile.jpg",

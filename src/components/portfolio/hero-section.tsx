@@ -17,7 +17,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
           <div className="space-y-6">
             <Badge>{snapshot.settings.heroEyebrow}</Badge>
             <div className="space-y-4">
-              <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-gradient sm:text-6xl xl:text-7xl">
+              <h1 className="max-w-4xl font-mono text-5xl font-semibold tracking-tight text-gradient sm:text-6xl xl:text-7xl">
                 {snapshot.settings.heroTitle}
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-muted-foreground">

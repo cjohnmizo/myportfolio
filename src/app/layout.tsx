@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
 import { Toaster } from "sonner";
 
+import { env } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
 import "@/app/globals.css";
 
@@ -27,11 +28,21 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.shortName,
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  verification: env.GOOGLE_SITE_VERIFICATION
+    ? {
+        google: env.GOOGLE_SITE_VERIFICATION,
+      }
+    : undefined,
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,

@@ -9,8 +9,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const snapshot = await getPortfolioSnapshot();
 
   return {
-    title: snapshot.settings.seoTitle,
+    title: {
+      absolute: snapshot.settings.seoTitle,
+    },
     description: snapshot.settings.seoDescription,
+    alternates: {
+      canonical: siteConfig.url,
+    },
     openGraph: {
       title: snapshot.settings.seoTitle,
       description: snapshot.settings.seoDescription,
