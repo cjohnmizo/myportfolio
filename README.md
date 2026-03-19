@@ -56,10 +56,12 @@ Copy the values from `.env.example` and set:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `GOOGLE_SITE_VERIFICATION`
 - `ADMIN_EMAIL`
 
 If Supabase variables are omitted, the public site still renders from typed seed data and the admin renders in demo mode.
 If only the public Supabase keys are set, the public site can read from Supabase while admin writes and uploads remain in demo mode until `SUPABASE_SERVICE_ROLE_KEY` is added.
+`GOOGLE_SITE_VERIFICATION` is optional and is only needed if you verify a URL-prefix property in Google Search Console via the HTML meta tag method.
 
 ## Supabase setup
 
@@ -97,6 +99,19 @@ Preview or production deploys require:
 - a Vercel account linked to the repo
 - the environment variables above
 - DNS/domain configuration for `cjohnmizo.in`
+
+## Search Console
+
+Recommended path:
+
+1. Add `cjohnmizo.in` as a Domain property in Google Search Console.
+2. Use the DNS TXT verification token that Google gives you.
+3. Add that TXT record in Vercel DNS because the domain nameservers already point to Vercel.
+4. After verification succeeds, submit `https://cjohnmizo.in/sitemap.xml`.
+
+Alternative path:
+
+- If you choose a URL-prefix property instead of a Domain property, set `GOOGLE_SITE_VERIFICATION` in Vercel and redeploy so the verification meta tag is rendered in the site head.
 
 ## Monitoring
 
