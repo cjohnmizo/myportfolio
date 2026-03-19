@@ -10,6 +10,10 @@ import {
   recordAdminAuthEvent,
 } from "@/lib/admin-auth";
 import {
+  generateProjectContent,
+  type GeneratedProjectContent,
+} from "@/lib/ai/project-generator";
+import {
   generateSiteSettingsCopy,
   type GeneratedSiteSettings,
 } from "@/lib/ai/site-settings-generator";
@@ -26,6 +30,7 @@ import {
   loginFormSchema,
   mediaAssetFormSchema,
   profileFormSchema,
+  projectGenerationSchema,
   projectFormSchema,
   siteSettingsGenerationSchema,
   siteSettingsFormSchema,
@@ -36,6 +41,7 @@ import {
   type LoginFormValues,
   type MediaAssetFormValues,
   type ProfileFormValues,
+  type ProjectGenerationValues,
   type ProjectFormValues,
   type SiteSettingsGenerationValues,
   type SiteSettingsFormValues,
@@ -52,6 +58,10 @@ export interface SiteSettingsGenerationResult extends ActionResult {
   data?: GeneratedSiteSettings;
 }
 
+export interface ProjectContentGenerationResult extends ActionResult {
+  data?: GeneratedProjectContent;
+}
+
 const invalidAdminCredentialsMessage = "Invalid admin credentials.";
 
 function success(message: string): ActionResult {
@@ -62,7 +72,7 @@ function error(message: string): ActionResult {
   return { status: "error", message };
 }
 
-function generationError(message: string): SiteSettingsGenerationResult {
+function generationError(message: string): ActionResult {
   return { status: "error", message };
 }
 
@@ -348,6 +358,42 @@ export async function generateSiteSettingsContentAction(
     return {
       status: "success",
       message: "AI draft generated. Review and save any edits you want to keep.",
+      data: generated,
+    };
+  } catch (caughtError) {
+    return generationError(
+      caughtError instanceof Error ? caughtError.message : "Unable to generate AI content.",
+    );
+  }
+}
+
+export async function generateProjectContentAction(
+  values: ProjectGenerationValues,
+): Promise<ProjectContentGenerationResult> {
+  const parsed = projectGenerationSchema.safeParse(values);
+
+  if (!parsed.success) {
+    return generationError(
+      parsed.error.issues[0]?.message ?? "AI generation input is invalid.",
+    );
+  }
+
+  const session = await getAdminSessionState();
+
+  if (!session) {
+    return generationError("Sign in to use the AI content generator.");
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return generationError("Set OPENAI_API_KEY to use the AI content generator.");
+  }
+
+  try {
+    const generated = await generateProjectContent(parsed.data);
+
+    return {
+      status: "success",
+      message: "AI project draft generated. Review and save any edits you want to keep.",
       data: generated,
     };
   } catch (caughtError) {

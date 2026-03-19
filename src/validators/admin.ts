@@ -81,6 +81,25 @@ export const siteSettingsGenerationSchema = z.object({
   targetAudience: z.string().min(3),
 });
 
+export const projectGenerationSchema = z.object({
+  fullName: z.string().min(2),
+  headline: z.string().min(6),
+  currentRole: z.string().min(2),
+  title: z.string().min(3, "Add a project title before generating copy."),
+  category: z.enum(projectCategories),
+  status: z.string().min(2),
+  year: z.string().regex(/^\d{4}$/),
+  techStackText: z.string().min(2, "Add at least one technology before generating copy."),
+  brief: z.string().min(20, "Add a stronger brief so AI has enough direction."),
+  tone: z.string().min(3),
+  targetAudience: z.string().min(3),
+  currentExcerpt: optionalString,
+  currentDescription: optionalString,
+  currentChallenge: optionalString,
+  currentSolution: optionalString,
+  currentImpact: optionalString,
+});
+
 export const projectFormSchema = z.object({
   id: optionalUuid,
   slug: z.string().min(3),
@@ -169,6 +188,8 @@ export type SiteSettingsFormInput = z.input<typeof siteSettingsFormSchema>;
 export type SiteSettingsFormValues = z.output<typeof siteSettingsFormSchema>;
 export type SiteSettingsGenerationInput = z.input<typeof siteSettingsGenerationSchema>;
 export type SiteSettingsGenerationValues = z.output<typeof siteSettingsGenerationSchema>;
+export type ProjectGenerationInput = z.input<typeof projectGenerationSchema>;
+export type ProjectGenerationValues = z.output<typeof projectGenerationSchema>;
 export type ProjectFormInput = z.input<typeof projectFormSchema>;
 export type ProjectFormValues = z.output<typeof projectFormSchema>;
 export type SkillFormInput = z.input<typeof skillFormSchema>;

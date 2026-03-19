@@ -1,5 +1,7 @@
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { ProjectForm } from "@/components/admin/project-form";
+import { env } from "@/lib/env";
+import { getAdminSnapshot } from "@/lib/portfolio/admin-repository";
 import { getAdminSessionState } from "@/lib/supabase/auth";
 
 const newProject = {
@@ -27,7 +29,10 @@ const newProject = {
 };
 
 export default async function AdminProjectNewPage() {
-  const session = await getAdminSessionState();
+  const [snapshot, session] = await Promise.all([
+    getAdminSnapshot(),
+    getAdminSessionState(),
+  ]);
 
   return (
     <div className="space-y-6">
@@ -36,7 +41,12 @@ export default async function AdminProjectNewPage() {
         title="Create a new project"
         description="Add a new case study, define the delivery story, and control how it appears across the portfolio."
       />
-      <ProjectForm project={newProject} demoMode={session?.mode === "demo"} />
+      <ProjectForm
+        project={newProject}
+        profile={snapshot.profile}
+        demoMode={session?.mode === "demo"}
+        aiEnabled={Boolean(env.OPENAI_API_KEY)}
+      />
     </div>
   );
 }

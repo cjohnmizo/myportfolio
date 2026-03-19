@@ -1,13 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Save } from "lucide-react";
+import { Save, Sparkles } from "lucide-react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 
-import { saveProjectAction } from "@/app/admin/actions";
+import {
+  generateProjectContentAction,
+  saveProjectAction,
+} from "@/app/admin/actions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,7 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { StorageUploadField } from "@/components/admin/storage-upload-field";
-import type { Project, ProjectCategory } from "@/types/portfolio";
+import type { Profile, Project, ProjectCategory } from "@/types/portfolio";
 import {
   projectFormSchema,
   type ProjectFormInput,
@@ -41,13 +44,29 @@ function formatMetrics(project: Project) {
 
 export function ProjectForm({
   project,
+  profile,
   demoMode,
+  aiEnabled,
 }: {
   project: Project;
+  profile: Profile;
   demoMode: boolean;
+  aiEnabled: boolean;
 }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [isGenerating, startGenerating] = useTransition();
+  const [generatorBrief, setGeneratorBrief] = useState(
+    project.title
+      ? `Frame ${project.title} as a polished case study that highlights strong product thinking, clean execution, and believable business impact.`
+      : "Frame this project as a polished case study that highlights strong product thinking, clean execution, and believable business impact.",
+  );
+  const [generatorTone, setGeneratorTone] = useState(
+    "confident, polished, credible, and recruiter-friendly",
+  );
+  const [generatorAudience, setGeneratorAudience] = useState(
+    "recruiters, hiring managers, product leaders, founders, and serious clients",
+  );
   const form = useForm<ProjectFormInput, unknown, ProjectFormValues>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
@@ -76,6 +95,56 @@ export function ProjectForm({
   });
   const isFeatured = useWatch({ control: form.control, name: "isFeatured" });
   const isPublished = useWatch({ control: form.control, name: "isPublished" });
+  const projectTitle = useWatch({ control: form.control, name: "title" });
+  const techStackText = useWatch({ control: form.control, name: "techStackText" });
+
+  const applyGeneratedContent = (generated: Partial<ProjectFormValues>) => {
+    const currentValues = form.getValues();
+
+    (Object.keys(generated) as Array<keyof ProjectFormValues>).forEach((key) => {
+      const nextValue = generated[key];
+
+      if (typeof nextValue === "string" && nextValue !== currentValues[key]) {
+        form.setValue(key, nextValue, {
+          shouldDirty: true,
+          shouldTouch: true,
+          shouldValidate: true,
+        });
+      }
+    });
+  };
+
+  const onGenerate = () => {
+    startGenerating(async () => {
+      const values = form.getValues();
+      const result = await generateProjectContentAction({
+        fullName: profile.fullName,
+        headline: profile.headline,
+        currentRole: profile.currentRole,
+        title: values.title,
+        category: values.category,
+        status: values.status,
+        year: values.year,
+        techStackText: values.techStackText,
+        brief: generatorBrief,
+        tone: generatorTone,
+        targetAudience: generatorAudience,
+        currentExcerpt: values.excerpt,
+        currentDescription: values.description,
+        currentChallenge: values.challenge,
+        currentSolution: values.solution,
+        currentImpact: values.impact,
+      });
+
+      if (result.status === "error" || !result.data) {
+        toast.error(result.message);
+        return;
+      }
+
+      applyGeneratedContent(result.data);
+      toast.success(result.message);
+    });
+  };
 
   const onSubmit = form.handleSubmit((values) => {
     startTransition(async () => {
@@ -97,6 +166,72 @@ export function ProjectForm({
       <CardContent className="p-6">
         <form className="grid gap-5" onSubmit={onSubmit}>
           <input type="hidden" {...form.register("id")} />
+          <div className="rounded-3xl border border-primary/20 bg-primary/5 p-5">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div className="space-y-2">
+                <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary">
+                  AI generator
+                </p>
+                <div>
+                  <h2 className="text-xl font-semibold text-foreground">
+                    Generate project case study copy
+                  </h2>
+                  <p className="mt-1 max-w-2xl text-sm leading-6 text-muted-foreground">
+                    Draft the excerpt, overview, challenge, solution, and impact from your
+                    project details and a quick creative brief.
+                  </p>
+                </div>
+              </div>
+              <Button
+                type="button"
+                onClick={onGenerate}
+                disabled={
+                  !aiEnabled ||
+                  isGenerating ||
+                  projectTitle.trim().length < 3 ||
+                  techStackText.trim().length < 2 ||
+                  generatorBrief.trim().length < 20
+                }
+              >
+                Generate draft <Sparkles className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+
+            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="generatorTone">Tone</Label>
+                <Input
+                  id="generatorTone"
+                  value={generatorTone}
+                  onChange={(event) => setGeneratorTone(event.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="generatorAudience">Target audience</Label>
+                <Input
+                  id="generatorAudience"
+                  value={generatorAudience}
+                  onChange={(event) => setGeneratorAudience(event.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-2">
+              <Label htmlFor="generatorBrief">Creative brief</Label>
+              <Textarea
+                id="generatorBrief"
+                className="min-h-28"
+                value={generatorBrief}
+                onChange={(event) => setGeneratorBrief(event.target.value)}
+              />
+            </div>
+
+            <p className="mt-4 text-sm text-muted-foreground">
+              {aiEnabled
+                ? "Fill in the project title and tech stack first, then let AI draft a stronger case-study narrative."
+                : "Set OPENAI_API_KEY in your environment to enable AI generation."}
+            </p>
+          </div>
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="title">Project title</Label>
