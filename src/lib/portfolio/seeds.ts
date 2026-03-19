@@ -9,39 +9,40 @@ export const portfolioSeed: PortfolioSnapshot = {
     location: "Mizoram, India",
     email: "johnchangsan39@gmail.com",
     shortBio:
-      "Mizoram-based full-stack engineer building modern web platforms, admin systems, and product experiences with clear UX and dependable architecture.",
+      "I turn complex workflows into clean, high-trust digital products, blending frontend polish, backend rigor, and product judgment across web, mobile, and admin systems.",
     longBio:
-      "I build products end to end, from interface design and frontend architecture to backend systems, CMS workflows, and deployment. My strongest work lives where product clarity and technical depth need to meet: polished experiences for users, reliable tools for operators, and maintainable systems for teams.",
+      "My best work starts where requirements are messy, stakes are real, and the product needs both clarity and technical depth. I design and ship software end to end: shaping product direction, designing interfaces, architecting frontend and backend systems, and making sure the final result stays maintainable after launch. I am especially strong at turning operational complexity into calm user experiences, reliable admin tools, and platforms teams can confidently grow on.",
     avatarUrl: "/profile.jpg",
     resumeUrl: "#contact",
     githubUsername: "cjohnmizo",
     yearsExperience: 6,
     isAvailableForHire: true,
     metrics: [
-      { label: "Years building products", value: "6+" },
-      { label: "Systems shipped", value: "18" },
-      { label: "Avg. Lighthouse target", value: "95+" },
+      { label: "Years shipping products", value: "6+" },
+      { label: "Delivery range", value: "Web + Mobile + CMS" },
+      { label: "Build standard", value: "Performance-first" },
     ],
   },
   settings: {
     id: "settings-1",
-    heroEyebrow: "Full-stack engineer • system designer • product-minded builder",
-    heroTitle: "I build sharp digital products that make complex work feel simple.",
+    heroEyebrow: "Full-stack engineer / system designer / product-minded builder",
+    heroTitle:
+      "I design and ship software that feels premium in front and dependable behind the scenes.",
     heroSubtitle:
-      "From public-facing platforms to admin systems and delivery-heavy products, I design and ship software with calm architecture and polished execution.",
+      "From public platforms to internal tools and content systems, I build software that helps teams move faster without sacrificing usability, structure, or long-term maintainability.",
     heroDescription:
-      "This portfolio highlights how I approach full-stack engineering, product thinking, and maintainable delivery across web platforms, dashboards, CMS products, and mobile systems.",
-    aboutTitle: "Engineering with product judgment",
+      "This portfolio is a focused view into how I think about product quality, system design, and execution: clear interfaces for users, dependable workflows for operators, and architecture that stays steady as the product grows.",
+    aboutTitle: "Product storytelling through engineering",
     aboutBody:
-      "I work best where UX clarity, technical depth, and delivery discipline all matter. My focus is building software that looks sharp, behaves reliably, and stays maintainable long after the first launch.",
-    contactTitle: "Let’s build something useful and well-crafted",
+      "I build for the full lifecycle, not just the first release. That means sharper product framing, stronger implementation decisions, and systems that still feel coherent when real users and internal teams depend on them every day.",
+    contactTitle: "Let's build something useful, polished, and durable",
     contactDescription:
-      "Open to full-stack engineering roles, contract product work, CMS platforms, admin dashboards, and systems that need both technical depth and product polish.",
+      "Open to full-stack engineering roles, product-focused contracts, admin platforms, CMS systems, and ambitious software that needs both execution quality and design judgment.",
     seoTitle: "C. John Remthang | Full-Stack Engineer, System Designer, and Product Builder",
     seoDescription:
-      "Portfolio of C. John Remthang featuring case studies, full-stack product work, CMS systems, admin platforms, and practical engineering depth.",
+      "Portfolio of C. John Remthang featuring premium case studies in full-stack product engineering, admin systems, CMS architecture, and polished delivery.",
     footerNote:
-      "Built to communicate engineering quality, product judgment, and the ability to ship maintainable systems end to end.",
+      "Built to show how I combine engineering depth, product judgment, and polished execution into software teams can trust.",
     primaryAccent: "#6366f1",
     secondaryAccent: "#22c55e",
   },
@@ -52,15 +53,15 @@ export const portfolioSeed: PortfolioSnapshot = {
       slug: "tualchher-cms",
       title: "Tualchher CMS",
       excerpt:
-        "A production-focused CMS with role-based workflows, media handling, and SEO controls for content-heavy teams.",
+        "A role-aware publishing platform built to help content teams move faster while keeping structure, media workflows, and SEO controls under control.",
       description:
-        "Tualchher CMS is a modular publishing platform designed for teams that need more than a simple admin panel. It brings together structured content management, permissions, redirect control, media workflows, and SEO tooling inside a calm, maintainable interface.",
+        "Tualchher CMS is a production-ready publishing platform for content teams that need more than a basic admin panel. It brings structured content operations, media handling, redirect management, role-based permissions, and SEO tooling into one composed editorial workspace.",
       challenge:
-        "The challenge was to build a CMS powerful enough for real editorial operations without overwhelming administrators with cluttered screens or fragile workflows.",
+        "The challenge was to build a system powerful enough for real editorial operations without letting the interface become noisy, intimidating, or fragile for day-to-day administrators.",
       solution:
-        "I shaped the product around modular information architecture, role-aware controls, and reusable UI patterns so editors can move quickly while the system stays predictable behind the scenes.",
+        "I organized the product around modular information architecture, role-aware controls, and repeatable UI patterns so editors can publish with confidence while the system remains predictable and extensible behind the scenes.",
       impact:
-        "The result is a cleaner publishing workflow, stronger operational control, and a platform that can grow with new modules without losing usability.",
+        "The result is a calmer editorial workflow, better operational control, and a CMS foundation that can expand feature by feature without losing usability or governance.",
       category: "cms",
       status: "Private",
       year: "2026",
@@ -74,8 +75,8 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: "https://github.com/cjohnmizo/Tualchher_CMS#readme",
       techStack: ["Laravel 12", "Tailwind CSS", "MySQL", "Spatie Permissions"],
       metrics: [
-        { label: "Core modules", value: "10+" },
-        { label: "Workflow strength", value: "Editorial + SEO" },
+        { label: "Operational modules", value: "10+" },
+        { label: "Control layers", value: "Roles + Media + SEO" },
       ],
     },
     {
@@ -83,15 +84,15 @@ export const portfolioSeed: PortfolioSnapshot = {
       slug: "liankhawpui-community-platform",
       title: "Liankhawpui Community Platform",
       excerpt:
-        "A community platform designed for announcements, directories, and dependable communication in uneven connectivity conditions.",
+        "A mobile-first community platform designed to keep announcements, directories, and essential communication accessible even when connectivity is inconsistent.",
       description:
-        "Liankhawpui is a mobile-first community platform built for structured updates, directory access, and resilient communication where usability and reliability matter as much as feature count.",
+        "Liankhawpui is a community platform designed around clear communication, trusted information access, and resilient mobile usage. It gives users one dependable place for announcements, directory information, and essential updates without burying them in clutter.",
       challenge:
-        "The platform had to stay approachable for everyday users while remaining dependable in low-connectivity scenarios and easy for administrators to manage.",
+        "The platform needed to feel simple for everyday community use while still staying dependable in low-connectivity scenarios and manageable for administrators behind the scenes.",
       solution:
-        "I paired a mobile-first interface with Supabase-backed data modelling and sync-friendly architecture to keep the experience simple, resilient, and maintainable.",
+        "I paired a mobile-first interface with Supabase-backed data modelling and sync-aware architecture so the experience stays approachable for users, resilient in the field, and maintainable for future growth.",
       impact:
-        "The product improves communication flow for the community and reduces the coordination overhead that usually comes with scattered tools.",
+        "The result is a stronger communication backbone for the community, with less coordination friction and a clearer path for sharing trusted information at scale.",
       category: "mobile-app",
       status: "Proprietary",
       year: "2026",
@@ -108,8 +109,8 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: "https://github.com/cjohnmizo/liankhawpui#readme",
       techStack: ["Flutter", "Supabase", "PowerSync"],
       metrics: [
-        { label: "Primary surfaces", value: "News + Directory" },
-        { label: "Reliability", value: "Offline-aware" },
+        { label: "Primary flows", value: "Updates + Directory + Access" },
+        { label: "Connectivity design", value: "Offline-aware sync" },
       ],
     },
     {
@@ -117,15 +118,15 @@ export const portfolioSeed: PortfolioSnapshot = {
       slug: "smart-modern-admin-dashboard",
       title: "Smart Modern Admin Dashboard",
       excerpt:
-        "A modern operations dashboard that combines analytics, task management, and role-aware workflows in one focused interface.",
+        "A modern operations workspace that combines analytics, task flows, and role-aware controls into one clear dashboard built for day-to-day execution.",
       description:
-        "This admin dashboard centralizes reporting, task workflows, and operational visibility into a single management surface with strong hierarchy and a clear decision-making flow.",
+        "This admin dashboard centralizes reporting, task management, and operational visibility into a single interface with strong visual hierarchy and a faster decision-making flow for internal teams.",
       challenge:
-        "The goal was to create an admin experience that felt fast and usable under real operational pressure without turning into a visually noisy internal tool.",
+        "The goal was to create an internal tool that stayed fast, readable, and actionable under real operational pressure without collapsing into the usual clutter of enterprise dashboards.",
       solution:
-        "I used a composable UI architecture, typed data flows, and focused information hierarchy to keep the dashboard scalable, readable, and easy to extend.",
+        "I used composable UI architecture, typed data flows, and focused information hierarchy to create a workspace that scales with new modules while staying readable and deliberate.",
       impact:
-        "The result is a reusable foundation for internal tooling that balances visibility, control, and long-term maintainability.",
+        "The result is a reusable internal-product foundation that improves operational visibility, keeps workflows focused, and creates a stronger base for future tooling.",
       category: "dashboard",
       status: "Live",
       year: "2026",
@@ -143,8 +144,8 @@ export const portfolioSeed: PortfolioSnapshot = {
         "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard#readme",
       techStack: ["Next.js", "TypeScript", "MongoDB"],
       metrics: [
-        { label: "Core modules", value: "Analytics + Tasks" },
-        { label: "Built for", value: "Operations teams" },
+        { label: "Decision surfaces", value: "Analytics + Tasks + Reporting" },
+        { label: "Operator benefit", value: "Faster visibility" },
       ],
     },
   ],
@@ -214,10 +215,10 @@ export const portfolioSeed: PortfolioSnapshot = {
       startDate: "2022-07-01",
       endDate: null,
       summary:
-        "Teach vocational IT while translating real software concepts into practical learning, digital problem-solving, and career-ready technical confidence.",
+        "Teach vocational IT while translating real software concepts into hands-on learning, practical problem solving, and career-ready technical confidence for students.",
       achievements: [
         "Designed hands-on learning around software workflows, web technologies, and practical IT problem solving.",
-        "Helped students connect classroom concepts with real product-building and digital system practices.",
+        "Helped students connect classroom concepts with real product-building, digital systems, and professional technical thinking.",
       ],
       techStack: ["Teaching", "Applied IT", "Curriculum Planning"],
       sortOrder: 1,
@@ -232,10 +233,10 @@ export const portfolioSeed: PortfolioSnapshot = {
       startDate: "2019-01-01",
       endDate: null,
       summary:
-        "Delivered web platforms, CMS products, dashboards, and mobile applications from discovery to deployment for clients who needed both execution and technical judgment.",
+        "Delivered web platforms, CMS products, dashboards, and mobile applications from discovery through deployment for clients who needed both shipping speed and sound technical judgment.",
       achievements: [
-        "Owned solution architecture, implementation, iteration, and release across client-facing products.",
-        "Balanced UX polish, delivery speed, and long-term maintainability across multiple builds.",
+        "Owned solution architecture, implementation, iteration, and release across client-facing products and operator-facing systems.",
+        "Balanced UX polish, delivery speed, and long-term maintainability across multiple production-oriented builds.",
       ],
       techStack: ["Next.js", "Flutter", "Supabase", "Laravel"],
       sortOrder: 2,

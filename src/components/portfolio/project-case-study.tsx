@@ -145,7 +145,7 @@ export function ProjectCaseStudy({
                     <div className="space-y-4 bg-white/5 p-6">
                       <p className="section-kicker text-xs text-primary">Overview</p>
                       <h2 className="text-2xl font-semibold text-foreground">
-                        What this case study covers
+                        The product story behind the build
                       </h2>
                       <p className="text-sm leading-8 text-muted-foreground">
                         {project.description}
@@ -235,11 +235,11 @@ export function ProjectCaseStudy({
                   <div className="space-y-4">
                     <p className="section-kicker text-xs text-primary">Delivery stack</p>
                     <h2 className="text-2xl font-semibold text-foreground">
-                      Tools that shaped execution
+                      Tools that supported the outcome
                     </h2>
                     <p className="text-sm leading-8 text-muted-foreground">
-                      The delivery choices were made to support maintainability, clear operator
-                      workflows, and a polished user-facing result, not just feature completeness.
+                      The stack was chosen to support clear product behavior, maintainable growth,
+                      and dependable operator workflows, not just feature completeness.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -289,7 +289,7 @@ export function ProjectCaseStudy({
                     <div className="space-y-2">
                       <p className="section-kicker text-xs text-secondary">Delivery signal</p>
                       <h2 className="text-xl font-semibold text-foreground">
-                        Why this project stands out
+                        Why this project matters
                       </h2>
                     </div>
                   </div>
@@ -298,8 +298,8 @@ export function ProjectCaseStudy({
                     <div className="flex items-center gap-3">
                       <Sparkles className="h-4 w-4 text-primary" />
                       <p className="text-sm font-medium text-foreground">
-                        Featured metrics and public delivery notes are optimized for recruiter scan
-                        speed.
+                        Each metric is intentionally phrased for fast recruiter scanning and clear
+                        project positioning.
                       </p>
                     </div>
                   </div>

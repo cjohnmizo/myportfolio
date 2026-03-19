@@ -8,18 +8,18 @@ import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const highlights = [
   {
-    title: "Product-minded engineering",
-    description: "I optimize for user outcomes, not just implementation completeness.",
+    title: "Narrative-led product thinking",
+    description: "I shape the story a product needs to tell before I decide how the interface or system should behave.",
     icon: BriefcaseBusiness,
   },
   {
     title: "Systems that scale calmly",
-    description: "Architecture choices are made for clarity, maintainability, and future change.",
+    description: "Architecture decisions are made for clarity, maintainability, and growth without operational chaos.",
     icon: Orbit,
   },
   {
-    title: "Delivery with operational trust",
-    description: "I build admin surfaces and content systems that teams can safely use day to day.",
+    title: "Execution teams can trust",
+    description: "I build admin surfaces, workflows, and delivery systems that hold up under real day-to-day use.",
     icon: ShieldCheck,
   },
 ];
@@ -50,17 +50,17 @@ export function AboutSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-sm text-muted-foreground">Availability</p>
+                    <p className="text-sm text-muted-foreground">Best fit</p>
                     <p className="mt-2 text-lg font-semibold text-foreground">
                       {snapshot.profile.isAvailableForHire
-                        ? "Open for selected roles and contracts"
+                        ? "Open for selected roles, product builds, and high-trust contract work"
                         : "Currently focused on active engagements"}
                     </p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-sm text-muted-foreground">Primary focus</p>
+                    <p className="text-sm text-muted-foreground">What I optimize for</p>
                     <p className="mt-2 text-lg font-semibold text-foreground">
-                      Product platforms, admin systems, and polished user interfaces
+                      Product clarity, reliable systems, and interfaces people can use with confidence
                     </p>
                   </div>
                 </div>
