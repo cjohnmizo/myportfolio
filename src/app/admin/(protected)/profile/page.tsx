@@ -1,5 +1,6 @@
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
 import { ProfileForm } from "@/components/admin/profile-form";
+import { env } from "@/lib/env";
 import { getAdminSnapshot } from "@/lib/portfolio/admin-repository";
 import { getAdminSessionState } from "@/lib/supabase/auth";
 
@@ -19,6 +20,8 @@ export default async function AdminProfilePage() {
       <ProfileForm
         profile={snapshot.profile}
         demoMode={session?.mode === "demo"}
+        aiEnabled={Boolean(env.OPENAI_API_KEY)}
+        skillNames={snapshot.skills.map((skill) => skill.name)}
       />
     </div>
   );

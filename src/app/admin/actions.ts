@@ -10,6 +10,10 @@ import {
   recordAdminAuthEvent,
 } from "@/lib/admin-auth";
 import {
+  generateProfileContent,
+  type GeneratedProfileContent,
+} from "@/lib/ai/profile-generator";
+import {
   generateProjectContent,
   type GeneratedProjectContent,
 } from "@/lib/ai/project-generator";
@@ -30,6 +34,7 @@ import {
   loginFormSchema,
   mediaAssetFormSchema,
   profileFormSchema,
+  profileGenerationSchema,
   projectGenerationSchema,
   projectFormSchema,
   siteSettingsGenerationSchema,
@@ -40,6 +45,7 @@ import {
   type ExperienceFormValues,
   type LoginFormValues,
   type MediaAssetFormValues,
+  type ProfileGenerationValues,
   type ProfileFormValues,
   type ProjectGenerationValues,
   type ProjectFormValues,
@@ -56,6 +62,10 @@ export interface ActionResult {
 
 export interface SiteSettingsGenerationResult extends ActionResult {
   data?: GeneratedSiteSettings;
+}
+
+export interface ProfileContentGenerationResult extends ActionResult {
+  data?: GeneratedProfileContent;
 }
 
 export interface ProjectContentGenerationResult extends ActionResult {
@@ -288,6 +298,42 @@ export async function saveProfileAction(values: ProfileFormValues): Promise<Acti
 
   revalidatePortfolioRoutes();
   return success("Profile saved.");
+}
+
+export async function generateProfileContentAction(
+  values: ProfileGenerationValues,
+): Promise<ProfileContentGenerationResult> {
+  const parsed = profileGenerationSchema.safeParse(values);
+
+  if (!parsed.success) {
+    return generationError(
+      parsed.error.issues[0]?.message ?? "AI generation input is invalid.",
+    );
+  }
+
+  const session = await getAdminSessionState();
+
+  if (!session) {
+    return generationError("Sign in to use the AI content generator.");
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return generationError("Set OPENAI_API_KEY to use the AI content generator.");
+  }
+
+  try {
+    const generated = await generateProfileContent(parsed.data);
+
+    return {
+      status: "success",
+      message: "AI profile draft generated. Review and save any edits you want to keep.",
+      data: generated,
+    };
+  } catch (caughtError) {
+    return generationError(
+      caughtError instanceof Error ? caughtError.message : "Unable to generate AI content.",
+    );
+  }
 }
 
 export async function saveSiteSettingsAction(

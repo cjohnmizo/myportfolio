@@ -53,6 +53,21 @@ export const profileFormSchema = z.object({
   isAvailableForHire: z.boolean(),
 });
 
+export const profileGenerationSchema = z.object({
+  fullName: z.string().min(2),
+  currentRole: z.string().min(2),
+  location: z.string().min(2),
+  githubUsername: z.string().min(2),
+  yearsExperience: z.coerce.number().min(0).max(50),
+  skillNames: z.array(z.string().min(1)).default([]),
+  brief: z.string().min(20, "Add a stronger brief so AI has enough direction."),
+  tone: z.string().min(3),
+  targetAudience: z.string().min(3),
+  currentHeadline: optionalString,
+  currentShortBio: optionalString,
+  currentLongBio: optionalString,
+});
+
 export const siteSettingsFormSchema = z.object({
   id: optionalUuid,
   heroEyebrow: z.string().min(6),
@@ -184,6 +199,8 @@ export type LoginFormInput = z.input<typeof loginFormSchema>;
 export type LoginFormValues = z.output<typeof loginFormSchema>;
 export type ProfileFormInput = z.input<typeof profileFormSchema>;
 export type ProfileFormValues = z.output<typeof profileFormSchema>;
+export type ProfileGenerationInput = z.input<typeof profileGenerationSchema>;
+export type ProfileGenerationValues = z.output<typeof profileGenerationSchema>;
 export type SiteSettingsFormInput = z.input<typeof siteSettingsFormSchema>;
 export type SiteSettingsFormValues = z.output<typeof siteSettingsFormSchema>;
 export type SiteSettingsGenerationInput = z.input<typeof siteSettingsGenerationSchema>;
