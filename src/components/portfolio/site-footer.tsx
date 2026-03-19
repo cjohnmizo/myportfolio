@@ -1,9 +1,15 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/lib/site";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 
-export function SiteFooter() {
+export function SiteFooter({
+  contactEmail,
+  footerNote,
+}: {
+  contactEmail: string;
+  footerNote: string;
+}) {
   return (
     <footer className="border-t border-white/5 py-14">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
@@ -12,10 +18,7 @@ export function SiteFooter() {
           <h2 className="max-w-xl text-2xl font-semibold text-foreground">
             Thoughtful software, calm systems, and clear case studies.
           </h2>
-          <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-            Built to communicate engineering quality, product judgment, and the ability to ship
-            maintainable systems end to end.
-          </p>
+          <p className="max-w-2xl text-sm leading-7 text-muted-foreground">{footerNote}</p>
         </div>
 
         <div className="flex flex-col gap-4 lg:items-end">
@@ -28,12 +31,12 @@ export function SiteFooter() {
             </Link>
           </div>
           <Button asChild variant="outline">
-            <Link href="mailto:johnchangsan39@gmail.com">Start a conversation</Link>
+            <Link href={`mailto:${contactEmail}`}>Start a conversation</Link>
           </Button>
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/5 px-4 pt-6 text-sm text-muted-foreground sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+        &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
       </div>
     </footer>
   );

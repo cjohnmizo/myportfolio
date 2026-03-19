@@ -7,7 +7,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     headline: "Full-Stack Engineer, System Designer, and Product Builder",
     currentRole: "Full-Stack Engineer",
     location: "Mizoram, India",
-    email: "johnchangsan39@gmail.com",
+    email: "contact@cjohnmizo.in",
     shortBio:
       "I turn complex workflows into clean, high-trust digital products, blending frontend polish, backend rigor, and product judgment across web, mobile, and admin systems.",
     longBio:
