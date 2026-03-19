@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { PortfolioSnapshot } from "@/types/portfolio";
+import { siteConfig } from "@/lib/site";
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
@@ -73,6 +74,18 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </div>
                 <div className="space-y-2">
                   <p className="text-xl font-semibold text-foreground">{snapshot.profile.fullName}</p>
+                  <div className="space-y-2">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-slate-400">
+                      Also known as
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {siteConfig.publicIdentityLabels.map((alias) => (
+                        <Badge key={alias} variant="muted">
+                          {alias}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
                   <p className="text-sm text-muted-foreground">{snapshot.profile.currentRole}</p>
                   <p className="inline-flex items-center gap-2 text-sm text-slate-300">
                     <MapPin className="h-4 w-4 text-secondary" />

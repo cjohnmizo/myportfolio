@@ -2,9 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "C. John Remthang Portfolio",
+    name: "C. John Remthang | CJohn Mizo Portfolio",
     short_name: "cjohnmizo",
-    description: "Premium developer portfolio and admin CMS for C. John Remthang.",
+    description:
+      "Portfolio of C. John Remthang, also known online as C. John, CJohn Mizo, and cjohnmizo.",
     start_url: "/",
     display: "standalone",
     background_color: "#0f172a",

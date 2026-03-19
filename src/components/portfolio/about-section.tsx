@@ -3,6 +3,7 @@ import { BriefcaseBusiness, Orbit, ShieldCheck } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Card, CardContent } from "@/components/ui/card";
+import { siteConfig } from "@/lib/site";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const highlights = [
@@ -39,6 +40,14 @@ export function AboutSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             <Card className="h-full">
               <CardContent className="space-y-5 p-8">
                 <p className="text-lg leading-8 text-slate-200/90">{snapshot.profile.longBio}</p>
+                <div className="rounded-2xl border border-secondary/20 bg-secondary/10 p-4">
+                  <p className="text-sm font-medium text-foreground">
+                    Online identity:
+                    <span className="ml-2 text-muted-foreground">
+                      {siteConfig.name}, also found as {siteConfig.publicIdentityLabels.join(", ")}
+                    </span>
+                  </p>
+                </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                     <p className="text-sm text-muted-foreground">Availability</p>
