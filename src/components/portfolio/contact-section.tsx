@@ -69,12 +69,12 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 <p className="mt-2 text-2xl font-semibold text-foreground">{snapshot.profile.email}</p>
               </div>
               <p className="text-sm leading-7 text-muted-foreground">
-                Best for senior engineering roles, contract product builds, architecture review, and
-                CMS-heavy delivery work.
+                Best for full-stack roles, contract builds, platform work, admin systems, and
+                product-focused engineering conversations.
               </p>
               <div className="flex flex-wrap gap-2">
-                <Badge>Principal IC roles</Badge>
-                <Badge variant="secondary">Contract delivery</Badge>
+                <Badge>Full-stack roles</Badge>
+                <Badge variant="secondary">Contract builds</Badge>
                 <Badge variant="muted">Architecture consulting</Badge>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-7 text-slate-200/90">
@@ -95,7 +95,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 <div>
                   <p className="text-lg font-semibold text-foreground">Start with a clear brief</p>
                   <p className="text-sm text-muted-foreground">
-                    A short project summary helps me respond with the right level of detail.
+                    A short brief helps me understand the product, the constraints, and where I can add the most value.
                   </p>
                 </div>
               </div>

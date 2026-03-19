@@ -14,8 +14,8 @@ export function ExperienceSection({ snapshot }: { snapshot: PortfolioSnapshot })
         <SectionReveal>
           <SectionHeading
             eyebrow="Experience"
-            title="A track record across teaching, product delivery, and client systems"
-            description="My work spans hands-on software delivery, architecture ownership, and practical technology leadership in both public and client-facing environments."
+            title="Experience across delivery, teaching, and practical technical leadership"
+            description="My background combines hands-on product work, freelance execution, and teaching-focused communication, which helps me bridge implementation depth with real-world usability."
           />
         </SectionReveal>
         <div className="mt-10 space-y-6">

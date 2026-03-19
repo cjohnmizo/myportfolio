@@ -10,11 +10,11 @@ export function SiteFooter() {
         <div className="space-y-4">
           <p className="section-kicker text-xs text-primary">cjohnmizo.in</p>
           <h2 className="max-w-xl text-2xl font-semibold text-foreground">
-            Portfolio platform crafted for clarity, speed, and recruiter signal.
+            Thoughtful software, calm systems, and clear case studies.
           </h2>
           <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-            Built with Next.js, Supabase, and a maintainable content architecture so the portfolio
-            can keep evolving without code churn.
+            Built to communicate engineering quality, product judgment, and the ability to ship
+            maintainable systems end to end.
           </p>
         </div>
 

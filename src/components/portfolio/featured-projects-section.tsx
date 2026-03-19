@@ -18,8 +18,8 @@ export function FeaturedProjectsSection({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Selected work that blends systems thinking with polished execution"
-              description="From CMS platforms to operational dashboards and community products, these case studies show how I approach architecture, UX, and practical delivery."
+              title="Case studies that show how I think, design, and deliver"
+              description="Selected work across CMS platforms, community products, and admin tooling, with a focus on architecture, usability, and practical execution."
             />
             <Link
               href="/projects"

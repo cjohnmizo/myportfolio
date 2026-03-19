@@ -13,8 +13,8 @@ export function EducationSection({ snapshot }: { snapshot: PortfolioSnapshot }) 
         <SectionReveal>
           <SectionHeading
             eyebrow="Education"
-            title="Academic grounding that supports practical delivery"
-            description="Formal training in computer applications paired with years of implementation-focused product work."
+            title="Academic grounding in computer applications and software thinking"
+            description="Formal study in computer applications supported by years of hands-on work across web systems, CMS platforms, admin tools, and product delivery."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">

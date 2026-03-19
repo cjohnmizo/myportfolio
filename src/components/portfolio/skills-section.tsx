@@ -29,8 +29,8 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         <SectionReveal>
           <SectionHeading
             eyebrow="Skills"
-            title="Technical depth across product-facing systems"
-            description="A focused stack across frontend architecture, data systems, mobile delivery, and the tooling required to keep products maintainable in production."
+            title="Technical strengths shaped by real product delivery"
+            description="A practical stack across frontend systems, backend data flows, CMS architecture, mobile delivery, and the engineering habits required to ship maintainable software."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
