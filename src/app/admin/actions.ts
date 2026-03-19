@@ -9,6 +9,10 @@ import {
   isAdminSignInThrottled,
   recordAdminAuthEvent,
 } from "@/lib/admin-auth";
+import {
+  generateSiteSettingsCopy,
+  type GeneratedSiteSettings,
+} from "@/lib/ai/site-settings-generator";
 import { env } from "@/lib/env";
 import { getAdminSessionState } from "@/lib/supabase/auth";
 import { normalizeResumeValue } from "@/lib/resume";
@@ -23,6 +27,7 @@ import {
   mediaAssetFormSchema,
   profileFormSchema,
   projectFormSchema,
+  siteSettingsGenerationSchema,
   siteSettingsFormSchema,
   skillFormSchema,
   socialLinkFormSchema,
@@ -32,6 +37,7 @@ import {
   type MediaAssetFormValues,
   type ProfileFormValues,
   type ProjectFormValues,
+  type SiteSettingsGenerationValues,
   type SiteSettingsFormValues,
   type SkillFormValues,
   type SocialLinkFormValues,
@@ -42,6 +48,10 @@ export interface ActionResult {
   message: string;
 }
 
+export interface SiteSettingsGenerationResult extends ActionResult {
+  data?: GeneratedSiteSettings;
+}
+
 const invalidAdminCredentialsMessage = "Invalid admin credentials.";
 
 function success(message: string): ActionResult {
@@ -49,6 +59,10 @@ function success(message: string): ActionResult {
 }
 
 function error(message: string): ActionResult {
+  return { status: "error", message };
+}
+
+function generationError(message: string): SiteSettingsGenerationResult {
   return { status: "error", message };
 }
 
@@ -305,6 +319,42 @@ export async function saveSiteSettingsAction(
 
   revalidatePortfolioRoutes();
   return success("Site settings saved.");
+}
+
+export async function generateSiteSettingsContentAction(
+  values: SiteSettingsGenerationValues,
+): Promise<SiteSettingsGenerationResult> {
+  const parsed = siteSettingsGenerationSchema.safeParse(values);
+
+  if (!parsed.success) {
+    return generationError(
+      parsed.error.issues[0]?.message ?? "AI generation input is invalid.",
+    );
+  }
+
+  const session = await getAdminSessionState();
+
+  if (!session) {
+    return generationError("Sign in to use the AI content generator.");
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return generationError("Set OPENAI_API_KEY to use the AI content generator.");
+  }
+
+  try {
+    const generated = await generateSiteSettingsCopy(parsed.data);
+
+    return {
+      status: "success",
+      message: "AI draft generated. Review and save any edits you want to keep.",
+      data: generated,
+    };
+  } catch (caughtError) {
+    return generationError(
+      caughtError instanceof Error ? caughtError.message : "Unable to generate AI content.",
+    );
+  }
 }
 
 export async function saveProjectAction(values: ProjectFormValues): Promise<ActionResult> {

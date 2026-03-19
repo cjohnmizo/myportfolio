@@ -70,6 +70,17 @@ export const siteSettingsFormSchema = z.object({
   secondaryAccent: z.string().min(4),
 });
 
+export const siteSettingsGenerationSchema = z.object({
+  fullName: z.string().min(2),
+  headline: z.string().min(6),
+  currentRole: z.string().min(2),
+  location: z.string().min(2),
+  yearsExperience: z.coerce.number().min(0).max(50),
+  brief: z.string().min(20, "Add a stronger brief so AI has enough direction."),
+  tone: z.string().min(3),
+  targetAudience: z.string().min(3),
+});
+
 export const projectFormSchema = z.object({
   id: optionalUuid,
   slug: z.string().min(3),
@@ -156,6 +167,8 @@ export type ProfileFormInput = z.input<typeof profileFormSchema>;
 export type ProfileFormValues = z.output<typeof profileFormSchema>;
 export type SiteSettingsFormInput = z.input<typeof siteSettingsFormSchema>;
 export type SiteSettingsFormValues = z.output<typeof siteSettingsFormSchema>;
+export type SiteSettingsGenerationInput = z.input<typeof siteSettingsGenerationSchema>;
+export type SiteSettingsGenerationValues = z.output<typeof siteSettingsGenerationSchema>;
 export type ProjectFormInput = z.input<typeof projectFormSchema>;
 export type ProjectFormValues = z.output<typeof projectFormSchema>;
 export type SkillFormInput = z.input<typeof skillFormSchema>;

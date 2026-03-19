@@ -31,6 +31,7 @@ const envSchema = z.object({
   ),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: optionalEnvString,
   SUPABASE_SERVICE_ROLE_KEY: optionalEnvString,
+  OPENAI_API_KEY: optionalEnvString,
   GOOGLE_SITE_VERIFICATION: googleVerificationString,
   ADMIN_EMAIL: z.preprocess(
     (value) => (typeof value === "string" && value.trim().length === 0 ? undefined : value),
@@ -43,6 +44,7 @@ const parsed = envSchema.parse({
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   GOOGLE_SITE_VERIFICATION: process.env.GOOGLE_SITE_VERIFICATION,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
 });

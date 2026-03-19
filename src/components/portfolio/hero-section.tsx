@@ -11,6 +11,14 @@ import type { PortfolioSnapshot } from "@/types/portfolio";
 import { siteConfig } from "@/lib/site";
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
+  const hasResume = Boolean(snapshot.profile.resumeUrl);
+  const resumeHref = hasResume
+    ? snapshot.profile.resumeUrl!
+    : `mailto:${snapshot.profile.email}?subject=${encodeURIComponent("Resume request from cjohnmizo.in")}`;
+  const isExternalResume =
+    hasResume &&
+    /^(https?:)?\/\//.test(snapshot.profile.resumeUrl ?? "");
+
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
@@ -37,9 +45,14 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href={snapshot.profile.resumeUrl ?? "/#contact"}>
-                Download resume <Download className="ml-2 h-4 w-4" />
-              </Link>
+              <a
+                href={resumeHref}
+                target={isExternalResume ? "_blank" : undefined}
+                rel={isExternalResume ? "noreferrer noopener" : undefined}
+              >
+                {hasResume ? "Download resume" : "Request resume"}{" "}
+                <Download className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </div>
 

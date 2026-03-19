@@ -13,7 +13,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     longBio:
       "My best work starts where requirements are messy, stakes are real, and the product needs both clarity and technical depth. I design and ship software end to end: shaping product direction, designing interfaces, architecting frontend and backend systems, and making sure the final result stays maintainable after launch. I am especially strong at turning operational complexity into calm user experiences, reliable admin tools, and platforms teams can confidently grow on.",
     avatarUrl: "/profile.jpg",
-    resumeUrl: "#contact",
+    resumeUrl: null,
     githubUsername: "cjohnmizo",
     yearsExperience: 6,
     isAvailableForHire: true,
