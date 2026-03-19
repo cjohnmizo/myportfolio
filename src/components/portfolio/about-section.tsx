@@ -1,7 +1,9 @@
-import { BriefcaseBusiness, Orbit, ShieldCheck } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Orbit, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { siteConfig } from "@/lib/site";
 import type { PortfolioSnapshot } from "@/types/portfolio";
@@ -24,7 +26,13 @@ const highlights = [
   },
 ];
 
-export function AboutSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
+export function AboutSection({
+  snapshot,
+  showFullStoryLink = true,
+}: {
+  snapshot: PortfolioSnapshot;
+  showFullStoryLink?: boolean;
+}) {
   return (
     <section id="about" className="py-18 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -64,6 +72,15 @@ export function AboutSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     </p>
                   </div>
                 </div>
+                {showFullStoryLink ? (
+                  <div className="pt-2">
+                    <Button asChild variant="outline">
+                      <Link href="/about">
+                        Read full background <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                ) : null}
               </CardContent>
             </Card>
           </SectionReveal>

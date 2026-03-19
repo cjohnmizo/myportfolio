@@ -30,9 +30,8 @@ export const siteConfig = {
   adminEmail: env.ADMIN_EMAIL,
   defaultOgImage: "/profile.jpg",
   navItems: [
-    { label: "About", href: "/#about" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Experience", href: "/#experience" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
     { label: "Contact", href: "/#contact" },
   ],
 };

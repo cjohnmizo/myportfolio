@@ -25,6 +25,9 @@ export function SiteFooter({
 
         <div className="flex flex-col gap-4 lg:items-end">
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <Link href="/about" className="transition hover:text-foreground">
+              About
+            </Link>
             <Link href="/projects" className="transition hover:text-foreground">
               Projects
             </Link>

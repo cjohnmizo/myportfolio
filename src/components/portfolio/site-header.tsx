@@ -24,9 +24,6 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link href="/projects" className="transition hover:text-foreground">
-            Archive
-          </Link>
         </nav>
         <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
           <Dialog.Trigger asChild>
@@ -56,13 +53,6 @@ export function SiteHeader() {
                     {item.label}
                   </Link>
                 ))}
-                <Link
-                  href="/projects"
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-2xl border border-white/5 px-4 py-3 text-base text-foreground transition hover:bg-white/5"
-                >
-                  Archive
-                </Link>
               </div>
             </Dialog.Content>
           </Dialog.Portal>

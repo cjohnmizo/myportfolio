@@ -47,6 +47,12 @@ function buildSeedSitemap(snapshot: Awaited<ReturnType<typeof getPortfolioSnapsh
       priority: 1,
     },
     {
+      url: `${siteConfig.url}/about`,
+      lastModified: seedLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
       url: `${siteConfig.url}/projects`,
       lastModified: seedLastModified,
       changeFrequency: "monthly" as const,
@@ -139,6 +145,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: homeLastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteConfig.url}/about`,
+      lastModified: homeLastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${siteConfig.url}/projects`,
