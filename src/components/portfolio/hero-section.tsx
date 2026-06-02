@@ -1,127 +1,122 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 
+import { BrandMark } from "@/components/brand/brand-logo";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { SocialIcon } from "@/components/portfolio/social-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { PortfolioSnapshot } from "@/types/portfolio";
-import { siteConfig } from "@/lib/site";
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
-  const hasResume = Boolean(snapshot.profile.resumeUrl);
-  const resumeHref = hasResume
-    ? snapshot.profile.resumeUrl!
-    : `mailto:${snapshot.profile.email}?subject=${encodeURIComponent("Resume request from cjohnmizo.in")}`;
-  const isExternalResume =
-    hasResume &&
-    /^(https?:)?\/\//.test(snapshot.profile.resumeUrl ?? "");
-
   return (
-    <section className="py-16 sm:py-24">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
-        <SectionReveal className="space-y-8">
-          <div className="space-y-6">
-            <Badge>{snapshot.settings.heroEyebrow}</Badge>
-            <div className="space-y-4">
-              <h1 className="max-w-4xl font-mono text-5xl font-semibold tracking-tight text-gradient sm:text-6xl xl:text-7xl">
-                {snapshot.settings.heroTitle}
-              </h1>
-              <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
-                {snapshot.settings.heroSubtitle}
-              </p>
-              <p className="max-w-2xl text-base leading-7 text-slate-300/85">
-                {snapshot.settings.heroDescription}
-              </p>
-            </div>
+    <section className="border-border border-b py-12 sm:py-16">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8">
+        <SectionReveal className="space-y-7">
+          <Badge>{snapshot.settings.heroEyebrow}</Badge>
+          <div className="space-y-4">
+            <h1 className="text-foreground max-w-4xl text-4xl leading-tight font-semibold sm:text-5xl lg:text-6xl">
+              {snapshot.settings.heroTitle}
+            </h1>
+            <p className="text-muted-foreground max-w-3xl text-lg leading-8">
+              {snapshot.settings.heroSubtitle}
+            </p>
+            <p className="text-muted-foreground max-w-2xl text-base leading-7">
+              {snapshot.settings.heroDescription}
+            </p>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3">
             <Button asChild>
               <Link href="/projects">
-                Explore case studies <ArrowRight className="ml-2 h-4 w-4" />
+                View Projects <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline">
-              <a
-                href={resumeHref}
-                target={isExternalResume ? "_blank" : undefined}
-                rel={isExternalResume ? "noreferrer noopener" : undefined}
-              >
-                {hasResume ? "Download resume" : "Request resume"}{" "}
-                <Download className="ml-2 h-4 w-4" />
-              </a>
+              <Link href="/#contact">
+                Contact Me <Mail className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
-            {snapshot.socialLinks.map((link) => (
-              <Link
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
-              >
-                <SocialIcon platform={link.platform} className="h-4 w-4" />
-                {link.label}
-              </Link>
-            ))}
+          <div className="flex flex-wrap gap-2">
+            {snapshot.socialLinks
+              .filter((link) => ["github", "linkedin"].includes(link.platform))
+              .map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition"
+                >
+                  <SocialIcon platform={link.platform} className="h-4 w-4" />
+                  {link.label}
+                </Link>
+              ))}
           </div>
         </SectionReveal>
 
-        <SectionReveal delay={0.08}>
-          <Card className="glass-panel overflow-hidden">
-            <CardContent className="space-y-8 p-8">
-              <div className="flex items-center gap-4">
-                <div className="relative h-24 w-24 overflow-hidden rounded-3xl border border-white/10">
+        <SectionReveal>
+          <Card className="overflow-hidden">
+            <CardContent className="space-y-6 p-6">
+              <div className="flex items-start gap-4">
+                <div className="border-border bg-muted relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border">
                   <Image
                     src={snapshot.profile.avatarUrl}
                     alt={snapshot.profile.fullName}
                     fill
                     className="object-cover"
-                    sizes="96px"
+                    sizes="80px"
                     priority
                   />
                 </div>
-                <div className="space-y-2">
-                  <p className="text-xl font-semibold text-foreground">{snapshot.profile.fullName}</p>
-                  <div className="space-y-2">
-                    <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-slate-400">
-                      Also known as
+                <div className="min-w-0 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <BrandMark className="h-9 w-9" />
+                    <p className="text-foreground text-lg font-semibold">
+                      {snapshot.profile.fullName}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {siteConfig.publicIdentityLabels.map((alias) => (
-                        <Badge key={alias} variant="muted">
-                          {alias}
-                        </Badge>
-                      ))}
-                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">{snapshot.profile.currentRole}</p>
-                  <p className="inline-flex items-center gap-2 text-sm text-slate-300">
-                    <MapPin className="h-4 w-4 text-secondary" />
+                  <p className="text-muted-foreground text-sm">
+                    {snapshot.profile.currentRole}
+                  </p>
+                  <p className="text-muted-foreground inline-flex items-center gap-2 text-sm">
+                    <MapPin className="text-secondary h-4 w-4" />
                     {snapshot.profile.location}
                   </p>
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-primary/20 bg-primary/10 p-5">
-                <p className="text-sm leading-7 text-slate-100">{snapshot.profile.shortBio}</p>
+              <div className="border-border bg-muted rounded-lg border p-4">
+                <p className="text-foreground text-sm leading-7">
+                  {snapshot.profile.shortBio}
+                </p>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                 {snapshot.profile.metrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                    className="border-border bg-card rounded-lg border p-4"
                   >
-                    <p className="text-3xl font-semibold text-foreground">{metric.value}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">{metric.label}</p>
+                    <p className="text-muted-foreground text-xs font-medium uppercase">
+                      {metric.label}
+                    </p>
+                    <p className="text-foreground mt-2 text-base font-semibold">
+                      {metric.value}
+                    </p>
                   </div>
                 ))}
               </div>
+
+              <Button asChild variant="outline" className="w-full">
+                <Link href={`mailto:${snapshot.profile.email}`}>
+                  {snapshot.profile.email}
+                </Link>
+              </Button>
             </CardContent>
           </Card>
         </SectionReveal>

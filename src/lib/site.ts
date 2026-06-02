@@ -9,7 +9,7 @@ export const siteConfig = {
   url: env.NEXT_PUBLIC_SITE_URL,
   title: "C. John Remthang | CJohn Mizo | Full-Stack Engineer Portfolio",
   description:
-    "Portfolio of C. John Remthang, also known online as C. John, CJohn Mizo, and cjohnmizo, built with Next.js, Supabase, and a recruiter-first product experience.",
+    "Portfolio of C. John Remthang, also known as CJohn Mizo, a developer and IT professional from Mizoram building practical websites, dashboards, and mobile apps.",
   keywords: [
     "C. John Remthang",
     "C John Remthang",
@@ -28,7 +28,7 @@ export const siteConfig = {
   ],
   locale: "en_US",
   adminEmail: env.ADMIN_EMAIL,
-  defaultOgImage: "/profile.jpg",
+  defaultOgImage: "/brand/cjohnmizo-favicon.png",
   navItems: [
     { label: "About", href: "/about" },
     { label: "Projects", href: "/projects" },

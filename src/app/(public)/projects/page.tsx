@@ -7,7 +7,8 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Explore portfolio projects, case studies, and technical builds by C. John Remthang.",
+  description:
+    "Explore portfolio projects, case studies, and technical builds by C. John Remthang.",
   alternates: {
     canonical: `${siteConfig.url}/projects`,
   },
@@ -21,8 +22,8 @@ export default async function ProjectsPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Project archive"
-          title="Searchable case studies with category filters and flexible sorting"
-          description="The full archive is optimized for recruiters and collaborators who want to scan outcomes quickly and dive deeper when a project is especially relevant."
+          title="Practical builds for web, mobile, learning, and admin work"
+          description="Browse selected projects by name, category, or stack. Each card keeps the description short and links only to available public resources."
         />
         <ProjectsExplorer projects={snapshot.projects} />
       </div>

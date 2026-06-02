@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Manrope } from "next/font/google";
 import { Toaster } from "sonner";
 
 import { env } from "@/lib/env";
 import { siteConfig } from "@/lib/site";
 import "@/app/globals.css";
 
-const sans = Manrope({
+const sans = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
 });
 
-const heading = Space_Grotesk({
+const heading = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading",
@@ -31,10 +31,15 @@ export const metadata: Metadata = {
   applicationName: siteConfig.shortName,
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      {
+        url: "/brand/cjohnmizo-favicon.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
       { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
     ],
-    shortcut: ["/favicon.svg"],
+    shortcut: ["/brand/cjohnmizo-favicon.png"],
+    apple: [{ url: "/brand/cjohnmizo-favicon.png", sizes: "512x512" }],
   },
   title: {
     default: siteConfig.title,
@@ -77,13 +82,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${sans.variable} ${heading.variable} ${mono.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
+        className={`${sans.variable} ${heading.variable} ${mono.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
       >
-        <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.16),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(34,197,94,0.14),_transparent_28%),linear-gradient(180deg,#020617_0%,#0f172a_50%,#020617_100%)]" />
         {children}
-        <Toaster richColors theme="dark" position="top-right" />
+        <Toaster richColors theme="light" position="top-right" />
         <Analytics />
         <SpeedInsights />
       </body>

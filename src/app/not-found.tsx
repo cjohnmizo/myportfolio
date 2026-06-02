@@ -3,18 +3,20 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 text-center">
-      <div className="glass-panel rounded-3xl px-8 py-12">
-        <p className="section-kicker text-sm text-primary">404</p>
-        <h1 className="mt-4 text-4xl font-semibold text-gradient">
-          This route drifted out of orbit.
+      <div className="surface-card rounded-lg px-8 py-12">
+        <p className="section-kicker text-secondary text-sm font-semibold">
+          404
+        </p>
+        <h1 className="text-foreground mt-4 text-4xl font-semibold">
+          Page not found
         </h1>
-        <p className="mt-4 max-w-xl text-base text-muted-foreground">
-          The page you requested is not available. Head back to the portfolio hub and keep
-          exploring.
+        <p className="text-muted-foreground mt-4 max-w-xl text-base">
+          The page you requested is not available. Return to the portfolio
+          homepage or use the main navigation.
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5"
+          className="bg-primary text-primary-foreground mt-8 inline-flex rounded-md px-5 py-3 text-sm font-semibold transition hover:bg-slate-700"
         >
           Return home
         </Link>

@@ -1,4 +1,9 @@
-import { ArrowRight, BriefcaseBusiness, Orbit, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenCheck,
+  BriefcaseBusiness,
+  MonitorCog,
+} from "lucide-react";
 import Link from "next/link";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
@@ -10,19 +15,22 @@ import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const highlights = [
   {
-    title: "Narrative-led product thinking",
-    description: "I shape the story a product needs to tell before I decide how the interface or system should behave.",
+    title: "Websites and public pages",
+    description:
+      "Clear sites for businesses, schools, organizations, and local projects that need a trustworthy online presence.",
     icon: BriefcaseBusiness,
   },
   {
-    title: "Systems that scale calmly",
-    description: "Architecture decisions are made for clarity, maintainability, and growth without operational chaos.",
-    icon: Orbit,
+    title: "Dashboards and admin tools",
+    description:
+      "Internal tools for records, content, tasks, reports, and workflows that need to stay easy to use.",
+    icon: MonitorCog,
   },
   {
-    title: "Execution teams can trust",
-    description: "I build admin surfaces, workflows, and delivery systems that hold up under real day-to-day use.",
-    icon: ShieldCheck,
+    title: "Learning and community systems",
+    description:
+      "LMS, library, and mobile app work for schools, coaching projects, and community information access.",
+    icon: BookOpenCheck,
   },
 ];
 
@@ -34,7 +42,7 @@ export function AboutSection({
   showFullStoryLink?: boolean;
 }) {
   return (
-    <section id="about" className="py-18 sm:py-24">
+    <section id="about" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
@@ -47,28 +55,33 @@ export function AboutSection({
           <SectionReveal>
             <Card className="h-full">
               <CardContent className="space-y-5 p-8">
-                <p className="text-lg leading-8 text-slate-200/90">{snapshot.profile.longBio}</p>
-                <div className="rounded-2xl border border-secondary/20 bg-secondary/10 p-4">
-                  <p className="text-sm font-medium text-foreground">
+                <p className="text-muted-foreground text-base leading-8">
+                  {snapshot.profile.longBio}
+                </p>
+                <div className="border-border bg-muted rounded-lg border p-4">
+                  <p className="text-foreground text-sm font-medium">
                     Online identity:
-                    <span className="ml-2 text-muted-foreground">
-                      {siteConfig.name}, also found as {siteConfig.publicIdentityLabels.join(", ")}
+                    <span className="text-muted-foreground ml-2">
+                      {siteConfig.name}, also found as{" "}
+                      {siteConfig.publicIdentityLabels.join(", ")}
                     </span>
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-sm text-muted-foreground">Best fit</p>
-                    <p className="mt-2 text-lg font-semibold text-foreground">
+                  <div className="border-border bg-card rounded-lg border p-4">
+                    <p className="text-muted-foreground text-sm">Best fit</p>
+                    <p className="text-foreground mt-2 text-base font-semibold">
                       {snapshot.profile.isAvailableForHire
-                        ? "Open for selected roles, product builds, and high-trust contract work"
+                        ? "Selected client work, school or NGO projects, and development roles"
                         : "Currently focused on active engagements"}
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-sm text-muted-foreground">What I optimize for</p>
-                    <p className="mt-2 text-lg font-semibold text-foreground">
-                      Product clarity, reliable systems, and interfaces people can use with confidence
+                  <div className="border-border bg-card rounded-lg border p-4">
+                    <p className="text-muted-foreground text-sm">
+                      Work standard
+                    </p>
+                    <p className="text-foreground mt-2 text-base font-semibold">
+                      Simple interfaces, maintainable code, and useful workflows
                     </p>
                   </div>
                 </div>
@@ -76,7 +89,8 @@ export function AboutSection({
                   <div className="pt-2">
                     <Button asChild variant="outline">
                       <Link href="/about">
-                        Read full background <ArrowRight className="ml-2 h-4 w-4" />
+                        Read full background{" "}
+                        <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
@@ -90,12 +104,14 @@ export function AboutSection({
               <SectionReveal key={item.title} delay={0.05 * index}>
                 <Card>
                   <CardContent className="flex items-start gap-4 p-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <div className="bg-muted text-secondary flex h-11 w-11 shrink-0 items-center justify-center rounded-lg">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                      <h3 className="text-foreground text-lg font-semibold">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground mt-2 text-sm leading-7">
                         {item.description}
                       </p>
                     </div>

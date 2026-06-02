@@ -12,24 +12,24 @@ export function FeaturedProjectsSection({
   snapshot: PortfolioSnapshot;
 }) {
   return (
-    <section id="projects" className="py-18 sm:py-24">
+    <section id="projects" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Case studies that show how I think, design, and deliver"
-              description="Selected work across CMS platforms, community products, and admin tooling, with a focus on architecture, usability, and practical execution."
+              title="Selected work across local, school, business, and admin use cases"
+              description="A short archive of practical builds: community apps, LMS work, CMS tools, business websites, and dashboards."
             />
             <Link
               href="/projects"
-              className="inline-flex items-center text-sm font-semibold text-primary"
+              className="text-secondary inline-flex items-center text-sm font-semibold"
             >
               View all projects <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
         </SectionReveal>
-        <div className="mt-10 grid gap-8 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {snapshot.featuredProjects.map((project, index) => (
             <SectionReveal key={project.id} delay={0.05 * index}>
               <ProjectCard project={project} priority={index === 0} />

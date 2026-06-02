@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, Send, Sparkles } from "lucide-react";
+import { Github, Mail, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -45,91 +44,115 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
       });
 
       window.location.href = `mailto:${snapshot.profile.email}?${params.toString()}`;
-      toast.success("Launching your email client.");
+      toast.success("Opening your email client.");
       form.reset();
     });
   });
 
   return (
-    <section id="contact" className="py-18 sm:py-24">
+    <section
+      id="contact"
+      className="border-border border-t bg-white py-14 sm:py-20"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Contact"
           title={snapshot.settings.contactTitle}
           description={snapshot.settings.contactDescription}
         />
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Card className="glass-panel h-full">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+          <Card className="h-full shadow-none">
             <CardContent className="space-y-6 p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <div className="bg-muted text-secondary flex h-11 w-11 items-center justify-center rounded-lg">
                 <Mail className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Primary contact</p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{snapshot.profile.email}</p>
+                <p className="text-muted-foreground text-sm">Email</p>
+                <p className="text-foreground mt-2 text-2xl font-semibold break-words">
+                  {snapshot.profile.email}
+                </p>
               </div>
-              <p className="text-sm leading-7 text-muted-foreground">
-                Best for full-stack roles, contract builds, platform work, admin systems, and
-                product-focused engineering conversations.
+              <p className="text-muted-foreground text-sm leading-7">
+                Best for website work, dashboards, LMS projects, mobile apps,
+                school or NGO tools, and development opportunities.
               </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge>Full-stack roles</Badge>
-                <Badge variant="secondary">Contract builds</Badge>
-                <Badge variant="muted">Architecture consulting</Badge>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href={`mailto:${snapshot.profile.email}`}>
+                    Email directly
+                  </Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link
+                    href={`https://github.com/${snapshot.profile.githubUsername}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    GitHub <Github className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-7 text-slate-200/90">
-                If your email client does not open automatically, use the direct link below.
-              </div>
-              <Button asChild variant="outline">
-                <Link href={`mailto:${snapshot.profile.email}`}>Email directly</Link>
-              </Button>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="shadow-none">
             <CardContent className="space-y-6 p-6">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
-                  <Sparkles className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-foreground">Start with a clear brief</p>
-                  <p className="text-sm text-muted-foreground">
-                    A short brief helps me understand the product, the constraints, and where I can add the most value.
-                  </p>
-                </div>
+              <div>
+                <h3 className="text-foreground text-xl font-semibold">
+                  Send a short brief
+                </h3>
+                <p className="text-muted-foreground mt-2 text-sm leading-7">
+                  Share what you need, the timeline, and any existing links or
+                  materials.
+                </p>
               </div>
 
               <form className="grid gap-5" onSubmit={onSubmit}>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your name" {...form.register("name")} />
-                    <p className="text-xs text-rose-300">{form.formState.errors.name?.message}</p>
+                    <Input
+                      id="name"
+                      placeholder="Your name"
+                      {...form.register("name")}
+                    />
+                    <p className="text-xs text-red-700">
+                      {form.formState.errors.name?.message}
+                    </p>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" placeholder="you@example.com" {...form.register("email")} />
-                    <p className="text-xs text-rose-300">{form.formState.errors.email?.message}</p>
+                    <Input
+                      id="email"
+                      placeholder="you@example.com"
+                      {...form.register("email")}
+                    />
+                    <p className="text-xs text-red-700">
+                      {form.formState.errors.email?.message}
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
                   <Input
                     id="subject"
-                    placeholder="What are you looking to build?"
+                    placeholder="Website, LMS, dashboard, or app"
                     {...form.register("subject")}
                   />
-                  <p className="text-xs text-rose-300">{form.formState.errors.subject?.message}</p>
+                  <p className="text-xs text-red-700">
+                    {form.formState.errors.subject?.message}
+                  </p>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea
                     id="message"
-                    placeholder="Share the problem, the timeline, and what success looks like."
+                    placeholder="Tell me what should be built and who will use it."
                     {...form.register("message")}
                   />
-                  <p className="text-xs text-rose-300">{form.formState.errors.message?.message}</p>
+                  <p className="text-xs text-red-700">
+                    {form.formState.errors.message?.message}
+                  </p>
                 </div>
                 <Button type="submit" disabled={isPending}>
                   Send brief <Send className="ml-2 h-4 w-4" />

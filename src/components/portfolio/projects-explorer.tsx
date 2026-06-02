@@ -22,17 +22,26 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const [sortBy, setSortBy] = useState<SortOption>("featured");
   const deferredSearch = useDeferredValue(search);
 
-  const categories = ["all", ...new Set(projects.map((project) => project.category))];
+  const categories = [
+    "all",
+    ...new Set(projects.map((project) => project.category)),
+  ];
 
   const visibleProjects = [...projects]
     .filter((project) => {
       const matchesSearch =
         deferredSearch.length === 0 ||
-        [project.title, project.excerpt, project.description, ...project.techStack]
+        [
+          project.title,
+          project.excerpt,
+          project.description,
+          ...project.techStack,
+        ]
           .join(" ")
           .toLowerCase()
           .includes(deferredSearch.toLowerCase());
-      const matchesCategory = category === "all" || project.category === category;
+      const matchesCategory =
+        category === "all" || project.category === category;
 
       return matchesSearch && matchesCategory;
     })
@@ -45,13 +54,16 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         return Number(right.year) - Number(left.year);
       }
 
-      return Number(right.isFeatured) - Number(left.isFeatured) || left.sortOrder - right.sortOrder;
+      return (
+        Number(right.isFeatured) - Number(left.isFeatured) ||
+        left.sortOrder - right.sortOrder
+      );
     });
 
   return (
     <>
       <SectionReveal>
-        <div className="surface-card rounded-3xl p-6">
+        <div className="surface-card rounded-lg p-5">
           <div className="grid gap-4 lg:grid-cols-[1.1fr_0.55fr_0.35fr]">
             <Input
               value={search}
@@ -66,11 +78,11 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               onChange={(event) => {
                 startTransition(() => setCategory(event.target.value));
               }}
-              className="h-12 rounded-2xl border border-white/10 bg-white/5 px-4 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="border-border bg-input text-foreground h-11 rounded-md border px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
               aria-label="Filter by category"
             >
               {categories.map((item) => (
-                <option key={item} value={item} className="bg-slate-950">
+                <option key={item} value={item}>
                   {item === "all" ? "All categories" : item}
                 </option>
               ))}
@@ -78,26 +90,28 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             <select
               value={sortBy}
               onChange={(event) => {
-                startTransition(() => setSortBy(event.target.value as SortOption));
+                startTransition(() =>
+                  setSortBy(event.target.value as SortOption),
+                );
               }}
-              className="h-12 rounded-2xl border border-white/10 bg-white/5 px-4 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="border-border bg-input text-foreground h-11 rounded-md border px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
               aria-label="Sort projects"
             >
               {Object.entries(sortOptions).map(([value, label]) => (
-                <option key={value} value={value} className="bg-slate-950">
+                <option key={value} value={value}>
                   {label}
                 </option>
               ))}
             </select>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <div className="text-muted-foreground mt-4 flex flex-wrap items-center gap-3 text-sm">
             <Badge variant="muted">{visibleProjects.length} results</Badge>
-            <span>Search and filtering are client-side for a snappy browsing flow.</span>
+            <span>Search by project name, description, or stack.</span>
           </div>
         </div>
       </SectionReveal>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-2">
+      <div className="mt-10 grid gap-6 lg:grid-cols-2">
         {visibleProjects.length > 0 ? (
           visibleProjects.map((project, index) => (
             <SectionReveal key={project.id} delay={0.04 * index}>
@@ -106,11 +120,13 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ))
         ) : (
           <SectionReveal className="lg:col-span-2">
-            <div className="surface-card rounded-3xl p-10 text-center">
-              <p className="text-2xl font-semibold text-foreground">No projects match that filter.</p>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Try a different keyword or switch back to all categories to explore more of the
-                archive.
+            <div className="surface-card rounded-lg p-10 text-center">
+              <p className="text-foreground text-2xl font-semibold">
+                No projects match that filter.
+              </p>
+              <p className="text-muted-foreground mt-3 text-sm leading-7">
+                Try a different keyword or switch back to all categories to
+                explore more of the archive.
               </p>
             </div>
           </SectionReveal>

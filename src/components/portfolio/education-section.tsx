@@ -6,33 +6,46 @@ import { Card, CardContent } from "@/components/ui/card";
 import { formatDateLabel } from "@/lib/utils";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
-export function EducationSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
+export function EducationSection({
+  snapshot,
+}: {
+  snapshot: PortfolioSnapshot;
+}) {
   return (
-    <section id="education" className="py-18 sm:py-24">
+    <section id="education" className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
             eyebrow="Education"
-            title="Academic grounding in computer applications and software thinking"
-            description="Formal study in computer applications supported by years of hands-on work across web systems, CMS platforms, admin tools, and product delivery."
+            title="Computer applications foundation"
+            description="Formal study in computer applications, supported by practical work across websites, databases, admin tools, and learning systems."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {snapshot.education.map((item, index) => (
-            <SectionReveal key={item.id} delay={0.05 * index}>
-              <Card className="h-full">
+          {snapshot.education.map((item) => (
+            <SectionReveal key={item.id}>
+              <Card className="h-full shadow-none">
                 <CardContent className="space-y-4 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
+                  <div className="bg-muted text-secondary flex h-11 w-11 items-center justify-center rounded-lg">
                     <GraduationCap className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{item.institution}</p>
-                    <h3 className="mt-2 text-2xl font-semibold text-foreground">{item.degree}</h3>
-                    <p className="mt-1 text-sm text-slate-300">{item.field}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {item.institution}
+                    </p>
+                    <h3 className="text-foreground mt-2 text-2xl font-semibold">
+                      {item.degree}
+                    </h3>
+                    <p className="text-muted-foreground mt-1 text-sm">
+                      {item.field}
+                    </p>
                   </div>
-                  <p className="text-sm leading-7 text-muted-foreground">{item.description}</p>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-muted-foreground">
-                    {item.location} • {formatDateLabel(item.startDate)} - {formatDateLabel(item.endDate)}
+                  <p className="text-muted-foreground text-sm leading-7">
+                    {item.description}
+                  </p>
+                  <div className="border-border bg-muted text-muted-foreground rounded-lg border p-4 text-sm">
+                    {item.location} - {formatDateLabel(item.startDate)} -{" "}
+                    {formatDateLabel(item.endDate)}
                   </div>
                 </CardContent>
               </Card>
