@@ -8,10 +8,13 @@ test("health endpoint reports deployment status", async ({ request }) => {
   const payload = await response.json();
   expect(payload.status).toBe("ok");
   expect(payload.checks.app).toBe("ok");
-  expect(payload.checks.database).toBeTruthy();
+  expect(payload.checks.content).toBe("static");
+  expect(payload.checks.backend).toBe("removed");
 });
 
-test("security.txt is available for responsible disclosure", async ({ request }) => {
+test("security.txt is available for responsible disclosure", async ({
+  request,
+}) => {
   const response = await request.get("/.well-known/security.txt");
 
   expect(response.ok()).toBeTruthy();

@@ -70,7 +70,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </Link>
               </Button>
             ) : null}
-            {/* TODO: Add /resume.pdf or an admin resume URL to show the Download Resume button. */}
+            {/* TODO: Add /resume.pdf or a public resume URL to show the Download Resume button. */}
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:max-w-3xl">

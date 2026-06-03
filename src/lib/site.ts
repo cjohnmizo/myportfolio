@@ -23,7 +23,6 @@ export const siteConfig = {
     "software engineer",
     "Next.js portfolio",
     "TypeScript developer",
-    "Supabase",
     "developer portfolio",
     "Mizoram developer",
     "LMS developer",
@@ -35,7 +34,7 @@ export const siteConfig = {
     "Flutter developer",
   ],
   locale: "en_US",
-  adminEmail: env.ADMIN_EMAIL,
+  securityEmail: "contact@cjohnmizo.in",
   defaultOgImage: "/brand/cjohnmizo-favicon.png",
   navItems: [
     { label: "About", href: "/about" },

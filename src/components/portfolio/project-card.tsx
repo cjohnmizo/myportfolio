@@ -34,13 +34,13 @@ export function ProjectCard({
     <Card className="light-sweep group border-primary/10 hover:border-primary/45 flex h-full flex-col overflow-hidden shadow-none transition duration-300 hover:-translate-y-1">
       <div className="border-border bg-muted project-preview-frame relative overflow-hidden border-b p-3">
         <div className="mizo-pattern absolute inset-0 opacity-10" />
-        <div className="project-preview-surface bg-background relative aspect-[16/9] overflow-hidden rounded-2xl border border-white/10">
+        <div className="project-preview-surface bg-card relative aspect-[16/9] overflow-hidden rounded-2xl border border-white/70">
           <Image
             src={project.coverImage}
             alt={getProjectPreviewAlt(project)}
             fill
             priority={priority}
-            className="object-cover opacity-90 mix-blend-luminosity transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
+            className="object-cover opacity-95 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
           <div className="absolute inset-x-3 bottom-3 flex flex-wrap items-center justify-between gap-2">

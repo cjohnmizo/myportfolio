@@ -7,7 +7,7 @@ export async function GET() {
   expires.setMonth(expires.getMonth() + 12);
 
   const body = [
-    `Contact: mailto:${siteConfig.adminEmail ?? "security@cjohnmizo.in"}`,
+    `Contact: mailto:${siteConfig.securityEmail}`,
     `Canonical: ${siteConfig.url}/.well-known/security.txt`,
     `Policy: ${siteConfig.url}`,
     `Expires: ${expires.toISOString()}`,

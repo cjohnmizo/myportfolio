@@ -18,9 +18,9 @@ export default function OpenGraphImage() {
         justifyContent: "space-between",
         padding: 64,
         background:
-          "radial-gradient(circle at 12% 8%, rgba(122,167,255,0.32), transparent 34%), radial-gradient(circle at 88% 20%, rgba(216,166,75,0.24), transparent 28%), linear-gradient(135deg, #070b12 0%, #101827 54%, #070b12 100%)",
-        color: "#f5f7f2",
-        border: "1px solid rgba(180,204,208,0.24)",
+          "radial-gradient(circle at 12% 8%, rgba(255,255,255,0.95), transparent 36%), radial-gradient(circle at 88% 20%, rgba(122,167,255,0.34), transparent 30%), linear-gradient(135deg, #eef6ff 0%, #dceaff 54%, #f7fbff 100%)",
+        color: "#10233f",
+        border: "1px solid rgba(149,178,214,0.34)",
       }}
     >
       <div
@@ -30,11 +30,11 @@ export default function OpenGraphImage() {
           alignItems: "center",
           fontSize: 28,
           fontWeight: 700,
-          color: "#7aa7ff",
+          color: "#1976e8",
         }}
       >
         <span>C. John Remthang</span>
-        <span style={{ color: "#d8a64b" }}>cjohnmizo.in</span>
+        <span style={{ color: "#a46b08" }}>cjohnmizo.in</span>
       </div>
       <div
         style={{
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
           Practical digital systems for schools, NGOs, businesses, and
           communities
         </div>
-        <div style={{ fontSize: 29, color: "#cbd5d8", lineHeight: 1.35 }}>
+        <div style={{ fontSize: 29, color: "#526985", lineHeight: 1.35 }}>
           Mizoram-based developer building websites, LMS platforms, dashboards,
           mobile apps, and maintainable systems that stay useful after launch.
         </div>
@@ -58,7 +58,7 @@ export default function OpenGraphImage() {
           display: "flex",
           gap: 16,
           fontSize: 24,
-          color: "#a8b5b9",
+          color: "#526985",
         }}
       >
         <span>Next.js</span>
@@ -67,7 +67,7 @@ export default function OpenGraphImage() {
         <span>/</span>
         <span>Flutter</span>
         <span>/</span>
-        <span>Supabase</span>
+        <span>Static content</span>
       </div>
     </div>,
     {

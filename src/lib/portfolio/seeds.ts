@@ -63,7 +63,7 @@ export const portfolioSeed: PortfolioSnapshot = {
       challenge:
         "Community information is often spread across messages, calls, and informal updates. The project needed a simple structure that people can understand quickly, including users with inconsistent connectivity.",
       solution:
-        "I planned the app around a clear directory, concise updates, and offline-aware data access using Flutter, Supabase, and PowerSync.",
+        "I planned the app around a clear directory, concise updates, and offline-aware data access using Flutter, local sync planning, and PowerSync.",
       impact:
         "The project gives the community a clearer place for trusted information and reduces the friction of sharing updates across different groups.",
       category: "mobile-app",
@@ -77,12 +77,12 @@ export const portfolioSeed: PortfolioSnapshot = {
       demoUrl: null,
       githubUrl: "https://github.com/cjohnmizo/liankhawpui",
       caseStudyUrl: "https://github.com/cjohnmizo/liankhawpui#readme",
-      techStack: ["Flutter", "Supabase", "PowerSync"],
+      techStack: ["Flutter", "PowerSync", "Offline-first"],
       metrics: [
         {
           label: "My role",
           value:
-            "App planning, interface structure, Flutter development, and Supabase data flow.",
+            "App planning, interface structure, Flutter development, and offline-aware data flow.",
         },
         {
           label: "Key feature",
@@ -456,7 +456,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-14",
-      name: "Supabase",
+      name: "SQLite",
       category: "Database",
       proficiency: 88,
       icon: "database",
@@ -587,7 +587,7 @@ export const portfolioSeed: PortfolioSnapshot = {
         "Plan and build project structure, user interfaces, data flows, and deployment workflows.",
         "Work with clients and local organizations to turn practical requirements into responsive, maintainable systems.",
       ],
-      techStack: ["Next.js", "Laravel", "Flutter", "Supabase"],
+      techStack: ["Next.js", "Laravel", "Flutter", "MySQL"],
       sortOrder: 2,
       isPublished: true,
     },
