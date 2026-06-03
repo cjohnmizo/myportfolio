@@ -14,10 +14,10 @@ export function PublicHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
       <HeroSection snapshot={snapshot} />
       <AboutSection snapshot={snapshot} />
       <SystemsSection />
-      <TrustSection />
       <SkillsSection snapshot={snapshot} />
       <FeaturedProjectsSection snapshot={snapshot} />
       <ExperienceSection snapshot={snapshot} />
+      <TrustSection />
       <ContactSection snapshot={snapshot} />
     </main>
   );

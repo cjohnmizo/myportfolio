@@ -11,7 +11,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     shortBio:
       "I build practical digital systems for schools, NGOs, coaching centres, businesses, farms, and community projects.",
     longBio:
-      "I am a developer and IT professional from Mizoram, focused on building useful software systems that are clear, maintainable, responsive, and practical for real users. My work includes school and institution websites, coaching LMS platforms, admin dashboards, CMS tools, mobile applications, and digital systems for local organizations. I also teach IT and ITeS subjects, which helps me understand how people learn and use technology in everyday settings.",
+      "I am a developer and IT professional from Mizoram, focused on practical software systems that are clear, responsive, maintainable, and useful for real users. My work includes school and institution websites, coaching LMS platforms, admin dashboards, CMS tools, mobile applications, and digital systems for local organizations. I also teach IT and ITeS subjects, which helps me understand first-time computer users, day-to-day workflows, and why a system should remain useful after launch.",
     avatarUrl: "/profile.jpg",
     resumeUrl: null,
     githubUsername: "cjohnmizo",
@@ -35,18 +35,18 @@ export const portfolioSeed: PortfolioSnapshot = {
     heroSubtitle:
       "Developer from Mizoram focused on clean websites, LMS platforms, admin dashboards, mobile apps, and maintainable systems that are useful after launch.",
     heroDescription:
-      "The style of this portfolio is inspired by modern developer interfaces and subtle Mizo geometric craft: dark, calm, memorable, and built around real project work.",
+      "The style of this portfolio is built around Mizo Digital Craft 3D: clean developer interfaces, soft vector visuals, subtle Mizo geometric accents, and real project work.",
     aboutTitle: "Mizo digital craft for practical software systems",
     aboutBody:
-      "I work with schools, NGOs, coaching centres, local businesses, farms, and community projects that need clear software, reliable workflows, and interfaces people can actually use.",
+      "I work with schools, NGOs, coaching centres, local businesses, farms, and community projects that need responsive design, maintainable code, useful admin workflows, and software people can actually use.",
     contactTitle: "Have a website, dashboard, LMS, or app to build?",
     contactDescription:
-      "Have a school website, LMS, NGO system, dashboard, or mobile app idea? Send a short project brief and I will review it.",
+      "Have a school website, LMS, NGO system, dashboard, or mobile app idea? Send a short project brief and I'll review it.",
     seoTitle: "C. John Remthang | Web, LMS, Dashboard & Mobile App Developer",
     seoDescription:
       "Personal portfolio of C. John Remthang, a Mizoram-based developer building practical websites, LMS platforms, dashboards, mobile apps, and digital systems for schools, NGOs, businesses, and communities.",
     footerNote:
-      "Building practical digital systems for schools, NGOs, businesses, farms, coaching centres, and community use.",
+      "Building practical digital systems for schools, NGOs, businesses, and communities.",
     primaryAccent: "#2dd4bf",
     secondaryAccent: "#d8a64b",
   },
@@ -564,10 +564,10 @@ export const portfolioSeed: PortfolioSnapshot = {
       startDate: "2022-07-01",
       endDate: null,
       summary:
-        "Teach basic computer skills and IT-related subjects to Class IX and X students, with a focus on practical digital literacy and clear technical foundations.",
+        "Teach basic computer skills and IT-related subjects to Class IX and X students, with a focus on practical digital literacy, first-time computer users, and clear technical foundations.",
       achievements: [
         "Prepare lessons and activities around computer fundamentals, office tools, internet use, and practical IT concepts.",
-        "Help students connect classroom learning with everyday digital tools and further technical study.",
+        "Work with real classroom users, which shapes how I design simple interfaces, clear workflows, and patient onboarding.",
       ],
       techStack: ["Teaching", "Computer Fundamentals", "IT & ITeS"],
       sortOrder: 1,
@@ -585,7 +585,7 @@ export const portfolioSeed: PortfolioSnapshot = {
         "Build websites, dashboards, CMS tools, LMS platforms, and mobile apps for practical business, school, and community needs.",
       achievements: [
         "Plan and build project structure, user interfaces, data flows, and deployment workflows.",
-        "Work with clients and local organizations to turn real requirements into usable software.",
+        "Work with clients and local organizations to turn practical requirements into responsive, maintainable systems.",
       ],
       techStack: ["Next.js", "Laravel", "Flutter", "Supabase"],
       sortOrder: 2,
