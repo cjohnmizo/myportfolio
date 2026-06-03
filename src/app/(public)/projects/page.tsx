@@ -22,8 +22,8 @@ export default async function ProjectsPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Project archive"
-          title="Practical builds for web, mobile, learning, and admin work"
-          description="Browse selected projects by name, category, or stack. Each card keeps the description short and links only to available public resources."
+          title="Digital case files for web, LMS, mobile, and admin work"
+          description="Browse selected work by project, category, or stack. Private client projects are marked clearly, with details available on request."
         />
         <ProjectsExplorer projects={snapshot.projects} />
       </div>

@@ -42,7 +42,7 @@ export function AboutSection({
   showFullStoryLink?: boolean;
 }) {
   return (
-    <section id="about" className="py-14 sm:py-20">
+    <section id="about" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
@@ -53,12 +53,12 @@ export function AboutSection({
         </SectionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <SectionReveal>
-            <Card className="h-full">
+            <Card className="border-primary/20 h-full">
               <CardContent className="space-y-5 p-8">
                 <p className="text-muted-foreground text-base leading-8">
                   {snapshot.profile.longBio}
                 </p>
-                <div className="border-border bg-muted rounded-lg border p-4">
+                <div className="border-primary/20 bg-primary/10 rounded-2xl border p-4">
                   <p className="text-foreground text-sm font-medium">
                     Online identity:
                     <span className="text-muted-foreground ml-2">
@@ -68,7 +68,7 @@ export function AboutSection({
                   </p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="border-border bg-card rounded-lg border p-4">
+                  <div className="border-border bg-background/35 rounded-2xl border p-4">
                     <p className="text-muted-foreground text-sm">Best fit</p>
                     <p className="text-foreground mt-2 text-base font-semibold">
                       {snapshot.profile.isAvailableForHire
@@ -76,7 +76,7 @@ export function AboutSection({
                         : "Currently focused on active engagements"}
                     </p>
                   </div>
-                  <div className="border-border bg-card rounded-lg border p-4">
+                  <div className="border-border bg-background/35 rounded-2xl border p-4">
                     <p className="text-muted-foreground text-sm">
                       Work standard
                     </p>
@@ -102,9 +102,9 @@ export function AboutSection({
           <div className="grid gap-6">
             {highlights.map((item, index) => (
               <SectionReveal key={item.title} delay={0.05 * index}>
-                <Card>
+                <Card className="light-sweep hover:border-secondary/45 transition duration-300 hover:-translate-y-1">
                   <CardContent className="flex items-start gap-4 p-6">
-                    <div className="bg-muted text-secondary flex h-11 w-11 shrink-0 items-center justify-center rounded-lg">
+                    <div className="border-secondary/25 bg-secondary/10 text-secondary flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div>

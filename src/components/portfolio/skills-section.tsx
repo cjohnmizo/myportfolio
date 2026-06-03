@@ -17,22 +17,19 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   );
 
   return (
-    <section
-      id="skills"
-      className="border-border border-y bg-white py-14 sm:py-20"
-    >
+    <section id="skills" className="border-border border-y py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
             eyebrow="Skills"
-            title="A practical stack for web, mobile, and admin systems"
-            description="Grouped by how the tools are used in real projects: frontend interfaces, backend logic, mobile apps, databases, and delivery tools."
+            title="Tech stack organized by how systems are built"
+            description="Frontend, backend, mobile, databases, deployment, and focus areas for LMS, CMS, dashboards, school systems, NGO systems, and community apps."
           />
         </SectionReveal>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {groupedSkills.map(([category, skills]) => (
             <SectionReveal key={category}>
-              <Card className="h-full shadow-none">
+              <Card className="light-sweep hover:border-primary/45 h-full shadow-none transition duration-300 hover:-translate-y-1">
                 <CardContent className="space-y-5 p-5">
                   <h3 className="text-foreground text-base font-semibold">
                     {category}

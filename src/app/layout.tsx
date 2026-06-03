@@ -87,7 +87,7 @@ export default function RootLayout({
         className={`${sans.variable} ${heading.variable} ${mono.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
       >
         {children}
-        <Toaster richColors theme="light" position="top-right" />
+        <Toaster richColors theme="dark" position="top-right" />
         <Analytics />
         <SpeedInsights />
       </body>

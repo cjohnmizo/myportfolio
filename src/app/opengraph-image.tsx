@@ -17,49 +17,57 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 64,
-        background: "#f6f7f8",
-        color: "#111827",
-        border: "1px solid #d8dee6",
+        background:
+          "radial-gradient(circle at 12% 8%, rgba(45,212,191,0.32), transparent 34%), radial-gradient(circle at 88% 20%, rgba(216,166,75,0.24), transparent 28%), linear-gradient(135deg, #071015 0%, #0d2027 54%, #071015 100%)",
+        color: "#f5f7f2",
+        border: "1px solid rgba(180,204,208,0.24)",
       }}
     >
       <div
         style={{
           display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
-          gap: 20,
           fontSize: 28,
           fontWeight: 700,
+          color: "#2dd4bf",
         }}
       >
-        C. John Remthang
+        <span>C. John Remthang</span>
+        <span style={{ color: "#d8a64b" }}>cjohnmizo.in</span>
       </div>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           gap: 18,
-          maxWidth: 880,
+          maxWidth: 900,
         }}
       >
-        <div style={{ fontSize: 66, fontWeight: 700, lineHeight: 1.06 }}>
-          Practical websites, dashboards, and mobile apps
+        <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.05 }}>
+          Practical digital systems for schools, NGOs, businesses, and
+          communities
         </div>
-        <div style={{ fontSize: 30, color: "#4b5563", lineHeight: 1.35 }}>
-          Developer and IT professional from Mizoram building useful software
-          for businesses, institutions, and community projects.
+        <div style={{ fontSize: 29, color: "#cbd5d8", lineHeight: 1.35 }}>
+          Mizoram-based developer building websites, LMS platforms, dashboards,
+          mobile apps, and maintainable systems that stay useful after launch.
         </div>
       </div>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          fontSize: 26,
-          color: "#4b5563",
+          gap: 16,
+          fontSize: 24,
+          color: "#a8b5b9",
         }}
       >
-        <span>cjohnmizo.in</span>
-        <span style={{ color: "#0f766e" }}>Next.js / Supabase / Flutter</span>
+        <span>Next.js</span>
+        <span>/</span>
+        <span>Laravel</span>
+        <span>/</span>
+        <span>Flutter</span>
+        <span>/</span>
+        <span>Supabase</span>
       </div>
     </div>,
     {

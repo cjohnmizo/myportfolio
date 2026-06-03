@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Github, Mail, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -21,6 +21,7 @@ import {
 
 export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   const [isPending, startTransition] = useTransition();
+  const [website, setWebsite] = useState("");
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -32,6 +33,11 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   });
 
   const onSubmit = form.handleSubmit((values) => {
+    if (website) {
+      toast.error("Unable to send this brief.");
+      return;
+    }
+
     startTransition(() => {
       const params = new URLSearchParams({
         subject: `Portfolio enquiry: ${values.subject}`,
@@ -44,7 +50,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
       });
 
       window.location.href = `mailto:${snapshot.profile.email}?${params.toString()}`;
-      toast.success("Opening your email client.");
+      toast.success("Opening your email client with the project brief.");
       form.reset();
     });
   });
@@ -52,8 +58,9 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
     <section
       id="contact"
-      className="border-border border-t bg-white py-14 sm:py-20"
+      className="border-border relative border-t py-16 sm:py-24"
     >
+      <div className="via-secondary/50 absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Contact"
@@ -61,9 +68,9 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
           description={snapshot.settings.contactDescription}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <Card className="h-full shadow-none">
+          <Card className="border-primary/20 h-full shadow-none">
             <CardContent className="space-y-6 p-6">
-              <div className="bg-muted text-secondary flex h-11 w-11 items-center justify-center rounded-lg">
+              <div className="border-primary/25 bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-2xl border">
                 <Mail className="h-5 w-5" />
               </div>
               <div>
@@ -73,8 +80,8 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </p>
               </div>
               <p className="text-muted-foreground text-sm leading-7">
-                Best for website work, dashboards, LMS projects, mobile apps,
-                school or NGO tools, and development opportunities.
+                Have a school website, LMS, NGO system, dashboard, or mobile app
+                idea? Send a short project brief and I will review it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
@@ -99,7 +106,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             <CardContent className="space-y-6 p-6">
               <div>
                 <h3 className="text-foreground text-xl font-semibold">
-                  Send a short brief
+                  Send a project brief
                 </h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-7">
                   Share what you need, the timeline, and any existing links or
@@ -108,6 +115,15 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </div>
 
               <form className="grid gap-5" onSubmit={onSubmit}>
+                <input
+                  value={website}
+                  onChange={(event) => setWebsite(event.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                  name="website"
+                />
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
@@ -116,7 +132,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="Your name"
                       {...form.register("name")}
                     />
-                    <p className="text-xs text-red-700">
+                    <p className="text-xs text-red-300">
                       {form.formState.errors.name?.message}
                     </p>
                   </div>
@@ -127,7 +143,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="you@example.com"
                       {...form.register("email")}
                     />
-                    <p className="text-xs text-red-700">
+                    <p className="text-xs text-red-300">
                       {form.formState.errors.email?.message}
                     </p>
                   </div>
@@ -139,7 +155,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     placeholder="Website, LMS, dashboard, or app"
                     {...form.register("subject")}
                   />
-                  <p className="text-xs text-red-700">
+                  <p className="text-xs text-red-300">
                     {form.formState.errors.subject?.message}
                   </p>
                 </div>
@@ -150,12 +166,13 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     placeholder="Tell me what should be built and who will use it."
                     {...form.register("message")}
                   />
-                  <p className="text-xs text-red-700">
+                  <p className="text-xs text-red-300">
                     {form.formState.errors.message?.message}
                   </p>
                 </div>
                 <Button type="submit" disabled={isPending}>
-                  Send brief <Send className="ml-2 h-4 w-4" />
+                  {isPending ? "Preparing brief..." : "Send Project Brief"}
+                  <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>
             </CardContent>

@@ -22,6 +22,14 @@ function uniqueGalleryImages(project: Project) {
   );
 }
 
+function getStatusLabel(status: string) {
+  if (status.toLowerCase() === "private") {
+    return "Private client project - details available on request.";
+  }
+
+  return status;
+}
+
 const storySectionMeta = {
   challenge: {
     title: "Problem",
@@ -47,7 +55,7 @@ export function ProjectCaseStudy({
   const galleryImages = uniqueGalleryImages(project);
   const projectFacts = [
     { label: "Type", value: project.category },
-    { label: "Status", value: project.status },
+    { label: "Status", value: getStatusLabel(project.status) },
     { label: "Year", value: project.year },
   ];
   const storySections = [
@@ -72,7 +80,7 @@ export function ProjectCaseStudy({
           <div className="space-y-8">
             <SectionReveal className="space-y-6">
               <div className="flex flex-wrap gap-2">
-                <Badge>{project.status}</Badge>
+                <Badge>{getStatusLabel(project.status)}</Badge>
                 <Badge variant="muted">{project.category}</Badge>
                 <Badge variant="muted">{project.year}</Badge>
               </div>
@@ -134,7 +142,7 @@ export function ProjectCaseStudy({
                     Overview
                   </p>
                   <h2 className="text-foreground text-2xl font-semibold">
-                    What this project is
+                    What this case file covers
                   </h2>
                   <p className="text-muted-foreground text-sm leading-8">
                     {project.description}
@@ -222,7 +230,7 @@ export function ProjectCaseStudy({
                         <p className="text-muted-foreground text-sm">
                           {item.label}
                         </p>
-                        <p className="text-foreground text-right text-sm font-medium capitalize">
+                        <p className="text-foreground text-right text-sm font-medium">
                           {item.value}
                         </p>
                       </div>

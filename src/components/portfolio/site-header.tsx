@@ -13,7 +13,7 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="border-border bg-background/95 sticky top-0 z-40 border-b backdrop-blur">
+    <header className="border-border bg-background/78 sticky top-0 z-40 border-b backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -27,7 +27,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-foreground transition"
+              className="hover:text-primary transition"
             >
               {item.label}
             </Link>
@@ -45,8 +45,8 @@ export function SiteHeader() {
             </Button>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-50 bg-slate-950/30" />
-            <Dialog.Content className="border-border bg-card fixed inset-x-4 top-4 z-50 rounded-lg border p-5 shadow-xl">
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm" />
+            <Dialog.Content className="border-border bg-popover fixed inset-x-4 top-4 z-50 rounded-3xl border p-5 shadow-2xl shadow-black/50">
               <div className="flex items-center justify-between">
                 <BrandLogo showTagline={false} />
                 <Dialog.Close asChild>
@@ -65,7 +65,7 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="border-border text-foreground hover:bg-muted rounded-md border px-4 py-3 text-base font-medium transition"
+                    className="border-border text-foreground hover:border-primary/40 hover:bg-muted rounded-2xl border px-4 py-3 text-base font-medium transition"
                   >
                     {item.label}
                   </Link>

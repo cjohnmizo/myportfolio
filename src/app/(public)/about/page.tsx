@@ -64,7 +64,8 @@ export default async function AboutPage() {
         }}
       />
 
-      <main className="py-12 sm:py-16">
+      <main className="relative py-14 sm:py-20">
+        <div className="mizo-pattern absolute inset-x-0 top-0 h-72 opacity-[0.07]" />
         <div className="mx-auto max-w-7xl space-y-14 px-4 sm:px-6 lg:px-8">
           <section>
             <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
@@ -72,8 +73,7 @@ export default async function AboutPage() {
                 <Badge>About</Badge>
                 <div className="space-y-4">
                   <h1 className="text-foreground max-w-4xl text-4xl leading-tight font-semibold sm:text-5xl">
-                    Developer and IT professional building useful software from
-                    Mizoram.
+                    Mizo digital craft shaped into practical software systems.
                   </h1>
                   <p className="text-muted-foreground max-w-3xl text-lg leading-8">
                     {snapshot.profile.shortBio}
@@ -96,7 +96,7 @@ export default async function AboutPage() {
               </SectionReveal>
 
               <SectionReveal>
-                <Card className="shadow-none">
+                <Card className="light-sweep border-primary/20 shadow-none">
                   <CardContent className="space-y-6 p-6">
                     <div className="space-y-3">
                       <p className="section-kicker text-secondary text-xs font-semibold">
@@ -115,7 +115,7 @@ export default async function AboutPage() {
                       {snapshot.profile.metrics.map((metric) => (
                         <div
                           key={metric.label}
-                          className="border-border bg-muted rounded-lg border p-4"
+                          className="border-border bg-muted rounded-2xl border p-4"
                         >
                           <p className="text-muted-foreground text-sm">
                             {metric.label}
@@ -127,7 +127,7 @@ export default async function AboutPage() {
                       ))}
                     </div>
 
-                    <div className="border-border bg-card rounded-lg border p-4">
+                    <div className="border-primary/20 bg-primary/10 rounded-2xl border p-4">
                       <p className="text-foreground text-sm font-semibold">
                         Core stack
                       </p>

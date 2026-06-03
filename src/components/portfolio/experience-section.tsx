@@ -13,7 +13,7 @@ export function ExperienceSection({
   snapshot: PortfolioSnapshot;
 }) {
   return (
-    <section id="experience" className="py-14 sm:py-20">
+    <section id="experience" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
@@ -25,10 +25,11 @@ export function ExperienceSection({
         <div className="mt-10 space-y-6">
           {snapshot.experiences.map((experience, index) => (
             <SectionReveal key={experience.id} delay={0.05 * index}>
-              <Card>
-                <CardContent className="grid gap-6 p-6 lg:grid-cols-[220px_1fr]">
+              <Card className="hover:border-primary/35 overflow-visible transition duration-300">
+                <CardContent className="relative grid gap-6 p-6 lg:grid-cols-[220px_1fr]">
+                  <div className="from-primary via-secondary/70 absolute top-20 bottom-6 left-[26px] hidden w-px bg-gradient-to-b to-transparent lg:block" />
                   <div className="space-y-3">
-                    <div className="bg-muted text-secondary flex h-11 w-11 items-center justify-center rounded-lg">
+                    <div className="border-primary/25 bg-primary/10 text-primary relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border">
                       <BriefcaseBusiness className="h-5 w-5" />
                     </div>
                     <div>
@@ -63,7 +64,7 @@ export function ExperienceSection({
                       {experience.achievements.map((achievement) => (
                         <div
                           key={achievement}
-                          className="border-border bg-muted text-foreground rounded-lg border p-4 text-sm leading-7"
+                          className="border-border bg-muted text-foreground rounded-2xl border p-4 text-sm leading-7"
                         >
                           {achievement}
                         </div>

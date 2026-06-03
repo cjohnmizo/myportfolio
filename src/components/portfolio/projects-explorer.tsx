@@ -63,7 +63,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   return (
     <>
       <SectionReveal>
-        <div className="surface-card rounded-lg p-5">
+        <div className="surface-card rounded-2xl p-5">
           <div className="grid gap-4 lg:grid-cols-[1.1fr_0.55fr_0.35fr]">
             <Input
               value={search}
@@ -78,7 +78,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               onChange={(event) => {
                 startTransition(() => setCategory(event.target.value));
               }}
-              className="border-border bg-input text-foreground h-11 rounded-md border px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="border-border bg-input text-foreground focus:border-primary/60 focus:bg-muted h-12 rounded-xl border px-4 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2"
               aria-label="Filter by category"
             >
               {categories.map((item) => (
@@ -94,7 +94,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                   setSortBy(event.target.value as SortOption),
                 );
               }}
-              className="border-border bg-input text-foreground h-11 rounded-md border px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="border-border bg-input text-foreground focus:border-primary/60 focus:bg-muted h-12 rounded-xl border px-4 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2"
               aria-label="Sort projects"
             >
               {Object.entries(sortOptions).map(([value, label]) => (
@@ -120,7 +120,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ))
         ) : (
           <SectionReveal className="lg:col-span-2">
-            <div className="surface-card rounded-lg p-10 text-center">
+            <div className="surface-card rounded-2xl p-10 text-center">
               <p className="text-foreground text-2xl font-semibold">
                 No projects match that filter.
               </p>

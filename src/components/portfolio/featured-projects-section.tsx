@@ -12,18 +12,18 @@ export function FeaturedProjectsSection({
   snapshot: PortfolioSnapshot;
 }) {
   return (
-    <section id="projects" className="py-14 sm:py-20">
+    <section id="projects" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Selected work across local, school, business, and admin use cases"
-              description="A short archive of practical builds: community apps, LMS work, CMS tools, business websites, and dashboards."
+              title="Premium digital case files from practical builds"
+              description="Selected projects across community apps, coaching LMS work, farm and business websites, admin dashboards, and CMS platforms."
             />
             <Link
               href="/projects"
-              className="text-secondary inline-flex items-center text-sm font-semibold"
+              className="text-primary inline-flex items-center text-sm font-semibold transition hover:text-teal-200"
             >
               View all projects <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
