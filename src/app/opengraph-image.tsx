@@ -18,7 +18,7 @@ export default function OpenGraphImage() {
         justifyContent: "space-between",
         padding: 64,
         background:
-          "radial-gradient(circle at 12% 8%, rgba(45,212,191,0.32), transparent 34%), radial-gradient(circle at 88% 20%, rgba(216,166,75,0.24), transparent 28%), linear-gradient(135deg, #071015 0%, #0d2027 54%, #071015 100%)",
+          "radial-gradient(circle at 12% 8%, rgba(122,167,255,0.32), transparent 34%), radial-gradient(circle at 88% 20%, rgba(216,166,75,0.24), transparent 28%), linear-gradient(135deg, #070b12 0%, #101827 54%, #070b12 100%)",
         color: "#f5f7f2",
         border: "1px solid rgba(180,204,208,0.24)",
       }}
@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
           alignItems: "center",
           fontSize: 28,
           fontWeight: 700,
-          color: "#2dd4bf",
+          color: "#7aa7ff",
         }}
       >
         <span>C. John Remthang</span>

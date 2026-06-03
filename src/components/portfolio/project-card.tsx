@@ -51,7 +51,7 @@ export function ProjectCard({
               {project.category}
             </span>
           </div>
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.14),transparent_34%,rgba(45,212,191,0.08)_72%,transparent)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.14),transparent_34%,rgba(122,167,255,0.08)_72%,transparent)]" />
         </div>
       </div>
       <CardContent className="flex flex-1 flex-col gap-5 p-5">
