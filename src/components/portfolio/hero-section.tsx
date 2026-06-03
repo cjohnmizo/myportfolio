@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download, Mail, MapPin, Sparkles } from "lucide-react";
 
-import { DigitalBuilderMascot } from "@/components/portfolio/digital-builder-mascot";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { SocialIcon } from "@/components/portfolio/social-icon";
+import { SystemsWorkbenchVisual } from "@/components/portfolio/systems-workbench-visual";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -74,11 +74,10 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:max-w-3xl">
-            {serviceBadges.map((badge, index) => (
+            {serviceBadges.map((badge) => (
               <div
                 key={badge}
-                className="border-border bg-card/60 text-muted-foreground flex [animation:float-soft_7s_ease-in-out_infinite] items-center gap-2 rounded-2xl border px-4 py-3 text-sm font-medium backdrop-blur"
-                style={{ animationDelay: `${index * 180}ms` }}
+                className="border-border bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground flex items-center gap-2 rounded-2xl border px-4 py-3 text-sm font-medium backdrop-blur transition"
               >
                 <Sparkles className="text-primary h-4 w-4" />
                 {badge}
@@ -155,7 +154,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </CardContent>
             </Card>
 
-            <DigitalBuilderMascot />
+            <SystemsWorkbenchVisual />
           </div>
         </SectionReveal>
       </div>

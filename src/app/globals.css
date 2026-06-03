@@ -160,12 +160,11 @@ select {
     box-shadow: 0 18px 54px rgba(0, 0, 0, 0.24);
   }
 
-  .soft-3d-scene {
-    transform-style: preserve-3d;
+  .workbench-scene {
     isolation: isolate;
   }
 
-  .soft-3d-scene::after {
+  .workbench-scene::after {
     position: absolute;
     inset: 1px;
     pointer-events: none;
@@ -180,24 +179,14 @@ select {
     mix-blend-mode: screen;
   }
 
-  .card-drift {
-    animation: card-drift 7s ease-in-out infinite;
-    transform: translate3d(0, 0, 24px) rotateX(7deg) rotateY(-8deg);
-  }
-
-  .glow-pulse {
-    animation: glow-pulse 7s ease-in-out infinite;
-  }
-
   .project-preview-frame {
     perspective: 1100px;
   }
 
   .project-preview-surface {
-    transform: rotateX(3deg) rotateY(-4deg) translateZ(0);
     transform-origin: center;
     box-shadow:
-      0 26px 70px rgba(0, 0, 0, 0.34),
+      0 20px 54px rgba(0, 0, 0, 0.3),
       0 0 0 1px rgba(255, 255, 255, 0.04) inset;
     transition:
       transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -205,9 +194,9 @@ select {
   }
 
   .group:hover .project-preview-surface {
-    transform: rotateX(0deg) rotateY(0deg) translateY(-4px);
+    transform: translateY(-2px);
     box-shadow:
-      0 30px 82px rgba(0, 0, 0, 0.42),
+      0 24px 62px rgba(0, 0, 0, 0.36),
       0 0 0 1px rgba(45, 212, 191, 0.18) inset;
   }
 
@@ -294,41 +283,6 @@ select {
 
   50% {
     transform: translate3d(0, -10px, 0);
-  }
-}
-
-@keyframes float-tilt {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
-  }
-
-  50% {
-    transform: translate3d(0, -10px, 0) rotateX(2deg) rotateY(-2deg);
-  }
-}
-
-@keyframes card-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 24px) rotateX(7deg) rotateY(-8deg);
-  }
-
-  50% {
-    transform: translate3d(0, -8px, 24px) rotateX(4deg) rotateY(-4deg);
-  }
-}
-
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.65;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.08);
   }
 }
 

@@ -35,7 +35,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     heroSubtitle:
       "Developer from Mizoram focused on clean websites, LMS platforms, admin dashboards, mobile apps, and maintainable systems that are useful after launch.",
     heroDescription:
-      "The style of this portfolio is built around Mizo Digital Craft 3D: clean developer interfaces, soft vector visuals, subtle Mizo geometric accents, and real project work.",
+      "The portfolio uses a restrained Mizo digital craft direction: clean developer interfaces, subtle geometric accents, and project details grounded in real work.",
     aboutTitle: "Mizo digital craft for practical software systems",
     aboutBody:
       "I work with schools, NGOs, coaching centres, local businesses, farms, and community projects that need responsive design, maintainable code, useful admin workflows, and software people can actually use.",
