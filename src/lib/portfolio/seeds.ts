@@ -20,7 +20,11 @@ export const portfolioSeed: PortfolioSnapshot = {
     metrics: [
       { label: "Based in", value: "Mizoram" },
       { label: "Work focus", value: "Web / LMS / Dashboards" },
-      { label: "Available for", value: "Selected projects" },
+      {
+        label: "Available for",
+        value:
+          "Freelance projects, school/NGO systems, LMS platforms, dashboards, and mobile apps",
+      },
     ],
   },
   settings: {
@@ -37,12 +41,12 @@ export const portfolioSeed: PortfolioSnapshot = {
       "I work with schools, NGOs, coaching centres, local businesses, farms, and community projects that need clear software, reliable workflows, and interfaces people can actually use.",
     contactTitle: "Have a website, dashboard, LMS, or app to build?",
     contactDescription:
-      "Send a short message about the project, timeline, and what you need the software to do. I am open to selected client work, school or NGO projects, and development roles.",
-    seoTitle: "C. John Remthang | CJohn Mizo | Developer Portfolio",
+      "Have a school website, LMS, NGO system, dashboard, or mobile app idea? Send a short project brief and I will review it.",
+    seoTitle: "C. John Remthang | Web, LMS, Dashboard & Mobile App Developer",
     seoDescription:
       "Personal portfolio of C. John Remthang, a Mizoram-based developer building practical websites, LMS platforms, dashboards, mobile apps, and digital systems for schools, NGOs, businesses, and communities.",
     footerNote:
-      "Mizo Digital Craft Portfolio for C. John Remthang, focused on practical systems for schools, NGOs, businesses, farms, coaching centres, and community use.",
+      "Building practical digital systems for schools, NGOs, businesses, farms, coaching centres, and community use.",
     primaryAccent: "#2dd4bf",
     secondaryAccent: "#d8a64b",
   },
@@ -75,7 +79,23 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: "https://github.com/cjohnmizo/liankhawpui#readme",
       techStack: ["Flutter", "Supabase", "PowerSync"],
       metrics: [
-        { label: "Status", value: "Details available on request" },
+        {
+          label: "My role",
+          value:
+            "App planning, interface structure, Flutter development, and Supabase data flow.",
+        },
+        {
+          label: "Key feature",
+          value: "Village directory for people, groups, and local information.",
+        },
+        {
+          label: "Key feature",
+          value: "News and announcement flow for community updates.",
+        },
+        {
+          label: "Key feature",
+          value: "Offline-aware mobile access with PowerSync.",
+        },
         { label: "Focus", value: "Community access" },
       ],
     },
@@ -106,7 +126,23 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: null,
       techStack: ["LMS", "Dashboard", "Content Management"],
       metrics: [
-        { label: "Status", value: "Details available on request" },
+        {
+          label: "My role",
+          value:
+            "Product structure, LMS workflow planning, dashboard UX, and content organization.",
+        },
+        {
+          label: "Key feature",
+          value: "Course and lesson structure for coaching content.",
+        },
+        {
+          label: "Key feature",
+          value: "Student-friendly access to class materials.",
+        },
+        {
+          label: "Key feature",
+          value: "Admin workflow for managing learning resources.",
+        },
         { label: "Focus", value: "Learning workflow" },
       ],
     },
@@ -137,7 +173,23 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: null,
       techStack: ["Web", "CMS", "Admin"],
       metrics: [
-        { label: "Status", value: "Details available on request" },
+        {
+          label: "My role",
+          value:
+            "Website structure, content workflow, public page design, and enquiry path planning.",
+        },
+        {
+          label: "Key feature",
+          value: "Clean product and farm information presentation.",
+        },
+        {
+          label: "Key feature",
+          value: "Simple update workflow for business content.",
+        },
+        {
+          label: "Key feature",
+          value: "Direct enquiry path for customers and visitors.",
+        },
         { label: "Focus", value: "Business presence" },
       ],
     },
@@ -156,7 +208,7 @@ export const portfolioSeed: PortfolioSnapshot = {
       impact:
         "The project provides a reusable foundation for internal tools where clarity and speed matter more than decorative UI.",
       category: "dashboard",
-      status: "Live",
+      status: "Live demo available",
       year: "2026",
       sortOrder: 4,
       isFeatured: true,
@@ -169,7 +221,23 @@ export const portfolioSeed: PortfolioSnapshot = {
         "https://github.com/cjohnmizo/Smart-Modern-Admin-Dashboard#readme",
       techStack: ["Next.js", "TypeScript", "MongoDB"],
       metrics: [
-        { label: "Status", value: "Live demo" },
+        {
+          label: "My role",
+          value:
+            "Dashboard UI, typed component structure, analytics views, and workflow-focused interactions.",
+        },
+        {
+          label: "Key feature",
+          value: "Analytics cards and reporting views for fast scanning.",
+        },
+        {
+          label: "Key feature",
+          value: "Task and operations panels for routine admin work.",
+        },
+        {
+          label: "Key feature",
+          value: "Reusable layout foundation for internal tools.",
+        },
         { label: "Focus", value: "Admin workflow" },
       ],
     },
@@ -200,7 +268,23 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: "https://github.com/cjohnmizo/Tualchher_CMS#readme",
       techStack: ["Laravel 12", "Tailwind CSS", "MySQL", "Spatie Permissions"],
       metrics: [
-        { label: "Status", value: "Details available on request" },
+        {
+          label: "My role",
+          value:
+            "CMS architecture, admin workflow, role-aware controls, and content management structure.",
+        },
+        {
+          label: "Key feature",
+          value: "Structured publishing workflow for editorial content.",
+        },
+        {
+          label: "Key feature",
+          value: "Media management and SEO controls in the admin area.",
+        },
+        {
+          label: "Key feature",
+          value: "Role-based access with Spatie permissions.",
+        },
         { label: "Focus", value: "Publishing workflow" },
       ],
     },
@@ -231,7 +315,23 @@ export const portfolioSeed: PortfolioSnapshot = {
       caseStudyUrl: null,
       techStack: ["Library System", "LMS", "Database"],
       metrics: [
-        { label: "Status", value: "Selected work" },
+        {
+          label: "My role",
+          value:
+            "System planning, searchable record structure, admin controls, and responsive interface direction.",
+        },
+        {
+          label: "Key feature",
+          value: "Searchable records for library and learning resources.",
+        },
+        {
+          label: "Key feature",
+          value: "Simple admin controls for school staff workflows.",
+        },
+        {
+          label: "Key feature",
+          value: "Responsive resource pages for students and staff.",
+        },
         { label: "Focus", value: "School workflow" },
       ],
     },

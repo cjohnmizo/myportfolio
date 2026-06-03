@@ -7,9 +7,7 @@ import { siteConfig } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const snapshot = await getPortfolioSnapshot();
-  const searchTitle = snapshot.settings.seoTitle.includes("CJohn Mizo")
-    ? snapshot.settings.seoTitle
-    : `${snapshot.settings.seoTitle} | CJohn Mizo`;
+  const searchTitle = snapshot.settings.seoTitle;
 
   return {
     title: {

@@ -60,8 +60,8 @@ export function AboutSection({
                 </p>
                 <div className="border-primary/20 bg-primary/10 rounded-2xl border p-4">
                   <p className="text-foreground text-sm font-medium">
-                    Online identity:
-                    <span className="text-muted-foreground ml-2">
+                    Online identity:{" "}
+                    <span className="text-muted-foreground">
                       {siteConfig.name}, also found as{" "}
                       {siteConfig.publicIdentityLabels.join(", ")}
                     </span>

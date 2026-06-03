@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Mail } from "lucide-react";
 
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
@@ -17,22 +18,37 @@ export function SiteFooter({
       <div className="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8">
         <div className="space-y-4">
           <BrandLogo />
+          <div>
+            <p className="text-foreground text-lg font-semibold">
+              C. John Remthang
+            </p>
+            <p className="text-secondary mt-1 text-sm font-semibold">
+              cjohnmizo
+            </p>
+          </div>
           <p className="text-muted-foreground max-w-2xl text-sm leading-7">
             {footerNote}
           </p>
+          <Link
+            href={`mailto:${contactEmail}`}
+            className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition"
+          >
+            <Mail className="h-4 w-4" />
+            {contactEmail}
+          </Link>
         </div>
 
         <div className="flex flex-col gap-4 lg:items-end">
           <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
-            <Link href="/about" className="hover:text-primary transition">
-              About
-            </Link>
-            <Link href="/projects" className="hover:text-primary transition">
-              Projects
-            </Link>
-            <Link href="/#contact" className="hover:text-primary transition">
-              Contact
-            </Link>
+            {siteConfig.navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-primary transition"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
           <Button asChild variant="outline">
             <Link href={`mailto:${contactEmail}`}>Start a project</Link>

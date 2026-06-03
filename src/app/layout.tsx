@@ -26,6 +26,8 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const shouldLoadVercelInsights = process.env.VERCEL_ENV === "production";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.shortName,
@@ -88,8 +90,12 @@ export default function RootLayout({
       >
         {children}
         <Toaster richColors theme="dark" position="top-right" />
-        <Analytics />
-        <SpeedInsights />
+        {shouldLoadVercelInsights ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
       </body>
     </html>
   );

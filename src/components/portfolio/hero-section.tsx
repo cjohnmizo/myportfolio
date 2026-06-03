@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Mail, MapPin, Sparkles } from "lucide-react";
 
 import { DigitalBuilderMascot } from "@/components/portfolio/digital-builder-mascot";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
@@ -58,6 +58,19 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 Start a Project <Mail className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+            {snapshot.profile.resumeUrl ? (
+              <Button asChild size="lg" variant="outline">
+                <Link
+                  href={snapshot.profile.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  download
+                >
+                  Download Resume <Download className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            ) : null}
+            {/* TODO: Add /resume.pdf or an admin resume URL to show the Download Resume button. */}
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:max-w-3xl">
@@ -133,7 +146,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       <p className="text-muted-foreground text-xs font-semibold uppercase">
                         {metric.label}
                       </p>
-                      <p className="text-foreground mt-2 text-base font-semibold">
+                      <p className="text-foreground mt-2 text-sm leading-6 font-semibold">
                         {metric.value}
                       </p>
                     </div>

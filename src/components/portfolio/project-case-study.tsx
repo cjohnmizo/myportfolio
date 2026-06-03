@@ -3,10 +3,12 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowUpRight,
+  CheckCircle2,
   CircleCheckBig,
   Compass,
   Github,
   Layers3,
+  UserRound,
 } from "lucide-react";
 
 import { ProjectCard } from "@/components/portfolio/project-card";
@@ -14,20 +16,19 @@ import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  getProjectFeatures,
+  getProjectPreviewAlt,
+  getProjectRole,
+  getProjectStatusLabel,
+  getSupportingProjectMetrics,
+} from "@/lib/portfolio/project-presentation";
 import type { Project } from "@/types/portfolio";
 
 function uniqueGalleryImages(project: Project) {
   return Array.from(
     new Set([project.coverImage, ...project.galleryImages].filter(Boolean)),
   );
-}
-
-function getStatusLabel(status: string) {
-  if (status.toLowerCase() === "private") {
-    return "Private client project - details available on request.";
-  }
-
-  return status;
 }
 
 const storySectionMeta = {
@@ -53,9 +54,13 @@ export function ProjectCaseStudy({
   relatedProjects: Project[];
 }) {
   const galleryImages = uniqueGalleryImages(project);
+  const statusLabel = getProjectStatusLabel(project.status);
+  const features = getProjectFeatures(project);
+  const supportingMetrics = getSupportingProjectMetrics(project);
   const projectFacts = [
     { label: "Type", value: project.category },
-    { label: "Status", value: getStatusLabel(project.status) },
+    { label: "Role", value: getProjectRole(project) },
+    { label: "Status", value: statusLabel },
     { label: "Year", value: project.year },
   ];
   const storySections = [
@@ -80,7 +85,7 @@ export function ProjectCaseStudy({
           <div className="space-y-8">
             <SectionReveal className="space-y-6">
               <div className="flex flex-wrap gap-2">
-                <Badge>{getStatusLabel(project.status)}</Badge>
+                <Badge>{statusLabel}</Badge>
                 <Badge variant="muted">{project.category}</Badge>
                 <Badge variant="muted">{project.year}</Badge>
               </div>
@@ -125,7 +130,7 @@ export function ProjectCaseStudy({
                 <div className="relative aspect-[16/9]">
                   <Image
                     src={project.coverImage}
-                    alt={`${project.title} preview`}
+                    alt={getProjectPreviewAlt(project)}
                     fill
                     className="object-cover"
                     priority
@@ -150,6 +155,44 @@ export function ProjectCaseStudy({
                 </CardContent>
               </Card>
             </SectionReveal>
+
+            {features.length > 0 ? (
+              <SectionReveal>
+                <Card className="border-primary/20 shadow-none">
+                  <CardContent className="space-y-5 p-6">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-primary/10 text-primary rounded-lg p-3">
+                        <UserRound className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="section-kicker text-secondary text-xs font-semibold">
+                          Role and features
+                        </p>
+                        <h2 className="text-foreground mt-2 text-2xl font-semibold">
+                          What I handled in this build
+                        </h2>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-8">
+                      {getProjectRole(project)}
+                    </p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {features.map((feature) => (
+                        <div
+                          key={feature}
+                          className="border-border bg-background/35 flex gap-3 rounded-2xl border p-4"
+                        >
+                          <CheckCircle2 className="text-primary mt-0.5 h-4 w-4 shrink-0" />
+                          <p className="text-muted-foreground text-sm leading-6">
+                            {feature}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </SectionReveal>
+            ) : null}
 
             <div className="grid gap-5 lg:grid-cols-3">
               {storySections.map((item) => {
@@ -196,7 +239,10 @@ export function ProjectCaseStudy({
                       <div className="border-border bg-muted relative aspect-[16/10] overflow-hidden rounded-lg border">
                         <Image
                           src={image}
-                          alt={`${project.title} visual ${index + 1}`}
+                          alt={getProjectPreviewAlt(
+                            project,
+                            `visual ${index + 1}`,
+                          )}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 50vw"
@@ -223,14 +269,11 @@ export function ProjectCaseStudy({
                   </div>
                   <div className="divide-border divide-y">
                     {projectFacts.map((item) => (
-                      <div
-                        key={item.label}
-                        className="flex justify-between gap-6 px-5 py-4"
-                      >
+                      <div key={item.label} className="grid gap-2 px-5 py-4">
                         <p className="text-muted-foreground text-sm">
                           {item.label}
                         </p>
-                        <p className="text-foreground text-right text-sm font-medium">
+                        <p className="text-foreground text-sm leading-6 font-medium">
                           {item.value}
                         </p>
                       </div>
@@ -254,12 +297,12 @@ export function ProjectCaseStudy({
                 </CardContent>
               </Card>
 
-              {project.metrics.length > 0 ? (
+              {supportingMetrics.length > 0 ? (
                 <Card className="shadow-none">
                   <CardContent className="space-y-3 p-5">
-                    {project.metrics.map((metric) => (
+                    {supportingMetrics.map((metric, index) => (
                       <div
-                        key={metric.label}
+                        key={`${metric.label}-${index}`}
                         className="border-border bg-muted rounded-lg border p-4"
                       >
                         <p className="text-muted-foreground text-sm">

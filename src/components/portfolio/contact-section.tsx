@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Github, Mail, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, Github, Mail, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -22,6 +22,9 @@ import {
 export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   const [isPending, startTransition] = useTransition();
   const [website, setWebsite] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -32,28 +35,35 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
     },
   });
 
-  const onSubmit = form.handleSubmit((values) => {
-    if (website) {
-      toast.error("Unable to send this brief.");
-      return;
-    }
+  const onSubmit = form.handleSubmit(
+    (values) => {
+      if (website) {
+        setFormStatus("error");
+        toast.error("Unable to send this brief.");
+        return;
+      }
 
-    startTransition(() => {
-      const params = new URLSearchParams({
-        subject: `Portfolio enquiry: ${values.subject}`,
-        body: [
-          `Name: ${values.name}`,
-          `Email: ${values.email}`,
-          "",
-          values.message,
-        ].join("\n"),
+      startTransition(() => {
+        const params = new URLSearchParams({
+          subject: `Portfolio enquiry: ${values.subject}`,
+          body: [
+            `Name: ${values.name}`,
+            `Email: ${values.email}`,
+            "",
+            values.message,
+          ].join("\n"),
+        });
+
+        window.location.href = `mailto:${snapshot.profile.email}?${params.toString()}`;
+        setFormStatus("success");
+        toast.success("Opening your email client with the project brief.");
+        form.reset();
       });
-
-      window.location.href = `mailto:${snapshot.profile.email}?${params.toString()}`;
-      toast.success("Opening your email client with the project brief.");
-      form.reset();
-    });
-  });
+    },
+    () => {
+      setFormStatus("error");
+    },
+  );
 
   return (
     <section
@@ -81,7 +91,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </div>
               <p className="text-muted-foreground text-sm leading-7">
                 Have a school website, LMS, NGO system, dashboard, or mobile app
-                idea? Send a short project brief and I will review it.
+                idea? Send a short project brief and I&apos;ll review it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
@@ -170,7 +180,32 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     {form.formState.errors.message?.message}
                   </p>
                 </div>
-                <Button type="submit" disabled={isPending}>
+                <div aria-live="polite" className="min-h-0">
+                  {formStatus === "success" ? (
+                    <div className="border-primary/25 bg-primary/10 text-primary flex gap-3 rounded-2xl border p-4 text-sm leading-6">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+                      <span>
+                        Your email app is opening with the project brief ready
+                        to send.
+                      </span>
+                    </div>
+                  ) : null}
+                  {formStatus === "error" ? (
+                    <div className="border-secondary/25 bg-secondary/10 text-secondary flex gap-3 rounded-2xl border p-4 text-sm leading-6">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <span>
+                        Check the form fields and try again. A short, specific
+                        brief is enough.
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  aria-busy={isPending}
+                >
                   {isPending ? "Preparing brief..." : "Send Project Brief"}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>

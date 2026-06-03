@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
 import { siteConfig } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
   const snapshot = await getPortfolioSnapshot();
@@ -111,16 +112,20 @@ export default async function AboutPage() {
                       </p>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                       {snapshot.profile.metrics.map((metric) => (
                         <div
                           key={metric.label}
-                          className="border-border bg-muted rounded-2xl border p-4"
+                          className={cn(
+                            "border-border bg-muted rounded-2xl border p-4",
+                            metric.label === "Available for" &&
+                              "sm:col-span-2 lg:col-span-1",
+                          )}
                         >
                           <p className="text-muted-foreground text-sm">
                             {metric.label}
                           </p>
-                          <p className="text-foreground mt-2 text-base font-semibold">
+                          <p className="text-foreground mt-2 text-sm leading-6 font-semibold">
                             {metric.value}
                           </p>
                         </div>
