@@ -254,6 +254,62 @@ select {
     backdrop-filter: blur(14px);
   }
 
+  .dashboard-band {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .dashboard-band::before {
+    position: absolute;
+    top: 1.25rem;
+    right: max(1rem, calc((100vw - 80rem) / 2));
+    bottom: 1.25rem;
+    left: max(1rem, calc((100vw - 80rem) / 2));
+    z-index: -1;
+    content: "";
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.72),
+        rgba(232, 243, 255, 0.64)
+      ),
+      linear-gradient(90deg, rgba(25, 118, 232, 0.1), transparent 58%);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 2rem;
+    box-shadow:
+      0 30px 86px rgba(45, 86, 136, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(18px);
+  }
+
+  .dashboard-band::after {
+    position: absolute;
+    top: 2.25rem;
+    left: max(2rem, calc((100vw - 80rem) / 2 + 1.5rem));
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    content: attr(data-dashboard-label);
+    color: #6a7f9a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding-left: 1.35rem;
+    background-image: radial-gradient(
+      circle at 0.45rem 50%,
+      #8cbdf5 0 0.32rem,
+      transparent 0.34rem
+    );
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+  }
+
+  .dashboard-band > * {
+    position: relative;
+    z-index: 1;
+  }
+
   .project-preview-surface {
     transform-origin: center;
     box-shadow:

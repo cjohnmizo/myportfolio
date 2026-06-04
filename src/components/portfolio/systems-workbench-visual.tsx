@@ -129,17 +129,19 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
                 </div>
               </div>
 
-              <div className="rounded-[1.2rem] border border-white/75 bg-white/72 p-4 shadow-[0_14px_34px_rgba(57,96,142,0.12)]">
-                <div className="flex items-center justify-between">
+              <div className="rounded-[1.2rem] border border-white/75 bg-white/72 p-3 shadow-[0_14px_34px_rgba(57,96,142,0.12)] sm:p-4">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs font-semibold text-[#617895]">
                     Onboarding
                   </p>
-                  <p className="text-2xl font-semibold text-[#101f38]">42%</p>
+                  <p className="text-xl leading-none font-semibold text-[#101f38] sm:text-2xl">
+                    42%
+                  </p>
                 </div>
                 <div className="mt-4 flex gap-1.5">
-                  <span className="h-9 flex-1 rounded-full bg-[#1976e8]" />
-                  <span className="h-9 flex-1 rounded-full bg-[#0d3d74]" />
-                  <span className="h-9 w-10 rounded-full bg-[#a9bed5]" />
+                  <span className="h-8 flex-1 rounded-full bg-[#1976e8] sm:h-9" />
+                  <span className="h-8 flex-1 rounded-full bg-[#0d3d74] sm:h-9" />
+                  <span className="h-8 w-8 rounded-full bg-[#a9bed5] sm:h-9 sm:w-10" />
                 </div>
               </div>
             </div>

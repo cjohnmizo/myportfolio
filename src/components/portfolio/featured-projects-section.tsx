@@ -12,7 +12,11 @@ export function FeaturedProjectsSection({
   snapshot: PortfolioSnapshot;
 }) {
   return (
-    <section id="projects" className="relative py-16 sm:py-24">
+    <section
+      id="projects"
+      data-dashboard-label="Case files"
+      className="dashboard-band relative py-20 sm:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

@@ -18,7 +18,10 @@ export default async function ProjectsPage() {
   const snapshot = await getPortfolioSnapshot();
 
   return (
-    <main className="py-20 sm:py-24">
+    <main
+      data-dashboard-label="Project archive"
+      className="dashboard-band py-20 sm:py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Project archive"

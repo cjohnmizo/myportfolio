@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,7 +6,6 @@ import {
   Gauge,
   Layers3,
   Mail,
-  MapPin,
   Sparkles,
 } from "lucide-react";
 
@@ -157,49 +155,6 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </div>
 
               <SystemsWorkbenchVisual className="max-w-none shadow-[0_30px_78px_rgba(21,60,112,0.28)]" />
-
-              <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_1.15fr]">
-                <div className="border-border/70 flex items-center gap-4 rounded-[1.35rem] border bg-white/70 p-4">
-                  <div className="border-primary/20 bg-muted relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border">
-                    <Image
-                      src={snapshot.profile.avatarUrl}
-                      alt={snapshot.profile.fullName}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                      priority
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-foreground truncate text-base font-semibold">
-                      {snapshot.profile.fullName}
-                    </p>
-                    <p className="text-muted-foreground mt-1 text-sm">
-                      {snapshot.profile.currentRole}
-                    </p>
-                    <p className="text-muted-foreground mt-1 inline-flex items-center gap-1.5 text-xs">
-                      <MapPin className="text-primary h-3.5 w-3.5" />
-                      {snapshot.profile.location}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="hidden gap-3 sm:grid sm:grid-cols-3">
-                  {snapshot.profile.metrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="border-border/70 rounded-[1.25rem] border bg-white/70 p-4"
-                    >
-                      <p className="text-muted-foreground text-xs font-semibold uppercase">
-                        {metric.label}
-                      </p>
-                      <p className="text-foreground mt-2 text-sm leading-6 font-semibold">
-                        {metric.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </SectionReveal>
