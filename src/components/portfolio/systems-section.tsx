@@ -79,7 +79,7 @@ export function SystemsSection() {
         <SectionReveal>
           <SectionHeading
             eyebrow="Systems I build"
-            title="Useful systems presented with cinematic clarity"
+            title="Useful systems presented with dashboard clarity"
             description="The work is broad, but the standard is consistent: strong hierarchy, responsive screens, useful actions, and a polished dashboard mood that still stays practical."
           />
         </SectionReveal>

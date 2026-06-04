@@ -62,7 +62,7 @@ export function ProjectCard({
 
         <div className="space-y-3">
           <p className="text-primary text-xs font-semibold uppercase">
-            Cinematic case file
+            Project case file
           </p>
           <h3 className="text-foreground text-xl leading-snug font-semibold">
             {project.title}

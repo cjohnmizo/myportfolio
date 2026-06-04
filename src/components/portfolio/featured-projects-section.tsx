@@ -22,7 +22,7 @@ export function FeaturedProjectsSection({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Cinematic case files from practical builds"
+              title="Selected case files from practical builds"
               description="Selected work across community apps, coaching LMS spaces, business websites, operations dashboards, and publishing systems."
             />
             <Link

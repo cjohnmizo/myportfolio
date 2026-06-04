@@ -4,21 +4,21 @@ export const portfolioSeed: PortfolioSnapshot = {
   profile: {
     id: "profile-1",
     fullName: "C. John Remthang",
-    headline: "Cinematic Dashboard and Web Systems Developer",
+    headline: "Dashboard and Web Systems Developer",
     currentRole: "Developer / Dashboard & LMS Builder",
     location: "Mizoram, India",
     email: "contact@cjohnmizo.in",
     shortBio:
       "I turn rough ideas into polished websites, learning platforms, mobile interfaces, and dashboard-style systems.",
     longBio:
-      "I am a Mizoram-based developer focused on cinematic but practical digital products: clean public websites, learning workspaces, content systems, mobile apps, and dashboard interfaces that feel premium without becoming confusing. My teaching background keeps the work grounded in real users, clear onboarding, readable screens, and software that remains useful after the first launch.",
+      "I am a Mizoram-based developer focused on polished but practical digital products: clean public websites, learning workspaces, content systems, mobile apps, and dashboard interfaces that feel premium without becoming confusing. My teaching background keeps the work grounded in real users, clear onboarding, readable screens, and software that remains useful after the first launch.",
     avatarUrl: "/profile.jpg",
     resumeUrl: null,
     githubUsername: "cjohnmizo",
     yearsExperience: 6,
     isAvailableForHire: true,
     metrics: [
-      { label: "Design mood", value: "Cinematic sapphire dashboard" },
+      { label: "Design mood", value: "Sapphire dashboard interface" },
       { label: "Core work", value: "Web / LMS / Mobile / Systems UI" },
       {
         label: "Best fit",
@@ -28,7 +28,7 @@ export const portfolioSeed: PortfolioSnapshot = {
   },
   settings: {
     id: "settings-1",
-    heroEyebrow: "Cinematic digital command centers",
+    heroEyebrow: "Polished digital command centers",
     heroTitle:
       "I build polished digital dashboards for schools, teams, and local businesses.",
     heroSubtitle:
@@ -41,11 +41,11 @@ export const portfolioSeed: PortfolioSnapshot = {
     contactTitle: "Have a digital system that needs a sharper interface?",
     contactDescription:
       "Send the idea, timeline, and links you already have. I will review the project and shape the next version around clear content, user flow, and a premium dashboard feel.",
-    seoTitle: "C. John Remthang | Cinematic Dashboard, LMS & Web Developer",
+    seoTitle: "C. John Remthang | Dashboard, LMS & Web Developer",
     seoDescription:
-      "Portfolio of C. John Remthang, a Mizoram-based developer building cinematic dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
+      "Portfolio of C. John Remthang, a Mizoram-based developer building dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
     footerNote:
-      "Designing cinematic digital systems with practical workflows and clean code.",
+      "Building practical digital systems for schools, teams, and local businesses.",
     primaryAccent: "#1976e8",
     secondaryAccent: "#d8a64b",
   },
@@ -197,11 +197,11 @@ export const portfolioSeed: PortfolioSnapshot = {
       slug: "smart-modern-admin-dashboard",
       title: "Smart Modern Dashboard",
       excerpt:
-        "A cinematic operations dashboard for analytics, tasks, records, and quick reporting.",
+        "A polished operations dashboard for analytics, tasks, records, and quick reporting.",
       description:
         "Smart Modern Dashboard is a polished operations interface for teams that need analytics, task flow, and records in one fast-scanning command center.",
       challenge:
-        "Operational screens can become crowded quickly. The goal was to create a more cinematic dashboard without losing scan speed or everyday usability.",
+        "Operational screens can become crowded quickly. The goal was to create a more polished dashboard without losing scan speed or everyday usability.",
       solution:
         "I used a structured layout, strong visual hierarchy, reusable components, and typed data flows to keep analytics, tasks, and management views consistent.",
       impact:
@@ -548,7 +548,7 @@ export const portfolioSeed: PortfolioSnapshot = {
         "Build websites, learning platforms, CMS tools, dashboards, and mobile apps for practical business, school, and community needs.",
       achievements: [
         "Shape rough requirements into project structure, user flows, responsive interfaces, and deployment-ready builds.",
-        "Use a cinematic dashboard style where it helps the product feel clearer, more premium, and easier to scan.",
+        "Use a dashboard style where it helps the product feel clearer, more premium, and easier to scan.",
       ],
       techStack: ["Next.js", "Laravel", "Flutter", "MySQL"],
       sortOrder: 2,

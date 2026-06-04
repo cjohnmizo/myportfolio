@@ -113,7 +113,7 @@ export function SplashScreen({
                 </h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-[#526985]">
                   {role} building clean, practical digital systems with a
-                  cinematic sapphire dashboard feel.
+                  polished sapphire dashboard feel.
                 </p>
               </div>
 

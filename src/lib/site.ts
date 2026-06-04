@@ -7,9 +7,9 @@ export const siteConfig = {
   alternateNames: ["C. John", "CJohn Mizo", "C John Remthang", "John Remthang"],
   domain: "cjohnmizo.in",
   url: env.NEXT_PUBLIC_SITE_URL,
-  title: "C. John Remthang | Cinematic Dashboard, LMS & Web Developer",
+  title: "C. John Remthang | Dashboard, LMS & Web Developer",
   description:
-    "Portfolio of C. John Remthang, a Mizoram-based developer building cinematic dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
+    "Portfolio of C. John Remthang, a Mizoram-based developer building dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
   keywords: [
     "C. John Remthang",
     "C John Remthang",
@@ -25,7 +25,6 @@ export const siteConfig = {
     "TypeScript developer",
     "developer portfolio",
     "Mizoram developer",
-    "cinematic dashboard developer",
     "LMS developer",
     "dashboard developer",
     "school website developer",

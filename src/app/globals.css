@@ -183,44 +183,13 @@ select {
     perspective: 1100px;
   }
 
-  .cinematic-hero {
+  .dashboard-hero {
     background:
       linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 42%),
       linear-gradient(180deg, rgba(222, 237, 255, 0.92), rgba(247, 251, 255, 0));
   }
 
-  .cinematic-stage {
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.72),
-        rgba(219, 234, 255, 0.72)
-      ),
-      linear-gradient(90deg, rgba(25, 118, 232, 0.16), transparent 54%);
-    border: 1px solid rgba(255, 255, 255, 0.78);
-    box-shadow:
-      0 38px 100px rgba(25, 63, 119, 0.24),
-      inset 0 1px 0 rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(18px);
-  }
-
-  .cinematic-stage::after {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    content: "";
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.64),
-      transparent 36%,
-      rgba(216, 166, 75, 0.12) 72%,
-      transparent
-    );
-  }
-
-  .cinematic-tile {
+  .dashboard-tile {
     position: relative;
     overflow: hidden;
     min-height: 104px;

@@ -85,7 +85,7 @@ export function AboutSection({
                       Work standard
                     </p>
                     <p className="text-foreground mt-2 text-base font-semibold">
-                      Cinematic surfaces, simple paths, maintainable code
+                      Polished surfaces, simple paths, maintainable code
                     </p>
                   </div>
                 </div>

@@ -40,7 +40,7 @@ const sceneCards = [
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
-    <section className="cinematic-hero border-border relative overflow-hidden border-b py-10 sm:py-14 lg:min-h-[calc(100svh-74px)] lg:py-16">
+    <section className="dashboard-hero border-border relative overflow-hidden border-b py-10 sm:py-14 lg:min-h-[calc(100svh-74px)] lg:py-16">
       <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_34s_linear_infinite] opacity-[0.07]" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7fbff] to-transparent" />
 
@@ -94,7 +94,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             {sceneCards.map((card) => (
               <div
                 key={card.label}
-                className="cinematic-tile group flex items-start gap-3 rounded-2xl p-4"
+                className="dashboard-tile group flex items-start gap-3 rounded-2xl p-4"
               >
                 <div className="border-primary/25 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition">
                   <card.icon className="h-4 w-4" />
