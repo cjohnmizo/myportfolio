@@ -191,50 +191,6 @@ select {
     animation: dashboard-glow 18s ease-in-out infinite alternate;
   }
 
-  .dashboard-tile {
-    position: relative;
-    overflow: hidden;
-    min-height: 104px;
-    background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.76),
-      rgba(233, 244, 255, 0.58)
-    );
-    border: 1px solid rgba(126, 158, 196, 0.28);
-    box-shadow: 0 16px 44px rgba(45, 86, 136, 0.11);
-    backdrop-filter: blur(14px);
-    transform: translateZ(0);
-    transition:
-      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .dashboard-tile::after {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    content: "";
-    background: linear-gradient(
-      110deg,
-      transparent 24%,
-      rgba(255, 255, 255, 0.28) 48%,
-      transparent 68%
-    );
-    transform: translateX(-125%);
-    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .dashboard-tile:hover {
-    transform: translateY(-4px);
-    border-color: rgba(25, 118, 232, 0.34);
-    box-shadow: 0 24px 64px rgba(45, 86, 136, 0.18);
-  }
-
-  .dashboard-tile:hover::after {
-    transform: translateX(125%);
-  }
-
   .hero-photo-shell {
     animation: portrait-float 8s ease-in-out infinite;
     transform-origin: center;
@@ -280,28 +236,6 @@ select {
       0 30px 86px rgba(45, 86, 136, 0.14),
       inset 0 1px 0 rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(18px);
-  }
-
-  .dashboard-band::after {
-    position: absolute;
-    top: 2.25rem;
-    left: max(2rem, calc((100vw - 80rem) / 2 + 1.5rem));
-    z-index: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    content: attr(data-dashboard-label);
-    color: #6a7f9a;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding-left: 1.35rem;
-    background-image: radial-gradient(
-      circle at 0.45rem 50%,
-      #8cbdf5 0 0.32rem,
-      transparent 0.34rem
-    );
-    background-repeat: no-repeat;
-    text-transform: uppercase;
   }
 
   .dashboard-band > * {

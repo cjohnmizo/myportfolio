@@ -17,11 +17,7 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   );
 
   return (
-    <section
-      id="skills"
-      data-dashboard-label="Stack board"
-      className="dashboard-band py-20 sm:py-24"
-    >
+    <section id="skills" className="dashboard-band py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading

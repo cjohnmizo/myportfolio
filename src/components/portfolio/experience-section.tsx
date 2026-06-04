@@ -13,11 +13,7 @@ export function ExperienceSection({
   snapshot: PortfolioSnapshot;
 }) {
   return (
-    <section
-      id="experience"
-      data-dashboard-label="Experience log"
-      className="dashboard-band relative py-20 sm:py-24"
-    >
+    <section id="experience" className="dashboard-band relative py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading

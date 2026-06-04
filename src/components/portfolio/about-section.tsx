@@ -42,11 +42,7 @@ export function AboutSection({
   showFullStoryLink?: boolean;
 }) {
   return (
-    <section
-      id="about"
-      data-dashboard-label="About frame"
-      className="dashboard-band relative py-20 sm:py-24"
-    >
+    <section id="about" className="dashboard-band relative py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading

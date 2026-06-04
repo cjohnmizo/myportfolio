@@ -66,11 +66,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   );
 
   return (
-    <section
-      id="contact"
-      data-dashboard-label="Contact console"
-      className="dashboard-band relative py-20 sm:py-24"
-    >
+    <section id="contact" className="dashboard-band relative py-20 sm:py-24">
       <div className="via-secondary/50 absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading

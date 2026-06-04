@@ -51,10 +51,7 @@ const practicalPoints = [
 
 export function TrustSection() {
   return (
-    <section
-      data-dashboard-label="Trust matrix"
-      className="dashboard-band py-20 sm:py-24"
-    >
+    <section className="dashboard-band py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">

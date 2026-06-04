@@ -1,43 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Download,
-  Film,
-  Gauge,
-  Layers3,
-  Mail,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 
 import { SectionReveal } from "@/components/portfolio/section-reveal";
-import { SocialIcon } from "@/components/portfolio/social-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { PortfolioSnapshot } from "@/types/portfolio";
-
-const sceneCards = [
-  {
-    label: "Dashboard UI",
-    detail: "premium command-center layouts",
-    icon: Gauge,
-  },
-  {
-    label: "LMS Flow",
-    detail: "clear course and student paths",
-    icon: Layers3,
-  },
-  {
-    label: "Mobile Views",
-    detail: "responsive, readable screens",
-    icon: Sparkles,
-  },
-  {
-    label: "Static Portfolio",
-    detail: "fast pages with clean content flow",
-    icon: Film,
-  },
-];
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
@@ -89,44 +57,6 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </Link>
               </Button>
             ) : null}
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {sceneCards.map((card) => (
-              <div
-                key={card.label}
-                className="dashboard-tile group flex items-start gap-3 rounded-2xl p-4"
-              >
-                <div className="border-primary/25 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition">
-                  <card.icon className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="text-foreground text-sm font-semibold">
-                    {card.label}
-                  </p>
-                  <p className="text-muted-foreground mt-1 text-sm leading-6">
-                    {card.detail}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {snapshot.socialLinks
-              .filter((link) => ["github", "linkedin"].includes(link.platform))
-              .map((link) => (
-                <Link
-                  key={link.id}
-                  href={link.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="border-border bg-card/64 text-muted-foreground hover:border-primary/50 hover:text-foreground inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium backdrop-blur transition hover:-translate-y-0.5"
-                >
-                  <SocialIcon platform={link.platform} className="h-4 w-4" />
-                  {link.label}
-                </Link>
-              ))}
           </div>
         </SectionReveal>
 

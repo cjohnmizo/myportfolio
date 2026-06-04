@@ -69,11 +69,7 @@ function SystemMiniVisual({ item }: { item: (typeof systems)[number] }) {
 
 export function SystemsSection() {
   return (
-    <section
-      id="systems"
-      data-dashboard-label="Systems grid"
-      className="dashboard-band relative py-20 sm:py-24"
-    >
+    <section id="systems" className="dashboard-band relative py-20 sm:py-24">
       <div className="via-primary/40 absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
