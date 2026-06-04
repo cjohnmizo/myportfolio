@@ -132,14 +132,14 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
 
         <SectionReveal delay={0.08} className="w-full lg:justify-self-end">
           <div className="relative mx-auto w-full max-w-[420px]">
-            <div className="border-border/70 relative overflow-hidden rounded-[2rem] border bg-white/62 p-2 shadow-[0_32px_90px_rgba(45,86,136,0.2)] backdrop-blur-xl">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.55rem] border border-white/80 bg-[#dceaff]">
+            <div className="hero-photo-shell border-border/70 relative overflow-hidden rounded-[2rem] border bg-white/62 p-2 shadow-[0_32px_90px_rgba(45,86,136,0.2)] backdrop-blur-xl">
+              <div className="hero-photo-crop relative aspect-[4/5] overflow-hidden rounded-[1.55rem] border border-white/80 bg-[#dceaff]">
                 <Image
                   src={snapshot.profile.avatarUrl}
                   alt={snapshot.profile.fullName}
                   fill
                   priority
-                  className="object-cover object-[50%_34%]"
+                  className="hero-photo-image object-cover object-[50%_34%]"
                   sizes="(max-width: 768px) 88vw, 420px"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_48%,rgba(16,35,63,0.08))]" />

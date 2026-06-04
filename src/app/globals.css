@@ -187,6 +187,8 @@ select {
     background:
       linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 42%),
       linear-gradient(180deg, rgba(222, 237, 255, 0.92), rgba(247, 251, 255, 0));
+    background-size: 120% 120%;
+    animation: dashboard-glow 18s ease-in-out infinite alternate;
   }
 
   .dashboard-tile {
@@ -201,6 +203,54 @@ select {
     border: 1px solid rgba(126, 158, 196, 0.28);
     box-shadow: 0 16px 44px rgba(45, 86, 136, 0.11);
     backdrop-filter: blur(14px);
+    transform: translateZ(0);
+    transition:
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dashboard-tile::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(
+      110deg,
+      transparent 24%,
+      rgba(255, 255, 255, 0.28) 48%,
+      transparent 68%
+    );
+    transform: translateX(-125%);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dashboard-tile:hover {
+    transform: translateY(-4px);
+    border-color: rgba(25, 118, 232, 0.34);
+    box-shadow: 0 24px 64px rgba(45, 86, 136, 0.18);
+  }
+
+  .dashboard-tile:hover::after {
+    transform: translateX(125%);
+  }
+
+  .hero-photo-shell {
+    animation: portrait-float 8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .hero-photo-crop {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .hero-photo-image {
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: scale(1.01);
+  }
+
+  .hero-photo-shell:hover .hero-photo-image {
+    transform: scale(1.055);
   }
 
   .dashboard-band {
@@ -353,6 +403,31 @@ select {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes dashboard-glow {
+  from {
+    background-position:
+      0% 0%,
+      50% 0%;
+  }
+
+  to {
+    background-position:
+      100% 32%,
+      50% 100%;
+  }
+}
+
+@keyframes portrait-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
   }
 }
 
