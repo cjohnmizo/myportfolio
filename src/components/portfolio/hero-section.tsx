@@ -134,14 +134,8 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         <SectionReveal delay={0.08}>
           <div className="cinematic-stage mx-auto max-w-[720px] rounded-[2rem] p-3 sm:p-4">
             <div className="border-border/70 relative overflow-hidden rounded-[1.55rem] border bg-white/55 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4">
-              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#1976e8]" />
-                  <span className="text-foreground text-sm font-semibold">
-                    Portfolio command center
-                  </span>
-                </div>
-                <div className="text-muted-foreground flex flex-wrap gap-2 text-xs font-semibold">
+              <div className="mb-3 flex flex-wrap items-center justify-end gap-3">
+                <div className="text-muted-foreground flex flex-wrap justify-end gap-2 text-xs font-semibold">
                   <span className="rounded-full bg-white/70 px-3 py-1.5">
                     Design
                   </span>
