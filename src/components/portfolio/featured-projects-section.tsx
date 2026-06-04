@@ -18,8 +18,8 @@ export function FeaturedProjectsSection({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Selected case files from practical builds"
-              description="Selected work across community apps, coaching LMS spaces, business websites, operations dashboards, and publishing systems."
+              title="Selected projects"
+              description="A quick look at recent web, LMS, mobile, dashboard, and CMS work."
             />
             <Link
               href="/projects"
@@ -32,7 +32,11 @@ export function FeaturedProjectsSection({
         <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {snapshot.featuredProjects.map((project, index) => (
             <SectionReveal key={project.id} delay={0.05 * index}>
-              <ProjectCard project={project} priority={index === 0} />
+              <ProjectCard
+                project={project}
+                priority={index === 0}
+                variant="compact"
+              />
             </SectionReveal>
           ))}
         </div>

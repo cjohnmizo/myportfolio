@@ -18,15 +18,19 @@ import {
   getProjectRole,
   getProjectStatusLabel,
 } from "@/lib/portfolio/project-presentation";
+import { cn } from "@/lib/utils";
 import type { Project } from "@/types/portfolio";
 
 export function ProjectCard({
   project,
   priority = false,
+  variant = "detailed",
 }: {
   project: Project;
   priority?: boolean;
+  variant?: "compact" | "detailed";
 }) {
+  const isCompact = variant === "compact";
   const features = getProjectFeatures(project).slice(0, 3);
   const statusLabel = getProjectStatusLabel(project.status);
 
@@ -44,9 +48,11 @@ export function ProjectCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
           <div className="absolute inset-x-3 bottom-3 flex flex-wrap items-center justify-between gap-2">
-            <span className="border-primary/25 bg-background/80 text-primary rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur">
-              Scene preview
-            </span>
+            {isCompact ? null : (
+              <span className="border-primary/25 bg-background/80 text-primary rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur">
+                Scene preview
+              </span>
+            )}
             <span className="border-border bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-xs font-medium backdrop-blur">
               {project.category}
             </span>
@@ -54,16 +60,21 @@ export function ProjectCard({
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.14),transparent_34%,rgba(74,127,167,0.1)_72%,transparent)]" />
         </div>
       </div>
-      <CardContent className="flex flex-1 flex-col gap-5 p-5">
+      <CardContent
+        className={cn("flex flex-1 flex-col", isCompact ? "gap-4 p-4" : "gap-5 p-5")}
+      >
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{project.category}</Badge>
           <Badge variant="muted">{project.year}</Badge>
+          {isCompact && project.demoUrl ? <Badge>Live</Badge> : null}
         </div>
 
         <div className="space-y-3">
-          <p className="text-primary text-xs font-semibold uppercase">
-            Project case file
-          </p>
+          {isCompact ? null : (
+            <p className="text-primary text-xs font-semibold uppercase">
+              Project case file
+            </p>
+          )}
           <h3 className="text-foreground text-xl leading-snug font-semibold">
             {project.title}
           </h3>
@@ -72,40 +83,44 @@ export function ProjectCard({
           </p>
         </div>
 
-        <div className="border-border bg-background/35 flex items-start gap-3 rounded-2xl border p-4">
-          <div className="border-secondary/25 bg-secondary/10 text-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border">
-            <UserRound className="h-4 w-4" />
+        {isCompact ? null : (
+          <div className="border-border bg-background/35 flex items-start gap-3 rounded-2xl border p-4">
+            <div className="border-secondary/25 bg-secondary/10 text-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border">
+              <UserRound className="h-4 w-4" />
+            </div>
+            <div>
+              <p className="text-secondary text-xs font-semibold uppercase">
+                My role
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm leading-6">
+                {getProjectRole(project)}
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="text-secondary text-xs font-semibold uppercase">
-              My role
-            </p>
-            <p className="text-muted-foreground mt-2 text-sm leading-6">
-              {getProjectRole(project)}
-            </p>
-          </div>
-        </div>
+        )}
 
-        <div className="grid gap-3">
-          <div className="border-border bg-background/35 rounded-2xl border p-4">
-            <p className="text-secondary text-xs font-semibold uppercase">
-              Brief
-            </p>
-            <p className="text-muted-foreground mt-2 text-sm leading-6">
-              {project.challenge}
-            </p>
+        {isCompact ? null : (
+          <div className="grid gap-3">
+            <div className="border-border bg-background/35 rounded-2xl border p-4">
+              <p className="text-secondary text-xs font-semibold uppercase">
+                Brief
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm leading-6">
+                {project.challenge}
+              </p>
+            </div>
+            <div className="border-border bg-background/35 rounded-2xl border p-4">
+              <p className="text-primary text-xs font-semibold uppercase">
+                Build direction
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm leading-6">
+                {project.solution}
+              </p>
+            </div>
           </div>
-          <div className="border-border bg-background/35 rounded-2xl border p-4">
-            <p className="text-primary text-xs font-semibold uppercase">
-              Build direction
-            </p>
-            <p className="text-muted-foreground mt-2 text-sm leading-6">
-              {project.solution}
-            </p>
-          </div>
-        </div>
+        )}
 
-        {features.length > 0 ? (
+        {!isCompact && features.length > 0 ? (
           <div className="border-primary/15 bg-primary/10 rounded-2xl border p-4">
             <p className="text-primary text-xs font-semibold uppercase">
               Key features
@@ -124,17 +139,21 @@ export function ProjectCard({
           </div>
         ) : null}
 
-        <div className="border-secondary/20 bg-secondary/10 text-secondary flex items-start gap-3 rounded-2xl border p-4 text-sm leading-6">
-          <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
-          <span>{statusLabel}</span>
-        </div>
+        {isCompact ? null : (
+          <div className="border-secondary/20 bg-secondary/10 text-secondary flex items-start gap-3 rounded-2xl border p-4 text-sm leading-6">
+            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
+            <span>{statusLabel}</span>
+          </div>
+        )}
 
         <div>
-          <p className="text-muted-foreground mb-2 text-xs font-semibold uppercase">
-            Tech stack
-          </p>
+          {isCompact ? null : (
+            <p className="text-muted-foreground mb-2 text-xs font-semibold uppercase">
+              Tech stack
+            </p>
+          )}
           <div className="flex flex-wrap gap-2">
-            {project.techStack.slice(0, 5).map((item) => (
+            {project.techStack.slice(0, isCompact ? 3 : 5).map((item) => (
               <Badge key={item} variant="muted">
                 {item}
               </Badge>

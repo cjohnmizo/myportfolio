@@ -103,44 +103,44 @@ export const portfolioSeed: PortfolioSnapshot = {
       slug: "tz-coaching-lms",
       title: "TZ Coaching LMS",
       excerpt:
-        "A focused learning workspace for classes, study materials, student access, and staff control.",
+        "A live coaching LMS with web access at tzcoaching.in and an Android app for students.",
       description:
-        "TZ Coaching LMS is a learning workspace concept for coaching teams that need organized classes, readable materials, student access, and simple day-to-day management.",
+        "TZ Coaching LMS is a live learning workspace for coaching teams, with the web platform available at tzcoaching.in and Android app access for students.",
       challenge:
-        "Learning platforms often become heavy and confusing. The product needed a cleaner path for students while still giving staff enough control over courses and updates.",
+        "The product needed to keep classes, study materials, student access, and staff updates clear across both web and Android surfaces.",
       solution:
-        "I shaped the experience around course lanes, lesson cards, clear student navigation, and a dashboard-style staff view that avoids unnecessary clutter.",
+        "I shaped the experience around course lanes, lesson cards, clear student navigation, and a staff view that keeps day-to-day LMS work manageable.",
       impact:
-        "The direction helps coaching teams keep learning resources consistent and gives students a simpler way to find what they need.",
+        "The live platform gives TZ Coaching a clearer place to manage learning resources while students can access materials from the web or Android app.",
       category: "platform",
-      status: "Private",
+      status: "Live web + Android app",
       year: "2026",
       sortOrder: 2,
       isFeatured: true,
       isPublished: true,
       coverImage: "/projects/tz-coaching-lms.png",
       galleryImages: ["/projects/tz-coaching-lms.png"],
-      demoUrl: null,
+      demoUrl: "https://tzcoaching.in/",
       githubUrl: null,
       caseStudyUrl: null,
-      techStack: ["LMS", "Dashboard UI", "Content Flow"],
+      techStack: ["Live Web", "Android App", "LMS", "Content Flow"],
       metrics: [
         {
           label: "My role",
           value:
-            "Product structure, LMS workflow planning, dashboard UX, and content organization.",
+            "Product structure, LMS workflow planning, web interface direction, Android app access flow, and content organization.",
+        },
+        {
+          label: "Key feature",
+          value: "Live web platform at tzcoaching.in.",
+        },
+        {
+          label: "Key feature",
+          value: "Android app access for students.",
         },
         {
           label: "Key feature",
           value: "Course and lesson structure for coaching content.",
-        },
-        {
-          label: "Key feature",
-          value: "Student-friendly access to class materials.",
-        },
-        {
-          label: "Key feature",
-          value: "Staff workflow for managing learning resources.",
         },
         { label: "Focus", value: "Learning workflow" },
       ],
