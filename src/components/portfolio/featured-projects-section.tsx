@@ -23,7 +23,7 @@ export function FeaturedProjectsSection({
             />
             <Link
               href="/projects"
-              className="text-primary inline-flex items-center text-sm font-semibold transition hover:text-[#0f5fba]"
+              className="text-primary inline-flex items-center text-sm font-semibold transition hover:text-[#0a1931]"
             >
               View all projects <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

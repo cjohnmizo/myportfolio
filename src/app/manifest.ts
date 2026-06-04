@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Portfolio of C. John Remthang, also known online as C. John, CJohn Mizo, and cjohnmizo.",
     start_url: "/",
     display: "standalone",
-    background_color: "#eaf3ff",
-    theme_color: "#1976e8",
+    background_color: "#f6fafd",
+    theme_color: "#1a3d63",
     icons: [
       {
         src: "/brand/cjohnmizo-favicon.png",

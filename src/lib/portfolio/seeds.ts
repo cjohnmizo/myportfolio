@@ -46,8 +46,8 @@ export const portfolioSeed: PortfolioSnapshot = {
       "Portfolio of C. John Remthang, a Mizoram-based developer building dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
     footerNote:
       "Building practical digital systems for schools, teams, and local businesses.",
-    primaryAccent: "#1976e8",
-    secondaryAccent: "#d8a64b",
+    primaryAccent: "#1a3d63",
+    secondaryAccent: "#4a7fa7",
   },
   featuredProjects: [],
   projects: [

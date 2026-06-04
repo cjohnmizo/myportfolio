@@ -13,7 +13,7 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="border-border bg-background/78 sticky top-0 z-40 border-b shadow-[0_10px_36px_rgba(45,86,136,0.08)] backdrop-blur-xl">
+    <header className="border-border bg-background/78 sticky top-0 z-40 border-b shadow-[0_10px_36px_rgba(10,25,49,0.08)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -45,8 +45,8 @@ export function SiteHeader() {
             </Button>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-50 bg-[#10233f]/30 backdrop-blur-sm" />
-            <Dialog.Content className="border-border bg-popover fixed inset-x-4 top-4 z-50 rounded-3xl border p-5 shadow-2xl shadow-[#2d5688]/20">
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-[#0a1931]/30 backdrop-blur-sm" />
+            <Dialog.Content className="border-border bg-popover fixed inset-x-4 top-4 z-50 rounded-3xl border p-5 shadow-2xl shadow-[#0a1931]/20">
               <div className="flex items-center justify-between">
                 <BrandLogo showTagline={false} />
                 <Dialog.Close asChild>

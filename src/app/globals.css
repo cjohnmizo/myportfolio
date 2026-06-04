@@ -24,21 +24,21 @@
 }
 
 :root {
-  --background: #eaf3ff;
-  --foreground: #10233f;
+  --background: #f6fafd;
+  --foreground: #0a1931;
   --card: rgba(255, 255, 255, 0.72);
-  --card-foreground: #10233f;
-  --popover: rgba(247, 251, 255, 0.98);
-  --popover-foreground: #10233f;
-  --primary: #1976e8;
+  --card-foreground: #0a1931;
+  --popover: rgba(246, 250, 253, 0.98);
+  --popover-foreground: #0a1931;
+  --primary: #1a3d63;
   --primary-foreground: #ffffff;
-  --secondary: #b7790c;
+  --secondary: #4a7fa7;
   --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.52);
-  --muted-foreground: #526985;
-  --border: rgba(126, 158, 196, 0.28);
-  --input: rgba(255, 255, 255, 0.74);
-  --ring: rgba(25, 118, 232, 0.42);
+  --muted: rgba(179, 207, 229, 0.34);
+  --muted-foreground: #49677f;
+  --border: rgba(74, 127, 167, 0.26);
+  --input: rgba(246, 250, 253, 0.78);
+  --ring: rgba(26, 61, 99, 0.42);
 }
 
 * {
@@ -53,20 +53,20 @@ body {
   background:
     radial-gradient(
       circle at 12% 6%,
-      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.94),
       transparent 32rem
     ),
     radial-gradient(
       circle at 84% 10%,
-      rgba(122, 167, 255, 0.32),
+      rgba(179, 207, 229, 0.48),
       transparent 34rem
     ),
     radial-gradient(
       circle at 78% 76%,
-      rgba(183, 121, 12, 0.1),
+      rgba(74, 127, 167, 0.14),
       transparent 28rem
     ),
-    linear-gradient(180deg, #eaf3ff 0%, #dceaff 46%, #f7fbff 100%);
+    linear-gradient(180deg, #f6fafd 0%, #e8f2fa 46%, #f6fafd 100%);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
 }
@@ -78,8 +78,8 @@ body::before {
   pointer-events: none;
   content: "";
   background-image:
-    linear-gradient(120deg, rgba(25, 118, 232, 0.08) 1px, transparent 1px),
-    linear-gradient(60deg, rgba(183, 121, 12, 0.08) 1px, transparent 1px);
+    linear-gradient(120deg, rgba(26, 61, 99, 0.07) 1px, transparent 1px),
+    linear-gradient(60deg, rgba(74, 127, 167, 0.08) 1px, transparent 1px);
   background-size: 84px 84px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 78%);
 }
@@ -91,8 +91,8 @@ body::after {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(rgba(16, 35, 63, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 35, 63, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(10, 25, 49, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 25, 49, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -106,8 +106,8 @@ select {
 }
 
 ::selection {
-  background: rgba(25, 118, 232, 0.24);
-  color: #10233f;
+  background: rgba(74, 127, 167, 0.26);
+  color: #0a1931;
 }
 
 ::-webkit-scrollbar {
@@ -115,16 +115,16 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #dceaff;
+  background: #e8f2fa;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
-    rgba(25, 118, 232, 0.82),
-    rgba(183, 121, 12, 0.58)
+    rgba(26, 61, 99, 0.86),
+    rgba(74, 127, 167, 0.7)
   );
-  border: 3px solid #dceaff;
+  border: 3px solid #e8f2fa;
   border-radius: 999px;
 }
 
@@ -144,11 +144,11 @@ select {
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.82),
-      rgba(232, 243, 255, 0.68)
+      rgba(179, 207, 229, 0.3)
     );
     border: 1px solid var(--border);
     box-shadow:
-      0 26px 80px rgba(45, 86, 136, 0.16),
+      0 26px 80px rgba(10, 25, 49, 0.14),
       inset 0 1px 0 rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(18px);
   }
@@ -159,10 +159,10 @@ select {
     background: linear-gradient(
       155deg,
       rgba(255, 255, 255, 0.78),
-      rgba(232, 243, 255, 0.62)
+      rgba(179, 207, 229, 0.26)
     );
     border: 1px solid var(--border);
-    box-shadow: 0 18px 54px rgba(45, 86, 136, 0.14);
+    box-shadow: 0 18px 54px rgba(10, 25, 49, 0.12);
   }
 
   .splash-overlay {
@@ -185,7 +185,7 @@ select {
   .dashboard-hero {
     background:
       linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 42%),
-      linear-gradient(180deg, rgba(222, 237, 255, 0.92), rgba(247, 251, 255, 0));
+      linear-gradient(180deg, rgba(179, 207, 229, 0.42), rgba(246, 250, 253, 0));
     background-size: 120% 120%;
     animation: dashboard-glow 18s ease-in-out infinite alternate;
   }
@@ -226,13 +226,13 @@ select {
       linear-gradient(
         145deg,
         rgba(255, 255, 255, 0.72),
-        rgba(232, 243, 255, 0.64)
+        rgba(179, 207, 229, 0.28)
       ),
-      linear-gradient(90deg, rgba(25, 118, 232, 0.1), transparent 58%);
+      linear-gradient(90deg, rgba(74, 127, 167, 0.1), transparent 58%);
     border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: 2rem;
     box-shadow:
-      0 30px 86px rgba(45, 86, 136, 0.14),
+      0 30px 86px rgba(10, 25, 49, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(18px);
   }
@@ -245,7 +245,7 @@ select {
   .project-preview-surface {
     transform-origin: center;
     box-shadow:
-      0 20px 54px rgba(45, 86, 136, 0.16),
+      0 20px 54px rgba(10, 25, 49, 0.14),
       0 0 0 1px rgba(255, 255, 255, 0.68) inset;
     transition:
       transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -255,8 +255,8 @@ select {
   .group:hover .project-preview-surface {
     transform: translateY(-2px);
     box-shadow:
-      0 24px 62px rgba(45, 86, 136, 0.2),
-      0 0 0 1px rgba(25, 118, 232, 0.2) inset;
+      0 24px 62px rgba(10, 25, 49, 0.18),
+      0 0 0 1px rgba(74, 127, 167, 0.22) inset;
   }
 
   .system-visual {
@@ -264,7 +264,7 @@ select {
     overflow: hidden;
     transform: translateZ(0);
     box-shadow:
-      0 18px 34px rgba(45, 86, 136, 0.16),
+      0 18px 34px rgba(10, 25, 49, 0.14),
       inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
 
@@ -285,10 +285,10 @@ select {
 
   .mizo-pattern {
     background-image:
-      linear-gradient(135deg, rgba(122, 167, 255, 0.12) 25%, transparent 25%),
-      linear-gradient(225deg, rgba(122, 167, 255, 0.12) 25%, transparent 25%),
-      linear-gradient(45deg, rgba(183, 121, 12, 0.12) 25%, transparent 25%),
-      linear-gradient(315deg, rgba(183, 121, 12, 0.12) 25%, transparent 25%);
+      linear-gradient(135deg, rgba(74, 127, 167, 0.12) 25%, transparent 25%),
+      linear-gradient(225deg, rgba(74, 127, 167, 0.12) 25%, transparent 25%),
+      linear-gradient(45deg, rgba(26, 61, 99, 0.1) 25%, transparent 25%),
+      linear-gradient(315deg, rgba(26, 61, 99, 0.1) 25%, transparent 25%);
     background-position:
       18px 0,
       18px 0,
