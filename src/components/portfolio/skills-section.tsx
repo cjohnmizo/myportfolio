@@ -22,8 +22,8 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         <SectionReveal>
           <SectionHeading
             eyebrow="Skills"
-            title="Tech stack organized by how systems are built"
-            description="Frontend, backend, mobile, databases, deployment, and focus areas for LMS, CMS, dashboards, school systems, NGO systems, and community apps."
+            title="Stack grouped around product experience"
+            description="The toolset is organized by what it helps ship: cinematic interfaces, LMS and CMS flows, mobile screens, data foundations, and launch-ready delivery."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">

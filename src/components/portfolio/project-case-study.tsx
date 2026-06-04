@@ -33,15 +33,15 @@ function uniqueGalleryImages(project: Project) {
 
 const storySectionMeta = {
   challenge: {
-    title: "Problem",
+    title: "Brief",
     icon: Compass,
   },
   solution: {
-    title: "Approach",
+    title: "Direction",
     icon: Layers3,
   },
   impact: {
-    title: "Outcome",
+    title: "Result",
     icon: CircleCheckBig,
   },
 } as const;

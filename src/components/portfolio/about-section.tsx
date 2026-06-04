@@ -15,21 +15,21 @@ import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const highlights = [
   {
-    title: "Websites and public pages",
+    title: "Public pages with presence",
     description:
-      "Clear sites for businesses, schools, organizations, and local projects that need a trustworthy online presence.",
+      "Clean websites for businesses, schools, organizations, and local projects that need trust at first glance.",
     icon: BriefcaseBusiness,
   },
   {
-    title: "Dashboards and admin tools",
+    title: "Dashboard-style workflows",
     description:
-      "Internal tools for records, content, tasks, reports, and workflows that need to stay easy to use.",
+      "Readable command-center layouts for records, content, tasks, reports, and repeated daily actions.",
     icon: MonitorCog,
   },
   {
-    title: "Learning and community systems",
+    title: "Learning and community flow",
     description:
-      "LMS, library, and mobile app work for schools, coaching projects, and community information access.",
+      "LMS, library, and mobile app work for students, staff, coaching teams, and community users.",
     icon: BookOpenCheck,
   },
 ];
@@ -72,7 +72,7 @@ export function AboutSection({
                     <p className="text-muted-foreground text-sm">Best fit</p>
                     <p className="text-foreground mt-2 text-base font-semibold">
                       {snapshot.profile.isAvailableForHire
-                        ? "Selected client work, school or NGO projects, and development roles"
+                        ? "Selected client work, school systems, LMS builds, and polished web interfaces"
                         : "Currently focused on active engagements"}
                     </p>
                   </div>
@@ -81,7 +81,7 @@ export function AboutSection({
                       Work standard
                     </p>
                     <p className="text-foreground mt-2 text-base font-semibold">
-                      Simple interfaces, maintainable code, and useful workflows
+                      Cinematic surfaces, simple paths, maintainable code
                     </p>
                   </div>
                 </div>

@@ -90,8 +90,9 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </p>
               </div>
               <p className="text-muted-foreground text-sm leading-7">
-                Have a school website, LMS, NGO system, dashboard, or mobile app
-                idea? Send a short project brief and I&apos;ll review it.
+                Have a school site, learning space, community system, dashboard,
+                or mobile app idea? Send a short project brief and I&apos;ll
+                review it.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
@@ -120,7 +121,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-7">
                   Share what you need, the timeline, and any existing links or
-                  materials.
+                  materials. The next pass can start from rough notes.
                 </p>
               </div>
 

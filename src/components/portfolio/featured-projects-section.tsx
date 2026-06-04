@@ -18,8 +18,8 @@ export function FeaturedProjectsSection({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Premium digital case files from practical builds"
-              description="Selected projects across community apps, coaching LMS work, farm and business websites, admin dashboards, and CMS platforms."
+              title="Cinematic case files from practical builds"
+              description="Selected work across community apps, coaching LMS spaces, business websites, operations dashboards, and publishing systems."
             />
             <Link
               href="/projects"

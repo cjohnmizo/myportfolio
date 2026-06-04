@@ -1,31 +1,29 @@
 import { cn } from "@/lib/utils";
 
-const navItems = ["Dashboard", "Projects", "Apps", "Calendar"];
+const navItems = ["Command", "Projects", "LMS", "Launch"];
 
 const metricTiles = [
-  { label: "Projects", value: "12" },
-  { label: "Systems", value: "05" },
-  { label: "Pages", value: "48" },
+  { label: "Builds", value: "06" },
+  { label: "Flows", value: "14" },
+  { label: "Ready", value: "98" },
 ];
 
 const timeline = [
-  { label: "LMS workflow", width: "w-3/4", accent: "bg-[#1d75e8]" },
-  { label: "Admin polish", width: "w-1/2", accent: "bg-[#d8a64b]" },
-  { label: "Mobile app", width: "w-2/3", accent: "bg-[#7aa7ff]" },
+  { label: "Interface framing", width: "w-3/4", accent: "bg-[#1d75e8]" },
+  { label: "Content rebuild", width: "w-1/2", accent: "bg-[#d8a64b]" },
+  { label: "Launch polish", width: "w-2/3", accent: "bg-[#7aa7ff]" },
 ];
 
 export function SystemsWorkbenchVisual({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "workbench-scene relative mx-auto w-full max-w-[500px] overflow-hidden rounded-[1.8rem] border border-white/30 bg-[#dbeaff]/88 p-3 text-[#101f38] shadow-[0_32px_90px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-4",
+        "workbench-scene relative mx-auto w-full max-w-[560px] overflow-hidden rounded-[1.8rem] border border-white/30 bg-[#dbeaff]/88 p-3 text-[#101f38] shadow-[0_32px_90px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-4",
         className,
       )}
       aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(255,255,255,0.9),transparent_18rem),radial-gradient(circle_at_86%_80%,rgba(122,167,255,0.34),transparent_20rem)]" />
-      <div className="absolute top-8 left-8 h-24 w-24 rounded-full bg-white/45 blur-2xl" />
-      <div className="absolute right-6 bottom-8 h-28 w-28 rounded-full bg-[#d8a64b]/18 blur-2xl" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),transparent_34%,rgba(122,167,255,0.24)_72%,transparent)]" />
 
       <div className="relative rounded-[1.45rem] border border-white/75 bg-white/58 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4">
         <div className="flex flex-wrap items-center gap-2 pr-1 text-[10px] font-semibold text-[#28486f]">
@@ -51,7 +49,7 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
           <div>
             <p className="text-sm font-semibold text-[#3773bb]">Welcome in</p>
             <p className="mt-1 text-2xl leading-tight font-semibold text-[#101f38] sm:text-3xl">
-              Practical systems
+              Cinematic systems
             </p>
           </div>
           <div className="flex gap-3">
@@ -68,7 +66,7 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
           </div>
         </div>
 
-        <div className="mt-5 grid gap-3 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="mt-5 grid grid-cols-[0.95fr_1.05fr] gap-3">
           <div className="space-y-3">
             <div className="overflow-hidden rounded-[1.2rem] border border-white/75 bg-[#b9dcf1] shadow-[0_16px_36px_rgba(57,96,142,0.16)]">
               <div className="relative h-36">
@@ -79,7 +77,7 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
                     C. John Remthang
                   </p>
                   <p className="text-xs font-medium text-white/78">
-                    Portfolio dashboard
+                    Dashboard builder
                   </p>
                 </div>
               </div>
@@ -117,14 +115,14 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
           </div>
 
           <div className="space-y-3">
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3">
               <div className="rounded-[1.2rem] border border-white/75 bg-white/72 p-4 shadow-[0_14px_34px_rgba(57,96,142,0.12)]">
                 <p className="text-xs font-semibold text-[#617895]">
                   Work time
                 </p>
                 <div className="mt-3 grid place-items-center">
-                  <div className="workbench-ring grid h-24 w-24 place-items-center rounded-full">
-                    <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-lg font-semibold text-[#101f38]">
+                  <div className="workbench-ring grid h-20 w-20 place-items-center rounded-full sm:h-24 sm:w-24">
+                    <div className="grid h-14 w-14 place-items-center rounded-full bg-white text-base font-semibold text-[#101f38] sm:h-16 sm:w-16 sm:text-lg">
                       03:45
                     </div>
                   </div>
@@ -148,11 +146,11 @@ export function SystemsWorkbenchVisual({ className }: { className?: string }) {
 
             <div className="rounded-[1.25rem] bg-[#0d3d74] p-4 text-white shadow-[0_22px_44px_rgba(13,61,116,0.28)]">
               <div className="mb-4 flex items-center justify-between gap-3">
-                <p className="text-sm font-semibold">Launch queue</p>
+                <p className="text-sm font-semibold">Scene queue</p>
                 <span className="text-2xl font-semibold">3/8</span>
               </div>
               <div className="space-y-2">
-                {["Client meeting", "Design review", "Project update"].map(
+                {["Content reset", "Visual pass", "Final review"].map(
                   (item) => (
                     <div
                       key={item}

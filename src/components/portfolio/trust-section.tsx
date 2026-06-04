@@ -17,13 +17,13 @@ const trustBadges = [
   { label: "Mizoram-based developer", icon: MapPinned },
   { label: "School and NGO systems", icon: School },
   { label: "LMS platforms", icon: Wrench },
-  { label: "Admin dashboards", icon: LayoutDashboard },
+  { label: "Operations dashboards", icon: LayoutDashboard },
   { label: "Mobile app development", icon: Smartphone },
 ];
 
 const practicalPoints = [
   {
-    title: "Clear admin workflows",
+    title: "Clear daily workflows",
     description:
       "Forms, tables, actions, and permissions are arranged for daily use, not just for screenshots.",
   },
@@ -38,7 +38,7 @@ const practicalPoints = [
       "Reusable components, typed data, and simple structure keep future updates easier to handle.",
   },
   {
-    title: "Real-world usability",
+    title: "Human usability",
     description:
       "The focus stays on useful paths for students, staff, administrators, customers, and local users.",
   },
@@ -58,8 +58,8 @@ export function TrustSection() {
             <div className="space-y-6">
               <SectionHeading
                 eyebrow="Built for practical use"
-                title="Trust comes from clear systems, not inflated claims"
-                description="Every project is presented honestly: private work stays private, live demos are linked when available, and the design keeps attention on what the system does."
+                title="Premium visuals still need honest systems"
+                description="Every project is presented clearly: private work stays private, live demos are linked when available, and the design keeps attention on what the system actually does."
               />
               <div className="flex flex-wrap gap-2">
                 {trustBadges.map((item) => (

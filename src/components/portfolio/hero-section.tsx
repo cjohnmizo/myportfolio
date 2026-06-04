@@ -1,32 +1,54 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download, Mail, MapPin, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  Film,
+  Gauge,
+  Layers3,
+  Mail,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { SocialIcon } from "@/components/portfolio/social-icon";
 import { SystemsWorkbenchVisual } from "@/components/portfolio/systems-workbench-visual";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
-const serviceBadges = [
-  "Web Development",
-  "LMS Platforms",
-  "Android Apps",
-  "Admin Dashboards",
-  "Mizoram-based Developer",
+const sceneCards = [
+  {
+    label: "Dashboard UI",
+    detail: "premium command-center layouts",
+    icon: Gauge,
+  },
+  {
+    label: "LMS Flow",
+    detail: "clear course and student paths",
+    icon: Layers3,
+  },
+  {
+    label: "Mobile Views",
+    detail: "responsive, readable screens",
+    icon: Sparkles,
+  },
+  {
+    label: "Static Portfolio",
+    detail: "fast pages with clean content flow",
+    icon: Film,
+  },
 ];
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
-    <section className="border-border relative overflow-hidden border-b py-12 sm:py-16 lg:py-20">
-      <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_28s_linear_infinite] opacity-[0.08]" />
-      <div className="bg-primary/20 absolute top-12 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full blur-[90px]" />
-      <div className="bg-secondary/10 absolute top-32 right-0 h-72 w-72 rounded-full blur-[100px]" />
+    <section className="cinematic-hero border-border relative overflow-hidden border-b py-10 sm:py-14 lg:min-h-[calc(100svh-74px)] lg:py-16">
+      <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_34s_linear_infinite] opacity-[0.07]" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7fbff] to-transparent" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:px-8">
-        <SectionReveal className="space-y-8">
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8">
+        <SectionReveal className="space-y-7">
           <div className="flex flex-wrap items-center gap-3">
             <Badge>{snapshot.settings.heroEyebrow}</Badge>
             <Badge variant="secondary">cjohnmizo</Badge>
@@ -36,7 +58,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             <p className="text-secondary text-sm font-semibold">
               C. John Remthang
             </p>
-            <h1 className="text-foreground max-w-5xl text-4xl leading-[1.06] font-semibold sm:text-5xl lg:text-6xl">
+            <h1 className="text-foreground max-w-5xl text-4xl leading-[1.04] font-semibold sm:text-5xl lg:text-6xl">
               {snapshot.settings.heroTitle}
             </h1>
             <p className="text-muted-foreground max-w-3xl text-lg leading-8">
@@ -70,17 +92,25 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </Link>
               </Button>
             ) : null}
-            {/* TODO: Add /resume.pdf or a public resume URL to show the Download Resume button. */}
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:max-w-3xl">
-            {serviceBadges.map((badge) => (
+          <div className="grid gap-3 sm:grid-cols-2">
+            {sceneCards.map((card) => (
               <div
-                key={badge}
-                className="border-border bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground flex items-center gap-2 rounded-2xl border px-4 py-3 text-sm font-medium backdrop-blur transition"
+                key={card.label}
+                className="cinematic-tile group flex items-start gap-3 rounded-2xl p-4"
               >
-                <Sparkles className="text-primary h-4 w-4" />
-                {badge}
+                <div className="border-primary/25 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition">
+                  <card.icon className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-foreground text-sm font-semibold">
+                    {card.label}
+                  </p>
+                  <p className="text-muted-foreground mt-1 text-sm leading-6">
+                    {card.detail}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -94,7 +124,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                   href={link.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="border-border bg-card/60 text-muted-foreground hover:border-primary/50 hover:text-foreground inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium backdrop-blur transition hover:-translate-y-0.5"
+                  className="border-border bg-card/64 text-muted-foreground hover:border-primary/50 hover:text-foreground inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium backdrop-blur transition hover:-translate-y-0.5"
                 >
                   <SocialIcon platform={link.platform} className="h-4 w-4" />
                   {link.label}
@@ -104,43 +134,61 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         </SectionReveal>
 
         <SectionReveal delay={0.08}>
-          <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-            <Card className="light-sweep">
-              <CardContent className="space-y-5 p-5">
-                <div className="flex items-center gap-4">
-                  <div className="border-primary/20 bg-muted relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border">
+          <div className="cinematic-stage mx-auto max-w-[720px] rounded-[2rem] p-3 sm:p-4">
+            <div className="border-border/70 relative overflow-hidden rounded-[1.55rem] border bg-white/55 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#1976e8]" />
+                  <span className="text-foreground text-sm font-semibold">
+                    Portfolio command center
+                  </span>
+                </div>
+                <div className="text-muted-foreground flex flex-wrap gap-2 text-xs font-semibold">
+                  <span className="rounded-full bg-white/70 px-3 py-1.5">
+                    Design
+                  </span>
+                  <span className="rounded-full bg-white/70 px-3 py-1.5">
+                    Build
+                  </span>
+                  <span className="rounded-full bg-white/70 px-3 py-1.5">
+                    Launch
+                  </span>
+                </div>
+              </div>
+
+              <SystemsWorkbenchVisual className="max-w-none shadow-[0_30px_78px_rgba(21,60,112,0.28)]" />
+
+              <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_1.15fr]">
+                <div className="border-border/70 flex items-center gap-4 rounded-[1.35rem] border bg-white/70 p-4">
+                  <div className="border-primary/20 bg-muted relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border">
                     <Image
                       src={snapshot.profile.avatarUrl}
                       alt={snapshot.profile.fullName}
                       fill
                       className="object-cover"
-                      sizes="80px"
+                      sizes="64px"
                       priority
                     />
                   </div>
-                  <div>
-                    <p className="text-foreground text-lg font-semibold">
+                  <div className="min-w-0">
+                    <p className="text-foreground truncate text-base font-semibold">
                       {snapshot.profile.fullName}
                     </p>
                     <p className="text-muted-foreground mt-1 text-sm">
                       {snapshot.profile.currentRole}
                     </p>
-                    <p className="text-muted-foreground mt-2 inline-flex items-center gap-2 text-sm">
-                      <MapPin className="text-primary h-4 w-4" />
+                    <p className="text-muted-foreground mt-1 inline-flex items-center gap-1.5 text-xs">
+                      <MapPin className="text-primary h-3.5 w-3.5" />
                       {snapshot.profile.location}
                     </p>
                   </div>
                 </div>
-                <div className="border-primary/15 bg-primary/10 rounded-2xl border p-4">
-                  <p className="text-foreground text-sm leading-7">
-                    {snapshot.profile.shortBio}
-                  </p>
-                </div>
-                <div className="grid gap-3">
+
+                <div className="hidden gap-3 sm:grid sm:grid-cols-3">
                   {snapshot.profile.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="border-border bg-background/40 rounded-2xl border p-4"
+                      className="border-border/70 rounded-[1.25rem] border bg-white/70 p-4"
                     >
                       <p className="text-muted-foreground text-xs font-semibold uppercase">
                         {metric.label}
@@ -151,10 +199,8 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-
-            <SystemsWorkbenchVisual />
+              </div>
+            </div>
           </div>
         </SectionReveal>
       </div>

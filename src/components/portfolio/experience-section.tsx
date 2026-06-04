@@ -18,8 +18,8 @@ export function ExperienceSection({
         <SectionReveal>
           <SectionHeading
             eyebrow="Experience"
-            title="Teaching, client work, and practical software delivery"
-            description="A grounded mix of IT teaching and hands-on development work for websites, dashboards, LMS platforms, CMS tools, and mobile apps."
+            title="Teaching discipline meets product delivery"
+            description="A grounded mix of IT teaching and hands-on development for websites, learning platforms, dashboards, CMS tools, and mobile apps."
           />
         </SectionReveal>
         <div className="mt-10 space-y-6">

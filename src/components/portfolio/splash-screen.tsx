@@ -7,15 +7,15 @@ import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "cjohnmizo:splash:v1";
 
-const focusPills = ["Web", "LMS", "Apps", "Dashboards"];
+const focusPills = ["Web", "LMS", "Mobile", "Dashboard"];
 
 const buildStats = [
-  { label: "Projects", value: "12" },
+  { label: "Scenes", value: "06" },
   { label: "Systems", value: "05" },
-  { label: "Flow", value: "98%" },
+  { label: "Polish", value: "98%" },
 ];
 
-const taskRows = ["Portfolio refresh", "Admin polish", "LMS workflow"];
+const taskRows = ["Content reset", "Visual pass", "Launch polish"];
 
 type SplashPhase = "checking" | "visible" | "leaving" | "hidden";
 
@@ -113,7 +113,7 @@ export function SplashScreen({
                 </h2>
                 <p className="mt-2 max-w-xl text-sm leading-6 text-[#526985]">
                   {role} building clean, practical digital systems with a
-                  polished dashboard feel.
+                  cinematic sapphire dashboard feel.
                 </p>
               </div>
 

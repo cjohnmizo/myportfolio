@@ -21,7 +21,7 @@ test("project archive search shows empty-state feedback and recovers", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: /Digital case files for web, LMS, mobile, and admin work/i,
+      name: /Cinematic case files for web, LMS, mobile, and dashboard work/i,
     }),
   ).toBeVisible();
 

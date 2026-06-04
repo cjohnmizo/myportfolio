@@ -203,6 +203,57 @@ select {
     perspective: 1100px;
   }
 
+  .cinematic-hero {
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 42%),
+      linear-gradient(180deg, rgba(222, 237, 255, 0.92), rgba(247, 251, 255, 0));
+  }
+
+  .cinematic-stage {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.72),
+        rgba(219, 234, 255, 0.72)
+      ),
+      linear-gradient(90deg, rgba(25, 118, 232, 0.16), transparent 54%);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    box-shadow:
+      0 38px 100px rgba(25, 63, 119, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(18px);
+  }
+
+  .cinematic-stage::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.64),
+      transparent 36%,
+      rgba(216, 166, 75, 0.12) 72%,
+      transparent
+    );
+  }
+
+  .cinematic-tile {
+    position: relative;
+    overflow: hidden;
+    min-height: 104px;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(233, 244, 255, 0.58)
+    );
+    border: 1px solid rgba(126, 158, 196, 0.28);
+    box-shadow: 0 16px 44px rgba(45, 86, 136, 0.11);
+    backdrop-filter: blur(14px);
+  }
+
   .project-preview-surface {
     transform-origin: center;
     box-shadow:
@@ -276,6 +327,11 @@ select {
     );
     transform: translateX(-125%);
     transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .light-sweep {
+    position: relative;
+    overflow: hidden;
   }
 
   .light-sweep:hover::after {

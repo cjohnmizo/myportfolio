@@ -45,7 +45,7 @@ export function ProjectCard({
           />
           <div className="absolute inset-x-3 bottom-3 flex flex-wrap items-center justify-between gap-2">
             <span className="border-primary/25 bg-background/80 text-primary rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur">
-              Preview
+              Scene preview
             </span>
             <span className="border-border bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-xs font-medium backdrop-blur">
               {project.category}
@@ -62,7 +62,7 @@ export function ProjectCard({
 
         <div className="space-y-3">
           <p className="text-primary text-xs font-semibold uppercase">
-            Digital case file
+            Cinematic case file
           </p>
           <h3 className="text-foreground text-xl leading-snug font-semibold">
             {project.title}
@@ -89,7 +89,7 @@ export function ProjectCard({
         <div className="grid gap-3">
           <div className="border-border bg-background/35 rounded-2xl border p-4">
             <p className="text-secondary text-xs font-semibold uppercase">
-              Problem
+              Brief
             </p>
             <p className="text-muted-foreground mt-2 text-sm leading-6">
               {project.challenge}
@@ -97,7 +97,7 @@ export function ProjectCard({
           </div>
           <div className="border-border bg-background/35 rounded-2xl border p-4">
             <p className="text-primary text-xs font-semibold uppercase">
-              Solution
+              Build direction
             </p>
             <p className="text-muted-foreground mt-2 text-sm leading-6">
               {project.solution}

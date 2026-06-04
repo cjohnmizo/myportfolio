@@ -1,13 +1,13 @@
 import type { Project } from "@/types/portfolio";
 
 const privateProjectStatus =
-  "Private client project — details available on request.";
+  "Private client project - details available on request.";
 
 const projectPreviewAltText: Record<string, string> = {
   "liankhawpui-community-platform": "Liankhawpui village directory app preview",
   "tz-coaching-lms": "TZ Coaching LMS platform preview",
   "gaby-farm": "Gaby Farm website preview",
-  "smart-modern-admin-dashboard": "Smart Modern Admin Dashboard preview",
+  "smart-modern-admin-dashboard": "Smart Modern Dashboard preview",
   "tualchher-cms": "Tualchher CMS project preview",
   "library-lms-tools": "Library and LMS tools preview",
 };

@@ -74,7 +74,7 @@ export default async function AboutPage() {
                 <Badge>About</Badge>
                 <div className="space-y-4">
                   <h1 className="text-foreground max-w-4xl text-4xl leading-tight font-semibold sm:text-5xl">
-                    Mizo digital craft shaped into practical software systems.
+                    Cinematic product surfaces grounded in practical software.
                   </h1>
                   <p className="text-muted-foreground max-w-3xl text-lg leading-8">
                     {snapshot.profile.shortBio}

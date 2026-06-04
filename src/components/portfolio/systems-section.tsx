@@ -14,45 +14,45 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const systems = [
   {
-    title: "School and institution websites",
+    title: "School command pages",
     description:
-      "Clean public websites for notices, admissions, departments, staff information, and contact workflows.",
+      "Public pages for notices, admissions, departments, staff information, and contact paths.",
     icon: GraduationCap,
   },
   {
-    title: "Coaching LMS platforms",
+    title: "Coaching LMS spaces",
     description:
-      "Course structures, class materials, student access, and simple admin tools for coaching centres.",
+      "Course lanes, class materials, student access, and staff workflows for coaching centres.",
     icon: Building2,
   },
   {
-    title: "Admin dashboards",
+    title: "Operations dashboards",
     description:
-      "Operational panels for records, reports, content, users, and routine management tasks.",
+      "Scan-friendly panels for records, reports, content, users, and routine management tasks.",
     icon: ChartNoAxesCombined,
   },
   {
-    title: "NGO and community systems",
+    title: "Community information hubs",
     description:
       "Digital tools for announcements, directories, local updates, and community information access.",
     icon: Handshake,
   },
   {
-    title: "Mobile apps",
+    title: "Mobile product views",
     description:
       "Flutter and Android app interfaces built around practical field use and responsive data flows.",
     icon: Smartphone,
   },
   {
-    title: "Business and farm websites",
+    title: "Business and farm sites",
     description:
       "Trustworthy sites for products, services, updates, enquiries, and local business visibility.",
     icon: DatabaseZap,
   },
   {
-    title: "CMS and content tools",
+    title: "Publishing workspaces",
     description:
-      "Publishing workflows, media handling, role permissions, SEO controls, and structured content.",
+      "Publishing workflows, media handling, permissions, SEO controls, and structured content.",
     icon: Newspaper,
   },
 ];
@@ -75,8 +75,8 @@ export function SystemsSection() {
         <SectionReveal>
           <SectionHeading
             eyebrow="Systems I build"
-            title="Practical digital systems with a memorable visual identity"
-            description="The work is broad, but the standard is consistent: clear user paths, maintainable structure, responsive interfaces, and useful software after launch."
+            title="Useful systems presented with cinematic clarity"
+            description="The work is broad, but the standard is consistent: strong hierarchy, responsive screens, useful actions, and a polished dashboard mood that still stays practical."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
