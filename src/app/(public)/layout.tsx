@@ -14,7 +14,7 @@ export default async function PublicLayout({
     <>
       <SplashScreen
         fullName={snapshot.profile.fullName}
-        role={snapshot.profile.currentRole}
+        avatarUrl={snapshot.profile.avatarUrl}
       />
       <SiteHeader />
       {children}
