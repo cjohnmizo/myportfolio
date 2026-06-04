@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -44,7 +45,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
       <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_34s_linear_infinite] opacity-[0.07]" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7fbff] to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center lg:px-8">
         <SectionReveal className="space-y-7">
           <div className="flex flex-wrap items-center gap-3">
             <Badge>{snapshot.settings.heroEyebrow}</Badge>
@@ -126,6 +127,24 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                   {link.label}
                 </Link>
               ))}
+          </div>
+        </SectionReveal>
+
+        <SectionReveal delay={0.08} className="w-full lg:justify-self-end">
+          <div className="relative mx-auto w-full max-w-[420px]">
+            <div className="border-border/70 relative overflow-hidden rounded-[2rem] border bg-white/62 p-2 shadow-[0_32px_90px_rgba(45,86,136,0.2)] backdrop-blur-xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.55rem] border border-white/80 bg-[#dceaff]">
+                <Image
+                  src={snapshot.profile.avatarUrl}
+                  alt={snapshot.profile.fullName}
+                  fill
+                  priority
+                  className="object-cover object-[50%_34%]"
+                  sizes="(max-width: 768px) 88vw, 420px"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_48%,rgba(16,35,63,0.08))]" />
+              </div>
+            </div>
           </div>
         </SectionReveal>
       </div>
