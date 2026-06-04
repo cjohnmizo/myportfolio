@@ -11,7 +11,6 @@ import {
 
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { SocialIcon } from "@/components/portfolio/social-icon";
-import { SystemsWorkbenchVisual } from "@/components/portfolio/systems-workbench-visual";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { PortfolioSnapshot } from "@/types/portfolio";
@@ -45,11 +44,10 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
       <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_34s_linear_infinite] opacity-[0.07]" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7fbff] to-transparent" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal className="space-y-7">
           <div className="flex flex-wrap items-center gap-3">
             <Badge>{snapshot.settings.heroEyebrow}</Badge>
-            <Badge variant="secondary">cjohnmizo</Badge>
           </div>
 
           <div className="space-y-5">
@@ -128,28 +126,6 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                   {link.label}
                 </Link>
               ))}
-          </div>
-        </SectionReveal>
-
-        <SectionReveal delay={0.08}>
-          <div className="cinematic-stage mx-auto max-w-[720px] rounded-[2rem] p-3 sm:p-4">
-            <div className="border-border/70 relative overflow-hidden rounded-[1.55rem] border bg-white/55 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4">
-              <div className="mb-3 flex flex-wrap items-center justify-end gap-3">
-                <div className="text-muted-foreground flex flex-wrap justify-end gap-2 text-xs font-semibold">
-                  <span className="rounded-full bg-white/70 px-3 py-1.5">
-                    Design
-                  </span>
-                  <span className="rounded-full bg-white/70 px-3 py-1.5">
-                    Build
-                  </span>
-                  <span className="rounded-full bg-white/70 px-3 py-1.5">
-                    Launch
-                  </span>
-                </div>
-              </div>
-
-              <SystemsWorkbenchVisual className="max-w-none shadow-[0_30px_78px_rgba(21,60,112,0.28)]" />
-            </div>
           </div>
         </SectionReveal>
       </div>
