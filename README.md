@@ -76,6 +76,10 @@ The app is configured for Vercel. Preview or production deploys require:
 - optional `NEXT_PUBLIC_SITE_URL` and `GOOGLE_SITE_VERIFICATION` variables
 - DNS/domain configuration for `cjohnmizo.in`
 
+## Email Setup
+
+Email forwarding and Gmail send-as setup steps are documented in `docs/email-setup.md`.
+
 ## Search Console
 
 Recommended path:
