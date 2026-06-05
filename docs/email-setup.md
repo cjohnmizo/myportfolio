@@ -3,12 +3,13 @@
 Current DNS status for `cjohnmizo.in`:
 
 - Nameservers: Vercel DNS (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`)
-- MX records: not configured yet
+- MX records: configured for ImprovMX (`mx1.improvmx.com`, `mx2.improvmx.com`)
+- SPF TXT: configured for ImprovMX (`v=spf1 include:spf.improvmx.com ~all`)
 - Existing TXT: Google Search Console verification
 
 Namecheap is the domain registrar, but the live DNS zone is currently managed by Vercel because the domain uses Vercel nameservers. Add mail records where the active nameservers are managed.
 
-If you keep Vercel nameservers, add the records in Vercel. If you change the nameservers back to Namecheap BasicDNS, add the records in Namecheap Advanced DNS instead.
+The current setup keeps Vercel nameservers, so the mail records were added in Vercel. If you change the nameservers back to Namecheap BasicDNS later, recreate the records in Namecheap Advanced DNS.
 
 ## Recommended Setup
 
@@ -46,6 +47,8 @@ In ImprovMX:
 | TXT | `@` | `v=spf1 include:spf.improvmx.com ~all` | |
 
 Do not remove the existing Google Search Console TXT record.
+
+These Vercel DNS records were added on June 6, 2026.
 
 ### Option B: Use Namecheap DNS Instead
 
