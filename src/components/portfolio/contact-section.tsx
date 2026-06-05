@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, CheckCircle2, Github, Mail, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -20,7 +20,7 @@ import {
 } from "@/validators/contact";
 
 export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
-  const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [website, setWebsite] = useState("");
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
     "idle",
@@ -36,29 +36,38 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   });
 
   const onSubmit = form.handleSubmit(
-    (values) => {
+    async (values) => {
       if (website) {
         setFormStatus("error");
         toast.error("Unable to send this brief.");
         return;
       }
 
-      startTransition(() => {
-        const params = new URLSearchParams({
-          subject: `Portfolio enquiry: ${values.subject}`,
-          body: [
-            `Name: ${values.name}`,
-            `Email: ${values.email}`,
-            "",
-            values.message,
-          ].join("\n"),
+      setIsSubmitting(true);
+      setFormStatus("idle");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...values, website }),
         });
 
-        window.location.href = `mailto:${snapshot.profile.email}?${params.toString()}`;
+        if (!response.ok) {
+          throw new Error("Contact delivery failed.");
+        }
+
         setFormStatus("success");
-        toast.success("Opening your email client with the project brief.");
+        toast.success("Project brief sent.");
         form.reset();
-      });
+      } catch {
+        setFormStatus("error");
+        toast.error("Unable to send this brief right now.");
+      } finally {
+        setIsSubmitting(false);
+      }
     },
     () => {
       setFormStatus("error");
@@ -88,15 +97,10 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </div>
               <p className="text-muted-foreground text-sm leading-7">
                 Have a school site, learning space, community system, dashboard,
-                or mobile app idea? Send a short project brief and I&apos;ll
-                review it.
+                or mobile app idea? Send a short project brief through the form
+                and I&apos;ll review it.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Button asChild>
-                  <Link href={`mailto:${snapshot.profile.email}`}>
-                    Email directly
-                  </Link>
-                </Button>
                 <Button asChild variant="outline">
                   <Link
                     href={`https://github.com/${snapshot.profile.githubUsername}`}
@@ -183,8 +187,8 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     <div className="border-primary/25 bg-primary/10 text-primary flex gap-3 rounded-2xl border p-4 text-sm leading-6">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
                       <span>
-                        Your email app is opening with the project brief ready
-                        to send.
+                        Your project brief has been sent. I&apos;ll reply to the
+                        email address you entered.
                       </span>
                     </div>
                   ) : null}
@@ -201,10 +205,10 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
 
                 <Button
                   type="submit"
-                  disabled={isPending}
-                  aria-busy={isPending}
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
                 >
-                  {isPending ? "Preparing brief..." : "Send Project Brief"}
+                  {isSubmitting ? "Sending brief..." : "Send Project Brief"}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>

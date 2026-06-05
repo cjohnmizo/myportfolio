@@ -18,10 +18,7 @@ export default async function PublicLayout({
       />
       <SiteHeader />
       {children}
-      <SiteFooter
-        contactEmail={snapshot.profile.email}
-        footerNote={snapshot.settings.footerNote}
-      />
+      <SiteFooter footerNote={snapshot.settings.footerNote} />
     </>
   );
 }

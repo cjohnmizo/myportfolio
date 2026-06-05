@@ -34,7 +34,7 @@ export const siteConfig = {
     "Flutter developer",
   ],
   locale: "en_US",
-  securityEmail: "contact@cjohnmizo.in",
+  securityEmail: env.CONTACT_PUBLIC_EMAIL,
   defaultOgImage: "/brand/cjohnmizo-favicon.png",
   navItems: [
     { label: "About", href: "/about" },

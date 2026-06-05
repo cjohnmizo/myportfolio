@@ -6,10 +6,8 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export function SiteFooter({
-  contactEmail,
   footerNote,
 }: {
-  contactEmail: string;
   footerNote: string;
 }) {
   return (
@@ -30,11 +28,11 @@ export function SiteFooter({
             {footerNote}
           </p>
           <Link
-            href={`mailto:${contactEmail}`}
+            href="/#contact"
             className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition"
           >
             <Mail className="h-4 w-4" />
-            {contactEmail}
+            Contact form
           </Link>
         </div>
 
@@ -51,7 +49,7 @@ export function SiteFooter({
             ))}
           </div>
           <Button asChild variant="outline">
-            <Link href={`mailto:${contactEmail}`}>Start a project</Link>
+            <Link href="/#contact">Start a project</Link>
           </Button>
         </div>
       </div>

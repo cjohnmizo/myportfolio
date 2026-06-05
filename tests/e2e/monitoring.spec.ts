@@ -23,3 +23,16 @@ test("security.txt is available for responsible disclosure", async ({
   expect(body).toContain("Contact:");
   expect(body).toContain("Canonical:");
 });
+
+test("contact endpoint rejects invalid payloads", async ({ request }) => {
+  const response = await request.post("/api/contact", {
+    data: {
+      name: "",
+      email: "not-an-email",
+      subject: "",
+      message: "",
+    },
+  });
+
+  expect(response.status()).toBe(400);
+});

@@ -10,6 +10,7 @@ Static Next.js portfolio for `cjohnmizo.in`.
 - shadcn-style UI primitives
 - React Hook Form + Zod for the contact form
 - Vercel Analytics and Speed Insights
+- Resend-powered contact form
 - Vercel deployment target
 
 ## What's Included
@@ -42,12 +43,21 @@ Run `npm run test:e2e:install` once to install Chromium for Playwright.
 
 ## Environment Variables
 
-Only these variables are used by the app:
+These variables are used by the app:
 
 - `NEXT_PUBLIC_SITE_URL`
 - `GOOGLE_SITE_VERIFICATION`
+- `RESEND_API_KEY`
+- `CONTACT_PUBLIC_EMAIL`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL`
+- `ADMIN_EMAIL`
 
 `NEXT_PUBLIC_SITE_URL` defaults to `https://cjohnmizo.in`. `GOOGLE_SITE_VERIFICATION` is optional and is only needed if you verify a URL-prefix property in Google Search Console via the HTML meta tag method.
+
+The contact form sends through Resend from the server-side `/api/contact` route. Set `RESEND_API_KEY`, set `CONTACT_FROM_EMAIL` to a verified sender on `cjohnmizo.in`, and set `CONTACT_TO_EMAIL` to the inbox where project briefs should arrive. `ADMIN_EMAIL` is a fallback recipient if `CONTACT_TO_EMAIL` is not set.
+
+To make `contact@cjohnmizo.in` fully usable, verify `cjohnmizo.in` in Resend and add the DNS records Resend gives you. If the mailbox itself is not hosted yet, forward `contact@cjohnmizo.in` to an existing inbox or set `CONTACT_TO_EMAIL` to that existing inbox.
 
 ## Content Updates
 
