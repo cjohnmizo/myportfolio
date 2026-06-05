@@ -6,6 +6,10 @@ Current DNS status for `cjohnmizo.in`:
 - MX records: not configured yet
 - Existing TXT: Google Search Console verification
 
+Namecheap is the domain registrar, but the live DNS zone is currently managed by Vercel because the domain uses Vercel nameservers. Add mail records where the active nameservers are managed.
+
+If you keep Vercel nameservers, add the records in Vercel. If you change the nameservers back to Namecheap BasicDNS, add the records in Namecheap Advanced DNS instead.
+
 ## Recommended Setup
 
 Use ImprovMX for email forwarding and SMTP sending through Gmail.
@@ -26,9 +30,9 @@ In ImprovMX:
    - Alias: `contact`
    - Forward to: your Gmail address
 
-## 2. Add DNS Records In Vercel
+## 2. Add DNS Records
 
-Open Vercel Dashboard, then:
+### Option A: Keep Current Vercel Nameservers
 
 1. Go to the project or team that owns `cjohnmizo.in`.
 2. Open Domains.
@@ -42,6 +46,25 @@ Open Vercel Dashboard, then:
 | TXT | `@` | `v=spf1 include:spf.improvmx.com ~all` | |
 
 Do not remove the existing Google Search Console TXT record.
+
+### Option B: Use Namecheap DNS Instead
+
+Only use this if you change the domain nameservers from Vercel to Namecheap BasicDNS.
+
+In Namecheap:
+
+1. Open Domain List.
+2. Click Manage next to `cjohnmizo.in`.
+3. Set Nameservers to Namecheap BasicDNS.
+4. Open Advanced DNS.
+5. Add the same MX and TXT records above.
+6. Recreate any needed website records after the nameserver switch.
+
+Namecheap notes:
+
+- Namecheap host records are managed in Advanced DNS only when the domain is using Namecheap BasicDNS, FreeDNS, or PremiumDNS.
+- If the domain points to third-party nameservers, add records at that third-party DNS provider instead.
+- Switching nameservers does not copy existing records automatically.
 
 After saving, wait for DNS propagation and click the verification/check button in ImprovMX.
 
