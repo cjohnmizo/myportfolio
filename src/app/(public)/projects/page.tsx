@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Explore portfolio projects, case studies, and technical builds by C. John Remthang.",
+    "Explore websites, Android apps, LMS platforms, dashboards, Laravel systems, and practical UI work by C. John Mizo.",
   alternates: {
     canonical: `${siteConfig.url}/projects`,
   },
@@ -22,8 +22,8 @@ export default async function ProjectsPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Project archive"
-          title="Case files for web, LMS, mobile, and dashboard work"
-          description="Browse selected work by project, category, or stack. Private client projects are marked clearly, with details available on request."
+          title="Case files for web, LMS, Android, Laravel, and UI work"
+          description="Browse selected work by project, category, or stack. Private client projects are marked clearly, and live links appear only where they are real."
         />
         <ProjectsExplorer projects={snapshot.projects} />
       </div>

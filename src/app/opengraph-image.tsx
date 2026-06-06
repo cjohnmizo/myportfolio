@@ -45,12 +45,11 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.05 }}>
-          Practical digital systems for schools, NGOs, businesses, and
-          communities
+          Clean websites, Android apps, LMS platforms, and Laravel systems
         </div>
         <div style={{ fontSize: 29, color: "#1a3d63", lineHeight: 1.35 }}>
-          Mizoram-based developer building websites, LMS platforms, dashboards,
-          mobile apps, and maintainable systems that stay useful after launch.
+          C. John Mizo builds practical digital products for schools, coaching
+          teams, local businesses, NGOs, and founders.
         </div>
       </div>
       <div
@@ -61,13 +60,13 @@ export default function OpenGraphImage() {
           color: "#1a3d63",
         }}
       >
-        <span>Next.js</span>
+        <span>Web</span>
+        <span>/</span>
+        <span>Android</span>
+        <span>/</span>
+        <span>LMS</span>
         <span>/</span>
         <span>Laravel</span>
-        <span>/</span>
-        <span>Flutter</span>
-        <span>/</span>
-        <span>Static content</span>
       </div>
     </div>,
     {

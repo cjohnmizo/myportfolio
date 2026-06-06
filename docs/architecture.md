@@ -33,7 +33,7 @@ Build a polished, backend-free developer portfolio for `cjohnmizo.in` using Next
 
 ## Visual System
 
-- The portfolio uses a light sapphire glass-dashboard direction.
+- The portfolio uses a restrained navy and steel-blue portfolio direction with glass surfaces, clear cards, and lightweight motion.
 - Global tokens live in `src/app/globals.css`.
 - Shared surface styling comes from `glass-panel`, `surface-card`, and the UI primitives.
 

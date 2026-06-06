@@ -96,11 +96,16 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </p>
               </div>
               <p className="text-muted-foreground text-sm leading-7">
-                Have a school site, learning space, community system, dashboard,
-                or mobile app idea? Send a short project brief through the form
-                and I&apos;ll review it.
+                Have a website, Android app, LMS, Firebase tool, Laravel
+                system, or UI cleanup in mind? Email is the reliable contact
+                path, and the form below can structure the brief.
               </p>
               <div className="flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href={`mailto:${snapshot.profile.email}`}>
+                    Email directly <Mail className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
                 <Button asChild variant="outline">
                   <Link
                     href={`https://github.com/${snapshot.profile.githubUsername}`}
@@ -122,7 +127,8 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </h3>
                 <p className="text-muted-foreground mt-2 text-sm leading-7">
                   Share what you need, the timeline, and any existing links or
-                  materials. The next pass can start from rough notes.
+                  materials. If form delivery is unavailable, use the email
+                  contact shown beside it.
                 </p>
               </div>
 
@@ -144,7 +150,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="Your name"
                       {...form.register("name")}
                     />
-                    <p className="text-xs text-red-300">
+                    <p className="text-xs text-red-700">
                       {form.formState.errors.name?.message}
                     </p>
                   </div>
@@ -155,7 +161,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="you@example.com"
                       {...form.register("email")}
                     />
-                    <p className="text-xs text-red-300">
+                    <p className="text-xs text-red-700">
                       {form.formState.errors.email?.message}
                     </p>
                   </div>
@@ -164,10 +170,10 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                   <Label htmlFor="subject">Subject</Label>
                   <Input
                     id="subject"
-                    placeholder="Website, LMS, dashboard, or app"
+                    placeholder="Website, LMS, Android app, or Laravel system"
                     {...form.register("subject")}
                   />
-                  <p className="text-xs text-red-300">
+                  <p className="text-xs text-red-700">
                     {form.formState.errors.subject?.message}
                   </p>
                 </div>
@@ -178,7 +184,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     placeholder="Tell me what should be built and who will use it."
                     {...form.register("message")}
                   />
-                  <p className="text-xs text-red-300">
+                  <p className="text-xs text-red-700">
                     {form.formState.errors.message?.message}
                   </p>
                 </div>

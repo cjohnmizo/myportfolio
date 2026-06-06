@@ -33,6 +33,12 @@ export function ProjectCard({
   const isCompact = variant === "compact";
   const features = getProjectFeatures(project).slice(0, 3);
   const statusLabel = getProjectStatusLabel(project.status);
+  const imageClassName = cn(
+    "transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100",
+    project.coverImage.startsWith("/brand/")
+      ? "object-contain p-8 opacity-95"
+      : "object-cover opacity-95",
+  );
 
   return (
     <Card className="light-sweep group border-primary/10 hover:border-primary/45 flex h-full flex-col overflow-hidden shadow-none transition duration-300 hover:-translate-y-1">
@@ -44,7 +50,7 @@ export function ProjectCard({
             alt={getProjectPreviewAlt(project)}
             fill
             priority={priority}
-            className="object-cover opacity-95 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
+            className={imageClassName}
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
           <div className="absolute inset-x-3 bottom-3 flex flex-wrap items-center justify-between gap-2">
@@ -167,7 +173,7 @@ export function ProjectCard({
               href={`/projects/${project.slug}`}
               aria-label={`Open ${project.title} case file`}
             >
-              Open case file <ArrowRight className="ml-2 h-4 w-4" />
+              Details <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
           {project.demoUrl ? (

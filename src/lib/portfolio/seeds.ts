@@ -4,22 +4,28 @@ export const portfolioSeed: PortfolioSnapshot = {
   profile: {
     id: "profile-1",
     fullName: "C. John Remthang",
-    headline: "Dashboard and Web Systems Developer",
-    currentRole: "Developer / Dashboard & LMS Builder",
+    headline: "Web, Android, LMS and Laravel Developer",
+    currentRole: "Developer / Digital Product Creator",
     location: "Mizoram, India",
     email: "contact@cjohnmizo.in",
     shortBio:
-      "I turn rough ideas into polished websites, learning platforms, mobile interfaces, and dashboard-style systems.",
+      "I build practical websites, Android apps, LMS platforms, Firebase apps, Laravel systems, and cleaner UI experiences for real users.",
     longBio:
-      "I am a Mizoram-based developer focused on polished but practical digital products: clean public websites, learning workspaces, content systems, mobile apps, and dashboard interfaces that feel premium without becoming confusing. My teaching background keeps the work grounded in real users, clear onboarding, readable screens, and software that remains useful after the first launch.",
+      "I am a Mizoram-based developer focused on practical digital products: clean websites, learning platforms, Android app interfaces, Flutter/Kotlin mobile flows, Firebase-backed tools, Laravel systems, and UI/UX improvements that stay clear after launch. My teaching background keeps the work grounded in readable screens, patient onboarding, and software that people can actually use.",
     avatarUrl: "/profile.jpg",
     resumeUrl: null,
     githubUsername: "cjohnmizo",
     yearsExperience: 6,
     isAvailableForHire: true,
     metrics: [
-      { label: "Design mood", value: "Sapphire dashboard interface" },
-      { label: "Core work", value: "Web / LMS / Mobile / Systems UI" },
+      {
+        label: "Core work",
+        value: "Web / Android / LMS / Laravel / Firebase",
+      },
+      {
+        label: "Approach",
+        value: "Clean interfaces, practical features, reliable handoff",
+      },
       {
         label: "Best fit",
         value: "Schools, coaching teams, NGOs, small businesses, and founders",
@@ -28,24 +34,24 @@ export const portfolioSeed: PortfolioSnapshot = {
   },
   settings: {
     id: "settings-1",
-    heroEyebrow: "Polished digital command centers",
+    heroEyebrow: "C. John Mizo - developer and digital product creator",
     heroTitle:
-      "I build polished digital dashboards for schools, teams, and local businesses.",
+      "Clean websites, Android apps, and LMS systems for practical teams.",
     heroSubtitle:
-      "A Mizoram-based developer building fast portfolio sites, LMS flows, mobile apps, and operations dashboards with a calm sapphire interface style.",
+      "I help schools, coaching teams, local businesses, NGOs, and founders turn rough ideas into clear digital products that are easy to use and maintain.",
     heroDescription:
-      "Each project is presented like a focused command center: the goal, the workflow, the build direction, and the next action are clear from the first screen.",
-    aboutTitle: "Practical software shaped like a premium control room",
+      "My work covers public websites, Android apps, Firebase-backed tools, Laravel systems, LMS workflows, hosting support, and UI/UX improvements.",
+    aboutTitle: "Practical software with a clean studio finish",
     aboutBody:
-      "The work is built for people who need usable software, not decoration. Every screen has a clear purpose, responsive layout, direct actions, and enough visual presence to feel memorable.",
+      "I focus on useful digital products, not decoration. Every screen needs a clear purpose, responsive layout, direct action, and enough polish to feel trustworthy for clients and end users.",
     contactTitle: "Have a digital system that needs a sharper interface?",
     contactDescription:
-      "Send the idea, timeline, and links you already have. I will review the project and shape the next version around clear content, user flow, and a premium dashboard feel.",
-    seoTitle: "C. John Remthang | Dashboard, LMS & Web Developer",
+      "Email the idea, timeline, and links you already have. I will review the project and shape the next version around clear content, simple user flow, and maintainable delivery.",
+    seoTitle: "C. John Mizo | Web, Android, LMS & Laravel Developer",
     seoDescription:
-      "Portfolio of C. John Remthang, a Mizoram-based developer building dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
+      "Portfolio of C. John Remthang / C. John Mizo, a Mizoram-based developer building websites, Android apps, LMS platforms, Firebase apps, Laravel systems, and UI/UX improvements.",
     footerNote:
-      "Building practical digital systems for schools, teams, and local businesses.",
+      "Building practical, clean, low-cost digital products for schools, teams, and local businesses.",
     primaryAccent: "#1a3d63",
     secondaryAccent: "#4a7fa7",
   },
@@ -257,8 +263,8 @@ export const portfolioSeed: PortfolioSnapshot = {
       category: "cms",
       status: "Private",
       year: "2026",
-      sortOrder: 5,
-      isFeatured: true,
+      sortOrder: 6,
+      isFeatured: false,
       isPublished: true,
       coverImage: "/projects/tualchher-cms-dashboard.png",
       galleryImages: ["/projects/tualchher-cms-dashboard.png"],
@@ -304,7 +310,7 @@ export const portfolioSeed: PortfolioSnapshot = {
       category: "platform",
       status: "Selected work",
       year: "2026",
-      sortOrder: 6,
+      sortOrder: 7,
       isFeatured: false,
       isPublished: true,
       coverImage: "/projects/library-lms-tools.png",
@@ -334,12 +340,59 @@ export const portfolioSeed: PortfolioSnapshot = {
         { label: "Focus", value: "School workflow" },
       ],
     },
+    {
+      id: "project-7",
+      slug: "personal-portfolio",
+      title: "Personal Portfolio",
+      excerpt:
+        "A fast personal portfolio for presenting projects, skills, contact paths, and practical developer services.",
+      description:
+        "This portfolio presents C. John Mizo's work as a developer and digital product creator, with clean content, responsive layouts, project cards, contact flow, SEO metadata, and lightweight motion.",
+      challenge:
+        "The site needed to feel personal and premium without turning into a fake agency site or a heavy template.",
+      solution:
+        "I kept the structure focused on services, selected projects, grouped skills, a simple process, and reliable contact paths.",
+      impact:
+        "The portfolio gives clients a clearer way to understand the work, review live projects, and start a practical conversation.",
+      category: "web-app",
+      status: "Live portfolio",
+      year: "2026",
+      sortOrder: 5,
+      isFeatured: true,
+      isPublished: true,
+      coverImage: "/brand/cjohnmizo-logo.png",
+      galleryImages: ["/brand/cjohnmizo-logo.png"],
+      demoUrl: "https://cjohnmizo.in/",
+      githubUrl: "https://github.com/cjohnmizo/myportfolio",
+      caseStudyUrl: null,
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      metrics: [
+        {
+          label: "My role",
+          value:
+            "Content structure, responsive UI, project presentation, contact flow, SEO metadata, and deployment setup.",
+        },
+        {
+          label: "Key feature",
+          value: "Clean homepage flow for services, projects, skills, process, and contact.",
+        },
+        {
+          label: "Key feature",
+          value: "Responsive project archive and case-study pages.",
+        },
+        {
+          label: "Key feature",
+          value: "Contact form route, email setup documentation, and SEO-ready metadata.",
+        },
+        { label: "Focus", value: "Personal brand" },
+      ],
+    },
   ],
   skills: [
     {
       id: "skill-1",
       name: "Next.js",
-      category: "Interface Engineering",
+      category: "Frontend",
       proficiency: 92,
       icon: "code-xml",
       sortOrder: 1,
@@ -348,7 +401,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-2",
       name: "React",
-      category: "Interface Engineering",
+      category: "Frontend",
       proficiency: 90,
       icon: "code-xml",
       sortOrder: 2,
@@ -357,7 +410,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-3",
       name: "TypeScript",
-      category: "Interface Engineering",
+      category: "Frontend",
       proficiency: 90,
       icon: "braces",
       sortOrder: 3,
@@ -366,7 +419,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-4",
       name: "Tailwind CSS",
-      category: "Interface Engineering",
+      category: "Frontend",
       proficiency: 88,
       icon: "code-xml",
       sortOrder: 4,
@@ -374,8 +427,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-5",
-      name: "Dashboard UX",
-      category: "Product Experience",
+      name: "HTML",
+      category: "Frontend",
       proficiency: 88,
       icon: "braces",
       sortOrder: 5,
@@ -383,8 +436,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-6",
-      name: "LMS Workflows",
-      category: "Product Experience",
+      name: "CSS",
+      category: "Frontend",
       proficiency: 88,
       icon: "braces",
       sortOrder: 6,
@@ -392,8 +445,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-7",
-      name: "CMS Workflows",
-      category: "Product Experience",
+      name: "JavaScript",
+      category: "Frontend",
       proficiency: 86,
       icon: "braces",
       sortOrder: 7,
@@ -401,8 +454,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-8",
-      name: "Responsive Layouts",
-      category: "Product Experience",
+      name: "UI/UX Redesign",
+      category: "UI/UX",
       proficiency: 90,
       icon: "braces",
       sortOrder: 8,
@@ -411,7 +464,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-9",
       name: "Laravel",
-      category: "System Foundations",
+      category: "Backend",
       proficiency: 86,
       icon: "server",
       sortOrder: 9,
@@ -419,8 +472,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-10",
-      name: "REST APIs",
-      category: "System Foundations",
+      name: "PHP",
+      category: "Backend",
       proficiency: 84,
       icon: "server",
       sortOrder: 10,
@@ -428,8 +481,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-11",
-      name: "Authentication",
-      category: "System Foundations",
+      name: "REST APIs",
+      category: "Backend",
       proficiency: 84,
       icon: "network",
       sortOrder: 11,
@@ -438,7 +491,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-12",
       name: "Flutter",
-      category: "Mobile Experience",
+      category: "Mobile",
       proficiency: 88,
       icon: "smartphone",
       sortOrder: 12,
@@ -446,8 +499,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-13",
-      name: "Android",
-      category: "Mobile Experience",
+      name: "Kotlin",
+      category: "Mobile",
       proficiency: 82,
       icon: "smartphone",
       sortOrder: 13,
@@ -455,8 +508,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-14",
-      name: "Offline-first Planning",
-      category: "Mobile Experience",
+      name: "Android",
+      category: "Mobile",
       proficiency: 82,
       icon: "database",
       sortOrder: 14,
@@ -465,7 +518,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-15",
       name: "MySQL",
-      category: "Data and Storage",
+      category: "Database / Cloud",
       proficiency: 84,
       icon: "database",
       sortOrder: 15,
@@ -473,8 +526,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-16",
-      name: "PostgreSQL",
-      category: "Data and Storage",
+      name: "Firebase",
+      category: "Database / Cloud",
       proficiency: 84,
       icon: "database",
       sortOrder: 16,
@@ -482,8 +535,8 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-17",
-      name: "SQLite",
-      category: "Data and Storage",
+      name: "Firestore",
+      category: "Database / Cloud",
       proficiency: 88,
       icon: "database",
       sortOrder: 17,
@@ -492,7 +545,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-18",
       name: "Vercel",
-      category: "Launch and Delivery",
+      category: "Tools",
       proficiency: 86,
       icon: "network",
       sortOrder: 18,
@@ -501,7 +554,7 @@ export const portfolioSeed: PortfolioSnapshot = {
     {
       id: "skill-19",
       name: "GitHub",
-      category: "Launch and Delivery",
+      category: "Tools",
       proficiency: 86,
       icon: "network",
       sortOrder: 19,
@@ -509,11 +562,29 @@ export const portfolioSeed: PortfolioSnapshot = {
     },
     {
       id: "skill-20",
-      name: "Client Handoff",
-      category: "Launch and Delivery",
+      name: "Hosting / Deployment",
+      category: "Tools",
       proficiency: 82,
       icon: "network",
       sortOrder: 20,
+      isPublished: true,
+    },
+    {
+      id: "skill-21",
+      name: "Responsive Layouts",
+      category: "UI/UX",
+      proficiency: 90,
+      icon: "braces",
+      sortOrder: 21,
+      isPublished: true,
+    },
+    {
+      id: "skill-22",
+      name: "LMS Workflows",
+      category: "UI/UX",
+      proficiency: 88,
+      icon: "braces",
+      sortOrder: 22,
       isPublished: true,
     },
   ],

@@ -28,11 +28,11 @@ export function SiteFooter({
             {footerNote}
           </p>
           <Link
-            href="/#contact"
+            href={`mailto:${siteConfig.securityEmail}`}
             className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition"
           >
             <Mail className="h-4 w-4" />
-            Contact form
+            {siteConfig.securityEmail}
           </Link>
         </div>
 

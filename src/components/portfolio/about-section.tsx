@@ -15,21 +15,21 @@ import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const highlights = [
   {
-    title: "Public pages with presence",
+    title: "Web apps with clear structure",
     description:
-      "Clean websites for businesses, schools, organizations, and local projects that need trust at first glance.",
+      "Public websites and app screens built around useful content, strong hierarchy, and reliable contact paths.",
     icon: BriefcaseBusiness,
   },
   {
-    title: "Dashboard-style workflows",
+    title: "LMS, Firebase, and Laravel flows",
     description:
-      "Readable command-center layouts for records, content, tasks, reports, and repeated daily actions.",
+      "Practical learning, content, records, roles, and database workflows for teams that need simple control.",
     icon: MonitorCog,
   },
   {
-    title: "Learning and community flow",
+    title: "Android and UI/UX improvements",
     description:
-      "LMS, library, and mobile app work for students, staff, coaching teams, and community users.",
+      "Flutter/Kotlin mobile flows, cleaner spacing, clearer actions, and responsive layouts for existing products.",
     icon: BookOpenCheck,
   },
 ];

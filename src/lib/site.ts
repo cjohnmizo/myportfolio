@@ -7,9 +7,9 @@ export const siteConfig = {
   alternateNames: ["C. John", "CJohn Mizo", "C John Remthang", "John Remthang"],
   domain: "cjohnmizo.in",
   url: env.NEXT_PUBLIC_SITE_URL,
-  title: "C. John Remthang | Dashboard, LMS & Web Developer",
+  title: "C. John Mizo | Web, Android, LMS & Laravel Developer",
   description:
-    "Portfolio of C. John Remthang, a Mizoram-based developer building dashboard interfaces, LMS platforms, mobile apps, websites, and practical digital systems.",
+    "Portfolio of C. John Remthang, a Mizoram-based developer building clean websites, Android apps, LMS platforms, Firebase apps, Laravel systems, and practical UI improvements.",
   keywords: [
     "C. John Remthang",
     "C John Remthang",
@@ -27,6 +27,9 @@ export const siteConfig = {
     "Mizoram developer",
     "LMS developer",
     "dashboard developer",
+    "Firebase developer",
+    "Kotlin developer",
+    "UI UX redesign",
     "school website developer",
     "NGO software",
     "mobile app developer",
@@ -38,9 +41,9 @@ export const siteConfig = {
   defaultOgImage: "/brand/cjohnmizo-favicon.png",
   navItems: [
     { label: "About", href: "/about" },
-    { label: "Systems", href: "/#systems" },
+    { label: "Services", href: "/#services" },
     { label: "Projects", href: "/projects" },
-    { label: "Experience", href: "/#experience" },
+    { label: "Process", href: "/#process" },
     { label: "Contact", href: "/#contact" },
   ],
 };

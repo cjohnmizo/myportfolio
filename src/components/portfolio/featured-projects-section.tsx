@@ -18,8 +18,8 @@ export function FeaturedProjectsSection({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Featured projects"
-              title="Selected projects"
-              description="A quick look at recent web, LMS, mobile, dashboard, and CMS work."
+              title="Selected work with real project context"
+              description="A quick look at practical web, Android, LMS, dashboard, and portfolio work. Live links appear only where a real URL exists."
             />
             <Link
               href="/projects"

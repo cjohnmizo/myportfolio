@@ -19,7 +19,7 @@ Static Next.js portfolio for `cjohnmizo.in`.
 - Searchable project archive and dynamic case study pages
 - Static local portfolio data in `src/lib/portfolio/seeds.ts`
 - Sitemap, robots, manifest, health, and Open Graph image routes
-- Responsive light sapphire glass dashboard visual system
+- Responsive premium portfolio visual system
 
 ## Local Development
 

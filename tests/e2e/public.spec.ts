@@ -8,7 +8,7 @@ test("homepage renders key recruiter-facing content", async ({ page }) => {
     page.getByRole("link", { name: /View Projects/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Start a Project", exact: true }),
+    page.getByRole("link", { name: /Contact Me/i }),
   ).toBeVisible();
   await expect(page.locator("main")).toContainText("About");
   await expect(page.locator("main")).toContainText("Contact");
@@ -21,7 +21,7 @@ test("project archive search shows empty-state feedback and recovers", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: /Case files for web, LMS, mobile, and dashboard work/i,
+      name: /Case files for web, LMS, Android, Laravel, and UI work/i,
     }),
   ).toBeVisible();
 
