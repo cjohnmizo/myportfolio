@@ -8,7 +8,6 @@ const projectPreviewAltText: Record<string, string> = {
   "tz-coaching-lms": "TZ Coaching LMS platform preview",
   "gaby-farm": "Gaby Farm website preview",
   "smart-modern-admin-dashboard": "Smart Modern Dashboard preview",
-  "personal-portfolio": "C. John Mizo personal portfolio preview",
   "tualchher-cms": "Tualchher CMS project preview",
   "library-lms-tools": "Library and LMS tools preview",
 };

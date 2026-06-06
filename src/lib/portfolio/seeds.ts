@@ -263,7 +263,7 @@ export const portfolioSeed: PortfolioSnapshot = {
       category: "cms",
       status: "Private",
       year: "2026",
-      sortOrder: 6,
+      sortOrder: 5,
       isFeatured: false,
       isPublished: true,
       coverImage: "/projects/tualchher-cms-dashboard.png",
@@ -310,7 +310,7 @@ export const portfolioSeed: PortfolioSnapshot = {
       category: "platform",
       status: "Selected work",
       year: "2026",
-      sortOrder: 7,
+      sortOrder: 6,
       isFeatured: false,
       isPublished: true,
       coverImage: "/projects/library-lms-tools.png",
@@ -338,53 +338,6 @@ export const portfolioSeed: PortfolioSnapshot = {
           value: "Responsive resource pages for students and staff.",
         },
         { label: "Focus", value: "School workflow" },
-      ],
-    },
-    {
-      id: "project-7",
-      slug: "personal-portfolio",
-      title: "Personal Portfolio",
-      excerpt:
-        "A fast personal portfolio for presenting projects, skills, contact paths, and practical developer services.",
-      description:
-        "This portfolio presents C. John Mizo's work as a developer and digital product creator, with clean content, responsive layouts, project cards, contact flow, SEO metadata, and lightweight motion.",
-      challenge:
-        "The site needed to feel personal and premium without turning into a fake agency site or a heavy template.",
-      solution:
-        "I kept the structure focused on services, selected projects, grouped skills, a simple process, and reliable contact paths.",
-      impact:
-        "The portfolio gives clients a clearer way to understand the work, review live projects, and start a practical conversation.",
-      category: "web-app",
-      status: "Live portfolio",
-      year: "2026",
-      sortOrder: 5,
-      isFeatured: true,
-      isPublished: true,
-      coverImage: "/brand/cjohnmizo-logo.png",
-      galleryImages: ["/brand/cjohnmizo-logo.png"],
-      demoUrl: "https://cjohnmizo.in/",
-      githubUrl: "https://github.com/cjohnmizo/myportfolio",
-      caseStudyUrl: null,
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-      metrics: [
-        {
-          label: "My role",
-          value:
-            "Content structure, responsive UI, project presentation, contact flow, SEO metadata, and deployment setup.",
-        },
-        {
-          label: "Key feature",
-          value: "Clean homepage flow for services, projects, skills, process, and contact.",
-        },
-        {
-          label: "Key feature",
-          value: "Responsive project archive and case-study pages.",
-        },
-        {
-          label: "Key feature",
-          value: "Contact form route, email setup documentation, and SEO-ready metadata.",
-        },
-        { label: "Focus", value: "Personal brand" },
       ],
     },
   ],
