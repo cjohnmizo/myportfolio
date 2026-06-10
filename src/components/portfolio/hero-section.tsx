@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,6 +10,7 @@ import {
   Smartphone,
 } from "lucide-react";
 
+import { CinematicHeroStage } from "@/components/portfolio/cinematic-hero-stage";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -92,57 +92,10 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         </SectionReveal>
 
         <SectionReveal delay={0.08} className="w-full lg:justify-self-end">
-          <div className="hero-visual relative mx-auto w-full max-w-[460px]">
-            <div className="hero-code-panel border-border absolute -top-5 left-3 z-10 hidden w-48 rounded-2xl border bg-[#07111f]/95 p-4 text-white shadow-2xl shadow-black/25 backdrop-blur sm:block">
-              <div className="mb-3 flex gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-[#b3cfe5]" />
-                <span className="h-2 w-2 rounded-full bg-[#4a7fa7]" />
-                <span className="h-2 w-2 rounded-full bg-white/70" />
-              </div>
-              <div className="space-y-2 text-[11px] leading-none font-medium text-white/72">
-                <p>
-                  <span className="text-[#b3cfe5]">build</span>
-                  <span className="text-white">.</span>web()
-                </p>
-                <p>
-                  <span className="text-[#b3cfe5]">ship</span>
-                  <span className="text-white">.</span>android()
-                </p>
-                <p>
-                  <span className="text-[#b3cfe5]">support</span>
-                  <span className="text-white">.</span>lms()
-                </p>
-              </div>
-            </div>
-            <div className="hero-photo-shell border-border/70 bg-card/80 relative overflow-hidden rounded-[2rem] border p-2 shadow-[0_32px_90px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-              <div className="hero-photo-crop relative aspect-[4/5] overflow-hidden rounded-[1.55rem] border border-white/80 bg-[#b3cfe5]">
-                <Image
-                  src={snapshot.profile.avatarUrl}
-                  alt={snapshot.profile.fullName}
-                  fill
-                  priority
-                  className="hero-photo-image object-cover object-[50%_34%]"
-                  sizes="(max-width: 768px) 88vw, 420px"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_48%,rgba(10,25,49,0.1))]" />
-              </div>
-            </div>
-            <div className="hero-service-panel border-border bg-card/92 absolute right-3 -bottom-5 z-10 w-[min(86%,320px)] rounded-2xl border p-4 shadow-2xl shadow-black/25 backdrop-blur-xl">
-              <p className="text-secondary text-xs font-semibold uppercase">
-                Practical build focus
-              </p>
-              <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                {["Web", "LMS", "Firebase", "Laravel"].map((item) => (
-                  <span
-                    key={item}
-                    className="border-border bg-background/70 rounded-xl border px-3 py-2 font-medium"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <CinematicHeroStage
+            avatarUrl={snapshot.profile.avatarUrl}
+            fullName={snapshot.profile.fullName}
+          />
         </SectionReveal>
       </div>
     </section>
