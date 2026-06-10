@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { CinematicHeroStage } from "@/components/portfolio/cinematic-hero-stage";
+import { HeroThreeScene } from "@/components/portfolio/hero-three-scene";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,10 +28,11 @@ const heroCapabilities = [
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
     <section className="dashboard-hero border-border relative overflow-hidden border-b py-12 sm:py-16 lg:min-h-[calc(100svh-74px)] lg:py-18">
+      <HeroThreeScene />
       <div className="mizo-pattern absolute inset-0 opacity-[0.06]" />
       <div className="from-background absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t to-transparent" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-center lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-center lg:px-8">
         <SectionReveal className="space-y-7">
           <div className="flex flex-wrap items-center gap-3">
             <Badge>{snapshot.settings.heroEyebrow}</Badge>

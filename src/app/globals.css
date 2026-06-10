@@ -187,6 +187,22 @@ select {
     animation: dashboard-glow 26s ease-in-out infinite alternate;
   }
 
+  .hero-three-scene {
+    position: absolute;
+    inset: -8% -4%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.78;
+    mask-image: linear-gradient(90deg, transparent, black 18%, black 86%, transparent);
+  }
+
+  .hero-three-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: saturate(1.08) contrast(1.04);
+  }
+
   .cinematic-stage {
     --stage-tilt-x: 0deg;
     --stage-tilt-y: 0deg;
@@ -707,6 +723,7 @@ select {
   }
 
   .cinematic-stage,
+  .hero-three-scene,
   .cinematic-stage-inner,
   .cinematic-stage-glow,
   .cinematic-orbit,
@@ -718,6 +735,14 @@ select {
   .cinematic-core {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-three-scene {
+    inset: -3% -32%;
+    opacity: 0.56;
+    mask-image: linear-gradient(180deg, black, black 68%, transparent);
   }
 }
 
