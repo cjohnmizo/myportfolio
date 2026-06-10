@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ScrollReveal } from "@/components/reactbits";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 import {
   contactFormSchema,
@@ -84,7 +85,8 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
           description={snapshot.settings.contactDescription}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <Card className="border-primary/20 h-full shadow-none">
+          <ScrollReveal direction="left">
+            <Card className="border-primary/20 h-full shadow-none">
             <CardContent className="space-y-6 p-6">
               <div className="border-primary/25 bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-2xl border">
                 <Mail className="h-5 w-5" />
@@ -118,8 +120,10 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </div>
             </CardContent>
           </Card>
+          </ScrollReveal>
 
-          <Card className="shadow-none">
+          <ScrollReveal direction="right">
+            <Card className="shadow-none">
             <CardContent className="space-y-6 p-6">
               <div>
                 <h3 className="text-foreground text-xl font-semibold">
@@ -220,6 +224,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               </form>
             </CardContent>
           </Card>
+          </ScrollReveal>
         </div>
       </div>
     </section>

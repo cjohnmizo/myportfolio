@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { ProjectCard } from "@/components/portfolio/project-card";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
+import { ScrollReveal } from "@/components/reactbits";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
 export function FeaturedProjectsSection({
@@ -31,13 +32,13 @@ export function FeaturedProjectsSection({
         </SectionReveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {snapshot.featuredProjects.map((project, index) => (
-            <SectionReveal key={project.id} delay={0.05 * index}>
+            <ScrollReveal key={project.id} delay={0.05 * index} direction="up">
               <ProjectCard
                 project={project}
                 priority={index === 0}
                 variant="compact"
               />
-            </SectionReveal>
+            </ScrollReveal>
           ))}
         </div>
       </div>

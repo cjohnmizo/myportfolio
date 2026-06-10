@@ -10,11 +10,15 @@ import {
   Smartphone,
 } from "lucide-react";
 
-import { CinematicHeroStage } from "@/components/portfolio/cinematic-hero-stage";
 import { HeroThreeScene } from "@/components/portfolio/hero-three-scene";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  GradientMeshBg,
+  TextReveal,
+  AnimatedBadge,
+} from "@/components/reactbits";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const heroCapabilities = [
@@ -29,6 +33,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
     <section className="dashboard-hero border-border relative overflow-hidden border-b py-12 sm:py-16 lg:min-h-[calc(100svh-74px)] lg:py-18">
       <HeroThreeScene />
+      <GradientMeshBg className="opacity-50" />
       <div className="mizo-pattern absolute inset-0 opacity-[0.06]" />
       <div className="from-background absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t to-transparent" />
 
@@ -42,9 +47,9 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             <p className="text-secondary text-sm font-semibold">
               C. John Remthang | cjohnmizo
             </p>
-            <h1 className="text-foreground max-w-5xl text-4xl leading-[1.03] font-semibold sm:text-5xl lg:text-6xl">
+            <TextReveal className="text-foreground max-w-5xl text-4xl leading-[1.03] font-semibold sm:text-5xl lg:text-6xl">
               {snapshot.settings.heroTitle}
-            </h1>
+            </TextReveal>
             <p className="text-muted-foreground max-w-3xl text-lg leading-8">
               {snapshot.settings.heroSubtitle}
             </p>
@@ -81,23 +86,22 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
           </div>
 
           <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
-            {heroCapabilities.map((item) => (
-              <div
+            {heroCapabilities.map((item, index) => (
+              <AnimatedBadge
                 key={item.label}
-                className="border-border bg-card/78 text-muted-foreground flex min-h-11 items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm backdrop-blur"
+                delay={index * 0.05}
+                variant="default"
+                className="border-border bg-card/78 text-muted-foreground border px-3 py-2 text-sm shadow-sm backdrop-blur"
               >
-                <item.icon className="text-primary h-4 w-4" />
+                <item.icon className="text-primary mr-2 inline h-4 w-4" />
                 <span>{item.label}</span>
-              </div>
+              </AnimatedBadge>
             ))}
           </div>
         </SectionReveal>
 
         <SectionReveal delay={0.08} className="w-full lg:justify-self-end">
-          <CinematicHeroStage
-            avatarUrl={snapshot.profile.avatarUrl}
-            fullName={snapshot.profile.fullName}
-          />
+          <div className="hero-three-space" aria-hidden="true" />
         </SectionReveal>
       </div>
     </section>

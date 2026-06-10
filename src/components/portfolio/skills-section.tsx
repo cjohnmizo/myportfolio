@@ -9,8 +9,8 @@ import {
 
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollReveal, AnimatedBadge } from "@/components/reactbits";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const skillGroups = [
@@ -72,7 +72,11 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         </SectionReveal>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {groupedSkills.map((group, index) => (
-            <SectionReveal key={group.category} delay={0.03 * index}>
+            <ScrollReveal
+              key={group.category}
+              delay={0.03 * index}
+              direction="up"
+            >
               <Card className="hover:border-primary/45 h-full shadow-none transition duration-300 hover:-translate-y-1">
                 <CardContent className="space-y-5 p-5">
                   <div className="flex items-start gap-4">
@@ -89,15 +93,20 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <Badge key={skill.id} variant="muted">
+                    {group.skills.map((skill, skillIndex) => (
+                      <AnimatedBadge
+                        key={skill.id}
+                        delay={skillIndex * 0.05}
+                        variant="default"
+                        className="bg-muted text-muted-foreground"
+                      >
                         {skill.name}
-                      </Badge>
+                      </AnimatedBadge>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-            </SectionReveal>
+            </ScrollReveal>
           ))}
         </div>
       </div>

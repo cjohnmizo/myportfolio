@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/portfolio/section-heading";
 import { SectionReveal } from "@/components/portfolio/section-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollReveal } from "@/components/reactbits";
 import { formatDateLabel } from "@/lib/utils";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
@@ -24,7 +25,7 @@ export function ExperienceSection({
         </SectionReveal>
         <div className="mt-10 space-y-6">
           {snapshot.experiences.map((experience, index) => (
-            <SectionReveal key={experience.id} delay={0.05 * index}>
+            <ScrollReveal key={experience.id} delay={0.05 * index} direction="up">
               <Card className="hover:border-primary/35 overflow-visible transition duration-300">
                 <CardContent className="relative grid gap-6 p-6 lg:grid-cols-[220px_1fr]">
                   <div className="from-primary via-secondary/70 absolute top-20 bottom-6 left-[26px] hidden w-px bg-gradient-to-b to-transparent lg:block" />
@@ -80,7 +81,7 @@ export function ExperienceSection({
                   </div>
                 </CardContent>
               </Card>
-            </SectionReveal>
+            </ScrollReveal>
           ))}
         </div>
       </div>

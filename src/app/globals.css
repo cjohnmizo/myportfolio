@@ -189,247 +189,29 @@ select {
 
   .hero-three-scene {
     position: absolute;
-    inset: -8% -4%;
+    inset: -5% -1% -7%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.78;
-    mask-image: linear-gradient(90deg, transparent, black 18%, black 86%, transparent);
+    opacity: 1;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.08) 31%,
+      rgba(0, 0, 0, 0.62) 48%,
+      black 100%
+    );
   }
 
   .hero-three-canvas {
     display: block;
     width: 100%;
     height: 100%;
-    filter: saturate(1.08) contrast(1.04);
+    filter: saturate(1.18) contrast(1.08);
   }
 
-  .cinematic-stage {
-    --stage-tilt-x: 0deg;
-    --stage-tilt-y: 0deg;
-    --stage-shift-x: 0px;
-    --stage-shift-y: 0px;
-    position: relative;
-    width: min(100%, 31rem);
-    min-height: clamp(31rem, 64vw, 39rem);
-    margin-inline: auto;
-    perspective: 1200px;
-    isolation: isolate;
-  }
-
-  .cinematic-stage-glow {
-    position: absolute;
-    inset: 9% 2% 4%;
-    z-index: -2;
-    background:
-      radial-gradient(circle at 50% 28%, rgba(125, 211, 199, 0.42), transparent 13rem),
-      radial-gradient(circle at 70% 68%, rgba(232, 184, 109, 0.16), transparent 11rem),
-      radial-gradient(circle at 30% 74%, rgba(179, 207, 229, 0.18), transparent 12rem);
-    filter: blur(20px);
-    animation: cinematic-pulse 6.5s ease-in-out infinite;
-  }
-
-  .cinematic-stage-inner {
-    position: absolute;
-    inset: 5% 2% 2%;
-    transform:
-      rotateX(var(--stage-tilt-x))
-      rotateY(var(--stage-tilt-y))
-      translate3d(var(--stage-shift-x), var(--stage-shift-y), 0);
-    transform-style: preserve-3d;
-    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
-    animation: cinematic-camera 11s ease-in-out infinite;
-  }
-
-  .cinematic-orbit {
-    position: absolute;
-    inset: 16% 7% 11%;
-    border: 1px solid rgba(125, 211, 199, 0.18);
-    border-radius: 999px;
-    transform: rotateX(72deg) rotateZ(-15deg);
-    transform-style: preserve-3d;
-    box-shadow: 0 0 38px rgba(125, 211, 199, 0.1);
-    animation: cinematic-orbit 18s linear infinite;
-  }
-
-  .cinematic-orbit-two {
-    inset: 20% 13% 15%;
-    border-color: rgba(232, 184, 109, 0.2);
-    animation-duration: 24s;
-    animation-direction: reverse;
-  }
-
-  .cinematic-grid-plane {
-    position: absolute;
-    right: 6%;
-    bottom: 7%;
-    left: 8%;
-    height: 34%;
-    background:
-      linear-gradient(rgba(125, 211, 199, 0.16) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(125, 211, 199, 0.14) 1px, transparent 1px);
-    background-size: 24px 24px;
-    border: 1px solid rgba(125, 211, 199, 0.12);
-    border-radius: 1.5rem;
-    opacity: 0.48;
-    transform: rotateX(72deg) rotateZ(-8deg) translateY(2rem);
-    transform-origin: bottom;
-    mask-image: linear-gradient(180deg, transparent, black 22%, transparent 92%);
-    animation: cinematic-grid 8s linear infinite;
-  }
-
-  .cinematic-panel,
-  .cinematic-phone-panel,
-  .cinematic-portrait-card {
-    border: 1px solid rgba(179, 207, 229, 0.18);
-    background:
-      linear-gradient(145deg, rgba(14, 36, 59, 0.88), rgba(7, 17, 31, 0.7)),
-      linear-gradient(90deg, rgba(125, 211, 199, 0.1), transparent 62%);
-    box-shadow:
-      0 24px 70px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
-  }
-
-  .cinematic-panel {
-    position: absolute;
-    z-index: 4;
-    border-radius: 1.25rem;
-    padding: 1rem;
-    transform-style: preserve-3d;
-  }
-
-  .cinematic-code-panel {
-    top: 2%;
-    left: 0;
-    width: 12.5rem;
-    transform: translate3d(-0.25rem, 0, 86px) rotateY(11deg) rotateZ(-3deg);
-    animation: cinematic-float-a 5.8s ease-in-out infinite;
-  }
-
-  .cinematic-dashboard-panel {
-    top: 16%;
-    right: -2%;
-    width: 11.75rem;
-    transform: translate3d(0, 0, 110px) rotateY(-13deg) rotateZ(3deg);
-    animation: cinematic-float-b 6.6s ease-in-out infinite;
-  }
-
-  .cinematic-lms-panel {
-    right: 3%;
-    bottom: 12%;
-    width: 12.75rem;
-    transform: translate3d(0, 0, 98px) rotateY(-10deg) rotateZ(-2deg);
-    animation: cinematic-float-c 7s ease-in-out infinite;
-  }
-
-  .cinematic-phone-panel {
-    position: absolute;
-    bottom: 8%;
-    left: 2%;
-    z-index: 5;
-    width: 7.25rem;
-    min-height: 12.5rem;
-    padding: 0.85rem;
-    border-radius: 1.75rem;
-    transform: translate3d(0, 0, 124px) rotateY(16deg) rotateZ(4deg);
-    animation: cinematic-float-b 6.2s ease-in-out infinite;
-  }
-
-  .cinematic-portrait-card {
-    position: absolute;
-    inset: 11% 13% 10%;
-    z-index: 3;
-    padding: 0.55rem;
-    border-radius: 2.25rem;
-    transform: translate3d(0, 0, 46px) rotateY(-4deg) rotateX(2deg);
-    transform-style: preserve-3d;
-    animation: cinematic-portrait 8.5s ease-in-out infinite;
-  }
-
-  .cinematic-portrait-frame {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 1.8rem;
-    background: #b3cfe5;
-  }
-
-  .cinematic-portrait-frame::before {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    content: "";
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
-      radial-gradient(circle at 50% 85%, rgba(7, 17, 31, 0.24), transparent 42%);
-  }
-
-  .cinematic-scanline {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      transparent,
-      rgba(125, 211, 199, 0.2),
-      transparent
-    );
-    transform: translateY(-110%);
-    animation: cinematic-scan 5.8s ease-in-out infinite;
-  }
-
-  .cinematic-core {
-    position: absolute;
-    top: 57%;
-    left: 59%;
-    z-index: 6;
-    width: 3.6rem;
-    height: 3.6rem;
-    transform:
-      translate3d(-50%, -50%, 160px)
-      rotateX(-18deg)
-      rotateY(28deg);
-    transform-style: preserve-3d;
-    animation: cinematic-core-spin 8s ease-in-out infinite;
-  }
-
-  .cinematic-core-face {
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(125, 211, 199, 0.34);
-    background:
-      linear-gradient(145deg, rgba(125, 211, 199, 0.22), rgba(179, 207, 229, 0.08)),
-      rgba(7, 17, 31, 0.72);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      0 0 30px rgba(125, 211, 199, 0.14);
-  }
-
-  .cinematic-core-front {
-    transform: translateZ(1.8rem);
-  }
-
-  .cinematic-core-back {
-    transform: rotateY(180deg) translateZ(1.8rem);
-  }
-
-  .cinematic-core-right {
-    transform: rotateY(90deg) translateZ(1.8rem);
-  }
-
-  .cinematic-core-left {
-    transform: rotateY(-90deg) translateZ(1.8rem);
-  }
-
-  .cinematic-core-top {
-    transform: rotateX(90deg) translateZ(1.8rem);
-  }
-
-  .cinematic-core-bottom {
-    transform: rotateX(-90deg) translateZ(1.8rem);
+  .hero-three-space {
+    min-height: clamp(31rem, 50vw, 43rem);
+    width: 100%;
   }
 
   .dashboard-band {
@@ -447,11 +229,7 @@ select {
     z-index: -1;
     content: "";
     background:
-      linear-gradient(
-        145deg,
-        rgba(12, 30, 50, 0.78),
-        rgba(7, 17, 31, 0.48)
-      ),
+      linear-gradient(145deg, rgba(12, 30, 50, 0.78), rgba(7, 17, 31, 0.48)),
       linear-gradient(90deg, rgba(125, 211, 199, 0.08), transparent 58%);
     border: 1px solid rgba(179, 207, 229, 0.15);
     border-radius: 2rem;
@@ -577,128 +355,6 @@ select {
   }
 }
 
-@keyframes cinematic-camera {
-  0%,
-  100% {
-    transform:
-      rotateX(var(--stage-tilt-x))
-      rotateY(var(--stage-tilt-y))
-      translate3d(var(--stage-shift-x), var(--stage-shift-y), 0);
-  }
-
-  50% {
-    transform:
-      rotateX(calc(var(--stage-tilt-x) + 1.6deg))
-      rotateY(calc(var(--stage-tilt-y) - 2deg))
-      translate3d(
-        calc(var(--stage-shift-x) + 0.3rem),
-        calc(var(--stage-shift-y) - 0.4rem),
-        0
-      );
-  }
-}
-
-@keyframes cinematic-pulse {
-  0%,
-  100% {
-    opacity: 0.72;
-    transform: scale(0.98);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-}
-
-@keyframes cinematic-orbit {
-  to {
-    transform: rotateX(72deg) rotateZ(345deg);
-  }
-}
-
-@keyframes cinematic-grid {
-  to {
-    background-position:
-      0 24px,
-      24px 0;
-  }
-}
-
-@keyframes cinematic-float-a {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-
-  50% {
-    translate: 0 -0.75rem;
-  }
-}
-
-@keyframes cinematic-float-b {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-
-  50% {
-    translate: 0.35rem -0.6rem;
-  }
-}
-
-@keyframes cinematic-float-c {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-
-  50% {
-    translate: -0.3rem -0.65rem;
-  }
-}
-
-@keyframes cinematic-portrait {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-
-  50% {
-    translate: 0 -0.45rem;
-  }
-}
-
-@keyframes cinematic-scan {
-  0%,
-  38%,
-  100% {
-    transform: translateY(-110%);
-  }
-
-  55% {
-    transform: translateY(110%);
-  }
-}
-
-@keyframes cinematic-core-spin {
-  0%,
-  100% {
-    transform:
-      translate3d(-50%, -50%, 160px)
-      rotateX(-18deg)
-      rotateY(28deg);
-  }
-
-  50% {
-    transform:
-      translate3d(-50%, -54%, 176px)
-      rotateX(-2deg)
-      rotateY(142deg)
-      rotateZ(8deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -722,17 +378,7 @@ select {
     transform: none;
   }
 
-  .cinematic-stage,
-  .hero-three-scene,
-  .cinematic-stage-inner,
-  .cinematic-stage-glow,
-  .cinematic-orbit,
-  .cinematic-grid-plane,
-  .cinematic-panel,
-  .cinematic-phone-panel,
-  .cinematic-portrait-card,
-  .cinematic-scanline,
-  .cinematic-core {
+  .hero-three-scene {
     animation: none !important;
     transition: none !important;
   }
@@ -740,79 +386,19 @@ select {
 
 @media (max-width: 767px) {
   .hero-three-scene {
-    inset: -3% -32%;
-    opacity: 0.56;
-    mask-image: linear-gradient(180deg, black, black 68%, transparent);
-  }
-}
-
-@media (max-width: 639px) {
-  .cinematic-stage {
-    width: min(100%, 25rem);
-    min-height: 31rem;
-  }
-
-  .cinematic-stage-inner {
-    inset: 4% 0 0;
-    animation-duration: 14s;
+    inset: 30% -40% -8%;
+    opacity: 0.96;
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      black 12%,
+      black 80%,
+      transparent 100%
+    );
   }
 
-  .cinematic-portrait-card {
-    inset: 13% 12% 11%;
-  }
-
-  .cinematic-code-panel {
-    top: 3%;
-    left: 1%;
-    width: 10.5rem;
-  }
-
-  .cinematic-dashboard-panel {
-    top: 14%;
-    right: 1%;
-    width: 9.75rem;
-  }
-
-  .cinematic-lms-panel {
-    right: 2%;
-    bottom: 11%;
-    width: 10.5rem;
-  }
-
-  .cinematic-phone-panel {
-    bottom: 7%;
-    left: 2%;
-    width: 6.4rem;
-    min-height: 10.75rem;
-  }
-
-  .cinematic-core {
-    width: 2.9rem;
-    height: 2.9rem;
-  }
-
-  .cinematic-core-front {
-    transform: translateZ(1.45rem);
-  }
-
-  .cinematic-core-back {
-    transform: rotateY(180deg) translateZ(1.45rem);
-  }
-
-  .cinematic-core-right {
-    transform: rotateY(90deg) translateZ(1.45rem);
-  }
-
-  .cinematic-core-left {
-    transform: rotateY(-90deg) translateZ(1.45rem);
-  }
-
-  .cinematic-core-top {
-    transform: rotateX(90deg) translateZ(1.45rem);
-  }
-
-  .cinematic-core-bottom {
-    transform: rotateX(-90deg) translateZ(1.45rem);
+  .hero-three-space {
+    min-height: clamp(24rem, 94vw, 34rem);
   }
 }
 
