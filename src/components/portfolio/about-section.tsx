@@ -102,7 +102,7 @@ export function AboutSection({
           <div className="grid gap-6">
             {highlights.map((item, index) => (
               <SectionReveal key={item.title} delay={0.05 * index}>
-                <Card className="light-sweep hover:border-secondary/45 transition duration-300 hover:-translate-y-1">
+                <Card className="hover:border-secondary/45 transition duration-300 hover:-translate-y-1">
                   <CardContent className="flex items-start gap-4 p-6">
                     <div className="border-secondary/25 bg-secondary/10 text-secondary flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border">
                       <item.icon className="h-5 w-5" />

@@ -96,9 +96,9 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </p>
               </div>
               <p className="text-muted-foreground text-sm leading-7">
-                Have a website, Android app, LMS, Firebase tool, Laravel
-                system, or UI cleanup in mind? Email is the reliable contact
-                path, and the form below can structure the brief.
+                Have a school website, LMS, NGO system, dashboard, or mobile
+                app idea? Email is the reliable contact path, and the form can
+                structure the brief.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
@@ -150,7 +150,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="Your name"
                       {...form.register("name")}
                     />
-                    <p className="text-xs text-red-700">
+                    <p className="text-xs text-red-300">
                       {form.formState.errors.name?.message}
                     </p>
                   </div>
@@ -161,7 +161,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                       placeholder="you@example.com"
                       {...form.register("email")}
                     />
-                    <p className="text-xs text-red-700">
+                    <p className="text-xs text-red-300">
                       {form.formState.errors.email?.message}
                     </p>
                   </div>
@@ -170,10 +170,10 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                   <Label htmlFor="subject">Subject</Label>
                   <Input
                     id="subject"
-                    placeholder="Website, LMS, Android app, or Laravel system"
+                    placeholder="School website, LMS, dashboard, or mobile app"
                     {...form.register("subject")}
                   />
-                  <p className="text-xs text-red-700">
+                  <p className="text-xs text-red-300">
                     {form.formState.errors.subject?.message}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export function ContactSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                     placeholder="Tell me what should be built and who will use it."
                     {...form.register("message")}
                   />
-                  <p className="text-xs text-red-700">
+                  <p className="text-xs text-red-300">
                     {form.formState.errors.message?.message}
                   </p>
                 </div>

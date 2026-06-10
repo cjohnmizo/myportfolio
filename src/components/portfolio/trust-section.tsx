@@ -68,7 +68,7 @@ export function ProcessSection() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {processSteps.map((step, index) => (
             <SectionReveal key={step.title} delay={0.04 * index}>
-              <Card className="light-sweep hover:border-primary/40 h-full shadow-none transition duration-300 hover:-translate-y-1">
+              <Card className="hover:border-primary/40 h-full shadow-none transition duration-300 hover:-translate-y-1">
                 <CardContent className="flex h-full flex-col gap-4 p-5">
                   <div className="flex items-center justify-between gap-3">
                     <div className="border-primary/20 bg-primary/10 text-primary flex h-11 w-11 items-center justify-center rounded-2xl border">

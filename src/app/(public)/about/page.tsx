@@ -91,13 +91,13 @@ export default async function AboutPage() {
                     </Link>
                   </Button>
                   <Button asChild variant="outline">
-                    <Link href="/#contact">Contact Me</Link>
+                    <Link href="/#contact">Start a Project</Link>
                   </Button>
                 </div>
               </SectionReveal>
 
               <SectionReveal>
-                <Card className="light-sweep border-primary/20 shadow-none">
+                <Card className="border-primary/20 shadow-none">
                   <CardContent className="space-y-6 p-6">
                     <div className="space-y-3">
                       <p className="section-kicker text-secondary text-xs font-semibold">

@@ -2,7 +2,7 @@ import {
   Cloud,
   Code2,
   Database,
-  PenTool,
+  Layers3,
   Smartphone,
   TerminalSquare,
 } from "lucide-react";
@@ -30,19 +30,19 @@ const skillGroups = [
     icon: Smartphone,
   },
   {
-    category: "Database / Cloud",
-    description: "Firebase, Firestore, MySQL, and practical hosted data flows.",
+    category: "Database",
+    description: "MySQL, PostgreSQL, Supabase, Firestore, and practical data structure.",
     icon: Database,
   },
   {
-    category: "Tools",
-    description: "GitHub, hosting, deployment, Vercel, and delivery support.",
+    category: "Deployment",
+    description: "Vercel, Hostinger, GitHub, Firebase Hosting, and delivery support.",
     icon: Cloud,
   },
   {
-    category: "UI/UX",
-    description: "Cleaner spacing, simpler journeys, LMS flows, and interface polish.",
-    icon: PenTool,
+    category: "Focus Areas",
+    description: "LMS, CMS, dashboards, school systems, NGO systems, and community apps.",
+    icon: Layers3,
   },
 ] as const;
 
@@ -73,7 +73,7 @@ export function SkillsSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {groupedSkills.map((group, index) => (
             <SectionReveal key={group.category} delay={0.03 * index}>
-              <Card className="light-sweep hover:border-primary/45 h-full shadow-none transition duration-300 hover:-translate-y-1">
+              <Card className="hover:border-primary/45 h-full shadow-none transition duration-300 hover:-translate-y-1">
                 <CardContent className="space-y-5 p-5">
                   <div className="flex items-start gap-4">
                     <div className="border-primary/20 bg-primary/10 text-primary flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border">

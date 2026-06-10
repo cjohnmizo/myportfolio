@@ -8,7 +8,7 @@ test("homepage renders key recruiter-facing content", async ({ page }) => {
     page.getByRole("link", { name: /View Projects/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Contact Me/i }),
+    page.getByRole("link", { name: "Start a Project", exact: true }),
   ).toBeVisible();
   await expect(page.locator("main")).toContainText("About");
   await expect(page.locator("main")).toContainText("Contact");

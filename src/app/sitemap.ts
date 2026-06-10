@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
 import { siteConfig } from "@/lib/site";
 
-const lastModified = new Date("2026-06-04T00:00:00.000Z");
+const lastModified = new Date("2026-06-10T00:00:00.000Z");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const snapshot = await getPortfolioSnapshot();

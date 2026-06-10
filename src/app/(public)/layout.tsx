@@ -1,5 +1,4 @@
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
-import { SplashScreen } from "@/components/portfolio/splash-screen";
 import { SiteFooter } from "@/components/portfolio/site-footer";
 import { SiteHeader } from "@/components/portfolio/site-header";
 
@@ -12,10 +11,6 @@ export default async function PublicLayout({
 
   return (
     <>
-      <SplashScreen
-        fullName={snapshot.profile.fullName}
-        avatarUrl={snapshot.profile.avatarUrl}
-      />
       <SiteHeader />
       {children}
       <SiteFooter footerNote={snapshot.settings.footerNote} />

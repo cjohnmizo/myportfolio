@@ -19,11 +19,11 @@ export function FeaturedProjectsSection({
             <SectionHeading
               eyebrow="Featured projects"
               title="Selected work with real project context"
-              description="A quick look at practical web, Android, LMS, dashboard, and portfolio work. Live links appear only where a real URL exists."
+              description="A quick look at practical web, Android, LMS, dashboard, and CMS work. Live links appear only where a real URL exists."
             />
             <Link
               href="/projects"
-              className="text-primary inline-flex items-center text-sm font-semibold transition hover:text-[#0a1931]"
+              className="text-primary inline-flex items-center text-sm font-semibold transition hover:text-secondary"
             >
               View all projects <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

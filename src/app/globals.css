@@ -24,21 +24,22 @@
 }
 
 :root {
-  --background: #f6fafd;
-  --foreground: #0a1931;
-  --card: rgba(255, 255, 255, 0.72);
-  --card-foreground: #0a1931;
-  --popover: rgba(246, 250, 253, 0.98);
-  --popover-foreground: #0a1931;
-  --primary: #1a3d63;
-  --primary-foreground: #ffffff;
-  --secondary: #4a7fa7;
-  --secondary-foreground: #ffffff;
-  --muted: rgba(179, 207, 229, 0.34);
-  --muted-foreground: #49677f;
-  --border: rgba(74, 127, 167, 0.26);
-  --input: rgba(246, 250, 253, 0.78);
-  --ring: rgba(26, 61, 99, 0.42);
+  --background: #07111f;
+  --foreground: #f6fafd;
+  --card: rgba(12, 30, 50, 0.76);
+  --card-foreground: #f6fafd;
+  --popover: rgba(7, 17, 31, 0.98);
+  --popover-foreground: #f6fafd;
+  --primary: #7dd3c7;
+  --primary-foreground: #06131f;
+  --secondary: #b3cfe5;
+  --secondary-foreground: #06131f;
+  --muted: rgba(179, 207, 229, 0.12);
+  --muted-foreground: #a8bfd1;
+  --border: rgba(179, 207, 229, 0.18);
+  --input: rgba(10, 25, 49, 0.72);
+  --ring: rgba(125, 211, 199, 0.58);
+  --accent-gold: #e8b86d;
 }
 
 * {
@@ -52,21 +53,21 @@ html {
 body {
   background:
     radial-gradient(
-      circle at 12% 6%,
-      rgba(255, 255, 255, 0.94),
+      circle at 18% 8%,
+      rgba(125, 211, 199, 0.18),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 84% 12%,
+      rgba(179, 207, 229, 0.16),
       transparent 32rem
     ),
     radial-gradient(
-      circle at 84% 10%,
-      rgba(179, 207, 229, 0.48),
-      transparent 34rem
-    ),
-    radial-gradient(
       circle at 78% 76%,
-      rgba(74, 127, 167, 0.14),
+      rgba(232, 184, 109, 0.1),
       transparent 28rem
     ),
-    linear-gradient(180deg, #f6fafd 0%, #e8f2fa 46%, #f6fafd 100%);
+    linear-gradient(180deg, #07111f 0%, #0a1931 48%, #07111f 100%);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
 }
@@ -78,10 +79,10 @@ body::before {
   pointer-events: none;
   content: "";
   background-image:
-    linear-gradient(120deg, rgba(26, 61, 99, 0.07) 1px, transparent 1px),
-    linear-gradient(60deg, rgba(74, 127, 167, 0.08) 1px, transparent 1px);
+    linear-gradient(120deg, rgba(125, 211, 199, 0.07) 1px, transparent 1px),
+    linear-gradient(60deg, rgba(179, 207, 229, 0.06) 1px, transparent 1px);
   background-size: 84px 84px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 78%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 78%);
 }
 
 body::after {
@@ -91,8 +92,8 @@ body::after {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(rgba(10, 25, 49, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 25, 49, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -106,8 +107,8 @@ select {
 }
 
 ::selection {
-  background: rgba(74, 127, 167, 0.26);
-  color: #0a1931;
+  background: rgba(125, 211, 199, 0.28);
+  color: #f6fafd;
 }
 
 ::-webkit-scrollbar {
@@ -115,16 +116,16 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #e8f2fa;
+  background: #07111f;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
-    rgba(26, 61, 99, 0.86),
-    rgba(74, 127, 167, 0.7)
+    rgba(125, 211, 199, 0.82),
+    rgba(179, 207, 229, 0.48)
   );
-  border: 3px solid #e8f2fa;
+  border: 3px solid #07111f;
   border-radius: 999px;
 }
 
@@ -143,13 +144,13 @@ select {
     overflow: hidden;
     background: linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.82),
-      rgba(179, 207, 229, 0.3)
+      rgba(14, 36, 59, 0.86),
+      rgba(10, 25, 49, 0.62)
     );
     border: 1px solid var(--border);
     box-shadow:
-      0 26px 80px rgba(10, 25, 49, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      0 26px 80px rgba(0, 0, 0, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px);
   }
 
@@ -158,24 +159,11 @@ select {
     overflow: hidden;
     background: linear-gradient(
       155deg,
-      rgba(255, 255, 255, 0.78),
-      rgba(179, 207, 229, 0.26)
+      rgba(13, 34, 56, 0.82),
+      rgba(7, 17, 31, 0.58)
     );
     border: 1px solid var(--border);
-    box-shadow: 0 18px 54px rgba(10, 25, 49, 0.12);
-  }
-
-  .splash-overlay {
-    animation: splash-fade-in 240ms ease-out both;
-  }
-
-  .splash-shell {
-    animation: splash-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .splash-progress {
-    animation: splash-progress 2200ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    transform-origin: left center;
+    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.18);
   }
 
   .project-preview-frame {
@@ -184,19 +172,19 @@ select {
 
   .dashboard-hero {
     background:
-      linear-gradient(115deg, rgba(255, 255, 255, 0.72), transparent 42%),
-      linear-gradient(180deg, rgba(179, 207, 229, 0.42), rgba(246, 250, 253, 0));
+      radial-gradient(circle at 18% 16%, rgba(125, 211, 199, 0.18), transparent 30rem),
+      radial-gradient(circle at 82% 18%, rgba(232, 184, 109, 0.12), transparent 28rem),
+      linear-gradient(180deg, rgba(179, 207, 229, 0.08), rgba(7, 17, 31, 0));
     background-size: 120% 120%;
-    animation: dashboard-glow 18s ease-in-out infinite alternate;
+    animation: dashboard-glow 26s ease-in-out infinite alternate;
   }
 
   .hero-photo-shell {
-    animation: portrait-float 8s ease-in-out infinite;
     transform-origin: center;
   }
 
   .hero-photo-crop {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
   .hero-photo-image {
@@ -225,15 +213,15 @@ select {
     background:
       linear-gradient(
         145deg,
-        rgba(255, 255, 255, 0.72),
-        rgba(179, 207, 229, 0.28)
+        rgba(12, 30, 50, 0.78),
+        rgba(7, 17, 31, 0.48)
       ),
-      linear-gradient(90deg, rgba(74, 127, 167, 0.1), transparent 58%);
-    border: 1px solid rgba(255, 255, 255, 0.72);
+      linear-gradient(90deg, rgba(125, 211, 199, 0.08), transparent 58%);
+    border: 1px solid rgba(179, 207, 229, 0.15);
     border-radius: 2rem;
     box-shadow:
-      0 30px 86px rgba(10, 25, 49, 0.12),
-      inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      0 30px 86px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px);
   }
 
@@ -245,8 +233,8 @@ select {
   .project-preview-surface {
     transform-origin: center;
     box-shadow:
-      0 20px 54px rgba(10, 25, 49, 0.14),
-      0 0 0 1px rgba(255, 255, 255, 0.68) inset;
+      0 20px 54px rgba(0, 0, 0, 0.24),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
     transition:
       transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -255,8 +243,8 @@ select {
   .group:hover .project-preview-surface {
     transform: translateY(-2px);
     box-shadow:
-      0 24px 62px rgba(10, 25, 49, 0.18),
-      0 0 0 1px rgba(74, 127, 167, 0.22) inset;
+      0 24px 62px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(125, 211, 199, 0.24) inset;
   }
 
   .system-visual {
@@ -264,8 +252,8 @@ select {
     overflow: hidden;
     transform: translateZ(0);
     box-shadow:
-      0 18px 34px rgba(10, 25, 49, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      0 18px 34px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .system-visual::before {
@@ -286,9 +274,9 @@ select {
   .mizo-pattern {
     background-image:
       linear-gradient(135deg, rgba(74, 127, 167, 0.12) 25%, transparent 25%),
-      linear-gradient(225deg, rgba(74, 127, 167, 0.12) 25%, transparent 25%),
-      linear-gradient(45deg, rgba(26, 61, 99, 0.1) 25%, transparent 25%),
-      linear-gradient(315deg, rgba(26, 61, 99, 0.1) 25%, transparent 25%);
+      linear-gradient(225deg, rgba(125, 211, 199, 0.1) 25%, transparent 25%),
+      linear-gradient(45deg, rgba(179, 207, 229, 0.08) 25%, transparent 25%),
+      linear-gradient(315deg, rgba(232, 184, 109, 0.08) 25%, transparent 25%);
     background-position:
       18px 0,
       18px 0,
@@ -310,7 +298,7 @@ select {
     background: linear-gradient(
       110deg,
       transparent 28%,
-      rgba(255, 255, 255, 0.16) 48%,
+      rgba(125, 211, 199, 0.14) 48%,
       transparent 68%
     );
     transform: translateX(-125%);
@@ -353,78 +341,6 @@ select {
   }
 }
 
-@keyframes portrait-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(0, -8px, 0);
-  }
-}
-
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(0, -10px, 0);
-  }
-}
-
-@keyframes pattern-drift {
-  from {
-    background-position:
-      18px 0,
-      18px 0,
-      0 0,
-      0 0;
-  }
-
-  to {
-    background-position:
-      54px 36px,
-      54px 36px,
-      36px 36px,
-      36px 36px;
-  }
-}
-
-@keyframes splash-fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes splash-rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes splash-progress {
-  from {
-    transform: scaleX(0.12);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -436,6 +352,21 @@ select {
   }
 
   .section-reveal {
+    animation: none;
+  }
+
+  .dashboard-hero {
+    animation: none;
+  }
+
+  .light-sweep::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-hero {
     animation: none;
   }
 }

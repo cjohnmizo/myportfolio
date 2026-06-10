@@ -109,7 +109,7 @@ export function ProjectCard({
           <div className="grid gap-3">
             <div className="border-border bg-background/35 rounded-2xl border p-4">
               <p className="text-secondary text-xs font-semibold uppercase">
-                Brief
+                Problem
               </p>
               <p className="text-muted-foreground mt-2 text-sm leading-6">
                 {project.challenge}
@@ -117,7 +117,7 @@ export function ProjectCard({
             </div>
             <div className="border-border bg-background/35 rounded-2xl border p-4">
               <p className="text-primary text-xs font-semibold uppercase">
-                Build direction
+                Solution
               </p>
               <p className="text-muted-foreground mt-2 text-sm leading-6">
                 {project.solution}

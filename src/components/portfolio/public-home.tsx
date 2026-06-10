@@ -4,7 +4,7 @@ import { ExperienceSection } from "@/components/portfolio/experience-section";
 import { FeaturedProjectsSection } from "@/components/portfolio/featured-projects-section";
 import { HeroSection } from "@/components/portfolio/hero-section";
 import { SkillsSection } from "@/components/portfolio/skills-section";
-import { ServicesSection } from "@/components/portfolio/systems-section";
+import { SystemsSection } from "@/components/portfolio/systems-section";
 import { ProcessSection } from "@/components/portfolio/trust-section";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
@@ -13,7 +13,7 @@ export function PublicHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
     <main>
       <HeroSection snapshot={snapshot} />
       <AboutSection snapshot={snapshot} />
-      <ServicesSection />
+      <SystemsSection />
       <SkillsSection snapshot={snapshot} />
       <FeaturedProjectsSection snapshot={snapshot} />
       <ExperienceSection snapshot={snapshot} />

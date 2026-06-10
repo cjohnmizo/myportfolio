@@ -6,7 +6,8 @@ import {
   Download,
   GraduationCap,
   Mail,
-  ServerCog,
+  LayoutDashboard,
+  MapPin,
   Smartphone,
 } from "lucide-react";
 
@@ -16,16 +17,17 @@ import { Button } from "@/components/ui/button";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
 const heroCapabilities = [
-  { label: "Web apps", icon: Code2 },
-  { label: "Android", icon: Smartphone },
-  { label: "LMS", icon: GraduationCap },
-  { label: "Laravel", icon: ServerCog },
+  { label: "Web Development", icon: Code2 },
+  { label: "LMS Platforms", icon: GraduationCap },
+  { label: "Android Apps", icon: Smartphone },
+  { label: "Admin Dashboards", icon: LayoutDashboard },
+  { label: "Mizoram-based Developer", icon: MapPin },
 ];
 
 export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
   return (
     <section className="dashboard-hero border-border relative overflow-hidden border-b py-12 sm:py-16 lg:min-h-[calc(100svh-74px)] lg:py-18">
-      <div className="mizo-pattern absolute inset-0 [animation:pattern-drift_34s_linear_infinite] opacity-[0.07]" />
+      <div className="mizo-pattern absolute inset-0 opacity-[0.06]" />
       <div className="from-background absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t to-transparent" />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-center lg:px-8">
@@ -36,16 +38,13 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
 
           <div className="space-y-5">
             <p className="text-secondary text-sm font-semibold">
-              C. John Remthang / C. John Mizo
+              C. John Remthang | cjohnmizo
             </p>
             <h1 className="text-foreground max-w-5xl text-4xl leading-[1.03] font-semibold sm:text-5xl lg:text-6xl">
               {snapshot.settings.heroTitle}
             </h1>
             <p className="text-muted-foreground max-w-3xl text-lg leading-8">
               {snapshot.settings.heroSubtitle}
-            </p>
-            <p className="text-muted-foreground max-w-2xl text-base leading-7">
-              {snapshot.settings.heroDescription}
             </p>
           </div>
 
@@ -62,7 +61,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
               className="w-full sm:w-auto"
             >
               <Link href="/#contact">
-                Contact Me <Mail className="ml-2 h-4 w-4" />
+                Start a Project <Mail className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             {snapshot.profile.resumeUrl ? (
@@ -79,11 +78,11 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
             ) : null}
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+          <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
             {heroCapabilities.map((item) => (
               <div
                 key={item.label}
-                className="border-border bg-white/58 text-muted-foreground flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm backdrop-blur"
+                className="border-border bg-card/78 text-muted-foreground flex min-h-11 items-center gap-2 rounded-2xl border px-3 py-2 text-sm shadow-sm backdrop-blur"
               >
                 <item.icon className="text-primary h-4 w-4" />
                 <span>{item.label}</span>
@@ -94,7 +93,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
 
         <SectionReveal delay={0.08} className="w-full lg:justify-self-end">
           <div className="hero-visual relative mx-auto w-full max-w-[460px]">
-            <div className="hero-code-panel border-border absolute -top-5 left-3 z-10 hidden w-48 rounded-2xl border bg-[#0a1931]/95 p-4 text-white shadow-2xl shadow-[#0a1931]/20 backdrop-blur sm:block">
+            <div className="hero-code-panel border-border absolute -top-5 left-3 z-10 hidden w-48 rounded-2xl border bg-[#07111f]/95 p-4 text-white shadow-2xl shadow-black/25 backdrop-blur sm:block">
               <div className="mb-3 flex gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-[#b3cfe5]" />
                 <span className="h-2 w-2 rounded-full bg-[#4a7fa7]" />
@@ -115,7 +114,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 </p>
               </div>
             </div>
-            <div className="hero-photo-shell border-border/70 relative overflow-hidden rounded-[2rem] border bg-white/64 p-2 shadow-[0_32px_90px_rgba(10,25,49,0.18)] backdrop-blur-xl">
+            <div className="hero-photo-shell border-border/70 bg-card/80 relative overflow-hidden rounded-[2rem] border p-2 shadow-[0_32px_90px_rgba(0,0,0,0.28)] backdrop-blur-xl">
               <div className="hero-photo-crop relative aspect-[4/5] overflow-hidden rounded-[1.55rem] border border-white/80 bg-[#b3cfe5]">
                 <Image
                   src={snapshot.profile.avatarUrl}
@@ -128,7 +127,7 @@ export function HeroSection({ snapshot }: { snapshot: PortfolioSnapshot }) {
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_48%,rgba(10,25,49,0.1))]" />
               </div>
             </div>
-            <div className="hero-service-panel border-border absolute right-3 -bottom-5 z-10 w-[min(86%,320px)] rounded-2xl border bg-white/82 p-4 shadow-2xl shadow-[#0a1931]/15 backdrop-blur-xl">
+            <div className="hero-service-panel border-border bg-card/92 absolute right-3 -bottom-5 z-10 w-[min(86%,320px)] rounded-2xl border p-4 shadow-2xl shadow-black/25 backdrop-blur-xl">
               <p className="text-secondary text-xs font-semibold uppercase">
                 Practical build focus
               </p>

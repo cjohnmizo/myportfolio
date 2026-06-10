@@ -1,7 +1,9 @@
 import {
-  DatabaseZap,
   GraduationCap,
   Globe2,
+  LayoutDashboard,
+  Leaf,
+  Network,
   PenTool,
   ServerCog,
   Smartphone,
@@ -14,39 +16,51 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const services = [
   {
-    title: "Web Development",
+    title: "School and institution websites",
     description:
-      "Fast, responsive websites for schools, local businesses, NGOs, farms, and personal brands.",
+      "Responsive websites with clear pages, enquiry paths, staff-friendly content, and fast loading.",
     icon: Globe2,
   },
   {
-    title: "Android App Development",
+    title: "Coaching LMS platforms",
     description:
-      "Practical Android and Flutter interfaces for student tools, community apps, and field use.",
-    icon: Smartphone,
-  },
-  {
-    title: "LMS / Coaching Platforms",
-    description:
-      "Class flows, lesson access, student dashboards, staff controls, and learning content structure.",
+      "Course structure, lesson access, student dashboards, and staff workflows for coaching teams.",
     icon: GraduationCap,
   },
   {
-    title: "Firebase App Development",
+    title: "Admin dashboards",
     description:
-      "Firebase and Firestore-backed apps for authentication, data, updates, and lightweight products.",
-    icon: DatabaseZap,
+      "Operational screens for analytics, records, tasks, content, and daily management work.",
+    icon: LayoutDashboard,
   },
   {
-    title: "Laravel System Development",
+    title: "NGO and community systems",
     description:
-      "Maintainable Laravel systems for content, records, roles, publishing, and internal workflows.",
+      "Simple digital systems for updates, directories, local information, and community access.",
+    icon: Network,
+  },
+  {
+    title: "Mobile apps",
+    description:
+      "Practical Android, Flutter, and Firebase-supported app flows for students and field users.",
+    icon: Smartphone,
+  },
+  {
+    title: "Business and farm websites",
+    description:
+      "Clean product pages, credibility sections, updates, and direct contact paths for local businesses.",
+    icon: Leaf,
+  },
+  {
+    title: "CMS and content tools",
+    description:
+      "Laravel and database-backed systems for publishing, roles, records, media, and admin control.",
     icon: ServerCog,
   },
   {
-    title: "UI/UX Redesign and Optimization",
+    title: "UI/UX redesign",
     description:
-      "Cleaner layouts, improved spacing, better mobile screens, and simpler user paths for existing products.",
+      "Cleaner layouts, better mobile spacing, clearer actions, and simpler user paths for existing products.",
     icon: PenTool,
   },
 ];
@@ -61,22 +75,22 @@ function ServiceMiniVisual({ item }: { item: (typeof services)[number] }) {
   );
 }
 
-export function ServicesSection() {
+export function SystemsSection() {
   return (
     <section id="services" className="dashboard-band relative py-20 sm:py-24">
       <div className="via-primary/40 absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <SectionHeading
-            eyebrow="Services"
-            title="Practical digital products without unnecessary complexity"
-            description="Focused support for small teams that need clean websites, Android apps, LMS platforms, Firebase tools, Laravel systems, or a better UI for something already built."
+            eyebrow="Systems I Build"
+            title="Practical digital systems without unnecessary complexity"
+            description="Focused support for schools, NGOs, coaching teams, businesses, farms, and community projects that need clear software they can keep using after launch."
           />
         </SectionReveal>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {services.map((item, index) => (
             <SectionReveal key={item.title} delay={0.03 * index}>
-              <Card className="light-sweep group hover:border-primary/45 h-full transition duration-300 hover:-translate-y-1">
+              <Card className="group hover:border-primary/45 h-full transition duration-300 hover:-translate-y-1">
                 <CardContent className="space-y-5 p-5">
                   <ServiceMiniVisual item={item} />
                   <div>
