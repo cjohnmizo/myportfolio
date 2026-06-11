@@ -214,6 +214,227 @@ select {
     width: 100%;
   }
 
+  .mission-nav {
+    border: 1px solid rgba(179, 207, 229, 0.18);
+    background:
+      linear-gradient(135deg, rgba(7, 17, 31, 0.9), rgba(10, 25, 49, 0.7)),
+      radial-gradient(
+        circle at 18% 0%,
+        rgba(125, 211, 199, 0.18),
+        transparent 18rem
+      );
+    box-shadow:
+      0 18px 54px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .mission-nav-link::after {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    left: 0.75rem;
+    height: 1px;
+    content: "";
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .mission-nav-link:hover::after {
+    opacity: 0.62;
+  }
+
+  .mission-grid {
+    background:
+      linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(circle at 50% 35%, black, transparent 72%);
+    animation: mission-grid-scan 18s linear infinite;
+  }
+
+  .mission-portal {
+    width: 34rem;
+    height: 34rem;
+    border: 1px solid rgba(125, 211, 199, 0.22);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, rgba(125, 211, 199, 0.2), transparent 54%),
+      conic-gradient(
+        from 90deg,
+        transparent,
+        rgba(125, 211, 199, 0.36),
+        transparent,
+        rgba(232, 184, 109, 0.24),
+        transparent
+      );
+    filter: blur(0.2px);
+    opacity: 0.65;
+    animation: mission-portal-spin 28s linear infinite;
+  }
+
+  .mission-card-3d,
+  .mission-briefing {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(179, 207, 229, 0.16);
+    background:
+      linear-gradient(145deg, rgba(14, 36, 59, 0.84), rgba(7, 17, 31, 0.64)),
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(125, 211, 199, 0.12),
+        transparent 18rem
+      );
+    box-shadow:
+      0 24px 70px rgba(0, 0, 0, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform-style: preserve-3d;
+    transition:
+      border-color 220ms ease,
+      transform 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .mission-card-3d::before,
+  .mission-briefing::before {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 26%),
+      linear-gradient(180deg, transparent, rgba(125, 211, 199, 0.05));
+    opacity: 0.86;
+  }
+
+  .mission-card-3d > *,
+  .mission-briefing > * {
+    position: relative;
+  }
+
+  .mission-card-3d:hover {
+    border-color: rgba(125, 211, 199, 0.42);
+    box-shadow:
+      0 30px 86px rgba(0, 0, 0, 0.34),
+      0 0 36px rgba(125, 211, 199, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px) rotateX(1.2deg) rotateY(-1.2deg);
+  }
+
+  .splash-screen {
+    background:
+      radial-gradient(
+        circle at 50% 44%,
+        rgba(125, 211, 199, 0.16),
+        transparent 18rem
+      ),
+      radial-gradient(
+        circle at 78% 22%,
+        rgba(232, 184, 109, 0.12),
+        transparent 22rem
+      ),
+      linear-gradient(180deg, #020813, #07111f 62%, #020813);
+  }
+
+  .splash-orbit {
+    position: absolute;
+    width: min(72vw, 42rem);
+    height: min(72vw, 42rem);
+    border: 1px solid rgba(125, 211, 199, 0.22);
+    border-radius: 999px;
+    box-shadow:
+      0 0 80px rgba(125, 211, 199, 0.08),
+      inset 0 0 50px rgba(179, 207, 229, 0.06);
+  }
+
+  .splash-console {
+    box-shadow:
+      0 28px 90px rgba(0, 0, 0, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .splash-core {
+    border: 1px solid rgba(125, 211, 199, 0.34);
+    background:
+      radial-gradient(circle, rgba(125, 211, 199, 0.25), transparent 64%),
+      rgba(7, 17, 31, 0.78);
+    box-shadow:
+      0 0 78px rgba(125, 211, 199, 0.18),
+      inset 0 0 44px rgba(125, 211, 199, 0.16);
+  }
+
+  .mission-launch-button {
+    border: 1px solid rgba(125, 211, 199, 0.38);
+    background:
+      linear-gradient(135deg, #7dd3c7, #b3cfe5),
+      radial-gradient(
+        circle at 15% 10%,
+        rgba(255, 255, 255, 0.7),
+        transparent 12rem
+      );
+    box-shadow:
+      0 16px 48px rgba(125, 211, 199, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .mission-launch-button:hover {
+    box-shadow:
+      0 22px 60px rgba(125, 211, 199, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.48);
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  .mission-profile-card,
+  .mission-preview-frame {
+    box-shadow:
+      0 28px 78px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .mission-timeline {
+    position: relative;
+  }
+
+  .mission-timeline::before {
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: 1.35rem;
+    width: 1px;
+    content: "";
+    background: linear-gradient(
+      180deg,
+      var(--primary),
+      rgba(179, 207, 229, 0.18)
+    );
+  }
+
+  .mission-timeline-node {
+    position: relative;
+    margin-left: 3rem;
+  }
+
+  .mission-timeline-node::before {
+    position: absolute;
+    top: 1.65rem;
+    left: -2.45rem;
+    width: 0.78rem;
+    height: 0.78rem;
+    content: "";
+    background: var(--primary);
+    border-radius: 999px;
+    box-shadow: 0 0 24px rgba(125, 211, 199, 0.7);
+  }
+
   .dashboard-band {
     position: relative;
     overflow: hidden;
@@ -355,6 +576,20 @@ select {
   }
 }
 
+@keyframes mission-grid-scan {
+  to {
+    background-position:
+      0 34px,
+      34px 0;
+  }
+}
+
+@keyframes mission-portal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -371,6 +606,11 @@ select {
 
   .dashboard-hero {
     animation: none;
+  }
+
+  .mission-grid,
+  .mission-portal {
+    animation: none !important;
   }
 
   .light-sweep::after {
@@ -399,6 +639,18 @@ select {
 
   .hero-three-space {
     min-height: clamp(24rem, 94vw, 34rem);
+  }
+
+  .mission-timeline::before {
+    left: 0.55rem;
+  }
+
+  .mission-timeline-node {
+    margin-left: 1.65rem;
+  }
+
+  .mission-timeline-node::before {
+    left: -1.48rem;
   }
 }
 

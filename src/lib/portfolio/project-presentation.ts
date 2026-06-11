@@ -1,7 +1,7 @@
 import type { Project } from "@/types/portfolio";
 
 const privateProjectStatus =
-  "Private client project — details available on request.";
+  "Private client project - details available on request.";
 
 const projectPreviewAltText: Record<string, string> = {
   "liankhawpui-community-platform": "Liankhawpui village directory app preview",

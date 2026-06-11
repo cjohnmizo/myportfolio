@@ -2,11 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
+  useReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -19,11 +18,7 @@ export function GradientMeshBg({
 }: {
   className?: string;
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
+  const isReduced = useReducedMotion();
 
   const duration = getAnimationDuration(8);
 

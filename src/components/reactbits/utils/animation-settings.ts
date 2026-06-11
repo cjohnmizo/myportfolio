@@ -6,7 +6,7 @@
 "use client";
 
 import { Easing } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export const prefersReducedMotion = (): boolean => {
   if (typeof window === "undefined") return false;
@@ -18,7 +18,7 @@ export const getAnimationDuration = (normalDuration: number): number => {
 };
 
 export const getAnimationVariants = <T extends Record<string, unknown>>(
-  variants: T
+  variants: T,
 ): T => {
   if (prefersReducedMotion()) {
     // Return instant variants for reduced motion
@@ -64,22 +64,18 @@ export const getTransitionConfig = (defaults?: {
  * Hook to check prefers-reduced-motion with SSR support
  */
 export const useReducedMotion = (): boolean => {
-  const [isReduced, setIsReduced] = useState(false);
+  return useSyncExternalStore(
+    (callback) => {
+      if (typeof window === "undefined") {
+        return () => {};
+      }
 
-  useEffect(() => {
-    // Set initial value after hydration
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsReduced(mediaQuery.matches);
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      mediaQuery.addEventListener("change", callback);
 
-    // Listen for changes
-    const handler = (e: MediaQueryListEvent) => {
-      setIsReduced(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
-  return isReduced;
+      return () => mediaQuery.removeEventListener("change", callback);
+    },
+    prefersReducedMotion,
+    () => false,
+  );
 };

@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ProjectCaseStudy } from "@/components/portfolio/project-case-study";
+import { ProjectMissionDetail } from "@/components/portfolio/mission-ui";
 import { StructuredData } from "@/components/portfolio/structured-data";
-import { getPortfolioSnapshot, getProjectBySlug } from "@/lib/portfolio/repository";
+import {
+  getPortfolioSnapshot,
+  getProjectBySlug,
+} from "@/lib/portfolio/repository";
+import {
+  getProjectMissionHref,
+  getProjectMissionSlug,
+} from "@/lib/portfolio/project-routes";
 import { siteConfig } from "@/lib/site";
 
 export async function generateStaticParams() {
   const snapshot = await getPortfolioSnapshot();
 
-  return snapshot.projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return snapshot.projects.flatMap((project) => [
+    {
+      slug: project.slug,
+    },
+    {
+      slug: getProjectMissionSlug(project),
+    },
+  ]);
 }
 
 export async function generateMetadata({
@@ -27,14 +39,15 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} Case Study`,
+    title: `${project.title} Mission File`,
     description: project.excerpt,
     alternates: {
-      canonical: `${siteConfig.url}/projects/${project.slug}`,
+      canonical: `${siteConfig.url}${getProjectMissionHref(project)}`,
     },
     openGraph: {
-      title: project.title,
+      title: `${project.title} Mission File`,
       description: project.excerpt,
+      url: `${siteConfig.url}${getProjectMissionHref(project)}`,
       images: [project.coverImage],
     },
     twitter: {
@@ -72,10 +85,10 @@ export default async function ProjectDetailPage({
         data={{
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: `${project.title} Case Study`,
+          headline: `${project.title} Mission File`,
           name: project.title,
           description: project.excerpt,
-          url: `${siteConfig.url}/projects/${project.slug}`,
+          url: `${siteConfig.url}${getProjectMissionHref(project)}`,
           image: project.coverImage,
           creator: {
             "@type": "Person",
@@ -84,7 +97,10 @@ export default async function ProjectDetailPage({
           keywords: project.techStack,
         }}
       />
-      <ProjectCaseStudy project={project} relatedProjects={relatedProjects} />
+      <ProjectMissionDetail
+        project={project}
+        relatedProjects={relatedProjects}
+      />
     </>
   );
 }

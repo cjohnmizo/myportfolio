@@ -42,10 +42,12 @@ export const siteConfig = {
   securityEmail: env.CONTACT_PUBLIC_EMAIL,
   defaultOgImage: "/brand/cjohnmizo-favicon.png",
   navItems: [
+    { label: "Home", href: "/home" },
     { label: "About", href: "/about" },
-    { label: "Systems", href: "/#services" },
+    { label: "Systems", href: "/services" },
     { label: "Projects", href: "/projects" },
-    { label: "Process", href: "/#process" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Skills", href: "/skills" },
+    { label: "Experience", href: "/experience" },
+    { label: "Contact", href: "/contact" },
   ],
 };

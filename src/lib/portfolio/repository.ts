@@ -1,4 +1,5 @@
 import { portfolioSeed } from "@/lib/portfolio/seeds";
+import { resolveProjectSlug } from "@/lib/portfolio/project-routes";
 import { sortByOrder } from "@/lib/utils";
 import type { PortfolioSnapshot } from "@/types/portfolio";
 
@@ -34,5 +35,9 @@ export async function getPortfolioSnapshot(): Promise<PortfolioSnapshot> {
 
 export async function getProjectBySlug(slug: string) {
   const snapshot = await getPortfolioSnapshot();
-  return snapshot.projects.find((project) => project.slug === slug) ?? null;
+  const canonicalSlug = resolveProjectSlug(slug);
+
+  return (
+    snapshot.projects.find((project) => project.slug === canonicalSlug) ?? null
+  );
 }

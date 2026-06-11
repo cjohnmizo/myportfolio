@@ -1,13 +1,10 @@
 "use client";
 
 import React from "react";
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -26,14 +23,6 @@ export function ScrollReveal({
   delay?: number;
   direction?: "up" | "down" | "left" | "right";
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
-
   const initialOffset = {
     up: { y: 40 },
     down: { y: -40 },
@@ -57,10 +46,9 @@ export function ScrollReveal({
 
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial="initial"
-      animate={isReduced || isInView ? "animate" : "initial"}
+      animate="animate"
       variants={variants}
       transition={{
         duration,

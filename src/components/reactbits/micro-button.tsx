@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
+  useReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -15,17 +15,13 @@ import {
  * Used with primary CTAs for enhanced interactivity
  */
 export function MicroButton(
-  props: React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  props: HTMLMotionProps<"button"> & {
     children: React.ReactNode;
     variant?: "default" | "glow" | "lift";
-  }
+  },
 ): React.ReactElement {
   const { children, className, variant = "default", ...rest } = props;
-  const [isReduced, setIsReduced] = useState(false);
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
+  const isReduced = useReducedMotion();
 
   const duration = getAnimationDuration(0.3);
 
@@ -45,8 +41,6 @@ export function MicroButton(
     hover: { opacity: [0.5, 0], scale: 1.2 },
   });
 
-  const { onAnimationStart, onAnimationEnd, ...cleanRest } = rest as any;
-
   return (
     <motion.button
       className={cn("relative", className)}
@@ -55,11 +49,11 @@ export function MicroButton(
       whileTap={isReduced ? "initial" : "tap"}
       variants={variants}
       transition={{ duration, ease: "easeOut" }}
-      {...cleanRest}
+      {...rest}
     >
       {variant === "glow" && !isReduced && (
         <motion.div
-          className="pointer-events-none absolute inset-0 rounded-lg bg-primary/20"
+          className="bg-primary/20 pointer-events-none absolute inset-0 rounded-lg"
           initial="initial"
           whileHover="hover"
           variants={glowVariants}

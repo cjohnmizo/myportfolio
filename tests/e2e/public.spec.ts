@@ -5,30 +5,37 @@ test("homepage renders key recruiter-facing content", async ({ page }) => {
 
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /View Projects/i }),
+    page.getByRole("button", { name: /Enter Portfolio/i }),
+  ).toBeVisible();
+  await expect(page.locator("main")).toContainText(
+    "Building practical digital systems",
+  );
+
+  await page.goto("/home");
+
+  await expect(
+    page.getByRole("link", { name: /View Mission Archive/i }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Start a Project", exact: true }),
   ).toBeVisible();
-  await expect(page.locator("main")).toContainText("About");
-  await expect(page.locator("main")).toContainText("Contact");
+  await expect(page.locator("main")).toContainText("Command Center");
+  await expect(page.locator("main")).toContainText("Mission Archive");
 });
 
-test("project archive search shows empty-state feedback and recovers", async ({
-  page,
-}) => {
+test("project mission archive exposes case-file routes", async ({ page }) => {
   await page.goto("/projects");
 
   await expect(
     page.getByRole("heading", {
-      name: /Case files for web, LMS, Android, Laravel, and UI work/i,
+      name: /Project case files with real context/i,
     }),
   ).toBeVisible();
 
-  const searchInput = page.getByLabel("Search projects");
-  await searchInput.fill("zzzz-no-project-should-match-this");
-  await expect(page.getByText("No projects match that filter.")).toBeVisible();
-
-  await searchInput.fill("");
-  await expect(page.locator('a[href^="/projects/"]').first()).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open Mission File/i }).first(),
+  ).toBeVisible();
+  await expect(
+    page.locator('a[href="/projects/liankhawpui"]').first(),
+  ).toBeVisible();
 });

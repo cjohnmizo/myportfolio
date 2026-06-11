@@ -1,6 +1,5 @@
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
-import { SiteFooter } from "@/components/portfolio/site-footer";
-import { SiteHeader } from "@/components/portfolio/site-header";
+import { MissionShell } from "@/components/portfolio/mission-shell";
 
 export default async function PublicLayout({
   children,
@@ -10,10 +9,8 @@ export default async function PublicLayout({
   const snapshot = await getPortfolioSnapshot();
 
   return (
-    <>
-      <SiteHeader />
+    <MissionShell footerNote={snapshot.settings.footerNote}>
       {children}
-      <SiteFooter footerNote={snapshot.settings.footerNote} />
-    </>
+    </MissionShell>
   );
 }

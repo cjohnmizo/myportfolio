@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
+  useReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -26,11 +25,7 @@ export function AnimatedBadge({
   delay?: number;
   variant?: "default" | "pulse" | "scale";
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
+  const isReduced = useReducedMotion();
 
   const duration = getAnimationDuration(0.5);
 
@@ -59,7 +54,7 @@ export function AnimatedBadge({
       className={cn(
         "inline-flex items-center rounded-full px-3 py-1 text-sm font-medium",
         variant === "pulse" && "relative",
-        className
+        className,
       )}
       initial="initial"
       animate={isReduced ? "initial" : "animate"}

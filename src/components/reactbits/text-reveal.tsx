@@ -45,7 +45,7 @@ export function TextReveal({
   const transitionConfig = getTransitionConfig({ duration: 0.5 });
 
   return (
-    <motion.div
+    <motion.span
       className={className}
       initial="initial"
       animate={isReduced ? "initial" : "animate"}
@@ -60,6 +60,6 @@ export function TextReveal({
           {char}
         </motion.span>
       ))}
-    </motion.div>
+    </motion.span>
   );
 }

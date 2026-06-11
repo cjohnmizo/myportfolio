@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { prefersReducedMotion } from "./utils/animation-settings";
+import { useReducedMotion } from "./utils/animation-settings";
 
 /**
  * Spotlight card effect
@@ -20,7 +20,7 @@ export function SpotlightCard({
   className?: string;
   spotlightColor?: string;
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
+  const isReduced = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -31,10 +31,6 @@ export function SpotlightCard({
     ${spotlightColor} 0%,
     transparent 80%
   )`;
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isReduced || !ref.current) return;

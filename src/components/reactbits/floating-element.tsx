@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
+  useReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -28,11 +27,7 @@ export function FloatingElement({
   delay?: number;
   amplitude?: number;
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
+  const isReduced = useReducedMotion();
 
   const animDuration = getAnimationDuration(duration);
   const offsetDuration = animDuration;

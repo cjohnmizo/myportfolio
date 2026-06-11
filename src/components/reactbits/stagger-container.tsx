@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   getAnimationDuration,
   getAnimationVariants,
-  prefersReducedMotion,
+  useReducedMotion,
 } from "./utils/animation-settings";
 
 /**
@@ -26,11 +25,7 @@ export function StaggerContainer({
   staggerDelay?: number;
   direction?: "up" | "down" | "left" | "right";
 }): React.ReactElement {
-  const [isReduced, setIsReduced] = useState(false);
-
-  useEffect(() => {
-    setIsReduced(prefersReducedMotion());
-  }, []);
+  const isReduced = useReducedMotion();
 
   const duration = getAnimationDuration(0.5);
 
