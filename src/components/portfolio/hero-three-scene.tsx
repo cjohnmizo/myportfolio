@@ -3,189 +3,295 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-function addPanel(
-  parent: THREE.Group,
-  width: number,
-  height: number,
+const colors = {
+  paper: 0xf7f7f5,
+  white: 0xffffff,
+  muted: 0xf0f0ee,
+  border: 0xe5e5e3,
+  ink: 0x0a0a0a,
+  softInk: 0x6b7280,
+  green: 0x16a34a,
+  greenDeep: 0x15803d,
+  indigo: 0x4f46e5,
+};
+
+type SceneNode = THREE.Group & {
+  userData: {
+    baseY?: number;
+    spin?: number;
+  };
+};
+
+function addBox(
+  parent: THREE.Object3D,
+  size: [number, number, number],
   color: number,
   position: THREE.Vector3,
-  rotation: THREE.Euler,
+  options: {
+    opacity?: number;
+    emissive?: number;
+    emissiveIntensity?: number;
+    metalness?: number;
+    roughness?: number;
+  } = {},
 ) {
-  const panel = new THREE.Group();
-  panel.position.copy(position);
-  panel.rotation.copy(rotation);
+  const material = new THREE.MeshStandardMaterial({
+    color,
+    roughness: options.roughness ?? 0.46,
+    metalness: options.metalness ?? 0.12,
+    emissive: options.emissive ?? color,
+    emissiveIntensity: options.emissiveIntensity ?? 0.02,
+    transparent: options.opacity !== undefined,
+    opacity: options.opacity ?? 1,
+  });
 
-  const body = new THREE.Mesh(
-    new THREE.BoxGeometry(width, height, 0.08),
-    new THREE.MeshStandardMaterial({
-      color,
-      roughness: 0.44,
-      metalness: 0.28,
-      transparent: true,
-      opacity: 0.74,
-      emissive: color,
-      emissiveIntensity: 0.08,
-    }),
-  );
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(...size), material);
+  mesh.position.copy(position);
+  parent.add(mesh);
 
+  return mesh;
+}
+
+function addEdgeOutline(mesh: THREE.Mesh, color = colors.green, opacity = 0.5) {
   const outline = new THREE.LineSegments(
-    new THREE.EdgesGeometry(body.geometry),
+    new THREE.EdgesGeometry(mesh.geometry),
     new THREE.LineBasicMaterial({
-      color: 0xb3cfe5,
+      color,
       transparent: true,
-      opacity: 0.36,
+      opacity,
     }),
   );
+  mesh.add(outline);
+  return outline;
+}
 
-  panel.add(body, outline);
+function addPanelLines(
+  parent: THREE.Object3D,
+  width: number,
+  height: number,
+  variant: "terminal" | "dashboard" | "mobile" | "course",
+) {
+  const lineColors =
+    variant === "terminal"
+      ? [colors.green, colors.green, colors.indigo, colors.green]
+      : [colors.ink, colors.green, colors.indigo, colors.greenDeep];
 
-  for (let index = 0; index < 4; index += 1) {
-    const bar = new THREE.Mesh(
-      new THREE.BoxGeometry(width * (0.18 + index * 0.06), 0.06, 0.04),
+  const lineCount = variant === "mobile" ? 5 : 6;
+
+  for (let index = 0; index < lineCount; index += 1) {
+    const ratio = variant === "dashboard" ? 0.25 + (index % 3) * 0.16 : 0.32;
+    const lineWidth = width * (ratio + ((index * 17) % 21) / 100);
+    const lineHeight = variant === "mobile" ? 0.055 : 0.06;
+    const line = new THREE.Mesh(
+      new THREE.BoxGeometry(lineWidth, lineHeight, 0.026),
       new THREE.MeshBasicMaterial({
-        color: index % 2 === 0 ? 0x7dd3c7 : 0xe8b86d,
+        color: lineColors[index % lineColors.length],
         transparent: true,
-        opacity: 0.74,
+        opacity: variant === "terminal" ? 0.82 : 0.52,
+        depthWrite: false,
       }),
     );
-    bar.position.set(
-      -width * 0.28 + index * width * 0.17,
-      -height * 0.2 + index * height * 0.12,
-      0.08,
+    line.position.set(
+      -width * 0.26 + (index % 2) * width * 0.12,
+      height * 0.18 - index * height * 0.105,
+      0.082,
     );
-    panel.add(bar);
+    parent.add(line);
+  }
+}
+
+function addFloatingPanel({
+  parent,
+  width,
+  height,
+  position,
+  rotation,
+  variant,
+}: {
+  parent: THREE.Object3D;
+  width: number;
+  height: number;
+  position: THREE.Vector3;
+  rotation: THREE.Euler;
+  variant: "terminal" | "dashboard" | "mobile" | "course";
+}) {
+  const panel = new THREE.Group() as SceneNode;
+  panel.position.copy(position);
+  panel.rotation.copy(rotation);
+  panel.userData.baseY = position.y;
+  panel.userData.spin = variant === "mobile" ? 0.45 : 0.25;
+
+  const bodyColor = variant === "terminal" ? colors.ink : colors.white;
+  const body = addBox(
+    panel,
+    [width, height, 0.09],
+    bodyColor,
+    new THREE.Vector3(),
+    {
+      opacity: variant === "terminal" ? 0.92 : 0.9,
+      emissive: variant === "terminal" ? colors.green : colors.white,
+      emissiveIntensity: variant === "terminal" ? 0.16 : 0.02,
+      metalness: 0.16,
+      roughness: 0.32,
+    },
+  );
+  addEdgeOutline(
+    body,
+    variant === "terminal" ? colors.green : colors.border,
+    0.72,
+  );
+
+  const header = addBox(
+    panel,
+    [width * 0.86, height * 0.12, 0.035],
+    variant === "terminal" ? colors.green : colors.muted,
+    new THREE.Vector3(0, height * 0.33, 0.078),
+    {
+      opacity: variant === "terminal" ? 0.9 : 0.96,
+      emissive: variant === "terminal" ? colors.green : colors.border,
+      emissiveIntensity: variant === "terminal" ? 0.3 : 0.02,
+    },
+  );
+  header.name = "panel-header";
+
+  addPanelLines(panel, width, height, variant);
+
+  if (variant === "dashboard") {
+    for (let index = 0; index < 4; index += 1) {
+      const bar = addBox(
+        panel,
+        [width * 0.1, height * (0.22 + index * 0.04), 0.045],
+        index % 2 ? colors.indigo : colors.green,
+        new THREE.Vector3(width * (-0.34 + index * 0.21), -height * 0.22, 0.09),
+        { opacity: 0.75, emissiveIntensity: 0.08 },
+      );
+      bar.name = "dashboard-bar";
+    }
+  }
+
+  if (variant === "mobile") {
+    const homePill = addBox(
+      panel,
+      [width * 0.28, height * 0.035, 0.035],
+      colors.green,
+      new THREE.Vector3(0, -height * 0.39, 0.09),
+      { opacity: 0.72, emissiveIntensity: 0.16 },
+    );
+    homePill.name = "mobile-home";
   }
 
   parent.add(panel);
   return panel;
 }
 
-function addBlock(
-  parent: THREE.Group,
-  size: [number, number, number],
-  color: number,
-  position: THREE.Vector3,
-) {
-  const block = new THREE.Mesh(
-    new THREE.BoxGeometry(...size),
-    new THREE.MeshStandardMaterial({
-      color,
-      roughness: 0.38,
-      metalness: 0.26,
-      emissive: color,
-      emissiveIntensity: 0.04,
-    }),
-  );
-  block.position.copy(position);
-
-  const outline = new THREE.LineSegments(
-    new THREE.EdgesGeometry(block.geometry),
-    new THREE.LineBasicMaterial({
-      color: 0xb3cfe5,
-      transparent: true,
-      opacity: 0.22,
-    }),
-  );
-
-  block.add(outline);
-  parent.add(block);
-
-  return block;
-}
-
-function addBeacon(
-  parent: THREE.Group,
+function addSignalNode(
+  parent: THREE.Object3D,
   position: THREE.Vector3,
   color: number,
 ) {
-  const beacon = new THREE.Group();
-  beacon.position.copy(position);
+  const node = new THREE.Group() as SceneNode;
+  node.position.copy(position);
+  node.userData.baseY = position.y;
 
-  const base = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.24, 0.32, 0.16, 8),
-    new THREE.MeshStandardMaterial({
-      color: 0x10243a,
-      roughness: 0.34,
-      metalness: 0.42,
-      emissive: color,
-      emissiveIntensity: 0.12,
-    }),
-  );
-
-  const orb = new THREE.Mesh(
-    new THREE.SphereGeometry(0.18, 16, 16),
+  const core = new THREE.Mesh(
+    new THREE.SphereGeometry(0.13, 20, 16),
     new THREE.MeshStandardMaterial({
       color,
       roughness: 0.18,
-      metalness: 0.28,
+      metalness: 0.16,
       emissive: color,
-      emissiveIntensity: 0.7,
+      emissiveIntensity: 0.85,
     }),
   );
-  orb.position.y = 0.38;
 
   const ring = new THREE.Mesh(
-    new THREE.TorusGeometry(0.38, 0.012, 8, 48),
+    new THREE.TorusGeometry(0.34, 0.012, 8, 54),
     new THREE.MeshBasicMaterial({
       color,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.42,
+      depthWrite: false,
     }),
   );
-  ring.position.y = 0.42;
   ring.rotation.x = Math.PI / 2;
 
-  beacon.add(base, orb, ring);
-  parent.add(beacon);
+  const stem = addBox(
+    node,
+    [0.04, 0.42, 0.04],
+    color,
+    new THREE.Vector3(0, -0.24, 0),
+    { opacity: 0.36, emissiveIntensity: 0.12 },
+  );
+  stem.name = "node-stem";
 
-  return beacon;
+  node.add(core, ring);
+  parent.add(node);
+  return node;
 }
 
-function addPlayerPawn(parent: THREE.Group) {
-  const pawn = new THREE.Group();
-  pawn.position.set(-0.95, -1.78, 0.72);
-
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.22, 0.32, 0.56, 10),
-    new THREE.MeshStandardMaterial({
-      color: 0x173d5a,
-      roughness: 0.34,
-      metalness: 0.32,
-      emissive: 0x0f3348,
-      emissiveIntensity: 0.28,
+function addDataStream(
+  parent: THREE.Object3D,
+  points: THREE.Vector3[],
+  color: number,
+  offset: number,
+) {
+  const curve = new THREE.CatmullRomCurve3(points);
+  const tube = new THREE.Mesh(
+    new THREE.TubeGeometry(curve, 80, 0.014, 7, false),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.3,
+      depthWrite: false,
     }),
   );
-  body.position.y = 0.34;
+  parent.add(tube);
 
-  const head = new THREE.Mesh(
-    new THREE.SphereGeometry(0.24, 20, 16),
-    new THREE.MeshStandardMaterial({
-      color: 0xb3cfe5,
-      roughness: 0.2,
-      metalness: 0.12,
-      emissive: 0x7dd3c7,
-      emissiveIntensity: 0.16,
+  const pulse = new THREE.Mesh(
+    new THREE.SphereGeometry(0.075, 16, 12),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.92,
+      depthWrite: false,
     }),
   );
-  head.position.y = 0.76;
+  parent.add(pulse);
 
-  const laptop = new THREE.Mesh(
-    new THREE.BoxGeometry(0.6, 0.36, 0.06),
-    new THREE.MeshStandardMaterial({
-      color: 0x0a1931,
-      roughness: 0.32,
-      metalness: 0.36,
-      emissive: 0x7dd3c7,
-      emissiveIntensity: 0.26,
-    }),
-  );
-  laptop.position.set(0.08, 0.36, 0.35);
-  laptop.rotation.x = -0.35;
+  return { curve, tube, pulse, offset, speed: 0.08 + offset * 0.045 };
+}
 
-  pawn.add(body, head, laptop);
-  parent.add(pawn);
+function addMizoSignalMarks(parent: THREE.Object3D) {
+  const marks: SceneNode[] = [];
 
-  return pawn;
+  for (let index = 0; index < 12; index += 1) {
+    const mark = new THREE.Group() as SceneNode;
+    const angle = (Math.PI * 2 * index) / 12;
+    const radius = 2.4 + (index % 3) * 0.52;
+    mark.position.set(
+      Math.cos(angle) * radius,
+      -0.18 + (index % 4) * 0.32,
+      Math.sin(angle) * radius * 0.38,
+    );
+    mark.rotation.set(Math.PI / 2.6, 0, angle);
+    mark.userData.baseY = mark.position.y;
+    mark.userData.spin = index % 2 ? -0.34 : 0.34;
+
+    const triangle = new THREE.Mesh(
+      new THREE.CircleGeometry(0.14 + (index % 3) * 0.025, 3),
+      new THREE.MeshBasicMaterial({
+        color: index % 2 ? colors.green : colors.indigo,
+        transparent: true,
+        opacity: 0.26,
+        depthWrite: false,
+      }),
+    );
+    mark.add(triangle);
+    parent.add(mark);
+    marks.push(mark);
+  }
+
+  return marks;
 }
 
 function disposeObject(object: THREE.Object3D) {
@@ -193,18 +299,9 @@ function disposeObject(object: THREE.Object3D) {
     if (
       child instanceof THREE.Mesh ||
       child instanceof THREE.Line ||
-      child instanceof THREE.LineSegments
+      child instanceof THREE.LineSegments ||
+      child instanceof THREE.Points
     ) {
-      child.geometry.dispose();
-
-      if (Array.isArray(child.material)) {
-        child.material.forEach((material) => material.dispose());
-      } else {
-        child.material.dispose();
-      }
-    }
-
-    if (child instanceof THREE.Points) {
       child.geometry.dispose();
 
       if (Array.isArray(child.material)) {
@@ -220,19 +317,18 @@ export function HeroThreeScene() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
+    const host = containerRef.current;
 
-    if (!container) {
+    if (!host) {
       return;
     }
 
-    const host = container;
     let renderer: THREE.WebGLRenderer;
 
     try {
       renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: false,
+        antialias: true,
         powerPreference: "high-performance",
       });
     } catch {
@@ -247,340 +343,260 @@ export function HeroThreeScene() {
     host.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(39, 1, 0.1, 90);
-    camera.position.set(0, 0.8, 12.8);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 90);
+    camera.position.set(0, 0.5, 11.4);
 
     const world = new THREE.Group();
     scene.add(world);
 
-    const gameRig = new THREE.Group();
-    gameRig.position.set(2.2, -0.2, -0.2);
-    gameRig.rotation.set(-0.03, -0.32, 0.02);
-    world.add(gameRig);
+    const signalRig = new THREE.Group();
+    signalRig.position.set(2.35, -0.2, -0.1);
+    signalRig.rotation.set(-0.04, -0.24, 0.02);
+    world.add(signalRig);
 
-    const ambient = new THREE.AmbientLight(0xb3cfe5, 1.42);
-    const key = new THREE.DirectionalLight(0x7dd3c7, 2.8);
-    key.position.set(3.2, 4.4, 5.2);
-    const rim = new THREE.PointLight(0xe8b86d, 58, 20);
-    rim.position.set(-2.8, -1.2, 4.8);
-    const coreLight = new THREE.PointLight(0x7dd3c7, 34, 12);
-    coreLight.position.set(2.6, 0.4, 2.4);
-    scene.add(ambient, key, rim, coreLight);
+    const ambient = new THREE.AmbientLight(colors.white, 2.2);
+    const key = new THREE.DirectionalLight(colors.white, 2.8);
+    key.position.set(2.6, 4.2, 5.4);
+    const greenLight = new THREE.PointLight(colors.green, 42, 15);
+    greenLight.position.set(1.1, 0.9, 2.1);
+    const indigoLight = new THREE.PointLight(colors.indigo, 18, 14);
+    indigoLight.position.set(-2.4, 1.2, 2.8);
+    scene.add(ambient, key, greenLight, indigoLight);
 
-    const platform = new THREE.Mesh(
-      new THREE.CylinderGeometry(4.1, 4.8, 0.52, 6),
+    const atlasBase = new THREE.Mesh(
+      new THREE.CylinderGeometry(3.8, 4.28, 0.22, 8),
       new THREE.MeshStandardMaterial({
-        color: 0x10243a,
-        roughness: 0.34,
-        metalness: 0.36,
-        emissive: 0x07111f,
-        emissiveIntensity: 0.28,
-      }),
-    );
-    platform.position.set(0, -2.25, 0);
-    platform.rotation.y = Math.PI / 6;
-    gameRig.add(platform);
-
-    const platformEdges = new THREE.LineSegments(
-      new THREE.EdgesGeometry(platform.geometry),
-      new THREE.LineBasicMaterial({
-        color: 0x7dd3c7,
-        transparent: true,
-        opacity: 0.32,
-      }),
-    );
-    platform.add(platformEdges);
-
-    const platformGlow = new THREE.Mesh(
-      new THREE.CylinderGeometry(4.28, 5.02, 0.06, 6),
-      new THREE.MeshBasicMaterial({
-        color: 0x7dd3c7,
-        transparent: true,
-        opacity: 0.13,
-        depthWrite: false,
-      }),
-    );
-    platformGlow.position.set(0, -1.94, 0);
-    platformGlow.rotation.y = Math.PI / 6;
-    gameRig.add(platformGlow);
-
-    const gameLanes: THREE.Mesh<THREE.BoxGeometry, THREE.MeshBasicMaterial>[] =
-      [];
-    const laneMaterial = new THREE.MeshBasicMaterial({
-      color: 0x7dd3c7,
-      transparent: true,
-      opacity: 0.35,
-      depthWrite: false,
-    });
-
-    for (let index = 0; index < 6; index += 1) {
-      const angle = (Math.PI * 2 * index) / 6;
-      const lane = new THREE.Mesh(
-        new THREE.BoxGeometry(2.9, 0.035, 0.055),
-        laneMaterial,
-      );
-      lane.position.set(Math.cos(angle) * 0.76, -1.92, Math.sin(angle) * 0.54);
-      lane.rotation.y = -angle;
-      gameRig.add(lane);
-      gameLanes.push(lane);
-    }
-
-    const blocks = [
-      addBlock(
-        gameRig,
-        [0.75, 1.25, 0.75],
-        0x173d5a,
-        new THREE.Vector3(-2.7, -1.35, 0.9),
-      ),
-      addBlock(
-        gameRig,
-        [0.9, 0.75, 0.9],
-        0x0f3348,
-        new THREE.Vector3(-1.8, -1.6, -1.1),
-      ),
-      addBlock(
-        gameRig,
-        [0.62, 1.7, 0.62],
-        0x1a4f58,
-        new THREE.Vector3(2.95, -1.1, 0.4),
-      ),
-      addBlock(
-        gameRig,
-        [1.2, 0.5, 1.2],
-        0x263f54,
-        new THREE.Vector3(1.7, -1.72, -1.4),
-      ),
-      addBlock(
-        gameRig,
-        [0.54, 2.25, 0.54],
-        0x1a3d63,
-        new THREE.Vector3(0.25, -0.82, -2.08),
-      ),
-      addBlock(
-        gameRig,
-        [1.05, 0.62, 0.7],
-        0x234861,
-        new THREE.Vector3(-3.1, -1.62, -1.85),
-      ),
-    ];
-
-    const beacons = [
-      addBeacon(gameRig, new THREE.Vector3(-2.1, -1.86, 1.55), 0x7dd3c7),
-      addBeacon(gameRig, new THREE.Vector3(2.35, -1.86, 1.28), 0xe8b86d),
-      addBeacon(gameRig, new THREE.Vector3(2.0, -1.86, -1.72), 0x7dd3c7),
-    ];
-
-    const playerPawn = addPlayerPawn(gameRig);
-
-    const routeGeometry = new THREE.BufferGeometry().setFromPoints([
-      new THREE.Vector3(-2.1, -1.73, 1.55),
-      new THREE.Vector3(-0.95, -1.73, 0.72),
-      new THREE.Vector3(1.05, -1.73, 0.55),
-      new THREE.Vector3(2.35, -1.73, 1.28),
-    ]);
-    const routeLine = new THREE.Line(
-      routeGeometry,
-      new THREE.LineBasicMaterial({
-        color: 0xb3cfe5,
-        transparent: true,
-        opacity: 0.42,
-      }),
-    );
-    gameRig.add(routeLine);
-
-    const portal = new THREE.Group();
-    portal.position.set(1.06, 0.18, 0.36);
-    portal.rotation.y = -0.16;
-    gameRig.add(portal);
-
-    const portalVeil = new THREE.Mesh(
-      new THREE.CircleGeometry(1.78, 64),
-      new THREE.MeshBasicMaterial({
-        color: 0x7dd3c7,
-        transparent: true,
-        opacity: 0.08,
-        depthWrite: false,
-      }),
-    );
-
-    const portalOuter = new THREE.Mesh(
-      new THREE.TorusGeometry(1.84, 0.025, 12, 128),
-      new THREE.MeshBasicMaterial({
-        color: 0x7dd3c7,
+        color: colors.white,
+        roughness: 0.32,
+        metalness: 0.1,
         transparent: true,
         opacity: 0.64,
+        emissive: colors.green,
+        emissiveIntensity: 0.018,
       }),
     );
-    const portalInner = new THREE.Mesh(
-      new THREE.TorusGeometry(1.36, 0.018, 12, 108),
-      new THREE.MeshBasicMaterial({
-        color: 0xe8b86d,
-        transparent: true,
-        opacity: 0.5,
-      }),
-    );
-    portal.add(portalVeil, portalOuter, portalInner);
+    atlasBase.position.set(0.18, -2.06, -0.26);
+    atlasBase.rotation.y = Math.PI / 8;
+    signalRig.add(atlasBase);
+    addEdgeOutline(atlasBase, colors.green, 0.28);
 
-    const core = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.38, 2),
+    const floorGrid = new THREE.GridHelper(
+      11.5,
+      22,
+      colors.green,
+      colors.border,
+    );
+    floorGrid.position.set(0.2, -2.21, -0.4);
+    floorGrid.rotation.z = -0.08;
+    if (!Array.isArray(floorGrid.material)) {
+      floorGrid.material.transparent = true;
+      floorGrid.material.opacity = 0.24;
+    }
+    signalRig.add(floorGrid);
+
+    const coreGroup = new THREE.Group() as SceneNode;
+    coreGroup.position.set(0.66, -0.2, 0.65);
+    coreGroup.userData.baseY = coreGroup.position.y;
+    signalRig.add(coreGroup);
+
+    const coreTerminal = addBox(
+      coreGroup,
+      [2.22, 1.18, 0.16],
+      colors.ink,
+      new THREE.Vector3(0, 0, 0),
+      {
+        opacity: 0.94,
+        emissive: colors.green,
+        emissiveIntensity: 0.08,
+        metalness: 0.22,
+        roughness: 0.28,
+      },
+    );
+    addEdgeOutline(coreTerminal, colors.green, 0.76);
+
+    addBox(
+      coreGroup,
+      [1.72, 0.07, 0.035],
+      colors.green,
+      new THREE.Vector3(0, 0.33, 0.12),
+      { opacity: 0.86, emissiveIntensity: 0.25 },
+    );
+
+    for (let index = 0; index < 5; index += 1) {
+      addBox(
+        coreGroup,
+        [0.72 + index * 0.14, 0.045, 0.035],
+        index % 2 ? colors.indigo : colors.green,
+        new THREE.Vector3(
+          -0.38 + (index % 2) * 0.18,
+          0.12 - index * 0.14,
+          0.13,
+        ),
+        { opacity: 0.84, emissiveIntensity: 0.2 },
+      );
+    }
+
+    const coreGem = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.72, 2),
       new THREE.MeshStandardMaterial({
-        color: 0x7dd3c7,
-        roughness: 0.25,
-        metalness: 0.42,
-        emissive: 0x1a635b,
-        emissiveIntensity: 0.36,
+        color: colors.green,
+        roughness: 0.22,
+        metalness: 0.24,
+        emissive: colors.green,
+        emissiveIntensity: 0.46,
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.82,
       }),
     );
-    core.position.set(1.05, 0.28, 0.58);
-    gameRig.add(core);
-
+    coreGem.position.set(0.03, 1.12, 0.1);
+    coreGroup.add(coreGem);
     const coreWire = new THREE.LineSegments(
-      new THREE.EdgesGeometry(core.geometry),
+      new THREE.EdgesGeometry(coreGem.geometry),
       new THREE.LineBasicMaterial({
-        color: 0xf6fafd,
+        color: colors.white,
         transparent: true,
-        opacity: 0.2,
+        opacity: 0.36,
       }),
     );
-    core.add(coreWire);
+    coreGem.add(coreWire);
 
-    const orbitOne = new THREE.Mesh(
-      new THREE.TorusGeometry(2.15, 0.012, 8, 96),
+    const orbitOuter = new THREE.Mesh(
+      new THREE.TorusGeometry(2.35, 0.018, 10, 120),
       new THREE.MeshBasicMaterial({
-        color: 0x7dd3c7,
+        color: colors.green,
         transparent: true,
         opacity: 0.42,
+        depthWrite: false,
       }),
     );
-    orbitOne.rotation.set(Math.PI / 2.8, 0, Math.PI / 7);
-    core.add(orbitOne);
+    orbitOuter.rotation.set(Math.PI / 2.3, 0.14, Math.PI / 6);
+    coreGroup.add(orbitOuter);
 
-    const orbitTwo = new THREE.Mesh(
-      new THREE.TorusGeometry(2.75, 0.01, 8, 120),
+    const orbitInner = new THREE.Mesh(
+      new THREE.TorusGeometry(1.72, 0.014, 10, 120),
       new THREE.MeshBasicMaterial({
-        color: 0xe8b86d,
+        color: colors.indigo,
         transparent: true,
         opacity: 0.32,
+        depthWrite: false,
       }),
     );
-    orbitTwo.rotation.set(Math.PI / 2.15, Math.PI / 8, -Math.PI / 5);
-    core.add(orbitTwo);
+    orbitInner.rotation.set(Math.PI / 2.6, -0.22, -Math.PI / 5);
+    coreGroup.add(orbitInner);
 
     const panels = [
-      addPanel(
-        gameRig,
-        3.15,
-        1.78,
-        0x102a44,
-        new THREE.Vector3(-2.2, 0.45, 0.8),
-        new THREE.Euler(-0.05, 0.34, -0.04),
+      addFloatingPanel({
+        parent: signalRig,
+        width: 2.7,
+        height: 1.5,
+        position: new THREE.Vector3(-1.42, 0.92, 0.72),
+        rotation: new THREE.Euler(-0.04, 0.42, -0.04),
+        variant: "terminal",
+      }),
+      addFloatingPanel({
+        parent: signalRig,
+        width: 2.26,
+        height: 1.46,
+        position: new THREE.Vector3(2.88, 0.34, -0.04),
+        rotation: new THREE.Euler(0.04, -0.42, 0.04),
+        variant: "dashboard",
+      }),
+      addFloatingPanel({
+        parent: signalRig,
+        width: 1.18,
+        height: 2.32,
+        position: new THREE.Vector3(-2.98, -0.76, -0.36),
+        rotation: new THREE.Euler(0.03, 0.55, 0.02),
+        variant: "mobile",
+      }),
+      addFloatingPanel({
+        parent: signalRig,
+        width: 2.0,
+        height: 1.2,
+        position: new THREE.Vector3(1.92, -1.08, 1.18),
+        rotation: new THREE.Euler(-0.04, -0.25, -0.02),
+        variant: "course",
+      }),
+    ];
+
+    const nodes = [
+      addSignalNode(
+        signalRig,
+        new THREE.Vector3(-2.4, -1.7, 1.18),
+        colors.green,
       ),
-      addPanel(
-        gameRig,
-        1.55,
-        3.05,
-        0x0f3348,
-        new THREE.Vector3(-3.55, -0.48, -0.7),
-        new THREE.Euler(0.02, 0.42, 0.05),
+      addSignalNode(
+        signalRig,
+        new THREE.Vector3(2.65, -1.62, 0.76),
+        colors.indigo,
       ),
-      addPanel(
-        gameRig,
-        2.6,
-        1.32,
-        0x12314f,
-        new THREE.Vector3(3.15, -0.6, 0.15),
-        new THREE.Euler(0.08, -0.46, 0.05),
+      addSignalNode(
+        signalRig,
+        new THREE.Vector3(-0.62, -1.76, -1.82),
+        colors.green,
       ),
-      addPanel(
-        gameRig,
-        1.38,
-        2.8,
-        0x143653,
-        new THREE.Vector3(3.9, 0.82, -1.08),
-        new THREE.Euler(-0.02, -0.56, 0.04),
+      addSignalNode(
+        signalRig,
+        new THREE.Vector3(1.08, -1.58, -2.08),
+        colors.greenDeep,
       ),
     ];
-    const panelBaseY = panels.map((panel) => panel.position.y);
 
-    const loadedTextures: THREE.Texture[] = [];
-    const avatarFrame = new THREE.Mesh(
-      new THREE.BoxGeometry(1.72, 2.18, 0.1),
-      new THREE.MeshStandardMaterial({
-        color: 0x07111f,
-        roughness: 0.28,
-        metalness: 0.42,
-        emissive: 0x173d5a,
-        emissiveIntensity: 0.2,
-      }),
-    );
-    avatarFrame.position.set(-0.78, -0.24, 1.24);
-    avatarFrame.rotation.set(0.02, 0.12, 0.01);
-    gameRig.add(avatarFrame);
+    const streams = [
+      addDataStream(
+        signalRig,
+        [
+          new THREE.Vector3(-2.4, -1.48, 1.18),
+          new THREE.Vector3(-1.1, -0.9, 0.64),
+          new THREE.Vector3(0.2, -0.55, 0.78),
+          new THREE.Vector3(1.2, -0.8, 0.6),
+          new THREE.Vector3(2.65, -1.4, 0.76),
+        ],
+        colors.green,
+        0.12,
+      ),
+      addDataStream(
+        signalRig,
+        [
+          new THREE.Vector3(-0.62, -1.55, -1.82),
+          new THREE.Vector3(-0.28, -0.8, -0.8),
+          new THREE.Vector3(0.58, -0.3, 0.3),
+          new THREE.Vector3(1.08, -1.36, -2.08),
+        ],
+        colors.indigo,
+        0.44,
+      ),
+      addDataStream(
+        signalRig,
+        [
+          new THREE.Vector3(-2.98, -0.45, -0.36),
+          new THREE.Vector3(-1.6, 0.0, 0.14),
+          new THREE.Vector3(0.45, 0.24, 0.72),
+          new THREE.Vector3(2.88, 0.18, -0.04),
+        ],
+        colors.greenDeep,
+        0.73,
+      ),
+    ];
 
-    const avatarGlow = new THREE.LineSegments(
-      new THREE.EdgesGeometry(avatarFrame.geometry),
-      new THREE.LineBasicMaterial({
-        color: 0x7dd3c7,
-        transparent: true,
-        opacity: 0.5,
-      }),
-    );
-    avatarFrame.add(avatarGlow);
+    const mizoMarks = addMizoSignalMarks(signalRig);
 
-    const avatarPlane = new THREE.Mesh(
-      new THREE.PlaneGeometry(1.48, 1.92),
-      new THREE.MeshStandardMaterial({
-        color: 0xb3cfe5,
-        roughness: 0.46,
-        metalness: 0.04,
-        transparent: true,
-        opacity: 0.92,
-      }),
-    );
-    avatarPlane.position.set(0, 0, 0.065);
-    avatarFrame.add(avatarPlane);
-
-    let isActive = true;
-    new THREE.TextureLoader().load("/profile.jpg", (texture) => {
-      if (!isActive) {
-        texture.dispose();
-        return;
-      }
-
-      texture.colorSpace = THREE.SRGBColorSpace;
-      texture.anisotropy = Math.min(
-        renderer.capabilities.getMaxAnisotropy(),
-        4,
-      );
-      loadedTextures.push(texture);
-
-      if (avatarPlane.material instanceof THREE.MeshStandardMaterial) {
-        avatarPlane.material.map = texture;
-        avatarPlane.material.needsUpdate = true;
-      }
-    });
-
-    const grid = new THREE.GridHelper(16, 28, 0x7dd3c7, 0x1a3d63);
-    grid.position.set(1.9, -3.2, -2.3);
-    grid.rotation.z = -0.08;
-    const gridMaterial = grid.material;
-    if (!Array.isArray(gridMaterial)) {
-      gridMaterial.transparent = true;
-      gridMaterial.opacity = 0.24;
-    }
-    world.add(grid);
-
-    const particleCount = 96;
+    const particleCount = 130;
     const particlePositions = new Float32Array(particleCount * 3);
+    const particleColors = new Float32Array(particleCount * 3);
 
     for (let index = 0; index < particleCount; index += 1) {
       const angle = index * 2.39996323;
-      const radius = 3.1 + ((index * 37) % 100) / 22;
+      const radius = 2.6 + ((index * 41) % 100) / 20;
       particlePositions[index * 3] = Math.cos(angle) * radius;
-      particlePositions[index * 3 + 1] = ((index * 19) % 80) / 12 - 3.3;
-      particlePositions[index * 3 + 2] = Math.sin(angle) * radius - 1.2;
+      particlePositions[index * 3 + 1] = ((index * 19) % 90) / 14 - 3.1;
+      particlePositions[index * 3 + 2] = Math.sin(angle) * radius * 0.55 - 0.5;
+
+      const isGreen = index % 3 !== 0;
+      const color = new THREE.Color(isGreen ? colors.green : colors.indigo);
+      particleColors[index * 3] = color.r;
+      particleColors[index * 3 + 1] = color.g;
+      particleColors[index * 3 + 2] = color.b;
     }
 
     const particleGeometry = new THREE.BufferGeometry();
@@ -588,17 +604,21 @@ export function HeroThreeScene() {
       "position",
       new THREE.BufferAttribute(particlePositions, 3),
     );
+    particleGeometry.setAttribute(
+      "color",
+      new THREE.BufferAttribute(particleColors, 3),
+    );
     const particles = new THREE.Points(
       particleGeometry,
       new THREE.PointsMaterial({
-        color: 0xb3cfe5,
-        size: 0.035,
+        size: 0.038,
+        vertexColors: true,
         transparent: true,
-        opacity: 0.62,
+        opacity: 0.58,
         depthWrite: false,
       }),
     );
-    world.add(particles);
+    signalRig.add(particles);
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let reduceMotion = mediaQuery.matches;
@@ -607,12 +627,16 @@ export function HeroThreeScene() {
     let targetY = 0;
     let smoothX = 0;
     let smoothY = 0;
-    let rigBaseX = 2.2;
+    let rigBaseX = 2.35;
     let rigBaseY = -0.2;
-    let rigBaseZ = -0.2;
+    let rigBaseZ = -0.1;
     const startTime = performance.now();
 
     function resize() {
+      if (!host) {
+        return;
+      }
+
       const bounds = host.getBoundingClientRect();
       const width = Math.max(1, Math.floor(bounds.width));
       const height = Math.max(1, Math.floor(bounds.height));
@@ -623,21 +647,21 @@ export function HeroThreeScene() {
         Math.min(window.devicePixelRatio, isMobile ? 1.15 : 1.35),
       );
       renderer.setSize(width, height, false);
-      camera.fov = isMobile ? 45 : isTablet ? 41 : 39;
+      camera.fov = isMobile ? 43 : isTablet ? 40 : 38;
       camera.aspect = width / height;
       camera.position.set(
-        isMobile ? 0.08 : 0.1,
-        isMobile ? 0.9 : 0.78,
-        isMobile ? 14.8 : isTablet ? 13.5 : 12.6,
+        isMobile ? 0.06 : 0.08,
+        isMobile ? 0.75 : 0.54,
+        isMobile ? 12.6 : isTablet ? 11.8 : 11.1,
       );
-      rigBaseX = isMobile ? 0.12 : isTablet ? 1.25 : 2.75;
-      rigBaseY = isMobile ? -0.5 : -0.22;
-      rigBaseZ = isMobile ? -0.65 : -0.22;
-      gameRig.position.set(rigBaseX, rigBaseY, rigBaseZ);
-      gameRig.scale.setScalar(isMobile ? 0.72 : isTablet ? 0.88 : 1);
-      world.position.set(isMobile ? 0 : 0.45, isMobile ? -0.75 : 0, 0);
+      rigBaseX = isMobile ? 0.05 : isTablet ? 1.24 : 2.58;
+      rigBaseY = isMobile ? -1.2 : -0.22;
+      rigBaseZ = isMobile ? -0.42 : -0.1;
+      signalRig.position.set(rigBaseX, rigBaseY, rigBaseZ);
+      signalRig.scale.setScalar(isMobile ? 0.64 : isTablet ? 0.84 : 1);
+      world.position.set(isMobile ? 0 : 0.25, isMobile ? -1.05 : 0, 0);
       camera.updateProjectionMatrix();
-      camera.lookAt(isMobile ? 0 : 1.55, isMobile ? -0.52 : -0.22, 0);
+      camera.lookAt(isMobile ? 0 : 1.28, isMobile ? -1.14 : -0.16, 0);
       renderer.render(scene, camera);
     }
 
@@ -651,40 +675,58 @@ export function HeroThreeScene() {
       smoothX += (targetX - smoothX) * 0.055;
       smoothY += (targetY - smoothY) * 0.055;
 
-      world.rotation.y = smoothX * 0.12 + Math.sin(elapsed * 0.18) * 0.025;
-      world.rotation.x = smoothY * 0.08 + Math.sin(elapsed * 0.22) * 0.012;
-      gameRig.position.set(
-        rigBaseX + Math.sin(elapsed * 0.3) * 0.025,
-        rigBaseY + Math.sin(elapsed * 0.72) * 0.055,
+      world.rotation.y = smoothX * 0.09 + Math.sin(elapsed * 0.2) * 0.018;
+      world.rotation.x = smoothY * 0.055;
+      signalRig.position.set(
+        rigBaseX + Math.sin(elapsed * 0.28) * 0.035,
+        rigBaseY + Math.sin(elapsed * 0.62) * 0.055,
         rigBaseZ,
       );
-      gameRig.rotation.y =
-        -0.32 + smoothX * 0.2 + Math.sin(elapsed * 0.22) * 0.05;
-      gameRig.rotation.x = -0.03 + smoothY * 0.08;
-      core.rotation.x = elapsed * 0.34;
-      core.rotation.y = elapsed * 0.52;
-      orbitOne.rotation.z = elapsed * 0.38;
-      orbitTwo.rotation.z = -elapsed * 0.29;
-      portalOuter.rotation.z = elapsed * 0.36;
-      portalInner.rotation.z = -elapsed * 0.48;
-      portalVeil.scale.setScalar(1 + Math.sin(elapsed * 1.1) * 0.035);
-      playerPawn.position.y = -1.78 + Math.sin(elapsed * 1.4) * 0.055;
-      particles.rotation.y = elapsed * 0.018;
-      gameLanes.forEach((lane, index) => {
-        lane.material.opacity = 0.24 + Math.sin(elapsed * 1.4 + index) * 0.08;
-      });
-      beacons.forEach((beacon, index) => {
-        const scale = 1 + Math.sin(elapsed * 1.18 + index * 0.7) * 0.08;
-        beacon.scale.set(scale, 1, scale);
-        beacon.rotation.y = elapsed * 0.45 + index;
-      });
+      signalRig.rotation.y = -0.24 + smoothX * 0.18;
+      signalRig.rotation.x = -0.04 + smoothY * 0.08;
+
+      coreGroup.position.y =
+        (coreGroup.userData.baseY ?? -0.2) + Math.sin(elapsed * 0.9) * 0.06;
+      coreGem.rotation.x = elapsed * 0.34;
+      coreGem.rotation.y = elapsed * 0.48;
+      orbitOuter.rotation.z = elapsed * 0.28;
+      orbitInner.rotation.z = -elapsed * 0.34;
+      greenLight.intensity = 36 + Math.sin(elapsed * 1.2) * 7;
+      indigoLight.intensity = 15 + Math.cos(elapsed * 1.05) * 4;
+
       panels.forEach((panel, index) => {
         panel.position.y =
-          panelBaseY[index] + Math.sin(elapsed * 0.8 + index) * 0.08;
+          (panel.userData.baseY ?? panel.position.y) +
+          Math.sin(elapsed * 0.72 + index) * 0.075;
+        panel.rotation.z += Math.sin(elapsed + index) * 0.0007;
       });
-      blocks.forEach((block, index) => {
-        block.rotation.y = Math.sin(elapsed * 0.42 + index) * 0.035;
+
+      nodes.forEach((node, index) => {
+        node.position.y =
+          (node.userData.baseY ?? node.position.y) +
+          Math.sin(elapsed * 1.12 + index * 0.74) * 0.06;
+        node.rotation.y = elapsed * 0.44 + index;
+        const scale = 1 + Math.sin(elapsed * 1.32 + index) * 0.08;
+        node.scale.set(scale, scale, scale);
       });
+
+      streams.forEach((stream) => {
+        const progress = (elapsed * stream.speed + stream.offset) % 1;
+        stream.pulse.position.copy(stream.curve.getPointAt(progress));
+        const pulseScale =
+          0.86 + Math.sin(elapsed * 2.4 + stream.offset) * 0.14;
+        stream.pulse.scale.setScalar(pulseScale);
+      });
+
+      mizoMarks.forEach((mark, index) => {
+        mark.position.y =
+          (mark.userData.baseY ?? mark.position.y) +
+          Math.sin(elapsed * 0.68 + index * 0.43) * 0.06;
+        mark.rotation.z += (mark.userData.spin ?? 0.2) * 0.008;
+      });
+
+      particles.rotation.y = elapsed * 0.014;
+      floorGrid.position.z = -0.4 + Math.sin(elapsed * 0.4) * 0.08;
 
       renderer.render(scene, camera);
       frameId = window.requestAnimationFrame(renderFrame);
@@ -725,13 +767,11 @@ export function HeroThreeScene() {
     startAnimation();
 
     return () => {
-      isActive = false;
       window.cancelAnimationFrame(frameId);
       window.removeEventListener("pointermove", handlePointerMove);
       mediaQuery.removeEventListener("change", handleMotionPreference);
       resizeObserver.disconnect();
       renderer.dispose();
-      loadedTextures.forEach((texture) => texture.dispose());
       disposeObject(world);
       scene.remove(world);
       host.removeChild(renderer.domElement);
