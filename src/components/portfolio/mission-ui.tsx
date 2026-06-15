@@ -33,6 +33,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
+import { TextAnimate } from "@/components/animations/TextAnimate";
+import {
+  HoverCard,
+  StaggerGrid,
+  StaggerItem,
+} from "@/components/animations/motion-wrappers";
 import { ContactSection } from "@/components/portfolio/contact-section";
 import { HeroThreeScene } from "@/components/portfolio/hero-three-scene";
 import {
@@ -231,7 +237,7 @@ export function SplashScreen() {
       <div className="relative z-10 grid w-full max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <MotionBlock className="space-y-7">
           <div className="border-primary/25 bg-primary/10 text-primary inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-semibold">
-            <span className="bg-primary h-2 w-2 rounded-full shadow-[0_0_18px_rgba(125,211,199,0.9)]" />
+            <span className="bg-primary h-2 w-2 rounded-full shadow-[0_0_18px_rgba(22,163,74,0.38)]" />
             cjohnmizo mission system
           </div>
 
@@ -248,7 +254,7 @@ export function SplashScreen() {
             </p>
           </div>
 
-          <div className="text-secondary space-y-3 rounded-3xl border border-white/10 bg-white/[0.035] p-4 font-mono text-sm">
+          <div className="text-secondary border-border bg-card space-y-3 rounded-3xl border p-4 font-mono text-sm">
             {bootLines.map((line, index) => (
               <motion.p
                 key={line}
@@ -278,14 +284,14 @@ export function SplashScreen() {
           duration={5}
           className="hidden lg:block"
         >
-          <div className="splash-console relative min-h-[34rem] rounded-[2rem] border border-white/10 bg-white/[0.035] p-5">
+          <div className="splash-console border-border bg-card relative min-h-[34rem] rounded-[2rem] border p-5">
             <div className="mission-grid absolute inset-0 opacity-70" />
             <div className="relative grid h-full grid-rows-[auto_1fr_auto] gap-5">
               <div className="flex items-center justify-between">
                 <span className="text-secondary font-mono text-xs">
                   COMMAND CORE / ONLINE
                 </span>
-                <span className="bg-primary h-3 w-3 rounded-full shadow-[0_0_18px_rgba(125,211,199,0.8)]" />
+                <span className="bg-primary h-3 w-3 rounded-full shadow-[0_0_18px_rgba(22,163,74,0.36)]" />
               </div>
               <div className="grid place-items-center">
                 <div className="splash-core grid h-56 w-56 place-items-center rounded-full">
@@ -296,7 +302,7 @@ export function SplashScreen() {
                 {["WEB", "LMS", "APP"].map((item) => (
                   <div
                     key={item}
-                    className="bg-background/60 rounded-2xl border border-white/10 p-4"
+                    className="border-border bg-muted rounded-2xl border p-4"
                   >
                     <p className="text-secondary font-mono text-xs">{item}</p>
                     <div className="bg-primary/60 mt-3 h-1.5 rounded-full" />
@@ -328,9 +334,13 @@ export function HomeCommandCenter({
               <p className="text-secondary text-sm font-semibold">
                 Welcome back / {snapshot.profile.fullName} / cjohnmizo
               </p>
-              <h1 className="text-foreground max-w-5xl text-4xl leading-[1.03] font-semibold sm:text-6xl">
-                <TextReveal>{snapshot.settings.heroTitle}</TextReveal>
-              </h1>
+              <TextAnimate
+                text={snapshot.settings.heroTitle}
+                mode="words"
+                as="h1"
+                className="text-foreground max-w-5xl text-4xl leading-[1.03] font-semibold sm:text-6xl"
+                delay={0.1}
+              />
               <p className="text-muted-foreground max-w-3xl text-lg leading-8">
                 {snapshot.settings.heroSubtitle}
               </p>
@@ -447,7 +457,7 @@ export function AboutMission({ snapshot }: { snapshot: PortfolioSnapshot }) {
       <section className="pb-20">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <MotionBlock>
-            <div className="mission-profile-card relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-4">
+            <div className="mission-profile-card border-border bg-card relative overflow-hidden rounded-[2rem] border p-4">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
                 <Image
                   src={snapshot.profile.avatarUrl}
@@ -561,17 +571,18 @@ export function ProjectsMission({ projects }: { projects: Project[] }) {
         ]}
       />
       <section className="pb-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <StaggerGrid
+          className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"
+          stagger={0.08}
+        >
           {projects
             .filter((project) => project.title !== "Library and LMS Tools")
             .map((project, index) => (
-              <ProjectMissionCard
-                key={project.id}
-                project={project}
-                index={index}
-              />
+              <StaggerItem key={project.id}>
+                <ProjectMissionCard project={project} index={index} />
+              </StaggerItem>
             ))}
-        </div>
+        </StaggerGrid>
       </section>
     </main>
   );
@@ -590,12 +601,15 @@ function ProjectMissionCard({
     <MotionBlock delay={index * 0.05}>
       <SpotlightCard
         className="h-full rounded-[2rem]"
-        spotlightColor="rgba(232, 184, 109, 0.18)"
+        spotlightColor="rgba(22, 163, 74, 0.12)"
       >
-        <article className="mission-card-3d grid h-full overflow-hidden rounded-[2rem] md:grid-cols-[0.95fr_1.05fr]">
+        <HoverCard
+          as="article"
+          className="mission-card-3d grid h-full overflow-hidden rounded-[2rem] md:grid-cols-[0.95fr_1.05fr]"
+        >
           <Link
             href={getProjectMissionHref(project)}
-            className="project-preview-frame bg-muted relative min-h-64 overflow-hidden border-b border-white/10 md:border-r md:border-b-0"
+            className="project-preview-frame bg-muted border-border relative min-h-64 overflow-hidden border-b md:border-r md:border-b-0"
           >
             <Image
               src={project.coverImage}
@@ -661,7 +675,7 @@ function ProjectMissionCard({
               </Badge>
             </div>
           </div>
-        </article>
+        </HoverCard>
       </SpotlightCard>
     </MotionBlock>
   );
@@ -669,7 +683,7 @@ function ProjectMissionCard({
 
 function BriefLine({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-background/35 rounded-2xl border border-white/10 p-4">
+    <div className="border-border bg-muted rounded-2xl border p-4">
       <p className="text-secondary text-xs font-semibold uppercase">{label}</p>
       <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-6">
         {value}
@@ -762,7 +776,7 @@ export function ExperienceMission({
           <div className="mission-timeline space-y-6">
             {milestones.map((item, index) => (
               <MotionBlock key={`${item.title}-${index}`} delay={index * 0.05}>
-                <article className="mission-timeline-node rounded-[2rem] border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+                <article className="mission-timeline-node border-border bg-card rounded-[2rem] border p-5 sm:p-6">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <p className="text-secondary text-xs font-semibold uppercase">
@@ -786,7 +800,7 @@ export function ExperienceMission({
                     {item.points.map((point) => (
                       <p
                         key={point}
-                        className="text-muted-foreground bg-background/35 flex gap-2 rounded-2xl border border-white/10 p-3 text-sm leading-6"
+                        className="text-muted-foreground border-border bg-muted flex gap-2 rounded-2xl border p-3 text-sm leading-6"
                       >
                         <CheckCircle2 className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                         {point}
@@ -809,7 +823,7 @@ export function ContactMission({ snapshot }: { snapshot: PortfolioSnapshot }) {
       <MissionPageHeader
         eyebrow="Transmission Terminal"
         title="Send a project brief into the command center."
-        description="Have a school website, LMS, NGO system, dashboard, or mobile app idea? Send a short project brief and I’ll review it."
+        description="Have a school website, LMS, NGO system, dashboard, or mobile app idea? Send a short project brief and I'll review it."
         badges={["Email ready", "Project brief", "School / NGO / LMS / Mobile"]}
       />
       <ContactSection snapshot={snapshot} />
@@ -891,7 +905,7 @@ export function ProjectMissionDetail({
             </MotionBlock>
 
             <MotionBlock delay={0.1}>
-              <div className="mission-preview-frame relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-3">
+              <div className="mission-preview-frame border-border bg-card relative overflow-hidden rounded-[2rem] border p-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[1.35rem]">
                   <Image
                     src={project.coverImage}
@@ -942,7 +956,7 @@ export function ProjectMissionDetail({
                   {features.map((feature) => (
                     <p
                       key={feature}
-                      className="text-muted-foreground bg-background/35 flex gap-2 rounded-2xl border border-white/10 p-4 text-sm leading-6"
+                      className="text-muted-foreground border-border bg-muted flex gap-2 rounded-2xl border p-4 text-sm leading-6"
                     >
                       <CheckCircle2 className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                       {feature}
@@ -959,7 +973,7 @@ export function ProjectMissionDetail({
                 <p className="text-secondary text-xs font-semibold uppercase">
                   Mission facts
                 </p>
-                <div className="mt-4 divide-y divide-white/10">
+                <div className="divide-border mt-4 divide-y">
                   {facts.map((fact) => (
                     <div key={fact.label} className="py-4">
                       <p className="text-muted-foreground text-sm">

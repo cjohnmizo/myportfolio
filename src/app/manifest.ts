@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Portfolio of C. John Remthang, a Mizoram-based developer building practical websites, LMS platforms, dashboards, mobile apps, and digital systems.",
     start_url: "/",
     display: "standalone",
-    background_color: "#07111f",
-    theme_color: "#07111f",
+    background_color: "#f7f7f5",
+    theme_color: "#16a34a",
     icons: [
       {
         src: "/brand/cjohnmizo-favicon.png",

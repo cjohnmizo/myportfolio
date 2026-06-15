@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+import { MagneticButton } from "@/components/animations/MagneticButton";
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
@@ -63,7 +64,7 @@ export function MissionNav() {
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                <span className="text-secondary/70 mr-2 font-mono text-[0.66rem]">
+                <span className="text-muted-foreground mr-2 font-mono text-[0.66rem]">
                   {item.code}
                 </span>
                 {item.label}
@@ -80,9 +81,13 @@ export function MissionNav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden sm:inline-flex">
-            <Link href="/contact">Start Mission</Link>
-          </Button>
+          <MagneticButton
+            as="a"
+            href="/contact"
+            className="mission-launch-button hidden rounded-xl px-5 py-2.5 text-sm font-semibold sm:inline-flex"
+          >
+            Start Mission
+          </MagneticButton>
           <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
             <Dialog.Trigger asChild>
               <Button
@@ -95,8 +100,8 @@ export function MissionNav() {
               </Button>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className="fixed inset-0 z-50 bg-[#020813]/70 backdrop-blur-lg" />
-              <Dialog.Content className="fixed inset-3 z-50 overflow-hidden rounded-3xl border border-white/10 bg-[#07111f]/96 p-4 shadow-2xl shadow-black/40 sm:inset-6">
+              <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-lg" />
+              <Dialog.Content className="bg-background/95 border-border fixed inset-3 z-50 overflow-hidden rounded-3xl border p-4 shadow-2xl shadow-black/20 sm:inset-6">
                 <div className="mizo-pattern pointer-events-none absolute inset-0 opacity-[0.07]" />
                 <div className="relative flex items-center justify-between">
                   <BrandLogo showTagline={false} />
@@ -133,11 +138,11 @@ export function MissionNav() {
                               "group flex items-center justify-between rounded-2xl border px-4 py-4 text-lg font-semibold transition",
                               active
                                 ? "border-primary/40 bg-primary/12 text-primary"
-                                : "text-foreground hover:border-primary/30 hover:bg-primary/10 border-white/10 bg-white/[0.035]",
+                                : "border-border bg-muted text-foreground hover:border-primary/30 hover:bg-primary/10",
                             )}
                           >
                             <span>
-                              <span className="text-secondary/70 mr-3 font-mono text-xs">
+                              <span className="text-muted-foreground mr-3 font-mono text-xs">
                                 {item.code}
                               </span>
                               {item.label}

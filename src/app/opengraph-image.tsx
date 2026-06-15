@@ -18,9 +18,9 @@ export default function OpenGraphImage() {
         justifyContent: "space-between",
         padding: 64,
         background:
-          "radial-gradient(circle at 16% 10%, rgba(125,211,199,0.28), transparent 34%), radial-gradient(circle at 88% 20%, rgba(232,184,109,0.18), transparent 30%), linear-gradient(135deg, #07111f 0%, #0a1931 54%, #07111f 100%)",
-        color: "#f6fafd",
-        border: "1px solid rgba(179,207,229,0.18)",
+          "radial-gradient(circle at 12% 8%, rgba(22,163,74,0.16), transparent 34%), radial-gradient(circle at 90% 18%, rgba(79,70,229,0.12), transparent 28%), linear-gradient(135deg, #f7f7f5 0%, #ffffff 54%, #f0f0ee 100%)",
+        color: "#0a0a0a",
+        border: "1px solid #e5e5e3",
       }}
     >
       <div
@@ -30,11 +30,11 @@ export default function OpenGraphImage() {
           alignItems: "center",
           fontSize: 28,
           fontWeight: 700,
-          color: "#7dd3c7",
+          color: "#16a34a",
         }}
       >
         <span>C. John Remthang</span>
-        <span style={{ color: "#b3cfe5" }}>cjohnmizo.in</span>
+        <span style={{ color: "#6b7280" }}>cjohnmizo.in</span>
       </div>
       <div
         style={{
@@ -45,9 +45,10 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.05 }}>
-          Practical digital systems for schools, NGOs, businesses, and communities
+          Practical digital systems for schools, NGOs, businesses, and
+          communities
         </div>
-        <div style={{ fontSize: 29, color: "#b3cfe5", lineHeight: 1.35 }}>
+        <div style={{ fontSize: 29, color: "#6b7280", lineHeight: 1.35 }}>
           Mizoram-based developer building clean websites, LMS platforms,
           dashboards, mobile apps, and maintainable systems.
         </div>
@@ -57,7 +58,7 @@ export default function OpenGraphImage() {
           display: "flex",
           gap: 16,
           fontSize: 24,
-          color: "#7dd3c7",
+          color: "#16a34a",
         }}
       >
         <span>Web</span>

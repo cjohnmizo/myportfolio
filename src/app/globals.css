@@ -23,25 +23,43 @@
   --color-ring: var(--ring);
 }
 
+/* Palette
+   Light minimal x Bold hacker
+   Off-white base, pure black type, acid green accent (#16a34a)
+   Secondary accent: electric indigo for contrast moments
+*/
 :root {
-  --background: #07111f;
-  --foreground: #f6fafd;
-  --card: rgba(12, 30, 50, 0.76);
-  --card-foreground: #f6fafd;
-  --popover: rgba(7, 17, 31, 0.98);
-  --popover-foreground: #f6fafd;
-  --primary: #7dd3c7;
-  --primary-foreground: #06131f;
-  --secondary: #b3cfe5;
-  --secondary-foreground: #06131f;
-  --muted: rgba(179, 207, 229, 0.12);
-  --muted-foreground: #a8bfd1;
-  --border: rgba(179, 207, 229, 0.18);
-  --input: rgba(10, 25, 49, 0.72);
-  --ring: rgba(125, 211, 199, 0.58);
-  --accent-gold: #e8b86d;
+  --background: #f7f7f5;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #16a34a; /* acid green */
+  --primary-foreground: #ffffff;
+  --secondary: #4f46e5; /* electric indigo */
+  --secondary-foreground: #ffffff;
+  --muted: #f0f0ee;
+  --muted-foreground: #6b7280;
+  --border: #e5e5e3;
+  --input: #ffffff;
+  --ring: rgba(22, 163, 74, 0.4);
+
+  /* custom tokens */
+  --accent-green: #16a34a;
+  --accent-green-dim: #15803d;
+  --accent-indigo: #4f46e5;
+  --accent-red: #dc2626; /* error / warning pop */
+  --surface-0: #f7f7f5; /* page bg */
+  --surface-1: #ffffff; /* card */
+  --surface-2: #f0f0ee; /* muted surface */
+  --ink-0: #0a0a0a; /* headings */
+  --ink-1: #1a1a1a; /* body */
+  --ink-2: #6b7280; /* muted */
+  --ink-3: #9ca3af; /* placeholder */
 }
 
+/* Reset */
 * {
   border-color: var(--border);
 }
@@ -51,52 +69,39 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at 18% 8%,
-      rgba(125, 211, 199, 0.18),
-      transparent 30rem
-    ),
-    radial-gradient(
-      circle at 84% 12%,
-      rgba(179, 207, 229, 0.16),
-      transparent 32rem
-    ),
-    radial-gradient(
-      circle at 78% 76%,
-      rgba(232, 184, 109, 0.1),
-      transparent 28rem
-    ),
-    linear-gradient(180deg, #07111f 0%, #0a1931 48%, #07111f 100%);
-  color: var(--foreground);
+  background-color: var(--surface-0);
+  color: var(--ink-1);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Subtle grain texture: the bold hacker texture signature */
 body::before {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -1;
   pointer-events: none;
   content: "";
-  background-image:
-    linear-gradient(120deg, rgba(125, 211, 199, 0.07) 1px, transparent 1px),
-    linear-gradient(60deg, rgba(179, 207, 229, 0.06) 1px, transparent 1px);
-  background-size: 84px 84px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 78%);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 1;
 }
 
+/* Green grid accent: hacker terminal feel, very subtle */
 body::after {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   content: "";
-  background:
-    linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-image:
+    linear-gradient(rgba(22, 163, 74, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 163, 74, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
+/* Focus / selection */
 a,
 button,
 input,
@@ -107,299 +112,151 @@ select {
 }
 
 ::selection {
-  background: rgba(125, 211, 199, 0.28);
-  color: #f6fafd;
+  background: rgba(22, 163, 74, 0.18);
+  color: var(--ink-0);
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #07111f;
+  background: var(--surface-0);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(125, 211, 199, 0.82),
-    rgba(179, 207, 229, 0.48)
-  );
-  border: 3px solid #07111f;
+  background: var(--border);
+  border: 3px solid var(--surface-0);
   border-radius: 999px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-2);
+}
 
+/* Typography */
 @layer base {
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-heading), sans-serif;
+    color: var(--ink-0);
+    letter-spacing: -0.02em;
   }
 }
 
+/* Magnetic cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    width 0.2s,
+    height 0.2s,
+    background 0.2s,
+    opacity 0.2s;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent-green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.cursor-dot.is-visible {
+  opacity: 1;
+}
+
+.cursor-ring.is-visible {
+  opacity: 0.5;
+}
+
+body:has(a:hover) .cursor-dot,
+body:has(button:hover) .cursor-dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* Utility classes */
 @layer utilities {
+  /* Glass / card surface */
   .glass-panel {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(
-      145deg,
-      rgba(14, 36, 59, 0.86),
-      rgba(10, 25, 49, 0.62)
-    );
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--border);
+    backdrop-filter: blur(14px);
     box-shadow:
-      0 26px 80px rgba(0, 0, 0, 0.24),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
+      0 2px 16px rgba(0, 0, 0, 0.06),
+      0 1px 0 rgba(255, 255, 255, 0.9) inset;
   }
 
   .surface-card {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(
-      155deg,
-      rgba(13, 34, 56, 0.82),
-      rgba(7, 17, 31, 0.58)
-    );
+    background: var(--surface-1);
     border: 1px solid var(--border);
-    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.18);
-  }
-
-  .project-preview-frame {
-    perspective: 1100px;
-  }
-
-  .dashboard-hero {
-    background:
-      radial-gradient(
-        circle at 18% 16%,
-        rgba(125, 211, 199, 0.2),
-        transparent 30rem
-      ),
-      radial-gradient(
-        circle at 82% 18%,
-        rgba(232, 184, 109, 0.14),
-        transparent 28rem
-      ),
-      linear-gradient(180deg, rgba(179, 207, 229, 0.08), rgba(7, 17, 31, 0));
-    background-size: 120% 120%;
-    animation: dashboard-glow 26s ease-in-out infinite alternate;
-  }
-
-  .hero-three-scene {
-    position: absolute;
-    inset: -5% -1% -7%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 1;
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.08) 31%,
-      rgba(0, 0, 0, 0.62) 48%,
-      black 100%
-    );
-  }
-
-  .hero-three-canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    filter: saturate(1.18) contrast(1.08);
-  }
-
-  .hero-three-space {
-    min-height: clamp(31rem, 50vw, 43rem);
-    width: 100%;
-  }
-
-  .mission-nav {
-    border: 1px solid rgba(179, 207, 229, 0.18);
-    background:
-      linear-gradient(135deg, rgba(7, 17, 31, 0.9), rgba(10, 25, 49, 0.7)),
-      radial-gradient(
-        circle at 18% 0%,
-        rgba(125, 211, 199, 0.18),
-        transparent 18rem
-      );
     box-shadow:
-      0 18px 54px rgba(0, 0, 0, 0.32),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 1px 4px rgba(0, 0, 0, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.04);
+    transition:
+      box-shadow 0.22s ease,
+      transform 0.22s ease,
+      border-color 0.22s ease;
+  }
+
+  .surface-card:hover {
+    border-color: var(--accent-green);
+    box-shadow:
+      0 4px 24px rgba(22, 163, 74, 0.1),
+      0 1px 4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Nav */
+  .mission-nav {
+    background: rgba(247, 247, 245, 0.88);
+    border: 1px solid var(--border);
     backdrop-filter: blur(18px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .mission-nav-link::after {
     position: absolute;
-    right: 0.75rem;
-    bottom: 0.35rem;
-    left: 0.75rem;
-    height: 1px;
+    right: 0.5rem;
+    bottom: 0.2rem;
+    left: 0.5rem;
+    height: 1.5px;
     content: "";
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      transparent
-    );
-    opacity: 0;
-    transition: opacity 180ms ease;
+    background: var(--accent-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 2px;
   }
 
   .mission-nav-link:hover::after {
-    opacity: 0.62;
+    transform: scaleX(1);
   }
 
-  .mission-grid {
-    background:
-      linear-gradient(rgba(179, 207, 229, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(179, 207, 229, 0.035) 1px, transparent 1px);
-    background-size: 34px 34px;
-    mask-image: radial-gradient(circle at 50% 35%, black, transparent 72%);
-    animation: mission-grid-scan 18s linear infinite;
+  /* Hero section */
+  .dashboard-hero {
+    background: var(--surface-0);
   }
 
-  .mission-portal {
-    width: 34rem;
-    height: 34rem;
-    border: 1px solid rgba(125, 211, 199, 0.22);
-    border-radius: 999px;
-    background:
-      radial-gradient(circle, rgba(125, 211, 199, 0.2), transparent 54%),
-      conic-gradient(
-        from 90deg,
-        transparent,
-        rgba(125, 211, 199, 0.36),
-        transparent,
-        rgba(232, 184, 109, 0.24),
-        transparent
-      );
-    filter: blur(0.2px);
-    opacity: 0.65;
-    animation: mission-portal-spin 28s linear infinite;
-  }
-
-  .mission-card-3d,
-  .mission-briefing {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(179, 207, 229, 0.16);
-    background:
-      linear-gradient(145deg, rgba(14, 36, 59, 0.84), rgba(7, 17, 31, 0.64)),
-      radial-gradient(
-        circle at 100% 0%,
-        rgba(125, 211, 199, 0.12),
-        transparent 18rem
-      );
-    box-shadow:
-      0 24px 70px rgba(0, 0, 0, 0.24),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transform-style: preserve-3d;
-    transition:
-      border-color 220ms ease,
-      transform 220ms ease,
-      box-shadow 220ms ease;
-  }
-
-  .mission-card-3d::before,
-  .mission-briefing::before {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    content: "";
-    background:
-      linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 26%),
-      linear-gradient(180deg, transparent, rgba(125, 211, 199, 0.05));
-    opacity: 0.86;
-  }
-
-  .mission-card-3d > *,
-  .mission-briefing > * {
-    position: relative;
-  }
-
-  .mission-card-3d:hover {
-    border-color: rgba(125, 211, 199, 0.42);
-    box-shadow:
-      0 30px 86px rgba(0, 0, 0, 0.34),
-      0 0 36px rgba(125, 211, 199, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-4px) rotateX(1.2deg) rotateY(-1.2deg);
-  }
-
-  .splash-screen {
-    background:
-      radial-gradient(
-        circle at 50% 44%,
-        rgba(125, 211, 199, 0.16),
-        transparent 18rem
-      ),
-      radial-gradient(
-        circle at 78% 22%,
-        rgba(232, 184, 109, 0.12),
-        transparent 22rem
-      ),
-      linear-gradient(180deg, #020813, #07111f 62%, #020813);
-  }
-
-  .splash-orbit {
-    position: absolute;
-    width: min(72vw, 42rem);
-    height: min(72vw, 42rem);
-    border: 1px solid rgba(125, 211, 199, 0.22);
-    border-radius: 999px;
-    box-shadow:
-      0 0 80px rgba(125, 211, 199, 0.08),
-      inset 0 0 50px rgba(179, 207, 229, 0.06);
-  }
-
-  .splash-console {
-    box-shadow:
-      0 28px 90px rgba(0, 0, 0, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  .splash-core {
-    border: 1px solid rgba(125, 211, 199, 0.34);
-    background:
-      radial-gradient(circle, rgba(125, 211, 199, 0.25), transparent 64%),
-      rgba(7, 17, 31, 0.78);
-    box-shadow:
-      0 0 78px rgba(125, 211, 199, 0.18),
-      inset 0 0 44px rgba(125, 211, 199, 0.16);
-  }
-
-  .mission-launch-button {
-    border: 1px solid rgba(125, 211, 199, 0.38);
-    background:
-      linear-gradient(135deg, #7dd3c7, #b3cfe5),
-      radial-gradient(
-        circle at 15% 10%,
-        rgba(255, 255, 255, 0.7),
-        transparent 12rem
-      );
-    box-shadow:
-      0 16px 48px rgba(125, 211, 199, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.42);
-    transition:
-      transform 180ms ease,
-      box-shadow 180ms ease;
-  }
-
-  .mission-launch-button:hover {
-    box-shadow:
-      0 22px 60px rgba(125, 211, 199, 0.32),
-      inset 0 1px 0 rgba(255, 255, 255, 0.48);
-    transform: translateY(-2px) scale(1.01);
-  }
-
-  .mission-profile-card,
-  .mission-preview-frame {
-    box-shadow:
-      0 28px 78px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
+  /* Timeline */
   .mission-timeline {
     position: relative;
   }
@@ -409,13 +266,9 @@ select {
     top: 1rem;
     bottom: 1rem;
     left: 1.35rem;
-    width: 1px;
+    width: 1.5px;
     content: "";
-    background: linear-gradient(
-      180deg,
-      var(--primary),
-      rgba(179, 207, 229, 0.18)
-    );
+    background: linear-gradient(180deg, var(--accent-green), var(--border));
   }
 
   .mission-timeline-node {
@@ -427,14 +280,185 @@ select {
     position: absolute;
     top: 1.65rem;
     left: -2.45rem;
-    width: 0.78rem;
-    height: 0.78rem;
+    width: 0.7rem;
+    height: 0.7rem;
     content: "";
-    background: var(--primary);
+    background: var(--accent-green);
     border-radius: 999px;
-    box-shadow: 0 0 24px rgba(125, 211, 199, 0.7);
+    border: 2px solid var(--surface-0);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
   }
 
+  /* Project card 3D tilt (Framer handles the actual motion) */
+  .mission-card-3d {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transform-style: preserve-3d;
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .mission-card-3d:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 8px 32px rgba(22, 163, 74, 0.12);
+  }
+
+  .mission-card-3d::before {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(
+      135deg,
+      rgba(22, 163, 74, 0.03),
+      transparent 60%
+    );
+  }
+
+  .mission-card-3d > * {
+    position: relative;
+  }
+
+  .mission-briefing {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .mission-briefing::before {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(
+      135deg,
+      rgba(22, 163, 74, 0.02),
+      transparent 50%
+    );
+  }
+
+  .mission-briefing > * {
+    position: relative;
+  }
+
+  /* Splash screen */
+  .splash-screen {
+    background: var(--surface-0);
+  }
+
+  .splash-orbit {
+    position: absolute;
+    width: min(72vw, 42rem);
+    height: min(72vw, 42rem);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+
+  .splash-console {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+  }
+
+  .splash-core {
+    border: 2px solid var(--accent-green);
+    background: rgba(22, 163, 74, 0.06);
+    box-shadow: 0 0 40px rgba(22, 163, 74, 0.1);
+  }
+
+  .mission-launch-button {
+    background: var(--ink-0);
+    color: var(--surface-0);
+    border: 1.5px solid var(--ink-0);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition:
+      background 180ms ease,
+      transform 180ms ease,
+      box-shadow 180ms ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  }
+
+  .mission-launch-button:hover {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    box-shadow: 0 8px 28px rgba(22, 163, 74, 0.28);
+    transform: translateY(-2px);
+  }
+
+  .mission-profile-card,
+  .mission-preview-frame {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+
+  /* Grid pattern */
+  .mission-grid {
+    background:
+      linear-gradient(rgba(22, 163, 74, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(circle at 50% 35%, black, transparent 72%);
+    animation: mission-grid-scan 18s linear infinite;
+  }
+
+  .mission-portal {
+    width: 34rem;
+    height: 34rem;
+    border: 1px solid rgba(22, 163, 74, 0.2);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, rgba(22, 163, 74, 0.08), transparent 54%),
+      conic-gradient(
+        from 90deg,
+        transparent,
+        rgba(22, 163, 74, 0.2),
+        transparent,
+        rgba(79, 70, 229, 0.1),
+        transparent
+      );
+    opacity: 0.6;
+    animation: mission-portal-spin 28s linear infinite;
+  }
+
+  /* Three.js scene */
+  .hero-three-scene {
+    position: absolute;
+    inset: -5% -1% -7%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.06) 31%,
+      rgba(0, 0, 0, 0.4) 48%,
+      black 100%
+    );
+  }
+
+  .hero-three-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: saturate(0.3) contrast(1.1); /* desaturate for light bg */
+  }
+
+  .hero-three-space {
+    min-height: clamp(31rem, 50vw, 43rem);
+    width: 100%;
+  }
+
+  /* Dashboard band */
   .dashboard-band {
     position: relative;
     overflow: hidden;
@@ -449,15 +473,10 @@ select {
     left: max(1rem, calc((100vw - 80rem) / 2));
     z-index: -1;
     content: "";
-    background:
-      linear-gradient(145deg, rgba(12, 30, 50, 0.78), rgba(7, 17, 31, 0.48)),
-      linear-gradient(90deg, rgba(125, 211, 199, 0.08), transparent 58%);
-    border: 1px solid rgba(179, 207, 229, 0.15);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
     border-radius: 2rem;
-    box-shadow:
-      0 30px 86px rgba(0, 0, 0, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
   }
 
   .dashboard-band > * {
@@ -465,11 +484,10 @@ select {
     z-index: 1;
   }
 
+  /* Project preview hover */
   .project-preview-surface {
     transform-origin: center;
-    box-shadow:
-      0 20px 54px rgba(0, 0, 0, 0.24),
-      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     transition:
       transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -477,52 +495,46 @@ select {
 
   .group:hover .project-preview-surface {
     transform: translateY(-4px) rotateX(1.6deg) rotateY(-1.4deg);
-    box-shadow:
-      0 24px 62px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(125, 211, 199, 0.24) inset;
+    box-shadow: 0 12px 36px rgba(22, 163, 74, 0.12);
   }
 
-  .system-visual {
+  /* Section kicker */
+  .section-kicker {
+    font-family: var(--font-mono), monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-green);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  /* Green terminal underline: signature hacker detail */
+  .hacker-underline {
+    position: relative;
+    display: inline;
+  }
+
+  .hacker-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hacker-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Light sweep hover (kept, adjusted to light theme) */
+  .light-sweep {
     position: relative;
     overflow: hidden;
-    transform: translateZ(0);
-    box-shadow:
-      0 18px 34px rgba(0, 0, 0, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  .system-visual::before {
-    position: absolute;
-    inset: 9px;
-    content: "";
-    border: 1px solid rgba(255, 255, 255, 0.42);
-    border-radius: 1rem;
-    transform: rotate(-8deg) translateY(4px);
-  }
-
-  .section-kicker {
-    font-family: var(--font-sans), sans-serif;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  .mizo-pattern {
-    background-image:
-      linear-gradient(135deg, rgba(74, 127, 167, 0.12) 25%, transparent 25%),
-      linear-gradient(225deg, rgba(125, 211, 199, 0.1) 25%, transparent 25%),
-      linear-gradient(45deg, rgba(179, 207, 229, 0.08) 25%, transparent 25%),
-      linear-gradient(315deg, rgba(232, 184, 109, 0.08) 25%, transparent 25%);
-    background-position:
-      18px 0,
-      18px 0,
-      0 0,
-      0 0;
-    background-size: 36px 36px;
-  }
-
-  .section-reveal {
-    animation: rise-in 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: var(--reveal-delay, 0ms);
   }
 
   .light-sweep::after {
@@ -533,46 +545,83 @@ select {
     background: linear-gradient(
       110deg,
       transparent 28%,
-      rgba(125, 211, 199, 0.14) 48%,
+      rgba(22, 163, 74, 0.07) 48%,
       transparent 68%
     );
     transform: translateX(-125%);
-    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .light-sweep {
-    position: relative;
-    overflow: hidden;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .light-sweep:hover::after {
     transform: translateX(125%);
   }
+
+  /* Mizo pattern: adjusted for light bg */
+  .mizo-pattern {
+    background-image:
+      linear-gradient(135deg, rgba(22, 163, 74, 0.06) 25%, transparent 25%),
+      linear-gradient(225deg, rgba(79, 70, 229, 0.04) 25%, transparent 25%),
+      linear-gradient(45deg, rgba(22, 163, 74, 0.03) 25%, transparent 25%),
+      linear-gradient(315deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%);
+    background-position:
+      18px 0,
+      18px 0,
+      0 0,
+      0 0;
+    background-size: 36px 36px;
+  }
+
+  /* Section reveal: used as fallback; Framer handles the real animation */
+  .section-reveal {
+    animation: rise-in 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  /* System visual */
+  .system-visual {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+  }
+
+  .system-visual::before {
+    position: absolute;
+    inset: 9px;
+    content: "";
+    border: 1px solid rgba(22, 163, 74, 0.15);
+    border-radius: 1rem;
+    transform: rotate(-8deg) translateY(4px);
+  }
+
+  /* Project preview frame */
+  .project-preview-frame {
+    perspective: 1100px;
+  }
+
+  /* Inline code / terminal style */
+  .terminal-tag {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    background: var(--surface-2);
+    color: var(--accent-green);
+    border: 1px solid var(--border);
+    padding: 0.1em 0.45em;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
 }
 
+/* Keyframes */
 @keyframes rise-in {
   from {
     opacity: 0;
     transform: translateY(18px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes dashboard-glow {
-  from {
-    background-position:
-      0% 0%,
-      50% 0%;
-  }
-
-  to {
-    background-position:
-      100% 32%,
-      50% 100%;
   }
 }
 
@@ -590,6 +639,21 @@ select {
   }
 }
 
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-start infinite;
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -603,31 +667,25 @@ select {
   .section-reveal {
     animation: none;
   }
-
-  .dashboard-hero {
-    animation: none;
-  }
-
   .mission-grid,
   .mission-portal {
     animation: none !important;
   }
-
   .light-sweep::after {
     transition: none;
     transform: none;
   }
-
   .hero-three-scene {
     animation: none !important;
     transition: none !important;
   }
 }
 
+/* Mobile */
 @media (max-width: 767px) {
   .hero-three-scene {
     inset: 30% -40% -8%;
-    opacity: 0.96;
+    opacity: 0.3;
     mask-image: linear-gradient(
       180deg,
       transparent 0%,
@@ -644,18 +702,10 @@ select {
   .mission-timeline::before {
     left: 0.55rem;
   }
-
   .mission-timeline-node {
     margin-left: 1.65rem;
   }
-
   .mission-timeline-node::before {
     left: -1.48rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .dashboard-hero {
-    animation-duration: 34s;
   }
 }
