@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Mail } from "lucide-react";
 
-import { HeroThreeScene } from "@/components/portfolio/hero-three-scene";
 import { ContactSection } from "@/components/portfolio/contact-section";
 import { SpatialProjectCard } from "@/components/portfolio/spatial-project-card";
 import { Button } from "@/components/ui/button";
@@ -19,12 +18,44 @@ const filters: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "cms", label: "CMS" },
 ];
 
+function HeroBrandStage() {
+  return (
+    <div className="hero-brand-stage" aria-hidden="true">
+      <div className="hero-brand-grid" />
+      <div className="hero-brand-glow" />
+      <div className="hero-brand-orbit hero-brand-orbit-a" />
+      <div className="hero-brand-orbit hero-brand-orbit-b" />
+      <div className="hero-brand-plate">
+        <img
+          src="/brand/cjohnmizo-logo.png"
+          alt=""
+          className="hero-brand-logo"
+        />
+      </div>
+      <div className="hero-brand-card hero-brand-card-1">
+        <span>LMS</span>
+        <strong>Live platforms</strong>
+      </div>
+      <div className="hero-brand-card hero-brand-card-2">
+        <span>Dashboard</span>
+        <strong>Admin systems</strong>
+      </div>
+      <div className="hero-brand-card hero-brand-card-3">
+        <span>Mobile</span>
+        <strong>App products</strong>
+      </div>
+    </div>
+  );
+}
+
 export function SpatialHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
   const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("all");
   const projects = useMemo(
     () =>
       snapshot.projects.filter(
-        (project) => project.isPublished && (filter === "all" || project.category === filter),
+        (project) =>
+          project.isPublished &&
+          (filter === "all" || project.category === filter),
       ),
     [filter, snapshot.projects],
   );
@@ -74,15 +105,19 @@ export function SpatialHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
             </div>
           </div>
           <div className="relative h-[58vh] min-h-80 lg:col-span-7 lg:h-auto lg:min-h-svh">
-            <HeroThreeScene />
+            <HeroBrandStage />
           </div>
         </div>
       </section>
 
       <section id="work" className="scroll-mt-24 border-t border-border py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">Selected work</p>
-          <h2 className="font-heading mt-3 text-3xl sm:text-4xl">Objects in the field</h2>
+          <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
+            Selected work
+          </p>
+          <h2 className="font-heading mt-3 text-3xl sm:text-4xl">
+            Objects in the field
+          </h2>
           <div className="mt-8 flex flex-wrap gap-2">
             {filters.map((item) => (
               <button
@@ -126,8 +161,12 @@ export function SpatialHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">About</p>
-            <h2 className="font-heading mt-3 text-3xl sm:text-4xl">{snapshot.settings.aboutTitle}</h2>
+            <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
+              About
+            </p>
+            <h2 className="font-heading mt-3 text-3xl sm:text-4xl">
+              {snapshot.settings.aboutTitle}
+            </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/90">
               {snapshot.profile.longBio}
             </p>
@@ -136,7 +175,10 @@ export function SpatialHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
             </p>
             <dl className="mt-8 grid gap-4 sm:grid-cols-2">
               {snapshot.profile.metrics.map((metric) => (
-                <div key={metric.label} className="rounded-xl border border-border bg-card/60 p-4">
+                <div
+                  key={metric.label}
+                  className="rounded-xl border border-border bg-card/60 p-4"
+                >
                   <dt className="text-xs tracking-wide text-muted-foreground uppercase">
                     {metric.label}
                   </dt>
@@ -150,11 +192,18 @@ export function SpatialHome({ snapshot }: { snapshot: PortfolioSnapshot }) {
 
       <section id="skills" className="scroll-mt-24 border-t border-border py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">Skills</p>
-          <h2 className="font-heading mt-3 text-3xl sm:text-4xl">A compact toolkit</h2>
+          <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
+            Skills
+          </p>
+          <h2 className="font-heading mt-3 text-3xl sm:text-4xl">
+            A compact toolkit
+          </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {skillGroups.map(([category, names]) => (
-              <div key={category} className="rounded-xl border border-border bg-card/50 p-5">
+              <div
+                key={category}
+                className="rounded-xl border border-border bg-card/50 p-5"
+              >
                 <h3 className="text-xs tracking-[0.16em] text-muted-foreground uppercase">
                   {category}
                 </h3>

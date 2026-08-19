@@ -57,19 +57,6 @@ body::after {
   backdrop-filter: blur(18px);
 }
 
-.hero-three-scene {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-  pointer-events: auto !important;
-  opacity: 1 !important;
-  mask-image: none !important;
-}
-
-.hero-three-canvas {
-  filter: saturate(1.05) contrast(1.02);
-}
-
 .dashboard-band::before {
   background: var(--surface-1);
   border-color: var(--border);
@@ -136,15 +123,166 @@ body::after {
   opacity: 1;
 }
 
+/* Static hero brand stage (no Three.js) */
+.hero-brand-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+.hero-brand-grid {
+  position: absolute;
+  inset: 12% 8% 18%;
+  background-image:
+    linear-gradient(rgba(232, 224, 210, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 224, 210, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
+  transform: rotateX(62deg) scale(1.35);
+  transform-origin: center bottom;
+}
+
+.hero-brand-glow {
+  position: absolute;
+  width: min(70%, 420px);
+  height: min(70%, 420px);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(196, 165, 116, 0.22) 0%,
+    rgba(94, 234, 212, 0.08) 40%,
+    transparent 70%
+  );
+  filter: blur(8px);
+}
+
+.hero-brand-orbit {
+  position: absolute;
+  border: 1px solid rgba(232, 224, 210, 0.14);
+  border-radius: 999px;
+  animation: hero-orbit 18s linear infinite;
+}
+
+.hero-brand-orbit-a {
+  width: min(72%, 440px);
+  height: min(42%, 240px);
+  border-color: rgba(94, 234, 212, 0.2);
+}
+
+.hero-brand-orbit-b {
+  width: min(58%, 340px);
+  height: min(58%, 340px);
+  border-color: rgba(196, 165, 116, 0.28);
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+
+.hero-brand-plate {
+  position: relative;
+  z-index: 2;
+  width: min(56%, 280px);
+  aspect-ratio: 1;
+  border-radius: 28px;
+  background: linear-gradient(160deg, #1a1a20 0%, #0e0e12 100%);
+  border: 1px solid rgba(232, 224, 210, 0.16);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(196, 165, 116, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: rotateY(-18deg) rotateX(8deg);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.hero-brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+.hero-brand-card {
+  position: absolute;
+  z-index: 3;
+  min-width: 132px;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 224, 210, 0.14);
+  background: rgba(20, 20, 24, 0.88);
+  backdrop-filter: blur(12px);
+  padding: 0.75rem 0.9rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-brand-card span {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.hero-brand-card strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-0);
+}
+
+.hero-brand-card-1 {
+  top: 18%;
+  left: 8%;
+  transform: rotate(-6deg);
+}
+
+.hero-brand-card-2 {
+  top: 22%;
+  right: 6%;
+  transform: rotate(5deg);
+}
+
+.hero-brand-card-3 {
+  bottom: 16%;
+  right: 14%;
+  transform: rotate(-3deg);
+}
+
+@keyframes hero-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 767px) {
-  .hero-three-scene {
-    inset: 0 !important;
-    opacity: 1 !important;
+  .hero-brand-card-1 {
+    left: 4%;
+    top: 12%;
+  }
+  .hero-brand-card-2 {
+    right: 4%;
+    top: 14%;
+  }
+  .hero-brand-card-3 {
+    bottom: 10%;
+    right: 8%;
+  }
+  .hero-brand-plate {
+    width: min(62%, 220px);
+    transform: rotateY(-10deg) rotateX(6deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slab {
+  .slab,
+  .hero-brand-orbit {
     transition: none;
+    animation: none;
   }
 }
