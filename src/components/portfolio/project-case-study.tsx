@@ -74,10 +74,10 @@ export function ProjectCaseStudy({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <Link
-            href="/projects"
+            href="/#work"
             className="text-secondary inline-flex items-center text-sm font-semibold"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" /> Back to projects
+            <ArrowLeft className="mr-2 h-4 w-4" /> Back to work
           </Link>
         </SectionReveal>
 
