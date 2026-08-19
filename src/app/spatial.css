@@ -1,0 +1,113 @@
+:root {
+  --background: #09090b;
+  --foreground: #ece8e1;
+  --card: #141418;
+  --card-foreground: #ece8e1;
+  --popover: #141418;
+  --popover-foreground: #ece8e1;
+  --primary: #e8e0d2;
+  --primary-foreground: #111113;
+  --secondary: #c4a574;
+  --secondary-foreground: #111113;
+  --muted: #1c1c22;
+  --muted-foreground: #9a948a;
+  --border: #2a2a32;
+  --input: #141418;
+  --ring: rgba(232, 224, 210, 0.45);
+  --accent-green: #d8d0c4;
+  --accent-green-dim: #a89f90;
+  --accent-indigo: #8a93a3;
+  --surface-0: #09090b;
+  --surface-1: #141418;
+  --surface-2: #1c1c22;
+  --ink-0: #ece8e1;
+  --ink-1: #d6d0c6;
+  --ink-2: #9a948a;
+  --ink-3: #6f6a62;
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(232, 224, 210, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 224, 210, 0.035) 1px, transparent 1px);
+}
+
+::selection {
+  background: rgba(232, 224, 210, 0.18);
+  color: var(--ink-0);
+}
+
+.spatial-shell {
+  min-height: 100svh;
+  background: var(--surface-0);
+  color: var(--ink-1);
+}
+
+.spatial-nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 40;
+  background: rgba(9, 9, 11, 0.72);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+.hero-three-scene {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  mask-image: none !important;
+}
+
+.hero-three-canvas {
+  filter: none;
+}
+
+.dashboard-band::before {
+  background: var(--surface-1);
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.tilt-stage {
+  perspective: 1400px;
+}
+
+.slab {
+  transform-style: preserve-3d;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-edge-y {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 100%;
+  transform: rotateY(90deg);
+  transform-origin: right;
+  border-radius: 0 8px 8px 0;
+  background: linear-gradient(180deg, #3f3f48 0%, #1a1a20 100%);
+}
+
+.card-edge-x {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 16px;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(90deg, #141418 0%, #2c2c34 100%);
+}
+
+@media (max-width: 767px) {
+  .hero-three-scene {
+    inset: 0 !important;
+    opacity: 1 !important;
+  }
+}
