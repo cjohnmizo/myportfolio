@@ -1,5 +1,5 @@
 import { getPortfolioSnapshot } from "@/lib/portfolio/repository";
-import { MissionShell } from "@/components/portfolio/mission-shell";
+import { SpatialShell } from "@/components/portfolio/spatial-shell";
 
 export default async function PublicLayout({
   children,
@@ -8,9 +8,5 @@ export default async function PublicLayout({
 }>) {
   const snapshot = await getPortfolioSnapshot();
 
-  return (
-    <MissionShell footerNote={snapshot.settings.footerNote}>
-      {children}
-    </MissionShell>
-  );
+  return <SpatialShell snapshot={snapshot}>{children}</SpatialShell>;
 }
